@@ -1,0 +1,1388 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "ok": {
+      "type": "boolean"
+    },
+    "type": {
+      "type": "integer"
+    },
+    "message": {
+      "type": "string"
+    },
+    "error": {
+      "type": "null"
+    },
+    "response": {
+      "type": "object",
+      "properties": {
+        "Country": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "country_name": {
+                  "type": "string"
+                },
+                "country_code": {
+                  "type": "string"
+                },
+                "region_name": {
+                  "type": "string"
+                },
+                "currency_name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "country_name",
+                "country_code",
+                "region_name",
+                "currency_name"
+              ]
+            }
+          ]
+        }
+      },
+      "required": [
+        "Country"
+      ]
+    }
+  },
+  "required": [
+    "ok",
+    "type",
+    "message",
+    "error",
+    "response"
+  ]
+}

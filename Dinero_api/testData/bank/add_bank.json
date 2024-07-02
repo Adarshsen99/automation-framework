@@ -1,0 +1,156 @@
+[
+  {
+    "bankname":"",
+    "bank_country":"",
+    "bank_code" : ""
+  },
+  {
+    "bankname":" ",
+    "bank_country":" ",
+    "bank_code" : " "
+  },
+  {
+    "bankname": true,
+    "bank_country" : true,
+    "bank_code" : true
+  },
+  {
+    "bankname": false,
+    "bank_country" : false,
+    "bank_code" : false
+  },
+  {
+    "bankname": "false",
+    "bank_country" : "false",
+    "bank_code" : "false"
+  },
+  {
+    "bankname": "true",
+    "bank_country" : "true",
+    "bank_code" : "true"
+  },
+  {
+    "bankname": "Bank of Andhra",
+    "bank_country" : "4",
+    "bank_code" : "2"
+  },
+  {
+    "bankname": 1212,
+    "bank_country" : 5,
+    "bank_code" : 3
+  },
+  {
+    "bankname": "@#",
+    "bank_country" : "*&",
+    "bank_code" : "!%"
+  },
+  {
+    "bankname": "12@#",
+    "bank_country" : "11*&",
+    "bank_code" : "33!%"
+  },
+  {
+
+    "bankname": "name@*",
+    "bank_country" : "country*#",
+    "bank_code" : "code^%"
+  },
+  {
+    "bankname": "#$12",
+    "bank_country" : "!@34",
+    "bank_code" : "&@78"
+
+  },
+  {
+    "bankname": "*!name",
+    "bank_country" : "!&country",
+    "bank_code" : "#&code"
+  },
+  {
+    "bankname": "Bank of bombay",
+    "bank_country" : "9",
+    "bank_code" : "$%ncb12"
+
+  },
+  {
+    "bankname": "Bank of Assam",
+    "bank_country" : "NB$%11",
+    "bank_code" : "bx@#44"
+  },
+  {
+    "bankname": "Bank of Koorgh",
+    "bank_country" : "5"
+  },
+  {
+    "bankname": "Bank of Nellore",
+    "bank_code" : "9"
+  },
+  {
+    "bank_country" : "7",
+    "bank_code" : "4"
+  },
+  {
+    "bankname": "Bank of Goa"
+  },
+  {
+
+    "bank_country" : "6"
+
+  },
+  {
+    "bank_code" : "4"
+  },
+  {
+    "banknames": "Bank of Assam",
+    "bank_countrys" : "NB$%11",
+    "bank_codes" : "bx@#44"
+  },
+  {
+    "banknam": "Bank of Assam",
+    "bank_count" : "NB$%11",
+    "bank_co" : "bx@#44"
+  },
+  {
+    "namesbank": "Bank of Assam",
+    "countrys_bank" : "NB$%11",
+    "codes_bank" : "bx@#44"
+  },
+  {
+    "nambankname": "12@#",
+    "trybank_country" : "11*&",
+    "odebank_code" : "33!%"
+  },
+  {
+    "kname": "12@#",
+    "k_country" : "11*&",
+    "k_code" : "33!%"
+  },
+  {
+    "banknamma": "12@#",
+    "bank_counban" : "11*&",
+    "bank_corun" : "33!%"
+  },
+  {
+    "bangkname": "Bank of bombay",
+    "annak_country" : "9",
+    "chatank_code" : "$%ncb12"
+  },
+  {
+    "@bankname#": "Bank of bombay",
+    "$bank_country!" : "9",
+    "*bank_code$" : "$%ncb12"
+
+  },
+  {
+    "@bankname": "Bank of bombay",
+    "$bank_country" : "9",
+    "*bank_code" : "$%ncb12"
+
+  },
+  {
+    "bankname#": "Bank of bombay",
+    "bank_country!" : "9",
+    "bank_code$" : "$%ncb12"
+
+  }
+]
