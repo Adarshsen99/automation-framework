@@ -1,0 +1,212 @@
+[
+    {
+        "ok": false,
+        "type": 1,
+        "message": "'int' object has no attribute 'strip'",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": true,
+        "type": 0,
+        "message": "Bank details updated.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "'int' object has no attribute 'strip'",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "'int' object has no attribute 'strip'",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got '$'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got '*4'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got '@3'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got '1&'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got '1#'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got 'axsk692'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Name and country of bank required.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Name and country of bank required.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got 'pen'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "'int' object has no attribute 'strip'",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "'int' object has no attribute 'strip'",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "'int' object has no attribute 'strip'",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Name and country of bank required.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Name and country of bank required.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Name and country of bank required.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Name and country of bank required.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Name and country of bank required.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Name and country of bank required.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "'bool' object has no attribute 'strip'",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "'bool' object has no attribute 'strip'",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "'bool' object has no attribute 'strip'",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "'bool' object has no attribute 'strip'",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got 'true'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got 'false'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got 'false'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got 'true'.",
+        "error": "",
+        "response": null
+    }
+]

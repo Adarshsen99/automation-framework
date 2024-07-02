@@ -1,0 +1,361 @@
+
+{
+    "ok": true,
+    "type": 0,
+    "message": "2024-04-19 12:38:04",
+    "error": null,
+    "response": {
+        "Country": [
+            {
+                "id": 1,
+                "country_name": "Afghanistan",
+                "country_code": "AFG",
+                "region_name": "Asia",
+                "currency_name": "Afghan Afghani"
+            },
+            {
+                "id": 2,
+                "country_name": "Albania",
+                "country_code": "ALB",
+                "region_name": "Europe",
+                "currency_name": "Albanian Lek"
+            },
+            {
+                "id": 3,
+                "country_name": "Algeria",
+                "country_code": "DZA",
+                "region_name": "Africa",
+                "currency_name": "Algerian Dinar"
+            },
+            {
+                "id": 4,
+                "country_name": "Andorra",
+                "country_code": "AND",
+                "region_name": "Europe",
+                "currency_name": "Euro"
+            },
+            {
+                "id": 5,
+                "country_name": "Angola",
+                "country_code": "AGO",
+                "region_name": "Africa",
+                "currency_name": "Angolan Kwanza"
+            },
+            {
+                "id": 6,
+                "country_name": "Antigua and Barbuda",
+                "country_code": "ATG",
+                "region_name": "Americas",
+                "currency_name": "East Caribbean Dollar"
+            },
+            {
+                "id": 7,
+                "country_name": "Argentina",
+                "country_code": "ARG",
+                "region_name": "Americas",
+                "currency_name": "Argentine Peso"
+            },
+            {
+                "id": 8,
+                "country_name": "Armenia",
+                "country_code": "ARM",
+                "region_name": "Asia",
+                "currency_name": "Armenian Dram"
+            },
+            {
+                "id": 9,
+                "country_name": "Australia",
+                "country_code": "AUS",
+                "region_name": "Oceania",
+                "currency_name": "Australian Dollar"
+            },
+            {
+                "id": 10,
+                "country_name": "Austria",
+                "country_code": "AUT",
+                "region_name": "Europe",
+                "currency_name": "Euro"
+            },
+            {
+                "id": 11,
+                "country_name": "Azerbaijan",
+                "country_code": "AZE",
+                "region_name": "Asia",
+                "currency_name": "Azerbaijani Manat"
+            },
+            {
+                "id": 12,
+                "country_name": "Bahamas",
+                "country_code": "BHS",
+                "region_name": "Americas",
+                "currency_name": "Bahamian Dollar"
+            },
+            {
+                "id": 13,
+                "country_name": "Bahrain",
+                "country_code": "BHR",
+                "region_name": "Asia",
+                "currency_name": "Bahraini Dinar"
+            },
+            {
+                "id": 14,
+                "country_name": "Bangladesh",
+                "country_code": "BGD",
+                "region_name": "Asia",
+                "currency_name": "Bangladeshi Taka"
+            },
+            {
+                "id": 15,
+                "country_name": "Barbados",
+                "country_code": "BRB",
+                "region_name": "Americas",
+                "currency_name": "Barbadian Dollar"
+            },
+            {
+                "id": 16,
+                "country_name": "Belarus",
+                "country_code": "BLR",
+                "region_name": "Europe",
+                "currency_name": "Belarusian Ruble"
+            },
+            {
+                "id": 17,
+                "country_name": "Belgium",
+                "country_code": "BEL",
+                "region_name": "Europe",
+                "currency_name": "Euro"
+            },
+            {
+                "id": 18,
+                "country_name": "Belize",
+                "country_code": "BLZ",
+                "region_name": "Americas",
+                "currency_name": "Belize Dollar"
+            },
+            {
+                "id": 19,
+                "country_name": "Benin",
+                "country_code": "BEN",
+                "region_name": "Africa",
+                "currency_name": "West African CFA franc"
+            },
+            {
+                "id": 20,
+                "country_name": "Bhutan",
+                "country_code": "BTN",
+                "region_name": "Asia",
+                "currency_name": "Bhutanese Ngultrum"
+            },
+            {
+                "id": 21,
+                "country_name": "Bolivia",
+                "country_code": "BOL",
+                "region_name": "Americas",
+                "currency_name": "Bolivian Boliviano"
+            },
+            {
+                "id": 22,
+                "country_name": "Bosnia and Herzegovina",
+                "country_code": "BIH",
+                "region_name": "Europe",
+                "currency_name": "Bosnia and Herzegovina Convertible Mark"
+            },
+            {
+                "id": 23,
+                "country_name": "Botswana",
+                "country_code": "BWA",
+                "region_name": "Africa",
+                "currency_name": "Botswana Pula"
+            },
+            {
+                "id": 24,
+                "country_name": "Brazil",
+                "country_code": "BRA",
+                "region_name": "Americas",
+                "currency_name": "Brazilian Real"
+            },
+            {
+                "id": 25,
+                "country_name": "Brunei Darussalam",
+                "country_code": "BRN",
+                "region_name": "Asia",
+                "currency_name": "Brunei Dollar"
+            },
+            {
+                "id": 26,
+                "country_name": "Bulgaria",
+                "country_code": "BGR",
+                "region_name": "Europe",
+                "currency_name": "Bulgarian Lev"
+            },
+            {
+                "id": 27,
+                "country_name": "Burkina Faso",
+                "country_code": "BFA",
+                "region_name": "Africa",
+                "currency_name": "West African CFA franc"
+            },
+            {
+                "id": 28,
+                "country_name": "Burundi",
+                "country_code": "BDI",
+                "region_name": "Africa",
+                "currency_name": "Burundi Franc"
+            },
+            {
+                "id": 29,
+                "country_name": "Cambodia",
+                "country_code": "KHM",
+                "region_name": "Asia",
+                "currency_name": "Cambodian Riel"
+            },
+            {
+                "id": 30,
+                "country_name": "Cameroon",
+                "country_code": "CMR",
+                "region_name": "Africa",
+                "currency_name": "Central African CFA franc"
+            },
+            {
+                "id": 31,
+                "country_name": "Canada",
+                "country_code": "CAN",
+                "region_name": "Americas",
+                "currency_name": "Canadian Dollar"
+            },
+            {
+                "id": 32,
+                "country_name": "Cape Verde",
+                "country_code": "CPV",
+                "region_name": "Africa",
+                "currency_name": "Cape Verdean Escudo"
+            },
+            {
+                "id": 33,
+                "country_name": "Central African Republic",
+                "country_code": "CAF",
+                "region_name": "Africa",
+                "currency_name": "Central African CFA franc"
+            },
+            {
+                "id": 34,
+                "country_name": "Chad",
+                "country_code": "TCD",
+                "region_name": "Africa",
+                "currency_name": "Central African CFA franc"
+            },
+            {
+                "id": 35,
+                "country_name": "Chile",
+                "country_code": "CHL",
+                "region_name": "Americas",
+                "currency_name": "Chilean Peso"
+            },
+            {
+                "id": 36,
+                "country_name": "China",
+                "country_code": "CHN",
+                "region_name": "Asia",
+                "currency_name": "Chinese Yuan Renminbi"
+            },
+            {
+                "id": 37,
+                "country_name": "Colombia",
+                "country_code": "COL",
+                "region_name": "Americas",
+                "currency_name": "Colombian Peso"
+            },
+            {
+                "id": 38,
+                "country_name": "Comoros",
+                "country_code": "COM",
+                "region_name": "Africa",
+                "currency_name": "Comorian Franc"
+            },
+            {
+                "id": 39,
+                "country_name": "Congo (Brazzaville)",
+                "country_code": "COG",
+                "region_name": "Africa",
+                "currency_name": "Central African CFA franc"
+            },
+            {
+                "id": 40,
+                "country_name": "Congo (Kinshasa)",
+                "country_code": "COD",
+                "region_name": "Africa",
+                "currency_name": "Congolese Franc"
+            },
+            {
+                "id": 41,
+                "country_name": "Costa Rica",
+                "country_code": "CRI",
+                "region_name": "Americas",
+                "currency_name": "Costa Rican Colon"
+            },
+            {
+                "id": 42,
+                "country_name": "Croatia",
+                "country_code": "HRV",
+                "region_name": "Europe",
+                "currency_name": "Croatian Kuna"
+            },
+            {
+                "id": 43,
+                "country_name": "Cuba",
+                "country_code": "CUB",
+                "region_name": "Americas",
+                "currency_name": "Cuban Peso"
+            },
+            {
+                "id": 44,
+                "country_name": "Cyprus",
+                "country_code": "CYP",
+                "region_name": "Asia",
+                "currency_name": "Euro"
+            },
+            {
+                "id": 45,
+                "country_name": "Czech Republic",
+                "country_code": "CZE",
+                "region_name": "Europe",
+                "currency_name": "Czech Koruna"
+            },
+            {
+                "id": 46,
+                "country_name": "Denmark",
+                "country_code": "DNK",
+                "region_name": "Europe",
+                "currency_name": "Danish Krone"
+            },
+            {
+                "id": 47,
+                "country_name": "Djibouti",
+                "country_code": "DJI",
+                "region_name": "Africa",
+                "currency_name": "Djiboutian Franc"
+            },
+            {
+                "id": 48,
+                "country_name": "Dominica",
+                "country_code": "DMA",
+                "region_name": "Americas",
+                "currency_name": "East Caribbean Dollar"
+            },
+            {
+                "id": 49,
+                "country_name": "Dominican Republic",
+                "country_code": "DOM",
+                "region_name": "Americas",
+                "currency_name": "Dominican Peso"
+            },
+            {
+                "id": 50,
+                "country_name": "Ecuador",
+                "country_code": "ECU",
+                "region_name": "Americas",
+                "currency_name": "United States Dollar"
+            }
+        ]
+    }
+}

@@ -1,0 +1,219 @@
+[
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Name and country of bank required,",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Name and country of bank required,",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "'bool' object has no attribute 'strip'",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "'bool' object has no attribute 'strip'",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Command failed.,",
+        "error": "Field 'id' expected a number but got 'false'.",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Command failed.,",
+        "error": "Field 'id' expected a number but got 'true'.",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Bank code already exists.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "'int' object has no attribute 'strip'",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Command failed.,",
+        "error": "Field 'id' expected a number but got '*&'.",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Command failed.,",
+        "error": "Field 'id' expected a number but got '11*&'.",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Command failed.,",
+        "error": "Field 'id' expected a number but got 'country*#'.",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Command failed.,",
+        "error": "Field 'id' expected a number but got '!@34'.",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Command failed.,",
+        "error": "Field 'id' expected a number but got '!&country'.",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Bank code already exists.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Command failed.,",
+        "error": "Field 'id' expected a number but got 'NB$%11'.",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Name and country of bank required,",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Name and country of bank required,",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Name and country of bank required,",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Name and country of bank required,",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Name and country of bank required,",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Name and country of bank required,",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Name and country of bank required,",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Name and country of bank required,",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Name and country of bank required,",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Name and country of bank required,",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Name and country of bank required,",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Name and country of bank required,",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Name and country of bank required,",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Name and country of bank required,",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Name and country of bank required,",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Name and country of bank required,",
+        "error": "",
+        "response": null
+    }
+]
