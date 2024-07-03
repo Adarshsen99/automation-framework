@@ -4,9 +4,10 @@ from datetime import datetime
 
 import pytest
 
-from utilities.readProperties import ReadConfig
-from pageObjects.HomePge_nop import Homepage
-from pageObjects.LoginPage_nop import Login
+
+from Dinero_automation.utilities.readProperties import ReadConfig
+from Dinero_automation.pageObjects.HomePge_nop import Homepage
+from Dinero_automation.pageObjects.LoginPage_nop import Login
 
 
 class Test_Login:

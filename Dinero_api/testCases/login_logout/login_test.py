@@ -1,7 +1,13 @@
 import json
 import requests
+import sys
+import os
 
-from Utilities.custom_Logger import LogGen
+# Add the parent directory of Dinero_api to the Python path
+sys.path.append('/home/karunakar/DineroQa')
+
+from Dinero_api.Utilities.custom_Logger import LogGen
+
 LogGen.loggen().info("**** Request sent ****")
 
 class Test_Login:
@@ -21,4 +27,3 @@ class Test_Login:
 
         auth_token = response.json()["response"]["auth_token"]
         return auth_token
-
