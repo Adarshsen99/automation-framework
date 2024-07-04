@@ -6,7 +6,7 @@ class LogGen():
 
     @staticmethod
     def loggen():
-        path = '/home/karunakar/PycharmProjects/Dinero_API/logs/logs_API.log'
+        path = '/home/karunakar/DineroQa/Dinero_api/logs/logs_API.log'
 
         logger = logging.getLogger()
         formatter = logging.Formatter("%(asctime)s :%(levelname)s : %(name)s :%(message)s")
