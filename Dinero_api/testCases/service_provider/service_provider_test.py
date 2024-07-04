@@ -12,14 +12,13 @@ class Test_Servide_Provider():
 
         headers = {
              "Authorization": f"Token {self.auth_token}",
-            "languagecode": "fr"
+             "languagecode": "en"
         }
 
         with open("/home/karunakar/DineroQa/Dinero_api/testData/images/Screenshot from 2024-07-02 18-17-37.png", "rb") as file:
             file_data = file.read()
 
         fund_currencies = [
-            {"currency": "2", "rate": "1.2345", "settlement_rate": "1.22", "pay_in_settlement_rate": "1.23", "balance_alert_trigger": "5000"},
             {"currency": "1", "rate": "1.2345", "settlement_rate": "1.22", "pay_in_settlement_rate": "1.23", "balance_alert_trigger": "5000"}
         ]
 
@@ -28,7 +27,7 @@ class Test_Servide_Provider():
                 "country": "1",
                 "country_code": "US",
                 "currency": "1",
-                "currency_code": "840",
+                "currency_code": "1",
                 "transfer_type": "1",
                 "date_format": "1",
                 "cost_rate_source": "1",
@@ -64,8 +63,7 @@ class Test_Servide_Provider():
                 "amount_wise_sc_slab": [
                     {
                         "branch": "1",
-                        "from_amount": "10000",
-                        "to_amount": "20000",
+                        "amount_above": "10000",
                         "sc": "5.78"
                     }
                 ],
@@ -98,13 +96,13 @@ class Test_Servide_Provider():
             "city": "Exampleville",
             "country": "1",
             "countryof_incorporation": "1",
-            "phone_number": "++857w8878787",
-            "email": "info@ex3745658bank.com",
+            "phone_number": "+857w88787811",
+            "email": "info@ex374115658bank.com",
             "agrmnt_start_date": "2023-01-01",
             "agrmnt_end_date": "2028-12-31",
-            "reg_no": "AtBC15667582w47l2e7s23",
+            "reg_no": "AtBC1561167582w47l2e7s23",
             "reg_expiry_date": "2025-06-30",
-            "trade_license_no": "DEF7786345we27l57ts4656",
+            "trade_license_no": "D11EF7786345we27l57ts4656",
             "trade_license_expiry_date": "2024-12-31",
             "license_no": "GHI577w6s745832zl68te9",
             "licensing_auth": "Example Licensing Authority",
