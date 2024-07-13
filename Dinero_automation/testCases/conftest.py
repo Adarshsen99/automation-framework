@@ -41,7 +41,7 @@ def pytest_metadata(metadata):
 #Specifying report folder location and save report with timestamp
 @pytest.hookimpl(tryfirst=True)
 def pytest_configure(config):
-    reports_path = '/home/karunakar/PycharmProjects/Dinero_UI_Automation/reports/'
+    reports_path = '/home/karunakar/DineroQa/Dinero_automation/reports/'
     config.option.htmlpath = reports_path + datetime.now().strftime("%d-%m-%Y %H-%M-%S")+".html"
 
 
