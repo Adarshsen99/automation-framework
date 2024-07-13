@@ -1,6 +1,6 @@
 import configparser
 
-path = '/home/karunakar/PycharmProjects/Dinero_UI_Automation/configurations/config.ini'
+path = '/home/karunakar/DineroQa/Dinero_automation/configurations/config.ini'
 config = configparser.RawConfigParser()
 config.read(path)
 
@@ -11,8 +11,8 @@ class ReadConfig:
         url=config.get('commonData', 'url')
         return url
     @staticmethod
-    def getApplicationEmail():
-        email = config.get('commonData','email')
+    def getApplicationUsername():
+        email = config.get('commonData','username')
         return email
 
     @staticmethod

@@ -1,3 +1,3 @@
 def screen_short():
-    screenshort = '/home/karunakar/PycharmProjects/Dinero_UI_Automation/screenshots/'
+    screenshort = '/home/karunakar/DineroQa/Dinero_automation/screenshots/'
     return screenshort

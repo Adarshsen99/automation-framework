@@ -2,7 +2,7 @@ import os
 
 import requests
 import json
-from testCases.login_logout.login_test import Test_Login
+from Dinero_api.testCases.login_logout.login_test import Test_Login
 
 class Test_Add:
     def test_add(self):
@@ -13,14 +13,14 @@ class Test_Add:
             "Authorization": f"Token {self.auth_token}"
         }
 
-        file = open("/home/karunakar/PycharmProjects/Dinero_API/testData/bank/add_bank.json")
+        file = open("/home/karunakar/DineroQa/Dinero_api/testData/bank/add_bank.json")
         payload = json.load(file)
         for data in payload:
             response = requests.post(url=url,headers=headers,json=data)
             print(json.dumps(response.json(),indent=4))
 
 
-            custom_location = '/home/karunakar/PycharmProjects/Dinero_API/testResultData/bank'
+            custom_location = '/home/karunakar/DineroQa/Dinero_api/testResultData/bank'
 
             # Check if the request was successful (status code 200)
             if response.status_code == 200:

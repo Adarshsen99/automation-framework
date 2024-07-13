@@ -215,5 +215,950 @@
         "message": "Name and country of bank required,",
         "error": "",
         "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "'bool' object has no attribute 'strip'",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "'bool' object has no attribute 'strip'",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got 'false'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got 'true'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Failed to add bank.",
+        "error": "null value in column \"bankname_in_local_lang\" of relation \"dn_bank\" violates not-null constraint\nDETAIL:  Failing row contains (28, 2024-07-10 06:55:19.680898+00, 1, 2024-07-10 06:55:19.680902+00, 1, Bank of Andhra, null, 2, f, 4).\n",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "'int' object has no attribute 'strip'",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got '*&'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got '11*&'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got 'country*#'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got '!@34'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got '!&country'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Failed to add bank.",
+        "error": "null value in column \"bankname_in_local_lang\" of relation \"dn_bank\" violates not-null constraint\nDETAIL:  Failing row contains (29, 2024-07-10 06:55:19.770169+00, 1, 2024-07-10 06:55:19.770172+00, 1, Bank of bombay, null, $%ncb12, f, 9).\n",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got 'NB$%11'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": true,
+        "type": 0,
+        "message": "New bank is added.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "'bool' object has no attribute 'strip'",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "'bool' object has no attribute 'strip'",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got 'false'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got 'true'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Failed to add bank.",
+        "error": "null value in column \"bankname_in_local_lang\" of relation \"dn_bank\" violates not-null constraint\nDETAIL:  Failing row contains (31, 2024-07-10 06:57:12.338889+00, 1, 2024-07-10 06:57:12.338891+00, 1, Bank of Andhra, null, 2, f, 4).\n",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "'int' object has no attribute 'strip'",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got '*&'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got '11*&'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got 'country*#'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got '!@34'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got '!&country'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Failed to add bank.",
+        "error": "null value in column \"bankname_in_local_lang\" of relation \"dn_bank\" violates not-null constraint\nDETAIL:  Failing row contains (32, 2024-07-10 06:57:12.438076+00, 1, 2024-07-10 06:57:12.438078+00, 1, Bank of bombay, null, $%ncb12, f, 9).\n",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got 'NB$%11'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Bank code already exists.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "'bool' object has no attribute 'strip'",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "'bool' object has no attribute 'strip'",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got 'false'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got 'true'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": true,
+        "type": 0,
+        "message": "New bank is added.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "'int' object has no attribute 'strip'",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got '*&'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got '11*&'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got 'country*#'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got '!@34'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got '!&country'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": true,
+        "type": 0,
+        "message": "New bank is added.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got 'NB$%11'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": true,
+        "type": 0,
+        "message": "New bank is added.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "'bool' object has no attribute 'strip'",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "'bool' object has no attribute 'strip'",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got 'false'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got 'true'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Bank code already exists.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "'int' object has no attribute 'strip'",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got '*&'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got '11*&'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got 'country*#'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got '!@34'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got '!&country'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Bank code already exists.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Field 'id' expected a number but got 'NB$%11'.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
+    },
+    {
+        "ok": false,
+        "type": 1,
+        "message": "Some of the required fields are empty.",
+        "error": "",
+        "response": null
     }
 ]

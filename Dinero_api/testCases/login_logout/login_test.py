@@ -11,10 +11,10 @@ LogGen.loggen().info("**** Request sent ****")
 class Test_Login:
 
     def test_login(self):
-        url = "http://127.0.0.1:8000/api/user/login/"
+        url = "http://api.dinero.local:8080/user/login/"
 
         payload = {
-            "username": "admin",
+            "username": "root",
             "password": "admin"
         }
         headers = {

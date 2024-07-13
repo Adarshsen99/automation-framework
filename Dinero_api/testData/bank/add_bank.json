@@ -1,8 +1,17 @@
 [
+
+  {
+    "bankname": "bank of Russia",
+    "bank_code": "RIS",
+    "bankname_in_local_lang": "THAI",
+    "bank_country": "1"
+  },
+
   {
     "bankname":"",
     "bank_country":"",
-    "bank_code" : ""
+    "bank_code" : "",
+    "bankname_in_local_lang": ""
   },
   {
     "bankname":" ",
@@ -12,70 +21,83 @@
   {
     "bankname": true,
     "bank_country" : true,
-    "bank_code" : true
+    "bank_code" : true,
+    "bankname_in_local_lang": true
   },
   {
     "bankname": false,
     "bank_country" : false,
-    "bank_code" : false
+    "bank_code" : false,
+    "bankname_in_local_lang": false
   },
   {
     "bankname": "false",
     "bank_country" : "false",
-    "bank_code" : "false"
+    "bank_code" : "false",
+    "bankname_in_local_lang": "false"
   },
   {
     "bankname": "true",
     "bank_country" : "true",
-    "bank_code" : "true"
+    "bank_code" : "true",
+    "bankname_in_local_lang": "true"
   },
   {
     "bankname": "Bank of Andhra",
     "bank_country" : "4",
-    "bank_code" : "2"
+    "bank_code" : "2",
+    "bankname_in_local_lang": "8"
   },
   {
     "bankname": 1212,
     "bank_country" : 5,
-    "bank_code" : 3
+    "bank_code" : 3,
+    "bankname_in_local_lang": 7
   },
   {
     "bankname": "@#",
     "bank_country" : "*&",
-    "bank_code" : "!%"
+    "bank_code" : "!%",
+    "bankname_in_local_lang": "@!"
   },
   {
     "bankname": "12@#",
     "bank_country" : "11*&",
-    "bank_code" : "33!%"
+    "bank_code" : "33!%",
+    "bankname_in_local_lang": "88*!"
   },
   {
 
     "bankname": "name@*",
     "bank_country" : "country*#",
-    "bank_code" : "code^%"
+    "bank_code" : "code^%",
+    "bankname_in_local_lang": "local*&"
   },
   {
     "bankname": "#$12",
     "bank_country" : "!@34",
-    "bank_code" : "&@78"
+    "bank_code" : "&@78",
+    "bankname_in_local_lang": "$@41"
 
   },
   {
     "bankname": "*!name",
     "bank_country" : "!&country",
-    "bank_code" : "#&code"
+    "bank_code" : "#&code",
+    "bankname_in_local_lang": "(!local"
   },
   {
     "bankname": "Bank of bombay",
     "bank_country" : "9",
-    "bank_code" : "$%ncb12"
+    "bank_code" : "$%ncb12",
+    "bankname_in_local_lang": "53!9"
 
   },
   {
     "bankname": "Bank of Assam",
     "bank_country" : "NB$%11",
-    "bank_code" : "bx@#44"
+    "bank_code" : "bx@#44",
+    "bankname_in_local_lang": "_+_333"
   },
   {
     "bankname": "Bank of Koorgh",
@@ -90,6 +112,18 @@
     "bank_code" : "4"
   },
   {
+    "bankname": "name",
+    "bankname_in_local_lang": "local"
+  },
+  {
+    "bank_country": "Thailand",
+    "bankname_in_local_lang": "local"
+  },
+  {
+    "bank_code" : "9",
+    "bankname_in_local_lang": "local"
+  },
+  {
     "bankname": "Bank of Goa"
   },
   {
@@ -101,56 +135,69 @@
     "bank_code" : "4"
   },
   {
-    "banknames": "Bank of Assam",
-    "bank_countrys" : "NB$%11",
-    "bank_codes" : "bx@#44"
+    "bankname_in_local_lang": "local"
   },
   {
-    "banknam": "Bank of Assam",
+    "banknames": "Bank of Bhootan",
+    "bank_countrys" : "NB$%11",
+    "bank_codes" : "bx@#44",
+    "bankname_in_local_lang": "local2@!#$"
+  },
+  {
+    "banknam": "Bank of Thailand",
     "bank_count" : "NB$%11",
-    "bank_co" : "bx@#44"
+    "bank_co" : "bx@#44",
+    "bankname_in_local_lang": "local2@!#$"
   },
   {
     "namesbank": "Bank of Assam",
     "countrys_bank" : "NB$%11",
-    "codes_bank" : "bx@#44"
+    "codes_bank" : "bx@#44",
+    "bankname_in_local_lang": "local2@!#$"
   },
   {
     "nambankname": "12@#",
     "trybank_country" : "11*&",
-    "odebank_code" : "33!%"
+    "odebank_code" : "33!%",
+    "bankname_in_local_lang": "local2@!#$"
   },
   {
     "kname": "12@#",
     "k_country" : "11*&",
-    "k_code" : "33!%"
+    "k_code" : "33!%",
+    "bankname_in_local_lang": "local2@!#$"
   },
   {
     "banknamma": "12@#",
     "bank_counban" : "11*&",
-    "bank_corun" : "33!%"
+    "bank_corun" : "33!%",
+    "bankname_in_local_lang": "local2@!#$"
   },
   {
     "bangkname": "Bank of bombay",
     "annak_country" : "9",
-    "chatank_code" : "$%ncb12"
+    "chatank_code" : "$%ncb12",
+    "bankname_in_local_lang": "local2@!#$"
   },
   {
     "@bankname#": "Bank of bombay",
     "$bank_country!" : "9",
-    "*bank_code$" : "$%ncb12"
+    "*bank_code$" : "$%ncb12",
+    "bankname_in_local_lang": "local2@!#$"
 
   },
   {
     "@bankname": "Bank of bombay",
     "$bank_country" : "9",
-    "*bank_code" : "$%ncb12"
+    "*bank_code" : "$%ncb12",
+    "bankname_in_local_lang": "local2@!#$"
 
   },
   {
     "bankname#": "Bank of bombay",
     "bank_country!" : "9",
-    "bank_code$" : "$%ncb12"
+    "bank_code$" : "$%ncb12",
+    "bankname_in_local_lang": "local2@!#$"
 
   }
 ]
