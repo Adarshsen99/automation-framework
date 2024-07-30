@@ -27,6 +27,7 @@ class Persomal_Information():
     # buttons
     # btn_verify_xpath = "(//button[@type='button'])[1]"
     btn_cancel_xpath = "//*[@id='root']/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/form/div[2]/button"
+    btn_cancel_confirm_xpath = "//button[normalize-space()='Yes']"
     btn_next_xpath = "(//button[normalize-space()='Next'])[1]"
 
     message = "//span[@class='error-message']"
@@ -126,6 +127,9 @@ class Persomal_Information():
     def btncancel(self):
         self.driver.find_element(By.XPATH,self.btn_cancel_xpath).click()
 
+    def btn_canel_confirm(self):
+        self.driver.find_element(By.XPATH,self.btn_cancel_confirm_xpath).click()
+
     def btnnext(self):
         self.driver.find_element(By.XPATH,self.btn_next_xpath).click()
 
@@ -149,6 +153,8 @@ class Contact_Information():
 
     # buttons
     btn_cancel_xpath = "//button[normalize-space()='Cancel']"
+    btn_cancel_confirm_xpath = "//button[normalize-space()='Yes']"
+    btn_cancel_no_xpath = "//button[normalize-space()='No']"
     btn_back_xpath = "//button[normalize-space()='Back']"
     btn_next_xpath = "//button[normalize-space()='Next']"
 
@@ -203,11 +209,17 @@ class Contact_Information():
     def btn_cancel(self):
         self.driver.find_element(By.XPATH,self.btn_cancel_xpath).click()
 
+    def btn_cancel_cfirm(self):
+        self.driver.find_element(By.XPATH,self.btn_cancel_confirm_xpath).click()
+
+    def btn_cancel_no(self):
+        self.driver.find_element(By.XPATH, self.btn_cancel_no_xpath).click()
+
     def btn_back(self):
         self.driver.find_element(By.XPATH,self.btn_back_xpath).click()
 
-    # def btn_next(self):
-    #     self.driver.find_element(By.XPATH,self.btn_next_xpath).click()
+    def btn_next(self):
+        self.driver.find_element(By.XPATH,self.btn_next_xpath).click()
 
 
    # preview
@@ -278,7 +290,47 @@ class Contact_Information():
 
 
 class Id_details():
-    pass
+    drp_id_type_id = "ID Type"
+    field_place_of_id_issue_id = "Place of ID Issue"
+    field_id_nmuber_id = "ID Number"
+    da_pick_id_issue_date_name = "ID Issue Date"
+    da_pick_id_expaire_date_name = "ID Expiry Date"
+    drp_place_of_passport_issue_id = "Place of Passport Issue"
+    field_passport_number_id = "Passport Number"
+    da_pick_pass_issue_date_name = "Passport Issue Date"
+    da_pick_pass_exp_date_name = "Passport Expiry Date"
+
+#   Dual natinality
+    toggle_btn_dual_nation_id = "Dual Nationality"
+
+    drp_nation_id = "Nationality 2"
+    drp_pla_of_passport_iss_id = "Place of Passport 2 Issue"
+    field_pass_num = "Passport 2 Number"
+    da_pick_pass_iss_date_name = "Passport 2 Issue Date"
+    da_pick_pass_exp_date_name = "Passport 2 Expiry Date"
+
+#     buttons
+
+    btn_cancel_xpath = "//button[normalize-space()='Cancel']"
+    btn_cancel_no = "//button[normalize-space()='No']"
+    btn_cancel_yes = "//button[normalize-space()='Yes']"
+
+    btn_back_xpath = "//button[normalize-space()='Back']"
+    btn_next_xpath = "//button[normalize-space()='Next']"
+
+    def __init__(self,driver):
+        self.driver = driver
+
+
+
+
+
+
+
+
+
+
+
 
 
 
