@@ -24,8 +24,9 @@ class Persomal_Information():
     drp_marital_status_req_id = "Marital Status"
     drp_profession_req_id = "Profession"
 
+
     # buttons
-    # btn_verify_xpath = "(//button[@type='button'])[1]"
+    btn_verify_xpath = "(//button[@type='button'])[1]"
     btn_cancel_xpath = "//*[@id='root']/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/form/div[2]/button"
     btn_cancel_confirm_xpath = "//button[normalize-space()='Yes']"
     btn_next_xpath = "(//button[normalize-space()='Next'])[1]"
@@ -58,6 +59,22 @@ class Persomal_Information():
         first = self.driver.find_element(By.ID,self.field_first_name_req_id)
         first.send_keys(first_name)
 
+    def firstNameField_required_size(self):
+        return self.driver.find_element(By.ID,self.field_first_name_req_id)
+
+    def firstNameField_required_value(self):
+        first = self.driver.find_element(By.ID,self.field_first_name_req_id)
+        field_value = first.get_attribute('value')
+        # Calculate and print the length of the value
+        length_of_value = len(field_value)
+        return length_of_value
+
+    def firstNameField_required_value_getting(self):
+        first = self.driver.find_element(By.ID,self.field_first_name_req_id)
+        field_value = first.get_attribute('value')
+        return field_value
+
+
     def first_clear(self):
         clear = self.driver.find_element(By.ID,self.field_first_name_req_id)
         clear.clear()
@@ -65,41 +82,118 @@ class Persomal_Information():
     def middleNameField_not_required(self,middlename):
         self.driver.find_element(By.ID,self.field_middle_name_notreq_id).send_keys(middlename)
 
+    def middleNameField_not_required_size(self):
+        return self.driver.find_element(By.ID,self.field_middle_name_notreq_id)
+
     def middle_clear(self):
         middle = self.driver.find_element(By.ID, self.field_middle_name_notreq_id)
         middle.clear()
 
+    def middleNameField_not_required_value(self):
+        first = self.driver.find_element(By.ID,self.field_middle_name_notreq_id)
+        field_value = first.get_attribute('value')
+        # Calculate and print the length of the value
+        length_of_value = len(field_value)
+        return length_of_value
+
+    def middleNameField_not_required_value_getting(self):
+        first = self.driver.find_element(By.ID,self.field_middle_name_notreq_id)
+        field_value = first.get_attribute('value')
+        return field_value
+
     def lastNameField_required(self,lastname):
         self.driver.find_element(By.ID,self.field_last_name_req_id).send_keys(lastname)
+
+    def lastNameField_required_size(self):
+        return self.driver.find_element(By.ID,self.field_last_name_req_id)
 
     def last_clear(self):
         last = self.driver.find_element(By.ID, self.field_last_name_req_id)
         last.clear()
 
+    def lastNameField_required_value(self):
+        first = self.driver.find_element(By.ID,self.field_last_name_req_id)
+        field_value = first.get_attribute('value')
+        # Calculate and print the length of the value
+        length_of_value = len(field_value)
+        return length_of_value
+
+    def lastNameField_required_value_getting(self):
+        first = self.driver.find_element(By.ID,self.field_last_name_req_id)
+        field_value = first.get_attribute('value')
+        return field_value
+
     def arabicNameFiels_required(self,arabic):
         self.driver.find_element(By.ID,self.field_arabic_name_req_id).send_keys(arabic)
+
+    def arabicNameFiels_required_size(self,):
+        return self.driver.find_element(By.ID,self.field_arabic_name_req_id)
 
     def arabic_clear(self):
         arabic = self.driver.find_element(By.ID, self.field_arabic_name_req_id)
         arabic.clear()
 
+    def arabicNameFiels_required_value(self):
+        first = self.driver.find_element(By.ID,self.field_arabic_name_req_id)
+        field_value = first.get_attribute('value')
+        # Calculate and print the length of the value
+        length_of_value = len(field_value)
+        return length_of_value
+
+    def arabicNameFiels_required_value_getting(self):
+        first = self.driver.find_element(By.ID,self.field_arabic_name_req_id)
+        field_value = first.get_attribute('value')
+        return field_value
+
     def shortNameField_not_required(self,shortname):
         self.driver.find_element(By.ID,self.field_short_name_notreq_id).send_keys(shortname)
+
+    def shortNameField_not_required_size(self,):
+        return self.driver.find_element(By.ID,self.field_short_name_notreq_id)
 
     def short_clear(self):
         short = self.driver.find_element(By.ID, self.field_short_name_notreq_id)
         short.clear()
 
+    def shortNameField_not_required_value(self):
+        first = self.driver.find_element(By.ID,self.field_short_name_notreq_id)
+        field_value = first.get_attribute('value')
+        # Calculate and print the length of the value
+        length_of_value = len(field_value)
+        return length_of_value
+
+    def shortNameField_not_required_value_getting(self):
+        first = self.driver.find_element(By.ID,self.field_short_name_notreq_id)
+        field_value = first.get_attribute('value')
+        return field_value
+
     def maidenNameFiels_not_required(self,maiden):
         self.driver.find_element(By.ID,self.field_maiden_name_notreq_id).send_keys(maiden)
+
+    def maidenNameFiels_not_required_size(self):
+        return self.driver.find_element(By.ID,self.field_maiden_name_notreq_id)
 
     def maiden_clear(self):
         maiden = self.driver.find_element(By.ID, self.field_maiden_name_notreq_id)
         maiden.clear()
 
+    def maidenNameFiels_not_required_value(self):
+        first = self.driver.find_element(By.ID,self.field_maiden_name_notreq_id)
+        field_value = first.get_attribute('value')
+        # Calculate and print the length of the value
+        length_of_value = len(field_value)
+        return length_of_value
+
+    def maidenNameFiels_not_required_value_getting(self):
+        first = self.driver.find_element(By.ID,self.field_maiden_name_notreq_id)
+        field_value = first.get_attribute('value')
+        return field_value
+
     def dobpicker_required(self,dob):
         self.driver.find_element(By.XPATH,self.picker_dob_req_xpath).send_keys(dob)
 
+    def dobpicker_required_size(self):
+        return self.driver.find_element(By.XPATH,self.picker_dob_req_xpath)
     def cobDropdown_required(self):
         return self.driver.find_element(By.ID,self.drp_country_of_birth_req_id)
 
@@ -148,7 +242,8 @@ class Contact_Information():
     field_city_dist_id = "City/District"
     field_emirate_state_id = "Emirate/State"
     drp_country_id = "Country"
-    drp_phone_id = "phoneInputField"
+    drp_mobile_xpath = "//select[@class='countrySelector']"
+    field_mobile_id = "phoneInputField"
     field_email = "Email"
 
     # buttons
@@ -180,10 +275,10 @@ class Contact_Information():
     def __init__(self,driver):
         self.driver = driver
 
-    def field_flat_house_required(self,flat):
+    def field_fh_num_required(self,flat):
         self.driver.find_element(By.ID, self.field_flat_housenumber_id).send_keys(flat)
 
-    def field_house_build_num_required(self,house):
+    def field_hb_name_required(self,house):
         self.driver.find_element(By.ID, self.field_house_build_num_id).send_keys(house)
 
     def field_street_required(self,street):
@@ -199,7 +294,10 @@ class Contact_Information():
         return self.driver.find_element(By.ID,self.drp_country_id)
 
     def drp_mobile_required(self):
-        return self.driver.find_element(By.ID,self.drp_phone_id)
+        return self.driver.find_element(By.XPATH, self.drp_mobile_xpath)
+
+    def field_mobile_required(self,mobile):
+        self.driver.find_element(By.ID,self.field_mobile_id).send_keys(mobile)
 
     def field_email_required(self,email):
         self.driver.find_element(By.ID, self.field_email).send_keys(email)
@@ -321,6 +419,10 @@ class Id_details():
     def __init__(self,driver):
         self.driver = driver
 
+    def visible_id(self):
+        element = self.driver.find_element(By.ID,self.drp_id_type_id)
+        dis = element.is_displayed()
+        return dis
 
 
 
