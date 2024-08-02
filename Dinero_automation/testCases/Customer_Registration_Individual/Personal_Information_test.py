@@ -360,7 +360,7 @@ class Test_Personal_Information:
             assert False
         else:
             self.driver.save_screenshot(screenShort.screen_short() + "test_personal_info_with_special_num_char_char.png")
-            # assert True
+            assert True
         self.driver.quit()
 
 
@@ -691,7 +691,7 @@ class Test_Personal_Information:
         self.drp = Select(self.cur.titleDropdown_required())
         self.drp.select_by_index(1)
         self.cur.firstNameField_required("!@#$%^&*()_+*/{}|]""-[:;',.?")
-        self.cur.lastNameField_required("1!@#$%^&*()_+*/{}|]""-[:;',.?")
+        self.cur.lastNameField_required("!@#$%^&*()_+*/{}|]""-[:;',.?")
         self.cur.arabicNameFiels_required("!@#$%^&*()_+*/{}|]""-[:;',.?")
 
         # Select date of birth using the custom method
@@ -1889,7 +1889,7 @@ class Test_Personal_Information:
         # Close the driver after the test
         self.driver.quit()
 
-    def test_fieldname_max_length(self, setup, f_maxlength=None):
+    def test_fieldname_max_length(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()

@@ -1,4 +1,8 @@
+from selenium.common import StaleElementReferenceException, TimeoutException
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 
 class Persomal_Information():
     # Verify Id
@@ -246,12 +250,31 @@ class Contact_Information():
     field_mobile_id = "phoneInputField"
     field_email = "Email"
 
+    # Non-Resident
+
+    non_field_flat_housenumber_id = 'Non Resident Flat'
+    non_field_house_build_num_id = "Non Resident House"
+    non_field_street_id = "Non Resident Street"
+    non_field_city_dist_id = "Non Resident City"
+    non_field_emirate_state_id = "Non Resident State"
+    non_drp_country_id = "Non Resident Country"
+    non_drp_visa_type_id = "Non Resident Visa Type"
+    non_resi_visa_num_id = "Non Resident Visa Number"
+    non_dat_pic_nonres_visa_issu_dat_name = "Non Resident Visa Issue Date"
+    non_dat_pic_nonres_visa_expair_dat_name = "Non Resident Visa Expiry Date"
+    remarks_id = "Remarks"
+
+
+
     # buttons
     btn_cancel_xpath = "//button[normalize-space()='Cancel']"
     btn_cancel_confirm_xpath = "//button[normalize-space()='Yes']"
     btn_cancel_no_xpath = "//button[normalize-space()='No']"
     btn_back_xpath = "//button[normalize-space()='Back']"
     btn_next_xpath = "//button[normalize-space()='Next']"
+
+    # error mesaages
+
 
     # preview for personal information
     drp_preview_xpath = "//span[normalize-space()='Personal Information']"
@@ -275,23 +298,88 @@ class Contact_Information():
     def __init__(self,driver):
         self.driver = driver
 
+    # 1
     def field_fh_num_required(self,flat):
         self.driver.find_element(By.ID, self.field_flat_housenumber_id).send_keys(flat)
 
+    def field_fh_num_required_val(self):
+        return self.driver.find_element(By.ID, self.field_flat_housenumber_id)
+
+    def non_field_fh_num_required(self,flat):
+        self.driver.find_element(By.ID, self.non_field_flat_housenumber_id).send_keys(flat)
+
+    def field_fh_num_required_clear(self):
+        clr = self.driver.find_element(By.ID, self.field_flat_housenumber_id)
+        clr.clear()
+
+    # 2
     def field_hb_name_required(self,house):
         self.driver.find_element(By.ID, self.field_house_build_num_id).send_keys(house)
+
+    def field_hb_name_required_val(self):
+        return self.driver.find_element(By.ID, self.field_house_build_num_id)
+
+    def non_field_hb_name_required(self,house):
+        self.driver.find_element(By.ID, self.non_field_house_build_num_id).send_keys(house)
+
+    def field_hb_name_required_clear(self):
+        clr = self.driver.find_element(By.ID, self.field_house_build_num_id)
+        clr.clear()
+
+    # 3
 
     def field_street_required(self,street):
         self.driver.find_element(By.ID, self.field_street_id).send_keys(street)
 
+    def field_street_required_val(self):
+        return self.driver.find_element(By.ID, self.field_street_id)
+
+    def non_field_street_required(self,street):
+        self.driver.find_element(By.ID, self.non_field_street_id).send_keys(street)
+
+    def field_street_required_clear(self):
+        clr = self.driver.find_element(By.ID, self.field_street_id)
+        clr.clear()
+
+    # 4
+
     def field_city_dist_required(self,city_dist):
         self.driver.find_element(By.ID, self.field_city_dist_id).send_keys(city_dist)
+
+    def field_city_dist_required_val(self):
+        return self.driver.find_element(By.ID, self.field_city_dist_id)
+
+    def non_field_city_dist_required(self,city_dist):
+        self.driver.find_element(By.ID, self.non_field_city_dist_id).send_keys(city_dist)
+
+    def field_city_dist_required_clear(self):
+        clr = self.driver.find_element(By.ID, self.field_city_dist_id)
+        clr.clear()
+
+    # 5
 
     def field_emin_dist(self,emin_dist):
         self.driver.find_element(By.ID, self.field_emirate_state_id).send_keys(emin_dist)
 
+    def field_emin_dist_val(self):
+        return self.driver.find_element(By.ID, self.field_emirate_state_id)
+
+    def non_field_emin_dist(self,emin_dist):
+        self.driver.find_element(By.ID, self.non_field_emirate_state_id).send_keys(emin_dist)
+
+    def field_emin_state_clear(self):
+        clr = self.driver.find_element(By.ID, self.field_emirate_state_id)
+        clr.clear()
+
+    # 6
+
     def drp_country_required(self):
         return self.driver.find_element(By.ID,self.drp_country_id)
+
+    def non_drp_country_required(self):
+        return self.driver.find_element(By.ID,self.non_drp_country_id)
+
+    # 7
 
     def drp_mobile_required(self):
         return self.driver.find_element(By.XPATH, self.drp_mobile_xpath)
@@ -299,8 +387,40 @@ class Contact_Information():
     def field_mobile_required(self,mobile):
         self.driver.find_element(By.ID,self.field_mobile_id).send_keys(mobile)
 
+    def field_mobile_required_val(self):
+        return self.driver.find_element(By.ID,self.field_mobile_id)
+
+    def field_mobile_required_clear(self):
+        clr = self.driver.find_element(By.ID,self.field_mobile_id)
+        clr.clear()
+
+    # 8
+
     def field_email_required(self,email):
         self.driver.find_element(By.ID, self.field_email).send_keys(email)
+
+    def field_email_required_val(self):
+        return self.driver.find_element(By.ID, self.field_email)
+
+    def field_email_required_clear(self):
+        clr = self.driver.find_element(By.ID, self.field_email)
+        clr.clear()
+
+    # Non
+    def non_residen_visa_type_drp(self):
+        return self.driver.find_element(By.ID, self.non_drp_visa_type_id)
+
+    def non_residen_visa_number(self,vnum):
+        self.driver.find_element(By.ID, self.non_resi_visa_num_id).send_keys(vnum)
+
+    def non_residen_visa_issu_date(self,vidat):
+        self.driver.find_element(By.NAME, self.non_dat_pic_nonres_visa_issu_dat_name).send_keys(vidat)
+
+    def non_residen_visa_expair_date(self,venum):
+        self.driver.find_element(By.NAME, self.non_dat_pic_nonres_visa_expair_dat_name).send_keys(venum)
+
+    def remarks(self,remarks):
+        self.driver.find_element(By.ID,self.remarks_id).send_keys(remarks)
 
     # buttons
 
@@ -407,22 +527,141 @@ class Id_details():
     da_pick_pass_iss_date_name = "Passport 2 Issue Date"
     da_pick_pass_exp_date_name = "Passport 2 Expiry Date"
 
-#     buttons
+#     Preview
+    pre_ci_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div/span"
 
-    btn_cancel_xpath = "//button[normalize-space()='Cancel']"
+    pre_fh_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[1]/span[2]"
+    pre_hb_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[2]/span[2]"
+    pre_stre_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[3]/span[2]"
+    pre_cidi_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[4]/span[2]"
+    pre_emist_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[5]/span[2]"
+    pre_con_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[6]/span[2]"
+    pre_mob_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[7]/span[2]"
+    pre_email_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[8]/span[2]"
+
+    # Non-Residental
+    pre_fh_non_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[11]/span[2]"
+    pre_hb_non_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[12]/span[2]"
+    pre_stre_non_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[13]/span[2]"
+    pre_cidi_non_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[14]/span[2]"
+    pre_emist_non_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[15]/span[2]"
+    pre_con_non_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[16]/span[2]"
+    pre_vtype_non_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[17]/span[2]"
+    pre_vnum_non_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[18]/span[2]"
+    pre_v_isdat_non_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[19]/span[2]"
+    pre_v_exdat_non_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[20]/span[2]"
+    pre_remar_non_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[21]/span[2]"
+
+
+
+
+#   Buttons
+
+    btn_cancel_xpath = "(//button[normalize-space()='Cancel'])[1]"
     btn_cancel_no = "//button[normalize-space()='No']"
-    btn_cancel_yes = "//button[normalize-space()='Yes']"
+    btn_cancel_yes = "/html/body/div[1]/div[1]/div/div/div/div/div/button[2]"
 
-    btn_back_xpath = "//button[normalize-space()='Back']"
+    btn_back_xpath = "//button[@class='m-2 button-custom variant-outline size-undefined']"
     btn_next_xpath = "//button[normalize-space()='Next']"
 
-    def __init__(self,driver):
+    def __init__(self, driver):
         self.driver = driver
 
     def visible_id(self):
-        element = self.driver.find_element(By.ID,self.drp_id_type_id)
+        element = self.driver.find_element(By.XPATH,self.btn_next_xpath)
         dis = element.is_displayed()
         return dis
+
+    def btn_next(self):
+        self.driver.find_element(By.XPATH, self.btn_next_xpath).click()
+
+
+    def btn_back_id(self):
+        self.driver.find_element(By.XPATH, self.btn_back_xpath).click()
+
+    def btn_cancel(self):
+        self.driver.find_element(By.XPATH, self.btn_cancel_xpath).click()
+
+    def btn_cancel_conf(self):
+        self.driver.find_element(By.XPATH, self.btn_cancel_yes).click()
+
+
+# Preview
+
+    def drp_ci_pre(self):
+        self.driver.find_element(By.XPATH,self.pre_ci_xpath).click()
+
+    def fh_pre(self):
+        element = self.driver.find_element(By.XPATH, self.pre_fh_xpath)
+        return element.get_attribute('title')
+
+    def hb_pre(self):
+        element = self.driver.find_element(By.XPATH, self.pre_hb_xpath)
+        return element.get_attribute('title')
+    def stre_pre(self):
+        element = self.driver.find_element(By.XPATH, self.pre_stre_xpath)
+        return element.get_attribute('title')
+    def cidi_pre(self):
+        element = self.driver.find_element(By.XPATH, self.pre_cidi_xpath)
+        return element.get_attribute('title')
+    def emist_pre(self):
+        element = self.driver.find_element(By.XPATH, self.pre_emist_xpath)
+        return element.get_attribute('title')
+    def con_pre(self):
+        element = self.driver.find_element(By.XPATH, self.pre_con_xpath)
+        return element.get_attribute('title')
+    def mob_pre(self):
+        element = self.driver.find_element(By.XPATH, self.pre_mob_xpath)
+        return element.get_attribute('title')
+    def email_pre(self):
+        element = self.driver.find_element(By.XPATH, self.pre_email_xpath)
+        return element.get_attribute('title')
+
+    #Non-Residental
+
+    def fh_non_pre(self):
+        element = self.driver.find_element(By.XPATH, self.pre_fh_non_xpath)
+        return element.get_attribute('title')
+
+    def hb_non_pre(self):
+        element = self.driver.find_element(By.XPATH, self.pre_hb_non_xpath)
+        return element.get_attribute('title')
+
+    def stre_non_pre(self):
+        element = self.driver.find_element(By.XPATH, self.pre_stre_non_xpath)
+        return element.get_attribute('title')
+
+    def cidi_non_pre(self):
+        element = self.driver.find_element(By.XPATH, self.pre_cidi_non_xpath)
+        return element.get_attribute('title')
+
+    def emist_non_pre(self):
+        element = self.driver.find_element(By.XPATH, self.pre_emist_non_xpath)
+        return element.get_attribute('title')
+
+    def con_non_pre(self):
+        element = self.driver.find_element(By.XPATH, self.pre_con_non_xpath)
+        return element.get_attribute('title')
+
+    def vtype_non_pre(self):
+        element = self.driver.find_element(By.XPATH, self.pre_vtype_non_xpath)
+        return element.get_attribute('title')
+
+    def vnum_non_pre(self):
+        element = self.driver.find_element(By.XPATH, self.pre_vnum_non_xpath)
+        return element.get_attribute('title')
+
+    def v_isdat_non_pre(self):
+        element = self.driver.find_element(By.XPATH, self.pre_v_isdat_non_xpath)
+        return element.get_attribute('title')
+
+    def v_exdat_non_pre(self):
+        element = self.driver.find_element(By.XPATH, self.pre_v_exdat_non_xpath)
+        return element.get_attribute('title')
+
+    def remar_isdat_non_pre(self):
+        element = self.driver.find_element(By.XPATH, self.pre_remar_non_xpath)
+        return element.get_attribute('title')
 
 
 
