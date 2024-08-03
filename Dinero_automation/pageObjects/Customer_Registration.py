@@ -247,7 +247,7 @@ class Contact_Information():
     field_emirate_state_id = "Emirate/State"
     drp_country_id = "Country"
     drp_mobile_xpath = "//select[@class='countrySelector']"
-    field_mobile_id = "phoneInputField"
+    field_mobile_id = "Mobile Number"
     field_email = "Email"
 
     # Non-Resident
@@ -308,6 +308,9 @@ class Contact_Information():
     def non_field_fh_num_required(self,flat):
         self.driver.find_element(By.ID, self.non_field_flat_housenumber_id).send_keys(flat)
 
+    def non_field_fh_num_required_val(self):
+        return self.driver.find_element(By.ID, self.non_field_flat_housenumber_id)
+
     def field_fh_num_required_clear(self):
         clr = self.driver.find_element(By.ID, self.field_flat_housenumber_id)
         clr.clear()
@@ -321,6 +324,9 @@ class Contact_Information():
 
     def non_field_hb_name_required(self,house):
         self.driver.find_element(By.ID, self.non_field_house_build_num_id).send_keys(house)
+
+    def non_field_hb_name_required_val(self):
+        return self.driver.find_element(By.ID, self.non_field_house_build_num_id)
 
     def field_hb_name_required_clear(self):
         clr = self.driver.find_element(By.ID, self.field_house_build_num_id)
@@ -337,6 +343,9 @@ class Contact_Information():
     def non_field_street_required(self,street):
         self.driver.find_element(By.ID, self.non_field_street_id).send_keys(street)
 
+    def non_field_street_required_val(self):
+        return self.driver.find_element(By.ID, self.non_field_street_id)
+
     def field_street_required_clear(self):
         clr = self.driver.find_element(By.ID, self.field_street_id)
         clr.clear()
@@ -352,6 +361,9 @@ class Contact_Information():
     def non_field_city_dist_required(self,city_dist):
         self.driver.find_element(By.ID, self.non_field_city_dist_id).send_keys(city_dist)
 
+    def non_field_city_dist_required_value(self):
+        return self.driver.find_element(By.ID, self.non_field_city_dist_id)
+
     def field_city_dist_required_clear(self):
         clr = self.driver.find_element(By.ID, self.field_city_dist_id)
         clr.clear()
@@ -366,6 +378,9 @@ class Contact_Information():
 
     def non_field_emin_dist(self,emin_dist):
         self.driver.find_element(By.ID, self.non_field_emirate_state_id).send_keys(emin_dist)
+
+    def non_field_emin_dist_val(self):
+        return self.driver.find_element(By.ID, self.non_field_emirate_state_id)
 
     def field_emin_state_clear(self):
         clr = self.driver.find_element(By.ID, self.field_emirate_state_id)
@@ -385,10 +400,10 @@ class Contact_Information():
         return self.driver.find_element(By.XPATH, self.drp_mobile_xpath)
 
     def field_mobile_required(self,mobile):
-        self.driver.find_element(By.ID,self.field_mobile_id).send_keys(mobile)
+        self.driver.find_element(By.NAME,self.field_mobile_id).send_keys(mobile)
 
     def field_mobile_required_val(self):
-        return self.driver.find_element(By.ID,self.field_mobile_id)
+        return self.driver.find_element(By.NAME,self.field_mobile_id)
 
     def field_mobile_required_clear(self):
         clr = self.driver.find_element(By.ID,self.field_mobile_id)
@@ -413,14 +428,26 @@ class Contact_Information():
     def non_residen_visa_number(self,vnum):
         self.driver.find_element(By.ID, self.non_resi_visa_num_id).send_keys(vnum)
 
+    def non_residen_visa_number_val(self):
+        return self.driver.find_element(By.ID, self.non_resi_visa_num_id)
+
     def non_residen_visa_issu_date(self,vidat):
         self.driver.find_element(By.NAME, self.non_dat_pic_nonres_visa_issu_dat_name).send_keys(vidat)
+
+    def non_residen_visa_issu_date_val(self):
+        return self.driver.find_element(By.NAME, self.non_dat_pic_nonres_visa_issu_dat_name)
 
     def non_residen_visa_expair_date(self,venum):
         self.driver.find_element(By.NAME, self.non_dat_pic_nonres_visa_expair_dat_name).send_keys(venum)
 
+    def non_residen_visa_expair_date_val(self):
+        return self.driver.find_element(By.NAME, self.non_dat_pic_nonres_visa_expair_dat_name)
+
     def remarks(self,remarks):
         self.driver.find_element(By.ID,self.remarks_id).send_keys(remarks)
+
+    def remarks_val(self):
+        return self.driver.find_element(By.ID,self.remarks_id)
 
     # buttons
 
@@ -577,6 +604,17 @@ class Id_details():
 
 
     def btn_back_id(self):
+        attempts = 0
+        while attempts < 3:
+            try:
+                element = WebDriverWait(self.driver, 10).until(
+                    EC.element_to_be_clickable((By.XPATH, self.btn_back_xpath))
+                )
+                element.click()
+                return
+            except StaleElementReferenceException:
+                attempts += 1
+        # If all attempts fail, find and click the element directly
         self.driver.find_element(By.XPATH, self.btn_back_xpath).click()
 
     def btn_cancel(self):
