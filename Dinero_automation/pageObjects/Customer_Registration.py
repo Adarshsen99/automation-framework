@@ -1,4 +1,7 @@
-from selenium.common import StaleElementReferenceException, TimeoutException
+import time
+
+from selenium.common import StaleElementReferenceException, TimeoutException, ElementClickInterceptedException, \
+    NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -535,6 +538,8 @@ class Contact_Information():
 
 
 class Id_details():
+    click = "//*[@id='root']/div[2]/div/div/div[2]/div[2]/div/div[1]/div[1]/div/div[3]/div[1]"
+
     drp_id_type_id = "ID Type"
     field_place_of_id_issue_id = "Place of ID Issue"
     field_id_nmuber_id = "ID Number"
@@ -543,12 +548,12 @@ class Id_details():
     drp_place_of_passport_issue_id = "Place of Passport Issue"
     field_passport_number_id = "Passport Number"
     da_pick_pass_issue_date_name = "Passport Issue Date"
-    da_pick_pass_exp_date_name = "Passport Expiry Date"
+    da_pick_pass_exp_date_xpath = "//input[@name='Passport Expiry Date']"
 
 #   Dual natinality
-    toggle_btn_dual_nation_id = "Dual Nationality"
+    toggle_btn_dual_nation_id = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[6]/div/div/input"
 
-    drp_nation_id = "Nationality 2"
+    drp_nation_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[7]/div[2]/div/div/div/select"
     drp_pla_of_passport_iss_id = "Place of Passport 2 Issue"
     field_pass_num = "Passport 2 Number"
     da_pick_pass_iss_date_name = "Passport 2 Issue Date"
@@ -579,9 +584,6 @@ class Id_details():
     pre_v_exdat_non_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[20]/span[2]"
     pre_remar_non_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[21]/span[2]"
 
-
-
-
 #   Buttons
 
     btn_cancel_xpath = "(//button[normalize-space()='Cancel'])[1]"
@@ -598,6 +600,66 @@ class Id_details():
         element = self.driver.find_element(By.XPATH,self.btn_next_xpath)
         dis = element.is_displayed()
         return dis
+
+    # ID Details
+    def id_type_field_req(self):
+        return self.driver.find_element(By.ID,self.drp_id_type_id)
+
+    def place_of_id_issue_field_req(self):
+        return self.driver.find_element(By.ID,self.field_place_of_id_issue_id)
+
+    def id_number_field_req(self):
+        return self.driver.find_element(By.ID,self.field_id_nmuber_id)
+
+    def id_issue_date_dpick_req(self):
+        return self.driver.find_element(By.NAME,self.da_pick_id_issue_date_name)
+
+    def id_expaire_date_dpick_req(self):
+        return self.driver.find_element(By.NAME,self.da_pick_id_expaire_date_name)
+
+    def place_of_passport_isse_drp_req(self):
+        return self.driver.find_element(By.ID,self.drp_place_of_passport_issue_id)
+
+    def passport_numb_field_req(self):
+        return self.driver.find_element(By.ID, self.field_passport_number_id)
+
+    def passport_issue_date_dpick_req(self):
+        return self.driver.find_element(By.NAME,self.da_pick_pass_issue_date_name)
+
+    def passport_expi_date_dpick_req(self):
+        return self.driver.find_element(By.XPATH,self.da_pick_pass_exp_date_xpath)
+
+    # Dual nationality toggle
+
+    def toggle(self,retries = 5):
+        for attempt in range(retries):
+            for attempt in range(retries):
+                try:
+                    element = self.driver.find_element(By.XPATH, self.toggle_btn_dual_nation_id)
+                    self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
+                    element.click()
+                    break
+                except ElementClickInterceptedException:
+                    # Scroll up to handle possible overlays
+                    self.driver.execute_script("scrollBy(739,565);")
+                    time.sleep(5)
+
+    def nationality_drp_req_dual(self):
+        return self.driver.find_element(By.XPATH, self.drp_nation_xpath)
+
+    def place_of_pass_issue_drp_req_dual(self):
+        return self.driver.find_element(By.ID,self.drp_pla_of_passport_iss_id)
+
+    def passport_num_req_dual(self):
+        return self.driver.find_element(By.ID, self.field_pass_num)
+
+    def passport_issue_date_dpick_req_dual(self):
+        return self.driver.find_element(By.NAME,self.da_pick_pass_iss_date_name)
+
+    def passport_expai_date_dpick_req_dual(self):
+        return self.driver.find_element(By.NAME,self.da_pick_pass_exp_date_name)
+
+    # Buttons
 
     def btn_next(self):
         self.driver.find_element(By.XPATH, self.btn_next_xpath).click()
@@ -702,19 +764,15 @@ class Id_details():
         return element.get_attribute('title')
 
 
-
-
-
-
-
-
-
-
-
-
-
 class Other_Information():
-    pass
+    btn_next = "//button[normalize-space()='Next']"
+
+    def __init__(self, driver):
+        self.driver = driver
+
+    def btn_next(self):
+        return self.driver.find_element(By.XPATH, self.btn_next)
+
 
 class Upload_documents():
     pass

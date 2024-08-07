@@ -7,7 +7,17 @@ def random_string_generator(size = 5, chars = string.ascii_lowercase + string.di
 def random_string_generator_numbers(size = 16, chars = string.digits):
     return ''.join(random.choice(chars) for x in range(size))
 
+
+def random_string_generator_numbers_10(size = 10, chars = string.digits):
+    return ''.join(random.choice(chars) for x in range(size))
+
 def random_string_generator_numbers_18(size = 18, chars = string.digits):
+    return ''.join(random.choice(chars) for x in range(size))
+
+def random_string_generator_numbers_20(size = 20, chars = string.digits):
+    return ''.join(random.choice(chars) for x in range(size))
+
+def random_string_generator_numbers_22(size = 22, chars = string.digits):
     return ''.join(random.choice(chars) for x in range(size))
 
 def random_string_generator_numbers_max_10(size = 10, chars = string.digits):

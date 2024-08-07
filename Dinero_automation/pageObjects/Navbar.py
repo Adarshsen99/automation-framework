@@ -5,7 +5,7 @@ class Navigation_Page():
     btn_nav_close_xpath = "//img[@class='icon-styles arrow-open']"
     dashboard_xpath = "//*[@id='root']/div[2]/div/div[1]/div[1]/div/div[1]/span"
     customer_Registration_xpath ="//*[@id='root']/div[2]/div/div[1]/div[1]/div/div[2]/span"
-    # corporate_customer_link_text =""
+    corporate_customer_link_text ="//*[@id='root']/div[2]/div/div[1]/div[1]/div/div[3]/span"
     # benificiary_link_text = ""
     # corporate_beneficiary_link_text = ""
     # remittance_link_text = ""
@@ -27,4 +27,7 @@ class Navigation_Page():
 
     def click_customer_registration(self):
         self.driver.find_element(By.XPATH,self.customer_Registration_xpath).click()
+
+    def click_customer_registration_corporate(self):
+        self.driver.find_element(By.XPATH,self.corporate_customer_link_text).click()
 
