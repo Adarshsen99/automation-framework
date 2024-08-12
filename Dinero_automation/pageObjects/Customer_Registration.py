@@ -553,7 +553,7 @@ class Id_details():
 #   Dual natinality
     toggle_btn_dual_nation_id = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[6]/div/div/input"
 
-    drp_nation_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[7]/div[2]/div/div/div/select"
+    drp_nation_id = "Nationality 2"
     drp_pla_of_passport_iss_id = "Place of Passport 2 Issue"
     field_pass_num = "Passport 2 Number"
     da_pick_pass_iss_date_name = "Passport 2 Issue Date"
@@ -631,21 +631,11 @@ class Id_details():
 
     # Dual nationality toggle
 
-    def toggle(self,retries = 5):
-        for attempt in range(retries):
-            for attempt in range(retries):
-                try:
-                    element = self.driver.find_element(By.XPATH, self.toggle_btn_dual_nation_id)
-                    self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
-                    element.click()
-                    break
-                except ElementClickInterceptedException:
-                    # Scroll up to handle possible overlays
-                    self.driver.execute_script("scrollBy(739,565);")
-                    time.sleep(5)
+    def toggle(self):
+        return self.driver.find_element(By.XPATH, self.toggle_btn_dual_nation_id)
 
     def nationality_drp_req_dual(self):
-        return self.driver.find_element(By.XPATH, self.drp_nation_xpath)
+        return self.driver.find_element(By.ID, self.drp_nation_id)
 
     def place_of_pass_issue_drp_req_dual(self):
         return self.driver.find_element(By.ID,self.drp_pla_of_passport_iss_id)
@@ -765,13 +755,95 @@ class Id_details():
 
 
 class Other_Information():
-    btn_next = "//button[normalize-space()='Next']"
+    btn_next_xpath = "//button[normalize-space()='Next']"
+
+    btn_back_xpath = "//button[normalize-space()='Back']"
+
+    id_details_drp = "//span[normalize-space()='ID Details']"
+
+    # preview
+
+    passport_num = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[1]/span[2]"
+    place_of_passport_issue = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[2]/span[2]"
+    passport_issue_date = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[3]/span[2]"
+    passport_expaire_date = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[4]/span[2]"
+    id_type = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[5]/span[2]"
+    id_num = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[6]/span[2]"
+    place_of_id_issue = "//*[@id='root']/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div[7]/span[2]"
+    id_issue_date = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div[8]/span[2]"
+    id_expaire_date = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div[9]/span[2]"
+
+    nationality = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div[12]/span[2]"
+    place_of_passport_issue_dual = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div[13]/span[2]"
+    passport_num_dual = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div[14]/span[2]"
+    passport_issue_date_dual = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div[15]/span[2]"
+    passport_expaire_date_dual = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div[16]/span[2]"
+
 
     def __init__(self, driver):
         self.driver = driver
 
     def btn_next(self):
-        return self.driver.find_element(By.XPATH, self.btn_next)
+        return self.driver.find_element(By.XPATH, self.btn_next_xpath)
+
+    def click_id_details_drp(self):
+        self.driver.find_element(By.XPATH, self.id_details_drp).click()
+
+    def passport_num_pre(self):
+        return self.driver.find_element(By.XPATH, self.passport_num).text
+
+    def place_of_passport_issue_pre(self):
+        return self.driver.find_element(By.XPATH, self.place_of_passport_issue).text
+
+    def passport_issue_date_pre(self):
+        return self.driver.find_element(By.XPATH, self.passport_issue_date).text
+
+    def passport_expaire_date_pre(self):
+        return self.driver.find_element(By.XPATH, self.passport_expaire_date).text
+
+    def id_type_pre(self):
+        return self.driver.find_element(By.XPATH, self.id_type).text
+
+    def id_num_pre(self):
+        return self.driver.find_element(By.XPATH, self.id_num).text
+
+    def place_of_id_issue_pre(self):
+        return self.driver.find_element(By.XPATH, self.place_of_id_issue).text
+
+    def id_issue_date_pre(self):
+        return self.driver.find_element(By.XPATH, self.id_issue_date).text
+
+    def id_expaire_date_pre(self):
+        return self.driver.find_element(By.XPATH, self.id_expaire_date).text
+
+    def nationality_pre(self):
+        return self.driver.find_element(By.XPATH, self.nationality).text
+
+    def place_of_passport_issue_dual_pre(self):
+        return self.driver.find_element(By.XPATH, self.place_of_passport_issue_dual).text
+
+    def passport_num_dual_pre(self):
+        return self.driver.find_element(By.XPATH, self.passport_num_dual).text
+
+    def passport_issue_date_dual_pre(self):
+        return self.driver.find_element(By.XPATH, self.passport_issue_date_dual).text
+
+    def passport_expaire_date_dual_pre(self):
+        return self.driver.find_element(By.XPATH, self.passport_expaire_date_dual).text
+
+    def btn_back(self):
+        attempts = 0
+        while attempts < 3:
+            try:
+                element = WebDriverWait(self.driver, 10).until(
+                    EC.element_to_be_clickable((By.XPATH, self.btn_back_xpath))
+                )
+                element.click()
+                return
+            except StaleElementReferenceException:
+                attempts += 1
+        # If all attempts fail, find and click the element directly
+        self.driver.find_element(By.XPATH, self.btn_back_xpath).click()
 
 
 class Upload_documents():

@@ -170,43 +170,44 @@ class Registration_Details:
     def btn_next(self):
         self.driver.find_element(By.XPATH, self.next).click()
 
+    def btn_cancel(self):
+        self.driver.find_element(By.XPATH,self.cancel).click()
+
+    def btn_confirm(self):
+        self.driver.find_element(By.XPATH,self.cancel_confirm).click()
+
 #   Preview
 
     def comp_info_pre(self):
         self.driver.find_element(By.XPATH, self.comp_info_pre_xpath).click()
     def company_pre(self):
-        element = self.driver.find_element(By.XPATH, self.company)
-        return element.get_attribute('title')
+        return self.driver.find_element(By.XPATH, self.company).text
+
     def arabic_pre(self):
-        element = self.driver.find_element(By.XPATH, self.arabic)
-        return element.get_attribute('title')
+        return self.driver.find_element(By.XPATH, self.arabic).text
+
     def building_num_pre(self):
-        element = self.driver.find_element(By.XPATH, self.building_num)
-        return element.get_attribute('title')
+        return self.driver.find_element(By.XPATH, self.building_num).text
+
     def building_name_pre(self):
-        element = self.driver.find_element(By.XPATH, self.building_name)
-        return element.get_attribute('title')
+        return self.driver.find_element(By.XPATH, self.building_name).text
+
     def street_pre(self):
-        element = self.driver.find_element(By.XPATH, self.street)
-        return element.get_attribute('title')
+        return self.driver.find_element(By.XPATH, self.street).text
+
     def postal_code_pre(self):
-        element = self.driver.find_element(By.XPATH, self.postal_code)
-        return element.get_attribute('title')
+        return self.driver.find_element(By.XPATH, self.postal_code).text
+
     def city_district_pre(self):
-        element = self.driver.find_element(By.XPATH, self.city_district)
-        return element.get_attribute('title')
+        return self.driver.find_element(By.XPATH, self.city_district).text
     def country_pre(self):
-        element = self.driver.find_element(By.XPATH, self.country)
-        return element.get_attribute('title')
+        return self.driver.find_element(By.XPATH, self.country).text
     def email_pre(self):
-        element = self.driver.find_element(By.XPATH, self.email)
-        return element.get_attribute('title')
+        return self.driver.find_element(By.XPATH, self.email).text
 
 
 class Beneficial_Owners_Details:
-    back = "//button[normalize-space()='Back']"
     drp_registration_pre_xpath = "//span[normalize-space()='Registration Details']"
-
 #     preview
     cont_of_incorp = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[1]/span[2]"
     license_nature = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[2]/span[2]"
@@ -229,11 +230,129 @@ class Beneficial_Owners_Details:
     cc_iss_date = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[19]/span[2]"
     cc_exp_date = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[20]/span[2]"
 
+    # button
+
+    back = "//button[normalize-space()='Back']"
+    next = "//button[normalize-space()='Next']"
+    cancel = "//button[normalize-space()='Cancel']"
+    cancel_confirm = "//button[normalize-space()='Yes']"
+
+    # BOD
+    title_id = "Title"
+    f_name_id = "First Name"
+    m_name_id = "Middle Name"
+    l_name_id = "Last Name"
+    dpick_dob_name = "Date of Birth"
+    place_of_birth_id = "Place of Birth"
+    gender_id = "Gender"
+    fl_ho_name = "Flat/House Number"
+    ho_bu_name = "House/Building Name"
+    street_id = "Street"
+    city_id = "City"
+    country_id = "Country"
+    natinality_id = "Nationality"
+    id_type_id = "ID Type"
+    id_no_id = "ID No"
+    place_of_id_issu_id = "Place of ID Issue"
+    dpick_id_expairy = "ID Expiry"
+
+    # BOD Buttons
+    add_details_btn = "//button[normalize-space()='Add Details']"
+    clear_btn = "//button[normalize-space()='Clear']"
+    update_btn = "//button[normalize-space()='Update']"
+
+    update_bod = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/form/div/div[1]/div[1]/div[1]"
+
+    message = "//div[@role='status']"
+
+
     def __init__(self,driver):
         self.driver = driver
 
+    def message_info(self):
+        return self.driver.find_element(By.XPATH,self.message)
+
+    def btn_update(self):
+        self.driver.find_element(By.XPATH,self.update_btn).click()
+
+    def click_update_bod(self):
+        self.driver.find_element(By.XPATH, self.update_bod).click()
+
+    def btn_add_details(self):
+        self.driver.find_element(By.XPATH,self.add_details_btn).click()
+
+    def btn_clear(self):
+        self.driver.find_element(By.XPATH, self.clear_btn).click()
+
+
+    # BOD Details
+    def title(self):
+        return self.driver.find_element(By.ID,self.title_id)
+
+    def first_name(self):
+        return self.driver.find_element(By.ID, self.f_name_id)
+
+    def middle_name(self):
+        return self.driver.find_element(By.ID, self.m_name_id)
+
+    def last_name(self):
+        return self.driver.find_element(By.ID, self.l_name_id)
+
+    def dob(self):
+        return self.driver.find_element(By.NAME, self.dpick_dob_name)
+
+    def place_of_birth(self):
+        return self.driver.find_element(By.ID, self.place_of_birth_id)
+
+    def gender(self):
+        return self.driver.find_element(By.ID, self.gender_id)
+
+    def flat_house_number(self):
+        return self.driver.find_element(By.NAME, self.fl_ho_name)
+
+    def house_building_name(self):
+        return self.driver.find_element(By.NAME, self.ho_bu_name)
+
+    def street(self):
+        return self.driver.find_element(By.ID, self.street_id)
+
+    def city(self):
+        return self.driver.find_element(By.ID, self.city_id)
+
+    def country(self):
+        return self.driver.find_element(By.ID, self.country_id)
+
+    def nationality(self):
+        return self.driver.find_element(By.ID, self.natinality_id)
+
+    def id_type(self):
+        return self.driver.find_element(By.ID, self.id_type_id)
+
+    def id_no(self):
+        return self.driver.find_element(By.ID, self.id_no_id)
+
+    def place_of_id_issu(self):
+        return self.driver.find_element(By.ID, self.place_of_id_issu_id)
+
+    def id_expiry(self):
+        return self.driver.find_element(By.NAME, self.dpick_id_expairy)
+
+
+
+    # buttons
     def btn_back(self):
         self.driver.find_element(By.XPATH, self.back).click()
+
+    def btn_next(self):
+        self.driver.find_element(By.XPATH, self.next).click()
+
+    def btn_cancel(self):
+        self.driver.find_element(By.XPATH, self.cancel).click()
+
+    def btn_cancel_confirm(self):
+        self.driver.find_element(By.XPATH, self.cancel_confirm).click()
+
+    # Preview
 
     def registration_preview(self):
         self.driver.find_element(By.XPATH,self.drp_registration_pre_xpath).click()
@@ -298,6 +417,66 @@ class Beneficial_Owners_Details:
     def cc_exp_date_pre(self):
         element = self.driver.find_element(By.XPATH, self.cc_exp_date)
         return element.get_attribute('title')
+
+class upload_documents:
+    passport_xpath = "//li[normalize-space()='Passport']"
+    id_xpath = "//li[normalize-space()='ID']"
+    visa_xpath = "//li[normalize-space()='Visa']"
+
+    front_xpath = "//li[normalize-space()='Front']"
+    rear_xpath = "//li[normalize-space()='Rear']"
+    full_xpath = "//li[normalize-space()='Full']"
+
+    cancel_btn = "//button[normalize-space()='Cancel']"
+    cancel_confirm = "//button[normalize-space()='Yes']"
+    back_btn = "//button[normalize-space()='Back']"
+    next_btn = "//button[normalize-space()='Next']"
+
+    save_btn = "//button[normalize-space()='Save']"
+
+    def __init__(self,driver):
+        self.driver = driver
+
+    def click_passport(self):
+        self.driver.find_element(By.XPATH, self.passport_xpath).click()
+
+    def click_ID(self):
+        self.driver.find_element(By.XPATH, self.id_xpath).click()
+
+    def click_visa(self):
+        self.driver.find_element(By.XPATH, self.visa_xpath).click()
+
+    # Send files
+    def send_front(self):
+        return self.driver.find_element(By.XPATH, self.front_xpath)
+
+    def send_rear(self):
+        return self.driver.find_element(By.XPATH, self.rear_xpath)
+
+    def send_full(self):
+        return self.driver.find_element(By.XPATH, self.full_xpath)
+
+    # buttons
+
+    def btn_back(self):
+        self.driver.find_element(By.XPATH, self.back_btn).click()
+
+    def btn_cancel(self):
+        self.driver.find_element(By.XPATH, self.cancel_btn).click()
+
+    def btn_cancel_confirm(self):
+        self.driver.find_element(By.XPATH, self.cancel_confirm).click()
+
+    def btn_next(self):
+        self.driver.find_element(By.XPATH, self.next_btn).click()
+
+    def btn_save(self):
+        self.driver.find_element(By.XPATH, self.save_btn).click()
+
+
+
+
+
 
 
 
