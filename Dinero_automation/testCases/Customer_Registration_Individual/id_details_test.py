@@ -1242,6 +1242,8 @@ class Test_ID_Details:
             passport_numb.clear()
             passport_num_req.clear()
 
+        self.driver.quit()
+
     def test_validating_preview(self, setup):
         self.driver = setup
         self.driver.get(self.url)
