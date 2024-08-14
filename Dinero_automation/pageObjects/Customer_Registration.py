@@ -236,7 +236,7 @@ class Persomal_Information():
 
     def errorMessage(self):
         try:
-            self.driver.find_element(By.XPATH,self.message).text
+            return self.driver.find_element(By.XPATH,self.message).text
         except:
             None
 
@@ -798,7 +798,7 @@ class Other_Information():
     drp_employment_id = "Employment"
     drp_employee_type_id = "Employee Type"
     professional_email_id = "Professional Email ID"
-    drp_cb_purpose_id = "Professional Email ID"
+    drp_cb_purpose_id = "CB Purpose"
     drp_customer_nearest_airport_id = "Customer Nearest Airport"
     fax_id = "Fax"
     drp_customer_segment = "Customer Segment"
@@ -812,6 +812,7 @@ class Other_Information():
     checkbox_remittance_name = "Interested remittance Products"
     checkbox_forex_name = "Interested forex Products"
     checkbox_utility_name = "Interested utility Products"
+    checkbox_equity_name = "Interested Equity Products"
 
     drp_relation_type = "Relationship Type"
     search_customer_id = "floatingSearch"
@@ -959,6 +960,14 @@ class Other_Information():
     def checkbox_utility(self):
         return self.driver.find_element(By.NAME, self.checkbox_utility_name)
 
+    def checkbox_equity(self):
+        WebDriverWait(self.driver, 20).until(
+            EC.presence_of_element_located((By.NAME, self.checkbox_equity_name))
+        )
+
+        # Locate and return the checkbox element
+        return self.driver.find_element(By.NAME, self.checkbox_equity_name)
+
     def drp_relationship_type(self):
         return self.driver.find_element(By.ID,self.drp_relation_type)
 
@@ -993,7 +1002,7 @@ class Other_Information():
         return self.driver.find_element(By.XPATH, self.add_btn_xpath)
 
     def drp_application_priority(self):
-        return self.driver.find_element(By.XPATH, self.drp_application_priority_id)
+        return self.driver.find_element(By.ID, self.drp_application_priority_id)
 
     def whatsapp(self):
         return self.driver.find_element(By.ID, self.whatsapp_number_id)
@@ -1014,7 +1023,7 @@ class Other_Information():
         return self.driver.find_element(By.ID, self.website_id)
 
     def btn_next(self):
-        return self.driver.find_element(By.XPATH, self.add_btn_xpath)
+        return self.driver.find_element(By.XPATH, self.btn_next_xpath)
 
     def institution_name(self):
         return self.driver.find_element(By.ID, self.institution_name_id)
@@ -1116,4 +1125,10 @@ class Other_Information():
 
 
 class Upload_documents():
-    pass
+    btn_back_xpath = "//button[normalize-space()='Back']"
+
+    def __init__(self, driver):
+        self.driver = driver
+
+    def btn_back(self):
+        self.driver.find_element(By.XPATH,self.btn_back_xpath).click()
