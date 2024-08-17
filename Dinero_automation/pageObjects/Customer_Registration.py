@@ -853,6 +853,8 @@ class Other_Information():
 
     check_privacy_policy_name = "I hereby agree to the terms and conditions of this exchange"
 
+    boc_click = "//div[@class='added-list-items-wrapper']"
+
     # btns
     cancel_btn_xpath = "//button[normalize-space()='Cancel']"
     cancel_confirm_btn_xpath = "//button[normalize-space()='Yes']"
@@ -943,7 +945,7 @@ class Other_Information():
         return self.driver.find_element(By.ID, self.drp_details_of_spcial_needs_id)
 
     def remarks_of_sp_needs(self):
-        return self.driver.find_element(By.ID, self.remarks_of_sp_needs_name)
+        return self.driver.find_element(By.NAME, self.remarks_of_sp_needs_name)
 
     def toggle_is_pef(self):
         return self.driver.find_element(By.ID, self.is_pef_toggle_id)
@@ -994,6 +996,9 @@ class Other_Information():
 
     def line_of_bussiness(self):
         return self.driver.find_element(By.ID, self.line_of_bussiness_id)
+
+    def click_boc(self):
+        return self.driver.find_element(By.XPATH,self.boc_click)
 
     def btn_clear(self):
         return self.driver.find_element(By.XPATH, self.clear_btn_xpath)
@@ -1127,8 +1132,251 @@ class Other_Information():
 class Upload_documents():
     btn_back_xpath = "//button[normalize-space()='Back']"
 
+    # Preview for Other Information
+    org_category = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[1]/span[2]"
+    designation = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[2]/span[2]"
+    employer = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[3]/span[2]"
+    employer_discri = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[4]/span[2]"
+    source_of_incom = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[5]/span[2]"
+    salary_range = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[6]/span[2]"
+    annual_income = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[7]/span[2]"
+    purpose = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[8]/span[2]"
+    loyalty_card_number = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[9]/span[2]"
+    category = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[10]/span[2]"
+    points = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[11]/span[2]"
+    second_income_source = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[12]/span[2]"
+    second_income_range = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[13]/span[2]"
+    demographic = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[14]/span[2]"
+    indu_type = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[15]/span[2]"
+    employement = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[16]/span[2]"
+    employement_type = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[17]/span[2]"
+    email = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[18]/span[2]"
+    # remittance_vol = ""
+    # remittance_freq = ""
+    # fc_volume = ""
+    # fc_frequency = ""
+    cb_purpose = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[23]/span[2]"
+    cust_nearest_airport = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[24]/span[2]"
+    fax = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[25]/span[2]"
+    cust_segment = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[26]/span[2]"
+    role = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[27]/span[2]"
+    add_info_remarks = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[28]/span[2]"
+    sp_needs = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[29]/span[2]"
+    detail_sp_needs = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[30]/span[2]"
+    is_PEP = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[32]/span[2]"
+    PEP_remarks = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[33]/span[2]"
+    interested_product_remitance = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[53]/span[2]"
+    interested_product_forex = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[54]/span[2]"
+    interested_product_utility = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[55]/span[2]"
+
+    company_name = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[57]/div[2]/span[2]"
+    location = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[57]/div[3]/span[2]"
+    percentage_holding = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[57]/div[4]/span[2]"
+    annual_income_currency = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[57]/div[6]/span[2]"
+    annual_income_amount = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[57]/div[6]/span[2]"
+    line_of_business = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[57]/div[7]/span[2]"
+    application_priority = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[34]/span[2]"
+
+    whataapp = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[35]/span[2]"
+    fb = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[36]/span[2]"
+    x = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[37]/span[2]"
+    insta = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[38]/span[2]"
+    linked_in = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[39]/span[2]"
+    website = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[40]/span[2]"
+
+    institute_name = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[48]/span[2]"
+    institute_type = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[49]/span[2]"
+    mebership_type = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[50]/span[2]"
+
+    marketing_mail = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[41]/span[2]"
+    marketing_sms = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[42]/span[2]"
+    marketing_whatsaapp = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[43]/span[2]"
+    marketing_phone = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[44]/span[2]"
+    marketing_fax = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[45]/span[2]"
+    marketing_postal_id = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[46]/span[2]"
+
+    marketing_aggrement = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[58]/span[2]"
+    privacy_aggrement = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[4]/div[2]/div[59]/span[2]"
+
+    other_info = "//span[normalize-space()='Other Information']"
+
     def __init__(self, driver):
         self.driver = driver
 
     def btn_back(self):
         self.driver.find_element(By.XPATH,self.btn_back_xpath).click()
+
+    def click_other_info_pre(self):
+        self.driver.find_element(By.XPATH, self.other_info).click()
+
+    # Preview
+    def org_category_pre(self):
+        return self.driver.find_element(By.XPATH, self.org_category).text
+
+    def designation_pre(self):
+        return self.driver.find_element(By.XPATH, self.designation).text
+
+    def employer_pre(self):
+        return self.driver.find_element(By.XPATH, self.employer).text
+
+    def employer_discri_pre(self):
+        return self.driver.find_element(By.XPATH, self.employer_discri).text
+
+    def source_of_incom_pre(self):
+        return self.driver.find_element(By.XPATH, self.source_of_incom).text
+
+    def salary_range_pre(self):
+        return self.driver.find_element(By.XPATH, self.salary_range).text
+
+    def annual_income_pre(self):
+        return self.driver.find_element(By.XPATH, self.annual_income).text
+
+    def purpose_pre(self):
+        return self.driver.find_element(By.XPATH, self.purpose).text
+
+    def loyalty_card_number_pre(self):
+        return self.driver.find_element(By.XPATH, self.loyalty_card_number).text
+
+    def category_pre(self):
+        return self.driver.find_element(By.XPATH, self.category).text
+
+    def points_pre(self):
+        return self.driver.find_element(By.XPATH, self.points).text
+
+    def second_income_source_pre(self):
+        return self.driver.find_element(By.XPATH, self.second_income_source).text
+
+    def second_income_range_pre(self):
+        return self.driver.find_element(By.XPATH, self.second_income_range).text
+
+    def demographic_pre(self):
+        return self.driver.find_element(By.XPATH, self.demographic).text
+
+    def indu_type_pre(self):
+        return self.driver.find_element(By.XPATH, self.indu_type).text
+
+    def employement_pre(self):
+        return self.driver.find_element(By.XPATH, self.employement).text
+
+    def employement_type_pre(self):
+        return self.driver.find_element(By.XPATH, self.employement_type).text
+
+    # TODO:
+    def email_pre(self):
+        return self.driver.find_element(By.XPATH, self.email).text
+
+    def cb_purpose_pre(self):
+        return self.driver.find_element(By.XPATH, self.cb_purpose).text
+
+    def cust_nearest_airport_pre(self):
+        return self.driver.find_element(By.XPATH, self.cust_nearest_airport).text
+
+    def fax_pre(self):
+        return self.driver.find_element(By.XPATH, self.fax).text
+
+    def cust_segment_pre(self):
+        return self.driver.find_element(By.XPATH, self.cust_segment).text
+
+    def role_pre(self):
+        return self.driver.find_element(By.XPATH, self.role).text
+
+    def add_info_remarks_pre(self):
+        return self.driver.find_element(By.XPATH, self.add_info_remarks).text
+
+    def sp_needs_pre(self):
+        return self.driver.find_element(By.XPATH, self.sp_needs).text
+
+    def detail_sp_needs_pre(self):
+        return self.driver.find_element(By.XPATH, self.detail_sp_needs).text
+
+    def is_PEP_pre(self):
+        return self.driver.find_element(By.XPATH, self.is_PEP).text
+
+    def PEP_remarks_pre(self):
+        return self.driver.find_element(By.XPATH, self.PEP_remarks).text
+
+    def interested_product_remitance_pre(self):
+        return self.driver.find_element(By.XPATH, self.interested_product_remitance).text
+
+    def interested_product_forex_pre(self):
+        return self.driver.find_element(By.XPATH, self.interested_product_forex).text
+
+    def interested_product_utility_pre(self):
+        return self.driver.find_element(By.XPATH, self.interested_product_utility).text
+
+    def company_name_pre(self):
+        return self.driver.find_element(By.XPATH, self.company_name).text
+
+    def location_pre(self):
+        return self.driver.find_element(By.XPATH, self.location).text
+
+    def percentage_holding_pre(self):
+        return self.driver.find_element(By.XPATH, self.percentage_holding).text
+
+    def annual_income_currency_pre(self):
+        return self.driver.find_element(By.XPATH, self.annual_income_currency).text
+
+    def annual_income_amount_pre(self):
+        return self.driver.find_element(By.XPATH, self.annual_income_amount).text
+
+    def line_of_business_pre(self):
+        return self.driver.find_element(By.XPATH, self.line_of_business).text
+
+    def application_priority_pre(self):
+        return self.driver.find_element(By.XPATH, self.application_priority).text
+
+    def whataapp_pre(self):
+        return self.driver.find_element(By.XPATH, self.whataapp).text
+
+    def fb_pre(self):
+        return self.driver.find_element(By.XPATH, self.fb).text
+
+    def x_pre(self):
+        return self.driver.find_element(By.XPATH, self.x).text
+
+    # Todo:
+
+    def insta_pre(self):
+        return self.driver.find_element(By.XPATH, self.insta).text
+
+    def linked_in_pre(self):
+        return self.driver.find_element(By.XPATH, self.linked_in).text
+
+    def website_pre(self):
+        return self.driver.find_element(By.XPATH, self.website).text
+
+    def institute_name_pre(self):
+        return self.driver.find_element(By.XPATH, self.institute_name).text
+
+    def institute_type_pre(self):
+        return self.driver.find_element(By.XPATH, self.institute_type).text
+
+    def mebership_type_pre(self):
+        return self.driver.find_element(By.XPATH, self.mebership_type).text
+
+    def marketing_mail_pre(self):
+        return self.driver.find_element(By.XPATH, self.marketing_mail).text
+
+    def marketing_sms_pre(self):
+        return self.driver.find_element(By.XPATH, self.marketing_sms).text
+
+    def marketing_whatsaapp_pre(self):
+        return self.driver.find_element(By.XPATH, self.marketing_whatsaapp).text
+
+    def marketing_phone_pre(self):
+        return self.driver.find_element(By.XPATH, self.marketing_phone).text
+
+    def marketing_fax_pre(self):
+        return self.driver.find_element(By.XPATH, self.marketing_fax).text
+
+    def marketing_fax_pre(self):
+        return self.driver.find_element(By.XPATH, self.marketing_fax).text
+
+    def marketing_postal_id_pre(self):
+        return self.driver.find_element(By.XPATH, self.marketing_postal_id).text
+
+    def marketing_aggrement_pre(self):
+        return self.driver.find_element(By.XPATH, self.marketing_aggrement).text
+
+    def privacy_aggrement_pre(self):
+        return self.driver.find_element(By.XPATH, self.privacy_aggrement).text

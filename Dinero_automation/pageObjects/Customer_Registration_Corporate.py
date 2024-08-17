@@ -418,7 +418,7 @@ class Beneficial_Owners_Details:
         element = self.driver.find_element(By.XPATH, self.cc_exp_date)
         return element.get_attribute('title')
 
-class upload_documents:
+class Upload_Documents:
     passport_xpath = "//li[normalize-space()='Passport']"
     id_xpath = "//li[normalize-space()='ID']"
     visa_xpath = "//li[normalize-space()='Visa']"
@@ -433,6 +433,7 @@ class upload_documents:
     next_btn = "//button[normalize-space()='Next']"
 
     save_btn = "//button[normalize-space()='Save']"
+
 
     def __init__(self,driver):
         self.driver = driver
@@ -472,6 +473,12 @@ class upload_documents:
 
     def btn_save(self):
         self.driver.find_element(By.XPATH, self.save_btn).click()
+
+
+
+
+
+
 
 
 
