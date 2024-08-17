@@ -1332,6 +1332,8 @@ class Test_Personal_Information:
                 screenShort.screen_short() + "test_modifications_append_profision.png")
             assert False
 
+        self.driver.quit()
+
     def test_modifications_earse_before(self,setup):
         self.driver = setup
         self.driver.get(self.url)
@@ -1592,6 +1594,7 @@ class Test_Personal_Information:
             self.driver.save_screenshot(
                 screenShort.screen_short() + "test_modifications_earse_before_profision.png")
             assert False
+        self.driver.quit()
 
     def test_clear_data(self, setup):
         self.driver = setup

@@ -2203,9 +2203,6 @@ class Test_Contact_Information:
         self.mobil = self.mob.first_selected_option
         self.monil_pre = self.mobil.text
 
-
-
-
         fh_len_elem = self.ci.field_fh_num_required_val()
         hb_len_elem = self.ci.field_hb_name_required_val()
         stree_elem = self.ci.field_street_required_val()
@@ -2311,6 +2308,7 @@ class Test_Contact_Information:
             self.driver.save_screenshot(
                 screenShort.screen_short() + "CI_test_validation_modification_page_email.png")
             assert False
+        self.driver.quit()
 
     def test_validation_modification_clear_page(self,setup):
         self.driver = setup
