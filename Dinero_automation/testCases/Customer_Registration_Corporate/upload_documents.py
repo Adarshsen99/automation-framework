@@ -3,9 +3,10 @@ from Dinero_automation.pageObjects.LoginPage import LoginPage
 from Dinero_automation.pageObjects.Navbar import Navigation_Page
 import time
 import os
-from Dinero_automation.pageObjects.Customer_Registration_Corporate import Company_Information,Registration_Details,Beneficial_Owners_Details,upload_documents
+from Dinero_automation.pageObjects.Customer_Registration_Corporate import Company_Information,Registration_Details,Beneficial_Owners_Details,Upload_Documents
 from selenium.webdriver.support.ui import Select
 from Dinero_automation.utilities import screenShort
+from pynput.keyboard import Controller, Key
 
 class Test_Beneficial_Owners_Details:
     url = ReadConfig.getApplicationURL()
@@ -33,7 +34,7 @@ class Test_Beneficial_Owners_Details:
         self.comp_info = Company_Information(self.driver)
         self.rg = Registration_Details(self.driver)
         self.bod = Beneficial_Owners_Details(self.driver)
-        self.ud = upload_documents(self.driver)
+        self.ud = Upload_Documents(self.driver)
 
         # Assinging Elements
         comp_name = self.comp_info.company_name()
@@ -159,11 +160,15 @@ class Test_Beneficial_Owners_Details:
         # time.sleep(2)
 
         self.ud.click_passport()
-        time.sleep(2)
+        # time.sleep(2)
 
         element = self.ud.send_front()
         element.click()
-        self.driver.execute_script("arguments[0].style.display = 'block';", element)
+
+        # keyword = Controller()
+        # keyword.type("/home/karunakar/Pictures/Screenshots/Screenshot from 2024-08-09 17-56-26.png")
+        # keyword.press(Key.enter)
+        # keyword.release(Key.enter)
         element.send_keys("/home/karunakar/Pictures/Screenshots/Screenshot from 2024-08-09 17-56-26.png")
 
         time.sleep(10)
