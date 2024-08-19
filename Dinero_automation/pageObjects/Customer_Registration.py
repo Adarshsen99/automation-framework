@@ -1006,6 +1006,9 @@ class Other_Information():
     def btn_add(self):
         return self.driver.find_element(By.XPATH, self.add_btn_xpath)
 
+    def btn_update(self):
+        return self.driver.find_element(By.XPATH, "//button[normalize-space()='Update']")
+
     def drp_application_priority(self):
         return self.driver.find_element(By.ID, self.drp_application_priority_id)
 
@@ -1130,6 +1133,16 @@ class Other_Information():
 
 
 class Upload_documents():
+
+    passport_xpath = "//li[normalize-space()='Passport']"
+    id_xpath = "//li[normalize-space()='ID']"
+    visa_xpath = "//li[normalize-space()='Visa']"
+
+    front_xpath = "//li[normalize-space()='Front']"
+    rear_xpath = "//li[normalize-space()='Rear']"
+    full_xpath = "//li[normalize-space()='Full']"
+
+
     btn_back_xpath = "//button[normalize-space()='Back']"
 
     # Preview for Other Information
@@ -1200,8 +1213,33 @@ class Upload_documents():
 
     other_info = "//span[normalize-space()='Other Information']"
 
+    next_xpath = "//button[normalize-space()='Next']"
+
     def __init__(self, driver):
         self.driver = driver
+
+    def btn_next(self):
+        self.driver.find_element(By.XPATH, self.next_xpath).click()
+
+    def passport(self):
+        self.driver.find_element(By.XPATH, self.passport_xpath).click()
+
+    def id(self):
+        self.driver.find_element(By.XPATH, self.id_xpath).click()
+
+    def visa(self):
+        self.driver.find_element(By.XPATH, self.visa_xpath).click()
+
+    def front(self):
+        self.driver.find_element(By.XPATH, self.front_xpath).click()
+
+    def rear(self):
+        self.driver.find_element(By.XPATH, self.rear_xpath).click()
+
+    def full(self):
+        self.driver.find_element(By.XPATH, self.full_xpath).click()
+
+
 
     def btn_back(self):
         self.driver.find_element(By.XPATH,self.btn_back_xpath).click()
@@ -1261,7 +1299,6 @@ class Upload_documents():
     def employement_type_pre(self):
         return self.driver.find_element(By.XPATH, self.employement_type).text
 
-    # TODO:
     def email_pre(self):
         return self.driver.find_element(By.XPATH, self.email).text
 
@@ -1380,3 +1417,14 @@ class Upload_documents():
 
     def privacy_aggrement_pre(self):
         return self.driver.find_element(By.XPATH, self.privacy_aggrement).text
+
+class Final_Preview:
+
+    save = "//button[normalize-space()='Save']"
+
+    def __init__(self, driver):
+        self.driver = driver
+
+    def btn_save(self):
+        return self.driver.find_element(By.XPATH, self.save)
+
