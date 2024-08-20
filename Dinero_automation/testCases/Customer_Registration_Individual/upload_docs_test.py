@@ -12,7 +12,6 @@ from selenium.webdriver.support.ui import Select
 from Dinero_automation.utilities import screenShort
 
 
-
 class Test_Other_Information:
     url = ReadConfig.getApplicationURL()
     uname = ReadConfig.getApplicationUsername()
