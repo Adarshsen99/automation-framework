@@ -1,9 +1,4 @@
-import os
 import time
-
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from Dinero_automation.utilities.readProperties import ReadConfig
 from Dinero_automation.pageObjects.LoginPage import LoginPage
 from Dinero_automation.pageObjects.Navbar import Navigation_Page

@@ -6,9 +6,9 @@ class Navigation_Page():
     dashboard_xpath = "//*[@id='root']/div[2]/div/div[1]/div[1]/div/div[1]/span"
     customer_Registration_xpath ="//*[@id='root']/div[2]/div/div[1]/div[1]/div/div[2]/span"
     corporate_customer_link_text ="//*[@id='root']/div[2]/div/div[1]/div[1]/div/div[3]/span"
-    # benificiary_link_text = ""
-    # corporate_beneficiary_link_text = ""
-    # remittance_link_text = ""
+    benificiary_link_text = "//span[normalize-space()='Beneficiary']"
+    corporate_beneficiary_link_text = "//span[normalize-space()='Corporate Beneficiary']"
+    remittance_link_text = "//span[normalize-space()='Remittance']"
     # currency_trade_link_text = ""
     # bank_link_text = ""
     # service_provider_link_text = ""
@@ -30,4 +30,13 @@ class Navigation_Page():
 
     def click_customer_registration_corporate(self):
         self.driver.find_element(By.XPATH,self.corporate_customer_link_text).click()
+
+    def click_benificiary_individual(self):
+        self.driver.find_element(By.XPATH,self.benificiary_link_text).click()
+
+    def click_benificiary_corporate(self):
+        self.driver.find_element(By.XPATH,self.corporate_beneficiary_link_text).click()
+
+    def click_remitance(self):
+        self.driver.find_element(By.XPATH,self.remittance_link_text).click()
 
