@@ -76,11 +76,92 @@ class Contact_Information:
     cancel_xpath = "//button[normalize-space()='Cancel']"
     cancel_confirm_xpath = "//button[normalize-space()='Yes']"
 
+    # Preview for personal information
+
     def __init__(self,driver):
         self.driver = driver
+
+    def flat_house_number(self):
+        return self.driver.find_element(By.ID, "Flat/House Number")
+
+    def house_building_name(self):
+        return self.driver.find_element(By.ID, "House/Building Name")
+
+    def street(self):
+        return self.driver.find_element(By.ID, "Street")
+
+    def email(self):
+        return self.driver.find_element(By.ID, "Email")
+
+    def city(self):
+        return self.driver.find_element(By.ID, "City")
+
+    def drp_country(self):
+        return self.driver.find_element(By.NAME, "Country")
+
+    def drp_phone(self):
+        return self.driver.find_element(By.XPATH, "//select[@class='countrySelector']")
+
+    def phone(self):
+        return self.driver.find_element(By.NAME, "Mobile Number")
+
+
+
+    def btn_next(self):
+        self.driver.find_element(By.XPATH, self.next_xpath).click()
 
     def btn_back(self):
         self.driver.find_element(By.XPATH,self.back_xpath).click()
 
+    def btn_cancel(self):
+        self.driver.find_element(By.XPATH,self.cancel_xpath).click()
+
+    def btn_cancel_confirm(self):
+        self.driver.find_element(By.XPATH, self.cancel_confirm_xpath).click()
+
+    # Preview for personal information
+
+    def click_personal_info_preview(self):
+        self.driver.find_element(By.XPATH,"//span[normalize-space()='Personal Information']").click()
+
+    def title_pre(self):
+        return self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div/div[2]/div[1]/span[2]").text
+
+    def first_name_pre(self):
+        return self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div/div[2]/div[2]/span[2]").text
+
+    def middle_name_pre(self):
+        return self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div/div[2]/div[3]/span[2]").text
+
+    def last_name_pre(self):
+        return self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div/div[2]/div[4]/span[2]").text
+
+    def short_name_pre(self):
+        return self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div/div[2]/div[5]/span[2]").text
+
+    def country_of_birth_pre(self):
+        return self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div/div[2]/div[6]/span[2]").text
+
+    def nationality_pre(self):
+        return self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div/div[2]/div[7]/span[2]").text
+
+    def relationship_pre(self):
+        return self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div/div[2]/div[8]/span[2]").text
+
+    def id_type_pre(self):
+        return self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div/div[2]/div[9]/span[2]").text
+
+    def id_number_pre(self):
+        return self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div/div[2]/div[10]/span[2]").text
+
+    def transaction_type_pre(self):
+        return self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div/div[2]/div[11]/span[2]").text
+
+class Bank_Information:
+
+    def __init__(self,driver):
+        self.driver = driver
 
 
+    def btn_back(self):
+        self.driver.find_element(By.XPATH, "//button[normalize-space()='Back']").click()
