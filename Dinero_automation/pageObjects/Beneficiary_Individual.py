@@ -162,6 +162,79 @@ class Bank_Information:
     def __init__(self,driver):
         self.driver = driver
 
+    def send_bank_name(self):
+        return self.driver.find_element(By.NAME,"Bank Name")
+
+    def click_bank_name(self):
+        return self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div[1]/div/div[1]/div[2]/div/div/p")
+
+    def send_branch_name(self):
+        return self.driver.find_element(By.NAME,"Branch Name")
+
+    def click_branch_name(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div[1]/div/div[2]/div[2]/div/div/p")
+
+    def account_number(self):
+        return self.driver.find_element(By.ID,"Account Number")
+
+    def confirm_account_numb(self):
+        return self.driver.find_element(By.ID,"Confirm Account Number")
+
+    def drp_account_type(self):
+        return self.driver.find_element(By.ID, "Account Type")
+
+    def drp_currency(self):
+        return self.driver.find_element(By.ID, "Currency")
+
+    def drp_purpose(self):
+        return self.driver.find_element(By.ID, "Purpose Of Payment")
+
+    def btn_add_bank(self):
+        self.driver.find_element(By.XPATH, "//button[normalize-space()='Add Bank']").click()
+
+    def btn_clear(self):
+        self.driver.find_element(By.XPATH, "//button[normalize-space()='Clear']").click()
+
+    # buttons
 
     def btn_back(self):
         self.driver.find_element(By.XPATH, "//button[normalize-space()='Back']").click()
+
+    def btn_next(self):
+        self.driver.find_element(By.XPATH, "//button[normalize-space()='Next']").click()
+
+    def btn_cancel(self):
+        self.driver.find_element(By.XPATH, "//button[normalize-space()='Cancel']").click()
+
+    def btn_cancel_confirm(self):
+        self.driver.find_element(By.XPATH, "//button[normalize-space()='Yes']").click()
+
+    # Preview contact infirmation
+
+    def click_contact_infirmation_pre(self):
+        self.driver.find_element(By.XPATH, "//span[normalize-space()='Contact Information']").click()
+
+    def fl_hn_num_pre(self):
+        return self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[1]/span[2]").text
+
+    def ho_bu_name_pre(self):
+        return self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[2]/span[2]").text
+
+    def street_pre(self):
+        return self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[3]/span[2]").text
+
+    def cty_pre(self):
+        return self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[4]/span[2]").text
+
+    def country_pre(self):
+        return self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[5]/span[2]").text
+
+    def emai_pre(self):
+        return self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[7]/span[2]").text
+
+
+    def message(self):
+        try:
+            return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[1]/div/div/div[2]").text
+        except:
+            None

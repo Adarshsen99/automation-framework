@@ -54,8 +54,8 @@ class Test_Other_Information:
 
         # assign data in to the fields
         fname = "Karunakar"
-        mname = "Automation"
-        lname = "Tester"
+        mname = "middle"
+        lname = "last"
         arbname = "Khan"
         shname = "QA Automation"
         mainame = "Nayana"
@@ -63,6 +63,7 @@ class Test_Other_Information:
 
         # perform personal information
         self.drp = Select(self.cur.titleDropdown_required())
+        time.sleep(2)
         self.drp.select_by_index(1)
         self.cur.firstNameField_required(fname)
         self.cur.middleNameField_not_required(mname)
@@ -70,7 +71,6 @@ class Test_Other_Information:
         self.cur.arabicNameFiels_required(arbname)
         self.cur.shortNameField_not_required(shname)
         self.cur.maidenNameFiels_not_required(mainame)
-
         # Select date of birth using the custom method
         self.cur.dobpicker_required(dob)
         # dropdowns
@@ -208,6 +208,7 @@ class Test_Other_Information:
         # sp_needs = self.oi.remarks_of_sp_needs()
         toogle_is_pef = self.oi.toggle_is_pef()
         pep_remarks = self.oi.pep_remarks()
+        time.sleep(2)
         check_remit_product = self.oi.checkbox_remittance_products()
         check_forex = self.oi.checkbox_forex()
         check_utility = self.oi.checkbox_utility()
@@ -304,8 +305,9 @@ class Test_Other_Information:
         check_postid.click()
         # check_promtion.click()
         check_privacy.click()
-        select_custom = self.oi.select_customer()
-        select_custom.click()
+        time.sleep(2)
+        # select_custom = self.oi.select_customer()
+        # select_custom.click()
         btn_next.click()
 
         self.ud.passport()
@@ -319,7 +321,6 @@ class Test_Other_Information:
         self.ud.btn_next()
         time.sleep(3)
 
-        # Scroll to the bottom of the page
         # Scroll to the bottom of the page
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
@@ -341,4 +342,6 @@ class Test_Other_Information:
 
         # Close the browser
         self.driver.quit()
+
+
 
