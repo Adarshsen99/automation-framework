@@ -192,6 +192,9 @@ class Bank_Information:
     def btn_add_bank(self):
         self.driver.find_element(By.XPATH, "//button[normalize-space()='Add Bank']").click()
 
+    def btn_update(self):
+        self.driver.find_element(By.XPATH, "//button[normalize-space()='Update']").click()
+
     def btn_clear(self):
         self.driver.find_element(By.XPATH, "//button[normalize-space()='Clear']").click()
 
@@ -236,5 +239,151 @@ class Bank_Information:
     def message(self):
         try:
             return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[1]/div/div/div[2]").text
+        except:
+            None
+
+    def meassage_text(self):
+        try:
+            return self.driver.find_element(By.XPATH,"//div[contains(text(),'Bank already exists in the list.')]").text
+        except:
+            None
+
+    def banks_data_1(self):
+        return self.driver.find_element(By.XPATH,"(//div[@class='selected-container'])[1]")
+
+    def banks_data_2(self):
+        return self.driver.find_element(By.XPATH,"(//div[@class='selected-container'])[2]")
+
+    # Bank preview
+
+    def click_bank_info_preview(self):
+        self.driver.find_element(By.XPATH,"//div[@class='accordionHeader']//span[contains(text(),'Bank Information')]").click()
+
+    def bank_name_pre(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div/div[2]/span[2]").text
+
+    def branch_name_pre(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div/div[3]/span[2]").text
+
+    def branch_address_pre(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div/div[4]/span[2]").text
+
+    def branch_code_pre(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div/div[5]/span[2]").text
+
+    def account_num_pre(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div/div[9]/span[2]").text
+
+    def confirm_account_num_pre(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div/div[10]/span[2]").text
+
+    def account_type_pre(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div/div[11]/span[2]").text
+
+    def currency_pre(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div/div[12]/span[2]").text
+
+    def purpose_of_payment_pre(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div/div[13]/span[2]").text
+
+    def branch_address(self):
+        return self.driver.find_element(By.ID,"Branch Address")
+
+    def branch_code(self):
+        return self.driver.find_element(By.ID,"Branch Code")
+
+class Fastcash_Location:
+    def __init__(self, driver):
+        self.driver = driver
+
+    def fastcash_1(self):
+        return self.driver.find_element(By.XPATH,"(//div[@class='added-list-items-wrapper'])[1]")
+
+    def fastcash_2(self):
+        self.driver.find_element(By.XPATH,"(//div[@class='added-list-items-wrapper'])[2]").click()
+
+    def fastcash_3(self):
+        self.driver.find_element(By.XPATH,"(//div[@class='added-list-items-wrapper'])[3]").click()
+
+    # Payout anywhare
+
+    def click_payout_anywhere(self):
+        self.driver.find_element(By.XPATH, "//input[@value='1']").click()
+
+    def drp_country(self):
+        return self.driver.find_element(By.ID,"Country")
+
+    def drp_num_country(self):
+        return self.driver.find_element(By.XPATH,"//select[@class='countrySelector']")
+
+    def mobile_number(self):
+        return self.driver.find_element(By.NAME, "Mobile Number")
+
+    def btn_add_location(self):
+        self.driver.find_element(By.XPATH, "//button[normalize-space()='Add Location']").click()
+
+    def btn_clear(self):
+        self.driver.find_element(By.XPATH, "//button[normalize-space()='Clear']").click()
+
+    # Specific location
+    def click_specific_location(self):
+        self.driver.find_element(By.XPATH, "//input[@value='2']").click()
+
+    def drp_country_splocation(self):
+        return self.driver.find_element(By.ID, "Country")
+
+    def drp_num_country_splocation(self):
+        return self.driver.find_element(By.XPATH, "//select[@class='countrySelector']")
+
+    def mobile_number_splocation(self):
+        return self.driver.find_element(By.NAME, "Mobile Number")
+
+    def address_1_splocation(self):
+        return self.driver.find_element(By.ID, "Address Line 1")
+
+    def address_2_splocation(self):
+        return self.driver.find_element(By.ID, "Address Line 2")
+
+    def address_3_splocation(self):
+        return self.driver.find_element(By.ID, "Address Line 3")
+
+    def city_splocation(self):
+        return self.driver.find_element(By.ID, "City")
+
+    def btn_add_location_splocation(self):
+        self.driver.find_element(By.XPATH, "//button[normalize-space()='Add Location']").click()
+
+    def btn_clear_splocation(self):
+        self.driver.find_element(By.XPATH, "//button[normalize-space()='Clear']").click()
+
+#     Button
+
+    def btn_next(self):
+        self.driver.find_element(By.XPATH, "//button[normalize-space()='Next']").click()
+
+    def btn_back(self):
+        self.driver.find_element(By.XPATH, "//button[normalize-space()='Back']").click()
+
+    def btn_cancel(self):
+        self.driver.find_element(By.XPATH, "//button[normalize-space()='Cancel']").click()
+
+    def btn_cancel_confirm(self):
+        self.driver.find_element(By.XPATH, "//button[normalize-space()='Yes']").click()
+
+
+class Final_Preview:
+
+    def __init__(self, driver):
+        self.driver = driver
+
+    def btn_save(self):
+        return self.driver.find_element(By.XPATH, "//button[normalize-space()='Save']")
+
+    def btn_back(self):
+        return self.driver.find_element(By.XPATH, "//button[normalize-space()='Back']")
+
+    def meassge_final(self):
+        try:
+            return self.driver.find_element(By.XPATH, "//*[@id='root']/div[1]/div[1]/div/div[2]").text
         except:
             None
