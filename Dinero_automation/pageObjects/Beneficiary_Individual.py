@@ -308,7 +308,7 @@ class Fastcash_Location:
     # Payout anywhare
 
     def click_payout_anywhere(self):
-        self.driver.find_element(By.XPATH, "//input[@value='1']").click()
+        return self.driver.find_element(By.XPATH, "//input[@value='1']")
 
     def drp_country(self):
         return self.driver.find_element(By.ID,"Country")
@@ -370,6 +370,42 @@ class Fastcash_Location:
     def btn_cancel_confirm(self):
         self.driver.find_element(By.XPATH, "//button[normalize-space()='Yes']").click()
 
+#   Preview for payout anywhere
+
+    def click_fastcash_location(self):
+        self.driver.find_element(By.XPATH,"(//span[contains(text(),'Fast Cash Location')])[2]").click()
+
+    def country_pre(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div/div[2]/span[2]").text
+
+    def mobile_pre(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div/div[3]/span[2]").text
+
+    def payout_anywhere_pre(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div/div[4]/span[2]").text
+
+#  Preview for specific location
+
+    def address_1_sp_location_pre(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div/div[2]/span[2]").text
+
+    def address_2_sp_location_pre(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div/div[3]/span[2]").text
+
+    def address_3_sp_location_pre(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div/div[4]/span[2]").text
+
+    def city_sp_location_pre(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div/div[5]/span[2]").text
+
+    def country_sp_location_pre(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div/div[6]/span[2]").text
+
+    def mobile_sp_location_pre(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div/div[7]/span[2]").text
+
+    def payout_specific_location_pre(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div/div[8]/span[2]").text
 
 class Final_Preview:
 
@@ -385,5 +421,11 @@ class Final_Preview:
     def meassge_final(self):
         try:
             return self.driver.find_element(By.XPATH, "//*[@id='root']/div[1]/div[1]/div/div[2]").text
+        except:
+            None
+
+    def editmode_message(self):
+        try:
+            return self.driver.find_element(By.XPATH, "//*[@id='root']/div[1]/div/div/div").text
         except:
             None
