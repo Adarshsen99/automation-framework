@@ -63,10 +63,6 @@ def generate_random_email(max_length=50):
     domain_part = ''.join(random.choices(string.ascii_lowercase, k=random.randint(1, 5)))
     email = f"{local_part}@{domain_part}.com"
 
-    # Ensure the total length does not exceed max_length
-    if len(email) > max_length:
-        email = email[:max_length]
-
     return email
 
 def generate_random_email_lessthen_45(max_length=45):
