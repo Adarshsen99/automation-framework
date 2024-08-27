@@ -24,7 +24,7 @@ class TestSendingDocs:
         return self.generate_random_string(5) + "@example.com"
 
     def test_sending_docs(self,setup):
-        for i in range(1):
+        for i in range(20):
             # Setup the driver for each iteration
             self.driver = setup
             self.driver.get(self.url)
