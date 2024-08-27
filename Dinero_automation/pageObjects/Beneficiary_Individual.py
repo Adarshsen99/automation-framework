@@ -248,6 +248,12 @@ class Bank_Information:
         except:
             None
 
+    def message_2(self):
+        try:
+            return self.driver.find_element(By.XPATH,"/html/body/div/div[1]/div/div/div").text
+        except:
+            None
+
     def banks_data_1(self):
         return self.driver.find_element(By.XPATH,"(//div[@class='selected-container'])[1]")
 
