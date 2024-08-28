@@ -91,6 +91,9 @@ class Bank_Information:
     def __init__(self, driver):
         self.driver = driver
 
+    def click_index_bank(self):
+        self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div[2]/div[2]/div/div[1]/div[2]/form/div/div[1]/div[1]/div/div[1]/span[1]").click()
+
     def send_bank_name(self):
         return self.driver.find_element(By.NAME,"Bank Name")
 
@@ -255,5 +258,11 @@ class Final_Preview:
     def editmode_message(self):
         try:
             return self.driver.find_element(By.XPATH, "//*[@id='root']/div[1]/div/div/div").text
+        except:
+            None
+
+    def message_error(self):
+        try:
+            return self.driver.find_element(By.XPATH,"//*[@id='root']/div[1]/div[1]/div/div[2]").text
         except:
             None

@@ -1,10 +1,16 @@
 import random
 import string
 
-def random_string_generator(size = 5, chars = string.ascii_lowercase + string.digits):
+def random_string_generator(size = 7, chars = string.ascii_lowercase + string.digits):
+    return ''.join(random.choice(chars) for x in range(size))
+
+def random_string_generator_new(size = 7, chars = string.ascii_lowercase + string.digits):
     return ''.join(random.choice(chars) for x in range(size))
 
 def random_string_generator_numbers(size = 16, chars = string.digits):
+    return ''.join(random.choice(chars) for x in range(size))
+
+def random_string_generator_numbers_new(size = 16, chars = string.digits):
     return ''.join(random.choice(chars) for x in range(size))
 
 
@@ -58,6 +64,14 @@ def random_string_generator_max_18(size = 18, chars = string.ascii_lowercase):
 
 
 def generate_random_email(max_length=50):
+    local_part_length = random.randint(1, max_length - 7)  # Subtracting length for '@domain.com'
+    local_part = ''.join(random.choices(string.ascii_lowercase + string.digits, k=local_part_length))
+    domain_part = ''.join(random.choices(string.ascii_lowercase, k=random.randint(1, 5)))
+    email = f"{local_part}@{domain_part}.com"
+
+    return email
+
+def generate_random_email_new(max_length=15):
     local_part_length = random.randint(1, max_length - 7)  # Subtracting length for '@domain.com'
     local_part = ''.join(random.choices(string.ascii_lowercase + string.digits, k=local_part_length))
     domain_part = ''.join(random.choices(string.ascii_lowercase, k=random.randint(1, 5)))

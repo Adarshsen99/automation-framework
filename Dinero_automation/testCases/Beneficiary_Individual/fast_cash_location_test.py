@@ -3,7 +3,7 @@ from Dinero_automation.utilities.readProperties import ReadConfig
 from Dinero_automation.pageObjects.LoginPage import LoginPage
 from Dinero_automation.pageObjects.Navbar import Navigation_Page
 from Dinero_automation.pageObjects.Beneficiary_Individual import Personal_Details,Contact_Information,Fastcash_Location,Final_Preview
-from Dinero_automation.utilities.randomString import random_string_generator_max_30,random_string_generator_max_50,random_string_generator_numbers,generate_random_email,random_string_generator_numbers_10,random_string_generator_max_28,random_string_generator_max_48,random_string_generator_max_31,random_string_generator_max_51
+from Dinero_automation.utilities.randomString import generate_random_email_new,random_string_generator,random_string_generator_numbers_new,random_string_generator_max_30,random_string_generator_max_50,random_string_generator_numbers,generate_random_email,random_string_generator_numbers_10,random_string_generator_max_28,random_string_generator_max_48,random_string_generator_max_31,random_string_generator_max_51
 from selenium.webdriver.support.ui import Select
 from Dinero_automation.utilities import screenShort
 
@@ -49,16 +49,16 @@ class Test_Fastcash_Location:
         trans_type = Select(self.pi.drp_trans_type())
 
         title.select_by_index(1)
-        fname.send_keys("Beee")
-        mname.send_keys("Benergy")
-        lname.send_keys("Pool")
-        sname.send_keys("boo Pool")
+        fname.send_keys(random_string_generator())
+        mname.send_keys(random_string_generator())
+        lname.send_keys(random_string_generator())
+        sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
         relation.select_by_index(3)
         id_type.select_by_index(2)
-        id_num.send_keys("123456789")
-        trans_type.select_by_index(1)
+        id_num.send_keys(random_string_generator_numbers_new())
+        trans_type.select_by_index(2)
 
         self.pi.btn_next().click()
 
@@ -71,14 +71,14 @@ class Test_Fastcash_Location:
         drp_phone = Select(self.ci.drp_phone())
         phone = self.ci.phone()
 
-        fh_num.send_keys("1234567829")
-        hb_num.send_keys("1234567829")
-        street.send_keys("Kochi")
-        email.send_keys("personalsrf@gmail.com")
-        city.send_keys("Ernak44amm")
+        fh_num.send_keys(random_string_generator_numbers_new())
+        hb_num.send_keys(random_string_generator_numbers_new())
+        street.send_keys(random_string_generator())
+        email.send_keys(generate_random_email_new())
+        city.send_keys(random_string_generator())
         drp_contry.select_by_index(2)
         drp_phone.select_by_index(50)
-        phone.send_keys("98765453323210")
+        phone.send_keys(random_string_generator_numbers_new())
 
         self.ci.btn_next()
 
@@ -89,7 +89,7 @@ class Test_Fastcash_Location:
 
         drp_cont.select_by_index(5)
         drp_country_code.select_by_index(15)
-        mo_num.send_keys("9876543210")
+        mo_num.send_keys(random_string_generator_numbers_new())
 
         # Buttons for anywhare location
         self.fi.btn_add_location()
@@ -134,16 +134,16 @@ class Test_Fastcash_Location:
         trans_type = Select(self.pi.drp_trans_type())
 
         title.select_by_index(1)
-        fname.send_keys("Beee")
-        mname.send_keys("Benergy")
-        lname.send_keys("Pool")
-        sname.send_keys("boo Pool")
+        fname.send_keys(random_string_generator())
+        mname.send_keys(random_string_generator())
+        lname.send_keys(random_string_generator())
+        sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
         relation.select_by_index(3)
         id_type.select_by_index(2)
-        id_num.send_keys("123456789")
-        trans_type.select_by_index(1)
+        id_num.send_keys(random_string_generator_numbers_new())
+        trans_type.select_by_index(2)
 
         self.pi.btn_next().click()
 
@@ -156,14 +156,14 @@ class Test_Fastcash_Location:
         drp_phone = Select(self.ci.drp_phone())
         phone = self.ci.phone()
 
-        fh_num.send_keys("1234567829")
-        hb_num.send_keys("1234567829")
-        street.send_keys("Kochi")
-        email.send_keys("personaluu4@gmail.com")
-        city.send_keys("Ernak44amm")
+        fh_num.send_keys(random_string_generator_numbers_new())
+        hb_num.send_keys(random_string_generator_numbers_new())
+        street.send_keys(random_string_generator())
+        email.send_keys(generate_random_email_new())
+        city.send_keys(random_string_generator())
         drp_contry.select_by_index(2)
         drp_phone.select_by_index(50)
-        phone.send_keys("98765452323210")
+        phone.send_keys(random_string_generator_numbers_new())
 
         self.ci.btn_next()
 
@@ -219,16 +219,16 @@ class Test_Fastcash_Location:
         trans_type = Select(self.pi.drp_trans_type())
 
         title.select_by_index(1)
-        fname.send_keys("Beee")
-        mname.send_keys("Benergy")
-        lname.send_keys("Pool")
-        sname.send_keys("boo Pool")
+        fname.send_keys(random_string_generator())
+        mname.send_keys(random_string_generator())
+        lname.send_keys(random_string_generator())
+        sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
         relation.select_by_index(3)
         id_type.select_by_index(2)
-        id_num.send_keys("123456789")
-        trans_type.select_by_index(1)
+        id_num.send_keys(random_string_generator_numbers_new())
+        trans_type.select_by_index(2)
 
         self.pi.btn_next().click()
 
@@ -241,14 +241,14 @@ class Test_Fastcash_Location:
         drp_phone = Select(self.ci.drp_phone())
         phone = self.ci.phone()
 
-        fh_num.send_keys("1234567829")
-        hb_num.send_keys("1234567829")
-        street.send_keys("Kochi")
-        email.send_keys("personal4@gmail.com")
-        city.send_keys("Ernak44amm")
+        fh_num.send_keys(random_string_generator_numbers_new())
+        hb_num.send_keys(random_string_generator_numbers_new())
+        street.send_keys(random_string_generator())
+        email.send_keys(generate_random_email_new())
+        city.send_keys(random_string_generator())
         drp_contry.select_by_index(2)
         drp_phone.select_by_index(50)
-        phone.send_keys("987654323210")
+        phone.send_keys(random_string_generator_numbers_new())
 
         self.ci.btn_next()
 
@@ -315,16 +315,16 @@ class Test_Fastcash_Location:
         trans_type = Select(self.pi.drp_trans_type())
 
         title.select_by_index(1)
-        fname.send_keys("Beee")
-        mname.send_keys("Benergy")
-        lname.send_keys("Pool")
-        sname.send_keys("boo Pool")
+        fname.send_keys(random_string_generator())
+        mname.send_keys(random_string_generator())
+        lname.send_keys(random_string_generator())
+        sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
         relation.select_by_index(3)
         id_type.select_by_index(2)
-        id_num.send_keys("123456789")
-        trans_type.select_by_index(1)
+        id_num.send_keys(random_string_generator_numbers_new())
+        trans_type.select_by_index(2)
 
         self.pi.btn_next().click()
 
@@ -337,14 +337,14 @@ class Test_Fastcash_Location:
         drp_phone = Select(self.ci.drp_phone())
         phone = self.ci.phone()
 
-        fh_num.send_keys("1234567829")
-        hb_num.send_keys("1234567829")
-        street.send_keys("Kochi")
-        email.send_keys("personal4@gmail.com")
-        city.send_keys("Ernak44amm")
+        fh_num.send_keys(random_string_generator_numbers_new())
+        hb_num.send_keys(random_string_generator_numbers_new())
+        street.send_keys(random_string_generator())
+        email.send_keys(generate_random_email_new())
+        city.send_keys(random_string_generator())
         drp_contry.select_by_index(2)
         drp_phone.select_by_index(50)
-        phone.send_keys("987654323210")
+        phone.send_keys(random_string_generator_numbers_new())
 
         self.ci.btn_next()
 
@@ -355,7 +355,7 @@ class Test_Fastcash_Location:
 
         drp_cont.select_by_index(5)
         drp_country_code.select_by_index(15)
-        mo_num.send_keys("9876543210")
+        mo_num.send_keys(random_string_generator_numbers_new())
 
         before_count = mo_num.get_attribute("value")
         print("before number:",before_count)
@@ -425,16 +425,16 @@ class Test_Fastcash_Location:
         trans_type = Select(self.pi.drp_trans_type())
 
         title.select_by_index(1)
-        fname.send_keys("Beee")
-        mname.send_keys("Benergy")
-        lname.send_keys("Pool")
-        sname.send_keys("boo Pool")
+        fname.send_keys(random_string_generator())
+        mname.send_keys(random_string_generator())
+        lname.send_keys(random_string_generator())
+        sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
         relation.select_by_index(3)
         id_type.select_by_index(2)
-        id_num.send_keys("123456789")
-        trans_type.select_by_index(1)
+        id_num.send_keys(random_string_generator_numbers_new())
+        trans_type.select_by_index(2)
 
         self.pi.btn_next().click()
 
@@ -447,14 +447,14 @@ class Test_Fastcash_Location:
         drp_phone = Select(self.ci.drp_phone())
         phone = self.ci.phone()
 
-        fh_num.send_keys("1234567829")
-        hb_num.send_keys("1234567829")
-        street.send_keys("Kochi")
-        email.send_keys("personal4@gmail.com")
-        city.send_keys("Ernak44amm")
+        fh_num.send_keys(random_string_generator_numbers_new())
+        hb_num.send_keys(random_string_generator_numbers_new())
+        street.send_keys(random_string_generator())
+        email.send_keys(generate_random_email_new())
+        city.send_keys(random_string_generator())
         drp_contry.select_by_index(2)
         drp_phone.select_by_index(50)
-        phone.send_keys("987654323210")
+        phone.send_keys(random_string_generator_numbers_new())
 
         self.ci.btn_next()
 
@@ -465,7 +465,7 @@ class Test_Fastcash_Location:
 
         drp_cont.select_by_index(5)
         drp_country_code.select_by_index(15)
-        mo_num.send_keys("9876543210")
+        mo_num.send_keys(random_string_generator_numbers_new())
 
         before_count = mo_num.get_attribute("value")
         print("before number:",before_count)
@@ -531,16 +531,16 @@ class Test_Fastcash_Location:
         trans_type = Select(self.pi.drp_trans_type())
 
         title.select_by_index(1)
-        fname.send_keys("Beee")
-        mname.send_keys("Benergy")
-        lname.send_keys("Pool")
-        sname.send_keys("boo Pool")
+        fname.send_keys(random_string_generator())
+        mname.send_keys(random_string_generator())
+        lname.send_keys(random_string_generator())
+        sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
         relation.select_by_index(3)
         id_type.select_by_index(2)
-        id_num.send_keys("123456789")
-        trans_type.select_by_index(1)
+        id_num.send_keys(random_string_generator_numbers_new())
+        trans_type.select_by_index(2)
 
         self.pi.btn_next().click()
 
@@ -553,14 +553,14 @@ class Test_Fastcash_Location:
         drp_phone = Select(self.ci.drp_phone())
         phone = self.ci.phone()
 
-        fh_num.send_keys("1234567829")
-        hb_num.send_keys("1234567829")
-        street.send_keys("Kochi")
-        email.send_keys("personal4@gmail.com")
-        city.send_keys("Ernak44amm")
+        fh_num.send_keys(random_string_generator_numbers_new())
+        hb_num.send_keys(random_string_generator_numbers_new())
+        street.send_keys(random_string_generator())
+        email.send_keys(generate_random_email_new())
+        city.send_keys(random_string_generator())
         drp_contry.select_by_index(2)
         drp_phone.select_by_index(50)
-        phone.send_keys("987654323210")
+        phone.send_keys(random_string_generator_numbers_new())
 
         self.ci.btn_next()
 

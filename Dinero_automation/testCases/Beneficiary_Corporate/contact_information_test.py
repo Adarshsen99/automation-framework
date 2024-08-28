@@ -3,7 +3,7 @@ from Dinero_automation.utilities.readProperties import ReadConfig
 from Dinero_automation.pageObjects.LoginPage import LoginPage
 from Dinero_automation.pageObjects.Navbar import Navigation_Page
 from Dinero_automation.pageObjects.Beneficiary_Corporate import Company_Information,Contact_Information,Bank_Information,Final_Preview
-from Dinero_automation.utilities.randomString import random_string_generator_max_30,random_string_generator_max_50,generate_random_email,random_string_generator_max_28,random_string_generator_max_48,random_string_generator_max_31,random_string_generator_max_51
+from Dinero_automation.utilities.randomString import generate_random_email_new,random_string_generator_numbers,random_string_generator_numbers_new,random_string_generator_new,random_string_generator,random_string_generator_max_30,random_string_generator_max_50,generate_random_email,random_string_generator_max_28,random_string_generator_max_48,random_string_generator_max_31,random_string_generator_max_51
 from selenium.webdriver.support.ui import Select
 from Dinero_automation.utilities import screenShort
 
@@ -43,8 +43,8 @@ class Test_Company_Information:
         drp_count_of_incorp = Select(self.ci.drp_country_of_incorporation())
         drp_relation = Select(self.ci.drp_relation())
 
-        comp_name.send_keys("Zooker Technology")
-        short_name.send_keys("Zooker")
+        comp_name.send_keys(random_string_generator())
+        short_name.send_keys(random_string_generator_new())
         drp_count_of_incorp.select_by_index(14)
         drp_relation.select_by_index(2)
         self.ci.btn_next()
@@ -58,14 +58,14 @@ class Test_Company_Information:
         mobile_num = self.con_info.mobile_number()
         email = self.con_info.email()
 
-        build_num.send_keys("1245637")
-        build_name.send_keys("1245637")
-        street.send_keys("Kochi")
-        city_dist.send_keys("Ernakulam")
+        build_num.send_keys(random_string_generator_numbers_new())
+        build_name.send_keys(random_string_generator_new())
+        street.send_keys(random_string_generator())
+        city_dist.send_keys(random_string_generator())
         drp_country.select_by_index(2)
         drp_country_code.select_by_index(6)
-        mobile_num.send_keys("257841114")
-        email.send_keys("companymail@gmail.com")
+        mobile_num.send_keys(random_string_generator_numbers())
+        email.send_keys(generate_random_email_new())
 
         self.con_info.btn_next()
         error_msg = self.ci.error_message()
@@ -108,8 +108,8 @@ class Test_Company_Information:
         drp_count_of_incorp = Select(self.ci.drp_country_of_incorporation())
         drp_relation = Select(self.ci.drp_relation())
 
-        comp_name.send_keys("Zooker Technology")
-        short_name.send_keys("Zooker")
+        comp_name.send_keys(random_string_generator())
+        short_name.send_keys(random_string_generator_new())
         drp_count_of_incorp.select_by_index(14)
         drp_relation.select_by_index(2)
         self.ci.btn_next()
@@ -173,8 +173,8 @@ class Test_Company_Information:
         drp_count_of_incorp = Select(self.ci.drp_country_of_incorporation())
         drp_relation = Select(self.ci.drp_relation())
 
-        comp_name.send_keys("Zooker Technology")
-        short_name.send_keys("Zooker")
+        comp_name.send_keys(random_string_generator())
+        short_name.send_keys(random_string_generator_new())
         drp_count_of_incorp.select_by_index(14)
         drp_relation.select_by_index(2)
         self.ci.btn_next()
@@ -188,14 +188,14 @@ class Test_Company_Information:
         mobile_num = self.con_info.mobile_number()
         email = self.con_info.email()
 
-        build_num.send_keys("1245637 5676")
-        build_name.send_keys("1245637 666")
-        street.send_keys("Kochi street")
-        city_dist.send_keys("Ernakulam city")
+        build_num.send_keys(random_string_generator_numbers_new())
+        build_name.send_keys(random_string_generator_new())
+        street.send_keys(random_string_generator())
+        city_dist.send_keys(random_string_generator())
         drp_country.select_by_index(2)
         drp_country_code.select_by_index(6)
-        mobile_num.send_keys("257841114 56")
-        email.send_keys("company mail@gmail.com")
+        mobile_num.send_keys(random_string_generator_numbers())
+        email.send_keys(generate_random_email_new())
 
         # time.sleep(4)
         self.con_info.btn_next()
@@ -239,8 +239,8 @@ class Test_Company_Information:
         drp_count_of_incorp = Select(self.ci.drp_country_of_incorporation())
         drp_relation = Select(self.ci.drp_relation())
 
-        comp_name.send_keys("Zooker Technology")
-        short_name.send_keys("Zooker")
+        comp_name.send_keys(random_string_generator())
+        short_name.send_keys(random_string_generator_new())
         drp_count_of_incorp.select_by_index(14)
         drp_relation.select_by_index(2)
         self.ci.btn_next()
@@ -254,14 +254,14 @@ class Test_Company_Information:
         mobile_num = self.con_info.mobile_number()
         email = self.con_info.email()
 
-        build_num.send_keys("12456375676")
-        build_name.send_keys("124563666")
-        street.send_keys("Kochi street")
-        city_dist.send_keys("Ernakulam city")
+        build_num.send_keys(random_string_generator_numbers_new())
+        build_name.send_keys(random_string_generator_new())
+        street.send_keys(random_string_generator())
+        city_dist.send_keys(random_string_generator())
         drp_country.select_by_index(2)
         drp_country_code.select_by_index(6)
-        mobile_num.send_keys("25784111456")
-        email.send_keys("companymail@gmail.com")
+        mobile_num.send_keys(random_string_generator_numbers())
+        email.send_keys(generate_random_email_new())
 
         b_num = build_num.get_attribute('value')
         b_name = build_name.get_attribute('value')
@@ -356,8 +356,8 @@ class Test_Company_Information:
         drp_count_of_incorp = Select(self.ci.drp_country_of_incorporation())
         drp_relation = Select(self.ci.drp_relation())
 
-        comp_name.send_keys("Zooker Technology")
-        short_name.send_keys("Zooker")
+        comp_name.send_keys(random_string_generator())
+        short_name.send_keys(random_string_generator_new())
         drp_count_of_incorp.select_by_index(14)
         drp_relation.select_by_index(2)
         self.ci.btn_next()
@@ -371,14 +371,14 @@ class Test_Company_Information:
         mobile_num = self.con_info.mobile_number()
         email = self.con_info.email()
 
-        build_num.send_keys("12456375676")
-        build_name.send_keys("124563666")
-        street.send_keys("kochi street")
-        city_dist.send_keys("ernakulam city")
+        build_num.send_keys(random_string_generator_numbers_new())
+        build_name.send_keys(random_string_generator_new())
+        street.send_keys(random_string_generator())
+        city_dist.send_keys(random_string_generator())
         drp_country.select_by_index(2)
         drp_country_code.select_by_index(6)
-        mobile_num.send_keys("25784111456")
-        email.send_keys("companymail@gmail.com")
+        mobile_num.send_keys(random_string_generator_numbers())
+        email.send_keys(generate_random_email_new())
 
         b_num = build_num.get_attribute('value')
         b_name = build_name.get_attribute('value')
@@ -471,8 +471,8 @@ class Test_Company_Information:
         drp_count_of_incorp = Select(self.ci.drp_country_of_incorporation())
         drp_relation = Select(self.ci.drp_relation())
 
-        comp_name.send_keys("Zooker Technology")
-        short_name.send_keys("Zooker")
+        comp_name.send_keys(random_string_generator())
+        short_name.send_keys(random_string_generator_new())
         drp_count_of_incorp.select_by_index(14)
         drp_relation.select_by_index(2)
         self.ci.btn_next()
@@ -486,14 +486,14 @@ class Test_Company_Information:
         mobile_num = self.con_info.mobile_number()
         email = self.con_info.email()
 
-        build_num.send_keys("12456375676")
-        build_name.send_keys("124563666")
-        street.send_keys("kochi street")
-        city_dist.send_keys("ernakulam city")
+        build_num.send_keys(random_string_generator_numbers_new())
+        build_name.send_keys(random_string_generator_new())
+        street.send_keys(random_string_generator())
+        city_dist.send_keys(random_string_generator())
         drp_country.select_by_index(2)
         drp_country_code.select_by_index(6)
-        mobile_num.send_keys("25784111456")
-        email.send_keys("companymail@gmail.com")
+        mobile_num.send_keys(random_string_generator_numbers())
+        email.send_keys(generate_random_email_new())
 
         country = drp_country.first_selected_option.text
         mobile = drp_country_code.first_selected_option.text
@@ -565,8 +565,8 @@ class Test_Company_Information:
         drp_count_of_incorp = Select(self.ci.drp_country_of_incorporation())
         drp_relation = Select(self.ci.drp_relation())
 
-        comp_name.send_keys("Zooker Technology")
-        short_name.send_keys("Zooker")
+        comp_name.send_keys(random_string_generator())
+        short_name.send_keys(random_string_generator_new())
         drp_count_of_incorp.select_by_index(14)
         drp_relation.select_by_index(2)
         self.ci.btn_next()
@@ -674,8 +674,8 @@ class Test_Company_Information:
         drp_count_of_incorp = Select(self.ci.drp_country_of_incorporation())
         drp_relation = Select(self.ci.drp_relation())
 
-        comp_name.send_keys("Zooker Technology")
-        short_name.send_keys("Zooker")
+        comp_name.send_keys(random_string_generator())
+        short_name.send_keys(random_string_generator_new())
         drp_count_of_incorp.select_by_index(14)
         drp_relation.select_by_index(2)
         self.ci.btn_next()
@@ -783,8 +783,8 @@ class Test_Company_Information:
         drp_count_of_incorp = Select(self.ci.drp_country_of_incorporation())
         drp_relation = Select(self.ci.drp_relation())
 
-        comp_name.send_keys("Zooker Technology")
-        short_name.send_keys("Zooker")
+        comp_name.send_keys(random_string_generator())
+        short_name.send_keys(random_string_generator_new())
         drp_count_of_incorp.select_by_index(14)
         drp_relation.select_by_index(2)
         self.ci.btn_next()
@@ -892,8 +892,8 @@ class Test_Company_Information:
         drp_count_of_incorp = Select(self.ci.drp_country_of_incorporation())
         drp_relation = Select(self.ci.drp_relation())
 
-        comp_name.send_keys("Zooker Technology")
-        short_name.send_keys("Zooker")
+        comp_name.send_keys(random_string_generator())
+        short_name.send_keys(random_string_generator_new())
         drp_count_of_incorp.select_by_index(14)
         drp_relation.select_by_index(2)
         self.ci.btn_next()
@@ -907,14 +907,14 @@ class Test_Company_Information:
         mobile_num = self.con_info.mobile_number()
         email = self.con_info.email()
 
-        build_num.send_keys("1245637")
+        build_num.send_keys(random_string_generator_numbers_new())
         # build_name.send_keys("1245637")
         # street.send_keys("Kochi")
-        city_dist.send_keys("Ernakulam")
+        city_dist.send_keys(random_string_generator())
         drp_country.select_by_index(2)
         drp_country_code.select_by_index(6)
-        mobile_num.send_keys("257841114")
-        email.send_keys("companymail@gmail.com")
+        mobile_num.send_keys(random_string_generator_numbers())
+        email.send_keys(generate_random_email_new())
 
         self.con_info.btn_next()
         error_msg = self.ci.error_message()
@@ -957,8 +957,8 @@ class Test_Company_Information:
         drp_count_of_incorp = Select(self.ci.drp_country_of_incorporation())
         drp_relation = Select(self.ci.drp_relation())
 
-        comp_name.send_keys("Zooker Technology")
-        short_name.send_keys("Zooker")
+        comp_name.send_keys(random_string_generator())
+        short_name.send_keys(random_string_generator_new())
         drp_count_of_incorp.select_by_index(14)
         drp_relation.select_by_index(2)
         self.ci.btn_next()
@@ -966,8 +966,8 @@ class Test_Company_Information:
         build_name = self.con_info.building_name()
         street = self.con_info.street()
 
-        build_name.send_keys("1245637")
-        street.send_keys("Kochi")
+        build_name.send_keys(random_string_generator_new())
+        street.send_keys(random_string_generator())
 
         self.con_info.btn_next()
         error_msg = self.ci.error_message()
@@ -1011,8 +1011,8 @@ class Test_Company_Information:
         drp_count_of_incorp = Select(self.ci.drp_country_of_incorporation())
         drp_relation = Select(self.ci.drp_relation())
 
-        comp_name.send_keys("Zooker Technology")
-        short_name.send_keys("Zooker")
+        comp_name.send_keys(random_string_generator())
+        short_name.send_keys(random_string_generator_new())
         drp_count_of_incorp.select_by_index(14)
         drp_relation.select_by_index(2)
 
@@ -1034,14 +1034,14 @@ class Test_Company_Information:
         mobile_num = self.con_info.mobile_number()
         email = self.con_info.email()
 
-        build_num.send_keys("1245637")
-        build_name.send_keys("1245637")
-        street.send_keys("Kochi")
-        city_dist.send_keys("Ernakulam")
+        build_num.send_keys(random_string_generator_numbers_new())
+        build_name.send_keys(random_string_generator_new())
+        street.send_keys(random_string_generator())
+        city_dist.send_keys(random_string_generator())
         drp_country.select_by_index(2)
         drp_country_code.select_by_index(6)
-        mobile_num.send_keys("257841114")
-        email.send_keys("companymail@gmail.com")
+        mobile_num.send_keys(random_string_generator_numbers())
+        email.send_keys(generate_random_email_new())
 
         b_num = build_num.get_attribute('value')
         b_name = build_name.get_attribute('value')
@@ -1073,8 +1073,8 @@ class Test_Company_Information:
 
         print("After:", compa_val_af, short_val_af, incorp_val_af, relation_val_af)
 
-        comp_name.send_keys("Zooker Technology")
-        short_name.send_keys("Zooker")
+        comp_name.send_keys(random_string_generator())
+        short_name.send_keys(random_string_generator_new())
         drp_count_of_incorp.select_by_index(14)
         drp_relation.select_by_index(2)
 
@@ -1195,8 +1195,8 @@ class Test_Company_Information:
         drp_count_of_incorp = Select(self.ci.drp_country_of_incorporation())
         drp_relation = Select(self.ci.drp_relation())
 
-        comp_name.send_keys("Zooker Technology")
-        short_name.send_keys("Zooker")
+        comp_name.send_keys(random_string_generator())
+        short_name.send_keys(random_string_generator_new())
         drp_count_of_incorp.select_by_index(14)
         drp_relation.select_by_index(2)
         self.ci.btn_next()
@@ -1217,7 +1217,7 @@ class Test_Company_Information:
         drp_country.select_by_index(2)
         drp_country_code.select_by_index(6)
         mobile_num.send_keys("21324")
-        email.send_keys("companymail@gmail.com")
+        email.send_keys(generate_random_email_new())
 
         self.con_info.btn_next()
         error_msg = self.ci.error_message()
@@ -1260,8 +1260,8 @@ class Test_Company_Information:
         drp_count_of_incorp = Select(self.ci.drp_country_of_incorporation())
         drp_relation = Select(self.ci.drp_relation())
 
-        comp_name.send_keys("Zooker Technology")
-        short_name.send_keys("Zooker")
+        comp_name.send_keys(random_string_generator())
+        short_name.send_keys(random_string_generator_new())
         drp_count_of_incorp.select_by_index(14)
         drp_relation.select_by_index(2)
         self.ci.btn_next()
@@ -1275,14 +1275,14 @@ class Test_Company_Information:
         mobile_num = self.con_info.mobile_number()
         email = self.con_info.email()
 
-        build_num.send_keys("2313456125230")
-        build_name.send_keys("2313456125230")
-        street.send_keys("2313456125230")
-        city_dist.send_keys("2313456125230")
+        build_num.send_keys(random_string_generator_numbers_new())
+        build_name.send_keys(random_string_generator_new())
+        street.send_keys(random_string_generator())
+        city_dist.send_keys(random_string_generator())
         drp_country.select_by_index(2)
         drp_country_code.select_by_index(6)
-        mobile_num.send_keys("2313456125230")
-        email.send_keys("companymail@gmail.com")
+        mobile_num.send_keys(random_string_generator_numbers())
+        email.send_keys(generate_random_email_new())
 
         self.con_info.btn_next()
         error_msg = self.ci.error_message()
@@ -1325,8 +1325,8 @@ class Test_Company_Information:
         drp_count_of_incorp = Select(self.ci.drp_country_of_incorporation())
         drp_relation = Select(self.ci.drp_relation())
 
-        comp_name.send_keys("Zooker Technology")
-        short_name.send_keys("Zooker")
+        comp_name.send_keys(random_string_generator())
+        short_name.send_keys(random_string_generator_new())
         drp_count_of_incorp.select_by_index(14)
         drp_relation.select_by_index(2)
         self.ci.btn_next()
@@ -1347,7 +1347,7 @@ class Test_Company_Information:
         drp_country.select_by_index(2)
         drp_country_code.select_by_index(6)
         mobile_num.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?a")
-        email.send_keys("companymail@gmail.com")
+        email.send_keys(generate_random_email_new())
 
         self.con_info.btn_next()
         error_msg = self.ci.error_message()
@@ -1390,8 +1390,8 @@ class Test_Company_Information:
         drp_count_of_incorp = Select(self.ci.drp_country_of_incorporation())
         drp_relation = Select(self.ci.drp_relation())
 
-        comp_name.send_keys("Zooker Technology")
-        short_name.send_keys("Zooker")
+        comp_name.send_keys(random_string_generator())
+        short_name.send_keys(random_string_generator_new())
         drp_count_of_incorp.select_by_index(14)
         drp_relation.select_by_index(2)
         self.ci.btn_next()
@@ -1405,14 +1405,14 @@ class Test_Company_Information:
         mobile_num = self.con_info.mobile_number()
         email = self.con_info.email()
 
-        build_num.send_keys("number")
-        build_name.send_keys("name")
-        street.send_keys("kochi")
-        city_dist.send_keys("ernakula")
+        build_num.send_keys(random_string_generator_numbers_new())
+        build_name.send_keys(random_string_generator_new())
+        street.send_keys(random_string_generator())
+        city_dist.send_keys(random_string_generator())
         drp_country.select_by_index(2)
         drp_country_code.select_by_index(6)
-        mobile_num.send_keys("13344")
-        email.send_keys("companymail@gmail.com")
+        mobile_num.send_keys(random_string_generator_numbers())
+        email.send_keys(generate_random_email_new())
 
         b_num = build_num.get_attribute('value')
         b_name = build_name.get_attribute('value')
