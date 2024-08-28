@@ -1,6 +1,6 @@
 import configparser
 
-path = '/home/karunakar/DineroQa/Dinero_automation/configurations/config.ini'
+path = 'C:\\DineroQa\\Dinero_automation\\configurations\\config.ini'
 config = configparser.RawConfigParser()
 config.read(path)
 

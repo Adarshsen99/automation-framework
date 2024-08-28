@@ -23,7 +23,7 @@ class TestSendingDocs:
     def generate_random_email(self):
         return self.generate_random_string(5) + "@example.com"
 
-    def test_sending_docs(self,setup):
+    def test_adding_customers(self,setup):
         for i in range(20):
             # Setup the driver for each iteration
             self.driver = setup
@@ -192,7 +192,7 @@ class TestSendingDocs:
             keyboard = Controller()
             time.sleep(2)
             self.driver.implicitly_wait(10)
-            keyboard.type("/home/karunakar/Pictures/Screenshots/Screenshot from 2024-08-19 11-43-05.png")
+            keyboard.type("C:\\Users\\adars\\OneDrive\\Pictures\\Screenshots\\PREVIEW.png")
             time.sleep(2)
             keyboard.press(Key.enter)
             keyboard.release(Key.enter)
