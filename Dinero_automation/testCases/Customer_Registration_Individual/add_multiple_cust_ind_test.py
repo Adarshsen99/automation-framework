@@ -1,5 +1,7 @@
 import random
 import string
+
+from django.utils.translation.trans_real import npgettext
 from selenium.webdriver.support.ui import WebDriverWait, Select
 from Dinero_automation.pageObjects.Customer_Registration import Persomal_Information, Contact_Information, Id_details, Other_Information,Upload_documents,Final_Preview
 from selenium.webdriver.common.keys import Keys
@@ -24,7 +26,8 @@ class TestSendingDocs:
         return self.generate_random_string(5) + "@example.com"
 
     def test_sending_docs(self,setup):
-        for i in range(20):
+        for i in range(1):
+            responce = []
             # Setup the driver for each iteration
             self.driver = setup
             self.driver.get(self.url)
@@ -218,8 +221,15 @@ class TestSendingDocs:
                     # As a last resort, use JavaScript to force the click
                     self.driver.execute_script("arguments[0].click();", element)
 
-            time.sleep(6)
+            time.sleep(2)
 
-            # Quit the driver after each iteration
+            document = self.driver.execute_cdp_cmd(cmd="DOM.getDocument", cmd_args={})
+
+            responce.append(document)
+            for res in responce:
+                print(res['root']['baseURL'])
+
+
+
         self.driver.quit()
 
