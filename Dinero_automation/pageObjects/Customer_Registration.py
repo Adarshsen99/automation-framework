@@ -44,6 +44,12 @@ class Persomal_Information():
     def __init__(self,driver):
         self.driver = driver
 
+    def editmode_message(self):
+        try:
+            return self.driver.find_element(By.XPATH, "//*[@id='root']/div[1]/div/div/div").text
+        except:
+            None
+
     # For Id Verifications
     def customerStatusDropdown_not_required(self):
         return self.driver.find_element(By.ID,self.drp_customer_status_notreq_id)
