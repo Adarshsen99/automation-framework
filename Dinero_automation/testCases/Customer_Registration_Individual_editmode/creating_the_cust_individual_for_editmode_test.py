@@ -26,7 +26,7 @@ class Test_Personal_Info_Editmode:
     def generate_random_email(self):
         return self.generate_random_string(5) + "@example.com"
 
-    def goingto_editmode(self,setup):
+    def test_goingto_editmode(self,setup):
         responce = []
         # Setup the driver for each iteration
         self.driver = setup
@@ -111,6 +111,29 @@ class Test_Personal_Info_Editmode:
         Select(self.ci.drp_mobile_required()).select_by_index(69)
         self.ci.field_mobile_required(mob)
         self.ci.field_email_required(email)
+
+        fh_name = self.ci.field_fh_num_required_val()
+        hb_name = self.ci.field_hb_name_required_val()
+        street = self.ci.field_street_required_val()
+        city_dist = self.ci.field_city_dist_required_val()
+        emira_dist = self.ci.field_emin_dist_val()
+        country = Select(self.ci.drp_country_required())
+        # self.ci.drp_mobile_required()
+        mob = self.ci.field_mobile_required_val()
+        email = self.ci.field_email_required_val()
+
+        fh_name_val = fh_name.get_attribute('value')
+        hb_name_val = hb_name.get_attribute('value')
+        street_val = street.get_attribute('value')
+        city_dist_val = city_dist.get_attribute('value')
+        emira_dist_val = emira_dist.get_attribute('value')
+        country_val = country.first_selected_option.text
+        mob_val = mob.get_attribute('value')
+        email_val = email.get_attribute('value')
+
+        print(fh_name_val, hb_name_val, street_val, city_dist_val, emira_dist_val, country_val, mob_val, email_val)
+
+
         self.ci.btn_next()
 
         # ID Details
@@ -316,11 +339,33 @@ class Test_Personal_Info_Editmode:
             self.ci.field_hb_name_required(hb_name)
             self.ci.field_street_required(stre)
             self.ci.field_city_dist_required(cit_dis)
+            time.sleep(2)
             self.ci.field_emin_dist(emi_sta)
             Select(self.ci.drp_country_required()).select_by_visible_text("India")
             Select(self.ci.drp_mobile_required()).select_by_index(69)
             self.ci.field_mobile_required(mob)
             self.ci.field_email_required(email)
+
+            fh_name = self.ci.field_fh_num_required_val()
+            hb_name = self.ci.field_hb_name_required_val()
+            street = self.ci.field_street_required_val()
+            city_dist = self.ci.field_city_dist_required_val()
+            emira_dist = self.ci.field_emin_dist_val()
+            country = Select(self.ci.drp_country_required())
+            # self.ci.drp_mobile_required()
+            mob = self.ci.field_mobile_required_val()
+            email = self.ci.field_email_required_val()
+
+            fh_name_val = fh_name.get_attribute('value')
+            hb_name_val = hb_name.get_attribute('value')
+            street_val = street.get_attribute('value')
+            city_dist_val = city_dist.get_attribute('value')
+            emira_dist_val = emira_dist.get_attribute('value')
+            country_val = country.first_selected_option.text
+            mob_val = mob.get_attribute('value')
+            email_val = email.get_attribute('value')
+
+            print(fh_name_val, hb_name_val, street_val, city_dist_val, emira_dist_val, country_val, mob_val, email_val)
             self.ci.btn_next()
 
             # ID Details
@@ -449,352 +494,4 @@ class Test_Personal_Info_Editmode:
                 self.return_url = document['root']['baseURL']
                 assert True
 
-        return self.return_url
-
-    def test_edit_personal_info_clear_non_req_field_and_save(self,setup):
-
-        self.driver = setup
-        self.driver.get(self.url)
-        self.driver.maximize_window()
-        self.driver.implicitly_wait(30)
-        #
-        # ret_url = self.goingto_editmode(setup)
-        # print("Returned URL:", ret_url)
-
-        # Initialize page objects
-        self.lp = LoginPage(self.driver)
-        self.nav = Navigation_Page(self.driver)
-
-        # Login
-        self.lp.setUsername(self.uname)
-        self.lp.setPassword(self.upass)
-        self.lp.clickLogin()
-
-        # Navigate to customer registration
-        self.nav.click_navbar()
-        self.nav.click_customer_registration()
-        #
-        ret_url = self.goingto_editmode(setup)
-        print("Returned URL:", ret_url)
-
-        self.driver.get(f"{ret_url}")
-        time.sleep(2)
-        self.pi = Personal_Information_Edit(self.driver)
-        self.ci = Contact_Information_Edit(self.driver)
-        self.id = Id_details_Edit(self.driver)
-        self.be = Add_Beneficiaries_Edit(self.driver)
-        self.de = Add_Delegates_Edit(self.driver)
-        self.oi = Other_Information_Edit(self.driver)
-        self.ud = Upload_documents_Edit(self.driver)
-        self.fp = Final_Preview_Edit(self.driver)
-
-        title_drp = Select(self.pi.titleDropdown_required())
-        f_name = self.pi.firstNameField_required()
-        m_name = self.pi.middleNameField_not_required()
-        l_name = self.pi.lastNameField_required()
-        arb_name = self.pi.arabicNameFiels_required()
-        short_name = self.pi.shortNameField_not_required()
-        maid_name = self.pi.maidenNameFiels_not_required()
-        dob = self.pi.dobpicker_required()
-        cob_drp = Select(self.pi.cobDropdown_required())
-        nation_drp = Select(self.pi.nationality())
-        citizen_drp = Select(self.pi.citizenship())
-        cor_drp = Select(self.pi.countryofresidence())
-        resi_status_drp = Select(self.pi.residentialstatus())
-        gen_drp = Select(self.pi.gender())
-        marr_stsus_drp = Select(self.pi.maritalstatus())
-        pro_sts_drp = Select(self.pi.profession())
-
-        title_drp_val = title_drp.first_selected_option.text
-        f_name_val = f_name.get_attribute("value")
-        m_name_val = m_name.get_attribute("value")
-        l_name_val = l_name.get_attribute("value")
-        arb_name_val = arb_name.get_attribute("value")
-        short_name_val = short_name.get_attribute("value")
-        maid_name_val = maid_name.get_attribute("value")
-        dob_val = dob.get_attribute("value")
-        cob_drp_val = cob_drp.first_selected_option.text
-        nation_drp_val = nation_drp.first_selected_option.text
-        citizen_drp_val = citizen_drp.first_selected_option.text
-        cor_drp_val = cor_drp.first_selected_option.text
-        resi_status_drp_val = resi_status_drp.first_selected_option.text
-        gen_drp_val = gen_drp.first_selected_option.text
-        marr_stsus_drp_val = marr_stsus_drp.first_selected_option.text
-        pro_sts_drp_val = pro_sts_drp.first_selected_option.text
-
-        print(title_drp_val, f_name_val, m_name_val, l_name_val, arb_name_val, short_name_val, maid_name_val,
-              dob_val, cob_drp_val, nation_drp_val, citizen_drp_val, cor_drp_val, resi_status_drp_val, gen_drp_val,
-              marr_stsus_drp_val, pro_sts_drp_val)
-        time.sleep(2)
-        m_name.clear()
-        time.sleep(2)
-        short_name.clear()
-        time.sleep(2)
-        maid_name.clear()
-
-        time.sleep(2)
-        self.pi.btnnext()
-        time.sleep(2)
-        self.ci.btn_next()
-        time.sleep(2)
-        self.id.btn_next()
-        time.sleep(2)
-        self.be.btn_next().click()
-        time.sleep(2)
-        self.de.btn_next().click()
-        time.sleep(2)
-        self.oi.check_privacy_info().click()
-        self.oi.btn_next().click()
-        time.sleep(2)
-        self.ud.btn_next()
-        time.sleep(2)
-
-        element = self.fp.btn_save()
-        try:
-            WebDriverWait(self.driver, 10).until(lambda d: element.is_displayed() and element.is_enabled())
-            element.click()
-        except ElementClickInterceptedException:
-            # If another element is blocking the button, scroll it into view and retry
-            self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
-            try:
-                element.click()
-            except ElementClickInterceptedException:
-                # As a last resort, use JavaScript to force the click
-                self.driver.execute_script("arguments[0].click();", element)
-
-        time.sleep(3)
-
-        m_name = self.pi.middleNameField_not_required()
-        short_name = self.pi.shortNameField_not_required()
-        maid_name = self.pi.maidenNameFiels_not_required()
-
-        m_name_val_af = m_name.get_attribute("value")
-        short_name_val_af = short_name.get_attribute("value")
-        maid_name_val_af = maid_name.get_attribute("value")
-
-        print(m_name_val_af, short_name_val_af, maid_name_val_af)
-
-        if m_name_val != m_name_val_af:
-            assert True
-        else:
-            self.driver.save_screenshot(
-                screenShort.screen_short() + "Edit_CI_test_edit_personal_info_middlename.png")
-            assert False
-
-        if short_name_val != short_name_val_af:
-            assert True
-        else:
-            self.driver.save_screenshot(
-                screenShort.screen_short() + "Edit_CI_test_edit_personal_info_shortname.png")
-            assert False
-
-        if maid_name_val != maid_name_val_af:
-            assert True
-        else:
-            self.driver.save_screenshot(
-                screenShort.screen_short() + "Edit_CI_test_edit_personal_info_maidname.png")
-            assert False
-
-        self.driver.quit()
-
-
-    def test_edit_personal_validating_preview(self,setup):
-
-        self.driver = setup
-        self.driver.get(self.url)
-        self.driver.maximize_window()
-        self.driver.implicitly_wait(30)
-
-        # Initialize page objects
-        self.lp = LoginPage(self.driver)
-        self.nav = Navigation_Page(self.driver)
-
-        # Login
-        self.lp.setUsername(self.uname)
-        self.lp.setPassword(self.upass)
-        self.lp.clickLogin()
-
-        # Navigate to customer registration
-        self.nav.click_navbar()
-        self.nav.click_customer_registration()
-        #
-        ret_url = self.goingto_editmode(setup)
-        print("Returned URL:", ret_url)
-
-        self.driver.get(f"{ret_url}")
-        time.sleep(2)
-
-        self.pi = Personal_Information_Edit(self.driver)
-        self.ci = Contact_Information_Edit(self.driver)
-        self.id = Id_details_Edit(self.driver)
-        self.be = Add_Beneficiaries_Edit(self.driver)
-        self.de = Add_Delegates_Edit(self.driver)
-        self.oi = Other_Information_Edit(self.driver)
-        self.ud = Upload_documents_Edit(self.driver)
-        self.fp = Final_Preview_Edit(self.driver)
-
-        title_drp = Select(self.pi.titleDropdown_required())
-        f_name = self.pi.firstNameField_required()
-        m_name = self.pi.middleNameField_not_required()
-        l_name = self.pi.lastNameField_required()
-        arb_name = self.pi.arabicNameFiels_required()
-        short_name = self.pi.shortNameField_not_required()
-        maid_name = self.pi.maidenNameFiels_not_required()
-        dob = self.pi.dobpicker_required()
-        cob_drp = Select(self.pi.cobDropdown_required())
-        nation_drp = Select(self.pi.nationality())
-        citizen_drp = Select(self.pi.citizenship())
-        cor_drp = Select(self.pi.countryofresidence())
-        resi_status_drp = Select(self.pi.residentialstatus())
-        gen_drp = Select(self.pi.gender())
-        marr_stsus_drp = Select(self.pi.maritalstatus())
-        pro_sts_drp = Select(self.pi.profession())
-
-        title_drp_val = title_drp.first_selected_option.text
-        f_name_val = f_name.get_attribute("value")
-        m_name_val = m_name.get_attribute("value")
-        l_name_val = l_name.get_attribute("value")
-        arb_name_val = arb_name.get_attribute("value")
-        short_name_val = short_name.get_attribute("value")
-        maid_name_val = maid_name.get_attribute("value")
-        dob_val = dob.get_attribute("value")
-        cob_drp_val = cob_drp.first_selected_option.text
-        nation_drp_val = nation_drp.first_selected_option.text
-        citizen_drp_val = citizen_drp.first_selected_option.text
-        cor_drp_val = cor_drp.first_selected_option.text
-        resi_status_drp_val = resi_status_drp.first_selected_option.text
-        gen_drp_val = gen_drp.first_selected_option.text
-        marr_stsus_drp_val = marr_stsus_drp.first_selected_option.text
-        pro_sts_drp_val = pro_sts_drp.first_selected_option.text
-
-        self.pi.btnnext()
-
-        self.ci.click_preview()
-
-        if title_drp_val == self.ci.title():
-            assert True
-        else:
-            self.driver.save_screenshot(
-                screenShort.screen_short() + "Edit_CI_test_edit_personal_validating_preview_title_drp_val.png")
-            assert False
-
-        if f_name_val == self.ci.firstname():
-            assert True
-        else:
-            self.driver.save_screenshot(
-                screenShort.screen_short() + "Edit_CI_test_edit_personal_validating_preview_f_name_val.png")
-            assert False
-
-        if m_name_val == self.ci.middlename():
-            assert True
-        else:
-            self.driver.save_screenshot(
-                screenShort.screen_short() + "Edit_CI_test_edit_personal_validating_preview_m_name_val.png")
-            assert False
-
-        if l_name_val == self.ci.lastname():
-            assert True
-        else:
-            self.driver.save_screenshot(
-                screenShort.screen_short() + "Edit_CI_test_edit_personal_validating_preview_l_name_val.png")
-            assert False
-
-        if arb_name_val == self.ci.arabicname():
-            assert True
-        else:
-            self.driver.save_screenshot(
-                screenShort.screen_short() + "Edit_CI_test_edit_personal_validating_preview_arb_name_val.png")
-            assert False
-
-        if short_name_val == self.ci.shortname():
-            assert True
-        else:
-            self.driver.save_screenshot(
-                screenShort.screen_short() + "Edit_CI_test_edit_personal_validating_preview_short_name_val.png")
-            assert False
-
-        if maid_name_val == self.ci.maidenname():
-            assert True
-        else:
-            self.driver.save_screenshot(
-                screenShort.screen_short() + "Edit_CI_test_edit_personal_validating_preview_maid_name_val.png")
-            assert False
-
-        if dob_val == self.ci.dob():
-            assert True
-        else:
-            self.driver.save_screenshot(
-                screenShort.screen_short() + "Edit_CI_test_edit_personal_validating_preview_dob_val.png")
-            assert False
-
-        if cob_drp_val == self.ci.cob():
-            assert True
-        else:
-            self.driver.save_screenshot(
-                screenShort.screen_short() + "Edit_CI_test_edit_personal_validating_preview_cob_drp_val.png")
-            assert False
-
-        if nation_drp_val == self.ci.natinality():
-            assert True
-        else:
-            self.driver.save_screenshot(
-                screenShort.screen_short() + "Edit_CI_test_edit_personal_validating_preview_nation_drp_val.png")
-            assert False
-
-        if citizen_drp_val == self.ci.citizen():
-            assert True
-        else:
-            self.driver.save_screenshot(
-                screenShort.screen_short() + "Edit_CI_test_edit_personal_validating_preview_citizen_drp_val.png")
-            assert False
-
-        if cor_drp_val == self.ci.cor():
-            assert True
-        else:
-            self.driver.save_screenshot(
-                screenShort.screen_short() + "Edit_CI_test_edit_personal_validating_preview_cor_drp_val.png")
-            assert False
-
-        if resi_status_drp_val == self.ci.res():
-            assert True
-        else:
-            self.driver.save_screenshot(
-                screenShort.screen_short() + "Edit_CI_test_edit_personal_validating_preview_resi_status_drp_val.png")
-            assert False
-
-        if gen_drp_val == self.ci.gender():
-            assert True
-        else:
-            self.driver.save_screenshot(
-                screenShort.screen_short() + "Edit_CI_test_edit_personal_validating_preview_gen_drp_val.png")
-            assert False
-
-        if marr_stsus_drp_val == self.ci.marristatus():
-            assert True
-        else:
-            self.driver.save_screenshot(
-                screenShort.screen_short() + "Edit_CI_test_edit_personal_validating_preview_marr_stsus_drp_val.png")
-            assert False
-
-        if pro_sts_drp_val == self.ci.profesion():
-            assert True
-        else:
-            self.driver.save_screenshot(
-                screenShort.screen_short() + "Edit_CI_test_edit_personal_validating_preview_pro_sts_drp_val.png")
-            assert False
-
-        self.driver.quit()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        print(self.return_url)
