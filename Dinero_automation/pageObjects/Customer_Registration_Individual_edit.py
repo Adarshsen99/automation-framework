@@ -220,6 +220,24 @@ class Contact_Information_Edit():
         return self.driver.find_element(By.ID, self.field_email)
 
     # Non
+    def non_field_fh_num_required_val(self):
+        return self.driver.find_element(By.ID, self.non_field_flat_housenumber_id)
+
+    def non_field_hb_name_required_val(self):
+        return self.driver.find_element(By.ID, self.non_field_house_build_num_id)
+
+    def non_field_street_required_val(self):
+        return self.driver.find_element(By.ID, self.non_field_street_id)
+
+    def non_field_city_dist_required_value(self):
+        return self.driver.find_element(By.ID, self.non_field_city_dist_id)
+
+    def non_field_emin_dist_val(self):
+        return self.driver.find_element(By.ID, self.non_field_emirate_state_id)
+
+    def non_drp_country_required(self):
+        return self.driver.find_element(By.ID,self.non_drp_country_id)
+
     def non_residen_visa_type_drp(self):
         return self.driver.find_element(By.ID, self.non_drp_visa_type_id)
 
@@ -509,6 +527,24 @@ class Id_details_Edit():
         return self.driver.find_element(By.XPATH, self.pre_remar_non_xpath).text
 
 class Add_Beneficiaries_Edit():
+    # preview
+    passport_num = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[1]/span[2]"
+    place_of_passport_issue = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[2]/span[2]"
+    passport_issue_date = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[3]/span[2]"
+    passport_expaire_date = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[4]/span[2]"
+    id_type = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[3]/div[2]/div[5]/span[2]"
+    id_num = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[6]/span[2]"
+    place_of_id_issue = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[7]/span[2]"
+    id_issue_date = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[8]/span[2]"
+    id_expaire_date = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[9]/span[2]"
+
+    nationality = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[12]/span[2]"
+    place_of_passport_issue_dual = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[13]/span[2]"
+    passport_num_dual = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[14]/span[2]"
+    passport_issue_date_dual = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[15]/span[2]"
+    passport_expaire_date_dual = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[16]/span[2]"
+
+
     def __init__(self, driver):
         self.driver = driver
 
@@ -533,6 +569,52 @@ class Add_Beneficiaries_Edit():
     def btn_cancel_conf(self):
         return self.driver.find_element(By.XPATH, "//button[normalize-space()='Yes']")
 
+    # Preview
+
+    def click_id_details_drp(self):
+        self.driver.find_element(By.XPATH, "//span[normalize-space()='ID Details']").click()
+
+    def passport_num_pre(self):
+        return self.driver.find_element(By.XPATH, self.passport_num).text
+
+    def place_of_passport_issue_pre(self):
+        return self.driver.find_element(By.XPATH, self.place_of_passport_issue).text
+
+    def passport_issue_date_pre(self):
+        return self.driver.find_element(By.XPATH, self.passport_issue_date).text
+
+    def passport_expaire_date_pre(self):
+        return self.driver.find_element(By.XPATH, self.passport_expaire_date).text
+
+    def id_type_pre(self):
+        return self.driver.find_element(By.XPATH, self.id_type).text
+
+    def id_num_pre(self):
+        return self.driver.find_element(By.XPATH, self.id_num).text
+
+    def place_of_id_issue_pre(self):
+        return self.driver.find_element(By.XPATH, self.place_of_id_issue).text
+
+    def id_issue_date_pre(self):
+        return self.driver.find_element(By.XPATH, self.id_issue_date).text
+
+    def id_expaire_date_pre(self):
+        return self.driver.find_element(By.XPATH, self.id_expaire_date).text
+
+    def nationality_pre(self):
+        return self.driver.find_element(By.XPATH, self.nationality).text
+
+    def place_of_passport_issue_dual_pre(self):
+        return self.driver.find_element(By.XPATH, self.place_of_passport_issue_dual).text
+
+    def passport_num_dual_pre(self):
+        return self.driver.find_element(By.XPATH, self.passport_num_dual).text
+
+    def passport_issue_date_dual_pre(self):
+        return self.driver.find_element(By.XPATH, self.passport_issue_date_dual).text
+
+    def passport_expaire_date_dual_pre(self):
+        return self.driver.find_element(By.XPATH, self.passport_expaire_date_dual).text
 
 class Add_Delegates_Edit():
     def __init__(self, driver):
@@ -570,24 +652,6 @@ class Other_Information_Edit():
 
     id_details_drp = "//span[normalize-space()='ID Details']"
 
-    # preview
-    passport_num = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[1]/span[2]"
-    place_of_passport_issue = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[2]/span[2]"
-    passport_issue_date = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[3]/span[2]"
-    passport_expaire_date = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[4]/span[2]"
-    id_type = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[5]/span[2]"
-    id_num = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[6]/span[2]"
-    place_of_id_issue = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[7]/span[2]"
-    id_issue_date = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[8]/span[2]"
-    id_expaire_date = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[9]/span[2]"
-
-    nationality = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[12]/span[2]"
-    place_of_passport_issue_dual = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[13]/span[2]"
-    passport_num_dual = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[14]/span[2]"
-    passport_issue_date_dual = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[15]/span[2]"
-    passport_expaire_date_dual = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[3]/div/div[2]/div/div[3]/div[2]/div[16]/span[2]"
-
-    #
     drp_org_category_id = "Organization Category"
     designation_id = "Designation"
     employer_id = "Employer"
@@ -878,48 +942,7 @@ class Other_Information_Edit():
     def click_id_details_drp(self):
         self.driver.find_element(By.XPATH, self.id_details_drp).click()
 
-    def passport_num_pre(self):
-        return self.driver.find_element(By.XPATH, self.passport_num).text
-
-    def place_of_passport_issue_pre(self):
-        return self.driver.find_element(By.XPATH, self.place_of_passport_issue).text
-
-    def passport_issue_date_pre(self):
-        return self.driver.find_element(By.XPATH, self.passport_issue_date).text
-
-    def passport_expaire_date_pre(self):
-        return self.driver.find_element(By.XPATH, self.passport_expaire_date).text
-
-    def id_type_pre(self):
-        return self.driver.find_element(By.XPATH, self.id_type).text
-
-    def id_num_pre(self):
-        return self.driver.find_element(By.XPATH, self.id_num).text
-
-    def place_of_id_issue_pre(self):
-        return self.driver.find_element(By.XPATH, self.place_of_id_issue).text
-
-    def id_issue_date_pre(self):
-        return self.driver.find_element(By.XPATH, self.id_issue_date).text
-
-    def id_expaire_date_pre(self):
-        return self.driver.find_element(By.XPATH, self.id_expaire_date).text
-
-    def nationality_pre(self):
-        return self.driver.find_element(By.XPATH, self.nationality).text
-
-    def place_of_passport_issue_dual_pre(self):
-        return self.driver.find_element(By.XPATH, self.place_of_passport_issue_dual).text
-
-    def passport_num_dual_pre(self):
-        return self.driver.find_element(By.XPATH, self.passport_num_dual).text
-
-    def passport_issue_date_dual_pre(self):
-        return self.driver.find_element(By.XPATH, self.passport_issue_date_dual).text
-
-    def passport_expaire_date_dual_pre(self):
-        return self.driver.find_element(By.XPATH, self.passport_expaire_date_dual).text
-
+    # preview
     def btn_back(self):
         attempts = 0
         while attempts < 3:
@@ -1231,3 +1254,9 @@ class Final_Preview_Edit():
 
     def btn_save(self):
         return self.driver.find_element(By.XPATH, self.save)
+
+    def editmode_message(self):
+        try:
+            return self.driver.find_element(By.XPATH, "//*[@id='root']/div[1]/div/div/div").text
+        except:
+            None
