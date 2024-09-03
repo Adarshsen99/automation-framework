@@ -552,7 +552,16 @@ class Add_Beneficiaries_Edit():
         return self.driver.find_element(By.NAME,"Search")
 
     def click_beneficicaries_1(self):
-        return self.driver.find_element(By.XPATH, "(//div[@class='dropdown-search-item'])[1]")
+        return self.driver.find_element(By.XPATH, "//div[@class='dropdown-search-item']")
+
+    def remove_beneficiary(self):
+        return self.driver.find_element(By.XPATH,"//img[@alt='delete']")
+
+    def get_fastcash_location(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[1]/div/div[1]/div/div/div/h1")
+
+    def get_beneficiary_details(self):
+        return self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/div[1]/form/div[2]/div[2]/div/span[1]")
 
     def add_new_beneficiary(self):
         return self.driver.find_element(By.XPATH, "//div[contains(text(), 'Add New')]")
@@ -641,8 +650,20 @@ class Add_Delegates_Edit():
     def btn_cancel_conf(self):
         return self.driver.find_element(By.XPATH, "//button[normalize-space()='Yes']")
 
+    def getting_delegate_name(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/span[1]").text
 
+    def click_upload_doc(self):
+        return self.driver.find_element(By.XPATH,"(//div[@class='tableBody bordered'])[2]")
 
+    def send_doc(self):
+        return self.driver.find_element(By.XPATH,"(//div[@class='uploadActionsContainer p-5'])[1]")
+
+    def click_save(self):
+        self.driver.find_element(By.XPATH,"//button[normalize-space()='Save']").click()
+
+    def upload_doc_message(self):
+        return self.driver.find_element(By.XPATH,"//div[@class='errorMsgContainer']").text
 
 
 class Other_Information_Edit():
