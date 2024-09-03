@@ -12,7 +12,7 @@ from Dinero_automation.pageObjects.Navbar import Navigation_Page
 import time
 from selenium.common import ElementClickInterceptedException, TimeoutException, NoSuchElementException
 
-class Test_Contact_Info_Editmode:
+class Test_ID_Details_Editmode:
     url = ReadConfig.getApplicationURL()
     uname = ReadConfig.getApplicationUsername()
     upass = ReadConfig.getApplicationPWD()
