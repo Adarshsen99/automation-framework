@@ -683,7 +683,7 @@ class Test_Other_Info_Editmode:
     #     time.sleep(2)
     #     self.oi.select_customer().click()
     #
-    #     # TODO:Start
+
     #     comp_name = self.oi.company_name()
     #     comp_name.send_keys(self.generate_random_string(10))
     #
@@ -716,8 +716,7 @@ class Test_Other_Info_Editmode:
     #           anul_income_frq_val,
     #           business_val)
     #
-    #
-    #     # TODO:End
+
     #
     #     self.oi.btn_add().click()
     #     Select(self.oi.drp_application_priority()).select_by_index(2)
@@ -1267,7 +1266,7 @@ class Test_Other_Info_Editmode:
         # time.sleep(2)
         # self.oi.select_customer().click()
         #
-        # # TODO:Start
+
         # comp_name = self.oi.company_name()
         # comp_name.send_keys(self.generate_random_string(10))
         #
@@ -1300,8 +1299,7 @@ class Test_Other_Info_Editmode:
         #       anul_income_frq_val,
         #       business_val)
         #
-        #
-        # # TODO:End
+
         #
         # self.oi.btn_add().click()
         # Select(self.oi.drp_application_priority()).select_by_index(2)
