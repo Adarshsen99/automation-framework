@@ -111,29 +111,6 @@ class Test_Personal_Info_Editmode:
         Select(self.ci.drp_mobile_required()).select_by_index(69)
         self.ci.field_mobile_required(mob)
         self.ci.field_email_required(email)
-
-        fh_name = self.ci.field_fh_num_required_val()
-        hb_name = self.ci.field_hb_name_required_val()
-        street = self.ci.field_street_required_val()
-        city_dist = self.ci.field_city_dist_required_val()
-        emira_dist = self.ci.field_emin_dist_val()
-        country = Select(self.ci.drp_country_required())
-        # self.ci.drp_mobile_required()
-        mob = self.ci.field_mobile_required_val()
-        email = self.ci.field_email_required_val()
-
-        fh_name_val = fh_name.get_attribute('value')
-        hb_name_val = hb_name.get_attribute('value')
-        street_val = street.get_attribute('value')
-        city_dist_val = city_dist.get_attribute('value')
-        emira_dist_val = emira_dist.get_attribute('value')
-        country_val = country.first_selected_option.text
-        mob_val = mob.get_attribute('value')
-        email_val = email.get_attribute('value')
-
-        print(fh_name_val, hb_name_val, street_val, city_dist_val, emira_dist_val, country_val, mob_val, email_val)
-
-
         self.ci.btn_next()
 
         # ID Details
@@ -191,8 +168,10 @@ class Test_Personal_Info_Editmode:
         self.oi.checkbox_remittance_products().click()
         self.oi.checkbox_forex().click()
         self.oi.checkbox_utility().click()
-        Select(self.oi.drp_relationship_type()).select_by_index(2)
-        self.oi.search_customer().send_keys(self.generate_random_string(8))
+        Select(self.oi.drp_relationship_type()).select_by_index(1)
+        self.oi.search_customer().send_keys("karu")
+        time.sleep(2)
+        self.oi.select_customer().click()
         self.oi.company_name().send_keys(self.generate_random_string(10))
         self.oi.location().send_keys(self.generate_random_string(6))
         Select(self.oi.drp_percentage_holding()).select_by_index(12)
@@ -262,6 +241,8 @@ class Test_Personal_Info_Editmode:
             self.return_url = document['root']['baseURL']
             assert True
         else:
+            responce = []
+            # Setup the driver for each iteration
             self.driver = setup
             self.driver.get(self.url)
             self.driver.maximize_window()
@@ -339,33 +320,11 @@ class Test_Personal_Info_Editmode:
             self.ci.field_hb_name_required(hb_name)
             self.ci.field_street_required(stre)
             self.ci.field_city_dist_required(cit_dis)
-            time.sleep(2)
             self.ci.field_emin_dist(emi_sta)
             Select(self.ci.drp_country_required()).select_by_visible_text("India")
             Select(self.ci.drp_mobile_required()).select_by_index(69)
             self.ci.field_mobile_required(mob)
             self.ci.field_email_required(email)
-
-            fh_name = self.ci.field_fh_num_required_val()
-            hb_name = self.ci.field_hb_name_required_val()
-            street = self.ci.field_street_required_val()
-            city_dist = self.ci.field_city_dist_required_val()
-            emira_dist = self.ci.field_emin_dist_val()
-            country = Select(self.ci.drp_country_required())
-            # self.ci.drp_mobile_required()
-            mob = self.ci.field_mobile_required_val()
-            email = self.ci.field_email_required_val()
-
-            fh_name_val = fh_name.get_attribute('value')
-            hb_name_val = hb_name.get_attribute('value')
-            street_val = street.get_attribute('value')
-            city_dist_val = city_dist.get_attribute('value')
-            emira_dist_val = emira_dist.get_attribute('value')
-            country_val = country.first_selected_option.text
-            mob_val = mob.get_attribute('value')
-            email_val = email.get_attribute('value')
-
-            print(fh_name_val, hb_name_val, street_val, city_dist_val, emira_dist_val, country_val, mob_val, email_val)
             self.ci.btn_next()
 
             # ID Details
@@ -423,8 +382,10 @@ class Test_Personal_Info_Editmode:
             self.oi.checkbox_remittance_products().click()
             self.oi.checkbox_forex().click()
             self.oi.checkbox_utility().click()
-            Select(self.oi.drp_relationship_type()).select_by_index(2)
-            self.oi.search_customer().send_keys(self.generate_random_string(8))
+            Select(self.oi.drp_relationship_type()).select_by_index(1)
+            self.oi.search_customer().send_keys("karu")
+            time.sleep(2)
+            self.oi.select_customer().click()
             self.oi.company_name().send_keys(self.generate_random_string(10))
             self.oi.location().send_keys(self.generate_random_string(6))
             Select(self.oi.drp_percentage_holding()).select_by_index(12)

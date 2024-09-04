@@ -663,7 +663,20 @@ class Add_Delegates_Edit():
         self.driver.find_element(By.XPATH,"//button[normalize-space()='Save']").click()
 
     def upload_doc_message(self):
-        return self.driver.find_element(By.XPATH,"//div[@class='errorMsgContainer']").text
+        try:
+            return self.driver.find_element(By.XPATH,"//div[@class='errorMsgContainer']").text
+        except:
+            None
+
+    def click_sptime(self):
+        self.driver.find_element(By.XPATH,"(//input[@value='3'])").click()
+
+    def start_date(self):
+        return self.driver.find_element(By.NAME,"validity_start_date")
+
+    def end_date(self):
+        return self.driver.find_element(By.NAME,"validity_end_date")
+
 
 
 class Other_Information_Edit():
@@ -962,6 +975,9 @@ class Other_Information_Edit():
 
     def click_id_details_drp(self):
         self.driver.find_element(By.XPATH, self.id_details_drp).click()
+
+    def click_bod(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div[2]/form/div[1]/div[27]/div[1]/div/div[1]/span[1]")
 
     # preview
     def btn_back(self):
