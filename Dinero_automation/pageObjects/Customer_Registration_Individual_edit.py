@@ -977,7 +977,7 @@ class Other_Information_Edit():
         self.driver.find_element(By.XPATH, self.id_details_drp).click()
 
     def click_bod(self):
-        return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div[2]/form/div[1]/div[27]/div[1]/div/div[1]/span[1]")
+        return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div[2]/form/div[1]/div[26]/div[1]/div/div[1]/span[1]")
 
     # preview
     def btn_back(self):
