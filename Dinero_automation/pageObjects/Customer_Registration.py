@@ -205,8 +205,21 @@ class Persomal_Information():
     def dobpicker_required(self,dob):
         self.driver.find_element(By.XPATH,self.picker_dob_req_xpath).send_keys(dob)
 
+    def click_dob(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div[6]/div[1]/div/div[3]/img")
+
+    def dob_previous_button(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div[6]/div[1]/div/div[4]/div/div[1]/button[2]")
+
+    def dob_next_button(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div[6]/div[1]/div/div[4]/div/div[1]/button[4]")
+
+    def select_date(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div[6]/div[1]/div/div[4]/div/div[2]/div/div/div/div[2]/button[26]/abbr")
+
     def dobpicker_required_size(self):
         return self.driver.find_element(By.XPATH,self.picker_dob_req_xpath)
+
     def cobDropdown_required(self):
         return self.driver.find_element(By.ID,self.drp_country_of_birth_req_id)
 
