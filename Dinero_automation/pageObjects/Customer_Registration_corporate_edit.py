@@ -120,43 +120,61 @@ class Registration_Details_Edit:
 
     def drp_country_of_incorp(self):
         return self.driver.find_element(By.ID,self.drp_country_of_incorp_id)
+
     def drp_licence_nature(self):
         return self.driver.find_element(By.ID,self.drp_licence_nature_id)
+
     def drp_entity_type(self):
         return self.driver.find_element(By.ID,self.drp_entity_type_id)
+
     def drp_operation(self):
         return self.driver.find_element(By.ID,self.drp_operation_field)
+
     def  drp_trade_service_sector(self):
         return self.driver.find_element(By.ID,self.drp_trade_service_sector_id)
 
     def capital(self):
         return self.driver.find_element(By.ID,self.capital_id)
+
     def regisration_purpose(self):
         return self.driver.find_element(By.ID,self.regisration_purpose_id)
+
     def estimated_annaul_incode(self):
         return self.driver.find_element(By.ID,self.estimated_annaul_incode_id)
+
     def authorized_person(self):
         return self.driver.find_element(By.ID,self.authorized_person_id)
+
     def drp_designation(self):
         return self.driver.find_element(By.ID,self.drp_designation_id)
+
     def drp_nationality(self):
         return self.driver.find_element(By.ID,self.drp_nationality_id)
+
     def drp_id_type(self):
         return self.driver.find_element(By.ID,self.drp_id_type_id)
+
     def id_no(self):
         return self.driver.find_element(By.ID,self.id_no_id)
+
     def dpick_id_exp(self):
         return self.driver.find_element(By.NAME,self.dpick_id_exp_name)
+
     def cr_no(self):
         return self.driver.find_element(By.ID, self.cr_no_id)
+
     def comp_card_no(self):
         return self.driver.find_element(By.ID,self.comp_card_no_id)
+
     def dpick_cr_issue_date(self):
         return self.driver.find_element(By.NAME,self.dpick_cr_issue_date_name)
+
     def dpick_cr_exp_date(self):
         return self.driver.find_element(By.NAME,self.dpick_cr_exp_date_name)
+
     def dpick_cc_issue_date(self):
         return self.driver.find_element(By.NAME,self.dpick_cc_issue_date_name)
+
     def dpick_cc_expaire_date(self):
         return self.driver.find_element(By.NAME, self.dpick_cc_expaire_date_name)
 
@@ -176,6 +194,7 @@ class Registration_Details_Edit:
 
     def comp_info_pre(self):
         self.driver.find_element(By.XPATH, self.comp_info_pre_xpath).click()
+
     def company_pre(self):
         return self.driver.find_element(By.XPATH, self.company).text
 
@@ -196,8 +215,13 @@ class Registration_Details_Edit:
 
     def city_district_pre(self):
         return self.driver.find_element(By.XPATH, self.city_district).text
+
     def country_pre(self):
         return self.driver.find_element(By.XPATH, self.country).text
+
+    def mobile_pre(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div/div[2]/div[9]/span[2]").text
+
     def email_pre(self):
         return self.driver.find_element(By.XPATH, self.email).text
 
