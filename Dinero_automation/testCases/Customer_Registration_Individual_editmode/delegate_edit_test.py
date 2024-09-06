@@ -28,6 +28,7 @@ class Test_Delegate_Editmode:
 
     def test_delegate_edit_valiadting_by_same_name(self,setup):
         responce = []
+
         # Setup the driver for each iteration
         self.driver = setup
         self.driver.get(self.url)

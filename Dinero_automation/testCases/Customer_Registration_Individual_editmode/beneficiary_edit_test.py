@@ -1297,6 +1297,7 @@ class Test_Beneficiary_Editmode:
             self.ci.field_mobile_required(mob)
             self.ci.field_email_required(email)
 
+
             fh_name = self.ci.field_fh_num_required_val()
             hb_name = self.ci.field_hb_name_required_val()
             street = self.ci.field_street_required_val()

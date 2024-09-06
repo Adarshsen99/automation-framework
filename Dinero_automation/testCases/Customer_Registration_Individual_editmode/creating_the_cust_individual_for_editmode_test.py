@@ -28,6 +28,7 @@ class Test_Creating_customers_Editmode:
 
     def test_adding_customers_editmode(self,setup):
         responce = []
+
         # Setup the driver for each iteration
         self.driver = setup
         self.driver.get(self.url)

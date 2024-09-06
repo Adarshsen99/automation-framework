@@ -1972,7 +1972,6 @@ class Test_Contact_Info_Editmode:
         visa_num_non = self.generate_random_digits(5)
         remarks = self.generate_random_string(6)
 
-
         self.ci.non_field_fh_num_required(fh_number_non)
         self.ci.non_field_hb_name_required(hb_name_non)
         self.ci.non_field_street_required(stre_non)
