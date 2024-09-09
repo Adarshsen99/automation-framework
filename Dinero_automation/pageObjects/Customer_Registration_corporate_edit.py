@@ -130,7 +130,7 @@ class Registration_Details_Edit:
     def drp_operation(self):
         return self.driver.find_element(By.ID,self.drp_operation_field)
 
-    def  drp_trade_service_sector(self):
+    def drp_trade_service_sector(self):
         return self.driver.find_element(By.ID,self.drp_trade_service_sector_id)
 
     def capital(self):
@@ -288,6 +288,9 @@ class Beneficial_Owners_Details_Edit:
     def __init__(self,driver):
         self.driver = driver
 
+    def click_bod(self):
+        self.driver.find_element(By.XPATH,"(//div[@class='added-list-items-wrapper'])[1]").click()
+
     def message_info(self):
         return self.driver.find_element(By.XPATH,self.message)
 
@@ -302,7 +305,6 @@ class Beneficial_Owners_Details_Edit:
 
     def btn_clear(self):
         self.driver.find_element(By.XPATH, self.clear_btn).click()
-
 
     # BOD Details
     def title(self):
@@ -355,8 +357,6 @@ class Beneficial_Owners_Details_Edit:
 
     def id_expiry(self):
         return self.driver.find_element(By.NAME, self.dpick_id_expairy)
-
-
 
     # buttons
     def btn_back(self):
@@ -437,6 +437,41 @@ class Beneficial_Owners_Details_Edit:
         element = self.driver.find_element(By.XPATH, self.cc_exp_date)
         return element.get_attribute('title')
 
+
+class Beneficiaries:
+    def __init__(self, driver):
+        self.driver = driver
+
+    def search_bene(self):
+        return self.driver.find_element(By.NAME, "Search")
+
+    def select_beneficiary(self):
+        return self.driver.find_element(By.XPATH, "(//div[@class='dropdown-search-item'])[1]")
+
+    def btn_next(self):
+        return self.driver.find_element(By.XPATH, "//button[normalize-space()='Next']")
+
+    def click_beneficiaries(self):
+        return self.driver.find_element(By.XPATH, "(//div[@class='tableBody bordered pointer-cursor'])[1]")
+
+    def get_fastcash_locations(self):
+        elements = self.driver.find_elements(By.XPATH, "(//div[@class='reviewContainer m-2'])")
+        return [element.text for element in elements]  # Get the text from each element
+
+    def remove_beneficiaries(self):
+        self.driver.find_element(By.XPATH,"(//img[@alt='delete'])[1]").click()
+
+    def bene_name(self):
+        return self.driver.find_element(By.XPATH, "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/div[1]/form/div[2]/div[2]/div/span[1]").text
+
+class Delegate:
+    def __init__(self, driver):
+        self.driver = driver
+
+    def btn_next(self):
+        return self.driver.find_element(By.XPATH, "//button[normalize-space()='Next']")
+
+
 class Upload_Documents_Edit:
     passport_xpath = "//li[normalize-space()='Passport']"
     id_xpath = "//li[normalize-space()='ID']"
@@ -491,7 +526,7 @@ class Upload_Documents_Edit:
         self.driver.find_element(By.XPATH, self.next_btn).click()
 
     def btn_save(self):
-        self.driver.find_element(By.XPATH, self.save_btn).click()
+        return self.driver.find_element(By.XPATH, self.save_btn)
 
 
 
