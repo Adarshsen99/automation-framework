@@ -379,60 +379,79 @@ class Beneficial_Owners_Details_Edit:
     def cont_of_incorp_pre(self):
         element = self.driver.find_element(By.XPATH,self.cont_of_incorp)
         return element.get_attribute('title')
+
     def license_nature_pre(self):
         element = self.driver.find_element(By.XPATH, self.license_nature)
         return element.get_attribute('title')
+
     def entity_type_pre(self):
         element = self.driver.find_element(By.XPATH, self.entity_type)
         return element.get_attribute('title')
+
     def operation_field_pre(self):
         element = self.driver.find_element(By.XPATH, self.operation_field)
         return element.get_attribute('title')
+
     def trade_service_sector_pre(self):
         element = self.driver.find_element(By.XPATH, self.trade_service_sector)
         return element.get_attribute('title')
+
     def capital_pre(self):
         element = self.driver.find_element(By.XPATH, self.capital)
         return element.get_attribute('title')
+
     def regisration_purpose_pre(self):
         element = self.driver.find_element(By.XPATH, self.regisration_purpose)
         return element.get_attribute('title')
+
     def estimated_annaul_incode_pre(self):
         element = self.driver.find_element(By.XPATH, self.estimated_annaul_incode)
         return element.get_attribute('title')
+
     def authorized_person_pre(self):
         element = self.driver.find_element(By.XPATH, self.authorized_person)
         return element.get_attribute('title')
+
     def drp_designation_id_pre(self):
         element = self.driver.find_element(By.XPATH, self.drp_designation_id)
         return element.get_attribute('title')
+
     def nationality_pre(self):
         element = self.driver.find_element(By.XPATH, self.nationality)
         return element.get_attribute('title')
+
     def id_type_pre(self):
         element = self.driver.find_element(By.XPATH, self.id_type)
         return element.get_attribute('title')
+
     def id_no_pre(self):
         element = self.driver.find_element(By.XPATH, self.id_no)
         return element.get_attribute('title')
+
     def id_expiry_pre(self):
         element = self.driver.find_element(By.XPATH, self.id_expiry)
         return element.get_attribute('title')
+
     def comp_card_no_pre(self):
         element = self.driver.find_element(By.XPATH, self.comp_card_no)
         return element.get_attribute('title')
+
     def cr_no_pre(self):
         element = self.driver.find_element(By.XPATH, self.cr_no)
         return element.get_attribute('title')
+
     def cr_iss_date_pre(self):
         element = self.driver.find_element(By.XPATH, self.cr_iss_date)
         return element.get_attribute('title')
+
     def cr_exp_date_pre(self):
         element = self.driver.find_element(By.XPATH, self.cr_exp_date)
         return element.get_attribute('title')
+
     def cc_iss_date_pre(self):
         element = self.driver.find_element(By.XPATH, self.cc_iss_date)
         return element.get_attribute('title')
+
     def cc_exp_date_pre(self):
         element = self.driver.find_element(By.XPATH, self.cc_exp_date)
         return element.get_attribute('title')
@@ -468,9 +487,60 @@ class Delegate:
     def __init__(self, driver):
         self.driver = driver
 
+    def search_delegates(self):
+        return self.driver.find_element(By.NAME, "Customers")
+
+    def click_delegate(self):
+        return self.driver.find_element(By.XPATH, "(//div[@class='dropdown-search-item'])[1]")
+
+    def add_delegates(self):
+        return self.driver.find_element(By.XPATH, "//div[contains(text(), 'Add New')]")
+
     def btn_next(self):
         return self.driver.find_element(By.XPATH, "//button[normalize-space()='Next']")
 
+    def btn_back(self):
+        return self.driver.find_element(By.XPATH, "//button[normalize-space()='Back']")
+
+    def btn_cancel(self):
+        return self.driver.find_element(By.XPATH, "//button[normalize-space()='Cancel']")
+
+    def btn_cancel_conf(self):
+        return self.driver.find_element(By.XPATH, "//button[normalize-space()='Yes']")
+
+    def getting_delegate_name(self):
+        return self.driver.find_element(By.XPATH,
+                                        "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/span[1]").text
+
+    def click_upload_doc(self):
+        return self.driver.find_element(By.XPATH, "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/span[1]")
+
+    def send_doc(self):
+        return self.driver.find_element(By.XPATH, "(//div[@class='uploadActionsContainer p-5'])[1]")
+
+    def click_save(self):
+        self.driver.find_element(By.XPATH, "//button[normalize-space()='Save']").click()
+
+    def upload_doc_message(self):
+        try:
+            return self.driver.find_element(By.XPATH, "//div[@class='errorMsgContainer']").text
+        except:
+            None
+
+    def click_sptime(self):
+        self.driver.find_element(By.XPATH, "(//input[@value='3'])").click()
+
+    def start_date(self):
+        return self.driver.find_element(By.NAME, "validity_start_date")
+
+    def end_date(self):
+        return self.driver.find_element(By.NAME, "validity_end_date")
+
+    def click_single_time(self):
+        self.driver.find_element(By.XPATH, "//input[@value='2']").click()
+
+    def click_validity_exp(self):
+        self.driver.find_element(By.XPATH, "//input[@value='1']").click()
 
 class Upload_Documents_Edit:
     passport_xpath = "//li[normalize-space()='Passport']"
@@ -527,6 +597,12 @@ class Upload_Documents_Edit:
 
     def btn_save(self):
         return self.driver.find_element(By.XPATH, self.save_btn)
+
+    def edit_mode_error(self):
+        try:
+            return self.driver.find_element(By.XPATH,"(//div[@role='status'])[1]").text
+        except:
+            None
 
 
 
