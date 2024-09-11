@@ -515,6 +515,9 @@ class Delegate:
     def click_upload_doc(self):
         return self.driver.find_element(By.XPATH, "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/span[1]")
 
+    def remove_doc(self):
+        self.driver.find_element(By.XPATH,"(//img[@alt='delete'])[1]").click()
+
     def send_doc(self):
         return self.driver.find_element(By.XPATH, "(//div[@class='uploadActionsContainer p-5'])[1]")
 
