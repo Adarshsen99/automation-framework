@@ -1,4 +1,8 @@
+from selenium.common import StaleElementReferenceException
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 
 class Personal_Details_Editmode():
     drp_title_id = "Title"

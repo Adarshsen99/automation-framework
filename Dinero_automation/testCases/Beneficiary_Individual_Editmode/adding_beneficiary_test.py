@@ -7,11 +7,11 @@ from Dinero_automation.utilities.randomString import random_string_generator,gen
 from selenium.webdriver.support.ui import Select
 from Dinero_automation.utilities import screenShort
 
-class Test_Fastcash_Location:
+class Test_Add_Beneficiary:
     url = ReadConfig.getApplicationURL()
     uname = ReadConfig.getApplicationUsername()
     upass = ReadConfig.getApplicationPWD()
-    def test_compare_personal_information_drps_editmode(self,setup):
+    def test_adding_beneficiary(self,setup):
         responce = []
         # login setup
         self.driver = setup
@@ -151,4 +151,7 @@ class Test_Fastcash_Location:
             assert True
 
         print(self.return_url)
+
+
+
 
