@@ -349,7 +349,6 @@ class Test_Creating_customers_Req_Fields_Editmode:
             self.ci.field_mobile_required(mob)
             self.ci.field_email_required(email)
 
-
             fh_number_non = ""
             hb_name_non = ""
             stre_non = ""

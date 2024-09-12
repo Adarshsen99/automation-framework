@@ -28,6 +28,7 @@ class Test_Personal_Info_Editmode:
 
     def goingto_editmode(self,setup):
         responce = []
+
         # Setup the driver for each iteration
         self.driver = setup
         self.driver.get(self.url)

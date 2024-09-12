@@ -493,7 +493,7 @@ class Test_Fastcash_Location:
             assert False
         time.sleep(3)
 
-    def test_validating_payout_anywhere_preview(self, setup):
+    def test_validating_payout_anywhere_previeww(self, setup):
         # login setup
         self.driver = setup
         self.driver.get(self.url)

@@ -27,7 +27,7 @@ class Test_ID_Details_Editmode:
         return self.generate_random_string(5) + "@example.com"
 
     # def test_ID_edit_turn_off_dual_nation_save_double_time(self,setup):
-    #
+
     #     responce = []
     #     # Setup the driver for each iteration
     #     self.driver = setup

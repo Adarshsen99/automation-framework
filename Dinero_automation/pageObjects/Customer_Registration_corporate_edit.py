@@ -1,9 +1,6 @@
-import unittest
-
 from selenium.webdriver.common.by import By
 
-
-class Company_Information():
+class Company_Information_Edit:
     company_name_id = "Company Name"
     arabic_name_id = "Arabic Name"
     building_number_id = "Building Number"
@@ -77,8 +74,7 @@ class Company_Information():
         except:
             None
 
-
-class Registration_Details:
+class Registration_Details_Edit:
     cancel = "//button[normalize-space()='Cancel']"
     cancel_confirm = "//*[@id='root']/div[1]/div/div/div/div/div/button[2]"
     back = "//button[normalize-space()='Back']"
@@ -124,43 +120,61 @@ class Registration_Details:
 
     def drp_country_of_incorp(self):
         return self.driver.find_element(By.ID,self.drp_country_of_incorp_id)
+
     def drp_licence_nature(self):
         return self.driver.find_element(By.ID,self.drp_licence_nature_id)
+
     def drp_entity_type(self):
         return self.driver.find_element(By.ID,self.drp_entity_type_id)
+
     def drp_operation(self):
         return self.driver.find_element(By.ID,self.drp_operation_field)
-    def  drp_trade_service_sector(self):
+
+    def drp_trade_service_sector(self):
         return self.driver.find_element(By.ID,self.drp_trade_service_sector_id)
 
     def capital(self):
         return self.driver.find_element(By.ID,self.capital_id)
+
     def regisration_purpose(self):
         return self.driver.find_element(By.ID,self.regisration_purpose_id)
+
     def estimated_annaul_incode(self):
         return self.driver.find_element(By.ID,self.estimated_annaul_incode_id)
+
     def authorized_person(self):
         return self.driver.find_element(By.ID,self.authorized_person_id)
+
     def drp_designation(self):
         return self.driver.find_element(By.ID,self.drp_designation_id)
+
     def drp_nationality(self):
         return self.driver.find_element(By.ID,self.drp_nationality_id)
+
     def drp_id_type(self):
         return self.driver.find_element(By.ID,self.drp_id_type_id)
+
     def id_no(self):
         return self.driver.find_element(By.ID,self.id_no_id)
+
     def dpick_id_exp(self):
         return self.driver.find_element(By.NAME,self.dpick_id_exp_name)
+
     def cr_no(self):
         return self.driver.find_element(By.ID, self.cr_no_id)
+
     def comp_card_no(self):
         return self.driver.find_element(By.ID,self.comp_card_no_id)
+
     def dpick_cr_issue_date(self):
         return self.driver.find_element(By.NAME,self.dpick_cr_issue_date_name)
+
     def dpick_cr_exp_date(self):
         return self.driver.find_element(By.NAME,self.dpick_cr_exp_date_name)
+
     def dpick_cc_issue_date(self):
         return self.driver.find_element(By.NAME,self.dpick_cc_issue_date_name)
+
     def dpick_cc_expaire_date(self):
         return self.driver.find_element(By.NAME, self.dpick_cc_expaire_date_name)
 
@@ -180,6 +194,7 @@ class Registration_Details:
 
     def comp_info_pre(self):
         self.driver.find_element(By.XPATH, self.comp_info_pre_xpath).click()
+
     def company_pre(self):
         return self.driver.find_element(By.XPATH, self.company).text
 
@@ -200,13 +215,17 @@ class Registration_Details:
 
     def city_district_pre(self):
         return self.driver.find_element(By.XPATH, self.city_district).text
+
     def country_pre(self):
         return self.driver.find_element(By.XPATH, self.country).text
+
+    def mobile_pre(self):
+        return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div/div[2]/div[9]/span[2]").text
+
     def email_pre(self):
         return self.driver.find_element(By.XPATH, self.email).text
 
-
-class Beneficial_Owners_Details:
+class Beneficial_Owners_Details_Edit:
     drp_registration_pre_xpath = "//span[normalize-space()='Registration Details']"
 #     preview
     cont_of_incorp = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[1]/span[2]"
@@ -269,6 +288,9 @@ class Beneficial_Owners_Details:
     def __init__(self,driver):
         self.driver = driver
 
+    def click_bod(self):
+        self.driver.find_element(By.XPATH,"(//div[@class='added-list-items-wrapper'])[1]").click()
+
     def message_info(self):
         return self.driver.find_element(By.XPATH,self.message)
 
@@ -283,7 +305,6 @@ class Beneficial_Owners_Details:
 
     def btn_clear(self):
         self.driver.find_element(By.XPATH, self.clear_btn).click()
-
 
     # BOD Details
     def title(self):
@@ -337,8 +358,6 @@ class Beneficial_Owners_Details:
     def id_expiry(self):
         return self.driver.find_element(By.NAME, self.dpick_id_expairy)
 
-
-
     # buttons
     def btn_back(self):
         self.driver.find_element(By.XPATH, self.back).click()
@@ -360,65 +379,173 @@ class Beneficial_Owners_Details:
     def cont_of_incorp_pre(self):
         element = self.driver.find_element(By.XPATH,self.cont_of_incorp)
         return element.get_attribute('title')
+
     def license_nature_pre(self):
         element = self.driver.find_element(By.XPATH, self.license_nature)
         return element.get_attribute('title')
+
     def entity_type_pre(self):
         element = self.driver.find_element(By.XPATH, self.entity_type)
         return element.get_attribute('title')
+
     def operation_field_pre(self):
         element = self.driver.find_element(By.XPATH, self.operation_field)
         return element.get_attribute('title')
+
     def trade_service_sector_pre(self):
         element = self.driver.find_element(By.XPATH, self.trade_service_sector)
         return element.get_attribute('title')
+
     def capital_pre(self):
         element = self.driver.find_element(By.XPATH, self.capital)
         return element.get_attribute('title')
+
     def regisration_purpose_pre(self):
         element = self.driver.find_element(By.XPATH, self.regisration_purpose)
         return element.get_attribute('title')
+
     def estimated_annaul_incode_pre(self):
         element = self.driver.find_element(By.XPATH, self.estimated_annaul_incode)
         return element.get_attribute('title')
+
     def authorized_person_pre(self):
         element = self.driver.find_element(By.XPATH, self.authorized_person)
         return element.get_attribute('title')
+
     def drp_designation_id_pre(self):
         element = self.driver.find_element(By.XPATH, self.drp_designation_id)
         return element.get_attribute('title')
+
     def nationality_pre(self):
         element = self.driver.find_element(By.XPATH, self.nationality)
         return element.get_attribute('title')
+
     def id_type_pre(self):
         element = self.driver.find_element(By.XPATH, self.id_type)
         return element.get_attribute('title')
+
     def id_no_pre(self):
         element = self.driver.find_element(By.XPATH, self.id_no)
         return element.get_attribute('title')
+
     def id_expiry_pre(self):
         element = self.driver.find_element(By.XPATH, self.id_expiry)
         return element.get_attribute('title')
+
     def comp_card_no_pre(self):
         element = self.driver.find_element(By.XPATH, self.comp_card_no)
         return element.get_attribute('title')
+
     def cr_no_pre(self):
         element = self.driver.find_element(By.XPATH, self.cr_no)
         return element.get_attribute('title')
+
     def cr_iss_date_pre(self):
         element = self.driver.find_element(By.XPATH, self.cr_iss_date)
         return element.get_attribute('title')
+
     def cr_exp_date_pre(self):
         element = self.driver.find_element(By.XPATH, self.cr_exp_date)
         return element.get_attribute('title')
+
     def cc_iss_date_pre(self):
         element = self.driver.find_element(By.XPATH, self.cc_iss_date)
         return element.get_attribute('title')
+
     def cc_exp_date_pre(self):
         element = self.driver.find_element(By.XPATH, self.cc_exp_date)
         return element.get_attribute('title')
 
-class Upload_Documents:
+
+class Beneficiaries:
+    def __init__(self, driver):
+        self.driver = driver
+
+    def search_bene(self):
+        return self.driver.find_element(By.NAME, "Search")
+
+    def select_beneficiary(self):
+        return self.driver.find_element(By.XPATH, "(//div[@class='dropdown-search-item'])[1]")
+
+    def btn_next(self):
+        return self.driver.find_element(By.XPATH, "//button[normalize-space()='Next']")
+
+    def click_beneficiaries(self):
+        return self.driver.find_element(By.XPATH, "(//div[@class='tableBody bordered pointer-cursor'])[1]")
+
+    def get_fastcash_locations(self):
+        elements = self.driver.find_elements(By.XPATH, "(//div[@class='reviewContainer m-2'])")
+        return [element.text for element in elements]  # Get the text from each element
+
+    def remove_beneficiaries(self):
+        self.driver.find_element(By.XPATH,"(//img[@alt='delete'])[1]").click()
+
+    def bene_name(self):
+        return self.driver.find_element(By.XPATH, "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/div[1]/form/div[2]/div[2]/div/span[1]").text
+
+class Delegate:
+    def __init__(self, driver):
+        self.driver = driver
+
+    def search_delegates(self):
+        return self.driver.find_element(By.NAME, "Customers")
+
+    def click_delegate(self):
+        return self.driver.find_element(By.XPATH, "(//div[@class='dropdown-search-item'])[1]")
+
+    def add_delegates(self):
+        return self.driver.find_element(By.XPATH, "//div[contains(text(), 'Add New')]")
+
+    def btn_next(self):
+        return self.driver.find_element(By.XPATH, "//button[normalize-space()='Next']")
+
+    def btn_back(self):
+        return self.driver.find_element(By.XPATH, "//button[normalize-space()='Back']")
+
+    def btn_cancel(self):
+        return self.driver.find_element(By.XPATH, "//button[normalize-space()='Cancel']")
+
+    def btn_cancel_conf(self):
+        return self.driver.find_element(By.XPATH, "//button[normalize-space()='Yes']")
+
+    def getting_delegate_name(self):
+        return self.driver.find_element(By.XPATH,
+                                        "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/span[1]").text
+
+    def click_upload_doc(self):
+        return self.driver.find_element(By.XPATH, "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/div[2]/div[2]/span[1]")
+
+    def remove_doc(self):
+        self.driver.find_element(By.XPATH,"(//img[@alt='delete'])[1]").click()
+
+    def send_doc(self):
+        return self.driver.find_element(By.XPATH, "(//div[@class='uploadActionsContainer p-5'])[1]")
+
+    def click_save(self):
+        self.driver.find_element(By.XPATH, "//button[normalize-space()='Save']").click()
+
+    def upload_doc_message(self):
+        try:
+            return self.driver.find_element(By.XPATH, "//div[@class='errorMsgContainer']").text
+        except:
+            None
+
+    def click_sptime(self):
+        self.driver.find_element(By.XPATH, "(//input[@value='3'])").click()
+
+    def start_date(self):
+        return self.driver.find_element(By.NAME, "validity_start_date")
+
+    def end_date(self):
+        return self.driver.find_element(By.NAME, "validity_end_date")
+
+    def click_single_time(self):
+        self.driver.find_element(By.XPATH, "//input[@value='2']").click()
+
+    def click_validity_exp(self):
+        self.driver.find_element(By.XPATH, "//input[@value='1']").click()
+
+class Upload_Documents_Edit:
     passport_xpath = "//li[normalize-space()='Passport']"
     id_xpath = "//li[normalize-space()='ID']"
     visa_xpath = "//li[normalize-space()='Visa']"
@@ -472,11 +599,11 @@ class Upload_Documents:
         self.driver.find_element(By.XPATH, self.next_btn).click()
 
     def btn_save(self):
-        self.driver.find_element(By.XPATH, self.save_btn).click()
+        return self.driver.find_element(By.XPATH, self.save_btn)
 
-    def editmode_message(self):
+    def edit_mode_error(self):
         try:
-            return self.driver.find_element(By.XPATH, "//*[@id='root']/div[1]/div/div/div").text
+            return self.driver.find_element(By.XPATH,"(//div[@role='status'])[1]").text
         except:
             None
 
