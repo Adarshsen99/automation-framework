@@ -3,7 +3,7 @@ from Dinero_automation.utilities.readProperties import ReadConfig
 from Dinero_automation.pageObjects.LoginPage import LoginPage
 from Dinero_automation.pageObjects.Navbar import Navigation_Page
 from Dinero_automation.pageObjects.Beneficiary_Corporate import Company_Information,Contact_Information,Bank_Information,Final_Preview
-from Dinero_automation.utilities.randomString import random_string_generator_max_30,random_string_generator_max_50,random_string_generator_max_28,random_string_generator_max_48,random_string_generator_max_31,random_string_generator_max_51
+from Dinero_automation.utilities.randomString import random_string_generator,random_string_generator_new,random_string_generator_max_30,random_string_generator_max_50,random_string_generator_max_28,random_string_generator_max_48,random_string_generator_max_31,random_string_generator_max_51
 from selenium.webdriver.support.ui import Select
 from Dinero_automation.utilities import screenShort
 
@@ -42,8 +42,8 @@ class Test_Company_Information:
         drp_count_of_incorp = Select(self.ci.drp_country_of_incorporation())
         drp_relation = Select(self.ci.drp_relation())
 
-        comp_name.send_keys("Zooker Technology")
-        short_name.send_keys("Zooker")
+        comp_name.send_keys(random_string_generator())
+        short_name.send_keys(random_string_generator_new())
         drp_count_of_incorp.select_by_index(14)
         drp_relation.select_by_index(2)
         self.ci.btn_next()
@@ -237,7 +237,7 @@ class Test_Company_Information:
             assert False
         self.driver.quit()
 
-    def test_with_data_have_spaces(self, setup):
+    def test_with_data_have_spacess(self, setup):
         # login setup
         self.driver = setup
         self.driver.get(self.url)
@@ -536,7 +536,7 @@ class Test_Company_Information:
 
         self.driver.quit()
 
-    def test_with_validating_maxlen_lessthen(self, setup):
+    def test_with_validating_maxlen_greaterthen(self, setup):
         # login setup
         self.driver = setup
         self.driver.get(self.url)

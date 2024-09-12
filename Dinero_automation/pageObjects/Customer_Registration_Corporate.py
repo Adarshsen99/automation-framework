@@ -474,6 +474,12 @@ class Upload_Documents:
     def btn_save(self):
         self.driver.find_element(By.XPATH, self.save_btn).click()
 
+    def editmode_message(self):
+        try:
+            return self.driver.find_element(By.XPATH, "//*[@id='root']/div[1]/div/div/div").text
+        except:
+            None
+
 
 
 

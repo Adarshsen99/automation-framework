@@ -3,7 +3,7 @@ from Dinero_automation.utilities.readProperties import ReadConfig
 from Dinero_automation.pageObjects.LoginPage import LoginPage
 from Dinero_automation.pageObjects.Navbar import Navigation_Page
 from Dinero_automation.pageObjects.Beneficiary_Individual import Personal_Details,Contact_Information,Bank_Information
-from Dinero_automation.utilities.randomString import random_string_generator_max_30,random_string_generator_max_50,random_string_generator_max_28,random_string_generator_max_48,random_string_generator_max_31,random_string_generator_max_51
+from Dinero_automation.utilities.randomString import random_string_generator_max_30,random_string_generator,random_string_generator_numbers_new,random_string_generator_max_50,random_string_generator_max_28,random_string_generator_max_48,random_string_generator_max_31,random_string_generator_max_51
 from selenium.webdriver.support.ui import Select
 from Dinero_automation.utilities import screenShort
 
@@ -46,15 +46,15 @@ class Test_Personal_Information:
         trans_type = Select(self.pi.drp_trans_type())
 
         title.select_by_index(1)
-        fname.send_keys("Nayana")
-        mname.send_keys("Benergy")
-        lname.send_keys("Pool")
-        sname.send_keys("Nayana Benergy Pool")
+        fname.send_keys(random_string_generator())
+        mname.send_keys(random_string_generator())
+        lname.send_keys(random_string_generator())
+        sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
         relation.select_by_index(3)
         id_type.select_by_index(2)
-        id_num.send_keys("123456789")
+        id_num.send_keys(random_string_generator_numbers_new())
         trans_type.select_by_index(3)
 
         self.pi.btn_next().click()
@@ -342,15 +342,15 @@ class Test_Personal_Information:
         # Contact Information
 
         title.select_by_index(1)
-        fname.send_keys("Nayana")
-        mname.send_keys("Benergy")
-        lname.send_keys("Pool")
-        sname.send_keys("Nayana Benergy Pool")
+        fname.send_keys(random_string_generator())
+        mname.send_keys(random_string_generator())
+        lname.send_keys(random_string_generator())
+        sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
         relation.select_by_index(3)
         id_type.select_by_index(2)
-        id_num.send_keys("123456789")
+        id_num.send_keys(random_string_generator_numbers_new())
         trans_type.select_by_index(3)
 
         title_val = title.first_selected_option.text
@@ -514,15 +514,15 @@ class Test_Personal_Information:
         trans_type = Select(self.pi.drp_trans_type())
 
         title.select_by_index(1)
-        fname.send_keys("Nayana Naya")
-        mname.send_keys("Benergy Ben")
-        lname.send_keys("Pool poo")
-        sname.send_keys("Nayana Benergy Pool")
+        fname.send_keys(random_string_generator())
+        mname.send_keys(random_string_generator())
+        lname.send_keys(random_string_generator())
+        sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
         relation.select_by_index(3)
         id_type.select_by_index(2)
-        id_num.send_keys("123456789 65")
+        id_num.send_keys(random_string_generator_numbers_new())
         trans_type.select_by_index(3)
 
         self.pi.btn_next().click()
@@ -574,15 +574,15 @@ class Test_Personal_Information:
         trans_type = Select(self.pi.drp_trans_type())
 
         title.select_by_index(1)
-        fname.send_keys("Nayana")
-        mname.send_keys("")
-        lname.send_keys("Benergy")
-        sname.send_keys("Nayana Benergy Pool")
+        fname.send_keys(random_string_generator())
+        mname.send_keys(random_string_generator())
+        lname.send_keys(random_string_generator())
+        sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
         relation.select_by_index(3)
-        id_type.select_by_visible_text("")
-        id_num.send_keys("")
+        id_type.select_by_index(2)
+        id_num.send_keys(random_string_generator_numbers_new())
         trans_type.select_by_index(3)
 
         self.pi.btn_next().click()
@@ -634,14 +634,14 @@ class Test_Personal_Information:
 
         title.select_by_visible_text("")
         fname.send_keys("")
-        mname.send_keys("middle")
+        mname.send_keys(random_string_generator())
         lname.send_keys("")
         sname.send_keys("")
         cob.select_by_index(2)
         nationality.select_by_visible_text("")
         relation.select_by_visible_text("")
         id_type.select_by_index(2)
-        id_num.send_keys("1245787")
+        id_num.send_keys(random_string_generator_numbers_new())
         trans_type.select_by_visible_text("")
 
         self.pi.btn_next().click()
@@ -693,15 +693,15 @@ class Test_Personal_Information:
         trans_type = Select(self.pi.drp_trans_type())
 
         title.select_by_index(1)
-        fname.send_keys("Nayana")
-        mname.send_keys("Benergy")
-        lname.send_keys("Pool")
-        sname.send_keys("Nayana Benergy Pool")
+        fname.send_keys(random_string_generator())
+        mname.send_keys(random_string_generator())
+        lname.send_keys(random_string_generator())
+        sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
         relation.select_by_index(3)
         id_type.select_by_index(2)
-        id_num.send_keys("123456789")
+        id_num.send_keys(random_string_generator_numbers_new())
         trans_type.select_by_index(3)
 
         title_val = title.first_selected_option.text
@@ -829,15 +829,15 @@ class Test_Personal_Information:
         trans_type = Select(self.pi.drp_trans_type())
 
         title.select_by_index(1)
-        fname.send_keys("Nayana")
-        mname.send_keys("")
-        lname.send_keys("Benergy")
-        sname.send_keys("Nayana Benergy Pool")
+        fname.send_keys(random_string_generator())
+        mname.send_keys(random_string_generator())
+        lname.send_keys(random_string_generator())
+        sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
         relation.select_by_index(3)
-        id_type.select_by_visible_text("")
-        id_num.send_keys("")
+        id_type.select_by_index(2)
+        id_num.send_keys(random_string_generator_numbers_new())
         trans_type.select_by_index(3)
 
         title_val = title.first_selected_option.text
