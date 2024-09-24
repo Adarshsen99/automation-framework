@@ -10,8 +10,8 @@ class Navigation_Page():
     corporate_beneficiary_link_text = "//span[normalize-space()='Corporate Beneficiary']"
     remittance_link_text = "//span[normalize-space()='Remittance']"
     # currency_trade_link_text = ""
-    # bank_link_text = ""
-    # service_provider_link_text = ""
+    bank_link_text = "//span[normalize-space()='Banks']"
+    service_provider_link_text = "/html/body/div/div[2]/div/div/div/div/div[1]/div[1]/div/div[9]"
 
     def __init__(self,driver):
         self.driver = driver
@@ -38,5 +38,14 @@ class Navigation_Page():
         self.driver.find_element(By.XPATH,self.corporate_beneficiary_link_text).click()
 
     def click_remitance(self):
-        self.driver.find_element(By.XPATH,self.remittance_link_text).click()
+        self.driver.find_element(By.XPATH, self.remittance_link_text).click()
+
+    def click_bank(self):
+        self.driver.find_element(By.XPATH, self.bank_link_text).click()
+
+    def click_service_provider(self):
+        self.driver.find_element(By.XPATH, self. service_provider_link_text).click()
+
+    def click_side_bar(self):
+        self.driver.find_element(By.XPATH, "//div[@class='sideBarRoutesContainer ']")
 

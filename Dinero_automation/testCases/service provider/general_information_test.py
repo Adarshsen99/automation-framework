@@ -8,12 +8,13 @@ from selenium.webdriver.support import expected_conditions as EC
 from Dinero_automation.utilities.readProperties import ReadConfig
 from Dinero_automation.pageObjects.LoginPage import LoginPage
 from Dinero_automation.pageObjects.Navbar import Navigation_Page
-from Dinero_automation.pageObjects.service_provider import General_Information,Agreement_Details
+from Dinero_automation.pageObjects.service_provider import General_Information, Agreement_Details
 from Dinero_automation.utilities.randomString import random_string_generator_max_30, random_string_generator_max_50, \
-     random_string_generator_max_28, random_string_generator_max_48, random_string_generator_max_31, \
-     random_string_generator_max_51, random_string_generator_numbers_18
+    random_string_generator_max_28, random_string_generator_max_48, random_string_generator_max_31, \
+    random_string_generator_max_51, random_string_generator_numbers_18
 from selenium.webdriver.support.ui import Select
 from Dinero_automation.utilities import screenShort
+
 
 class Test_General_Information:
     url = ReadConfig.getApplicationURL()
@@ -27,7 +28,7 @@ class Test_General_Information:
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
-        self.driver.implicitly_wait(8)
+        self.driver.implicitly_wait(20)
         self.lp = LoginPage(self.driver)
         self.lp.setUsername(self.uname)
         self.lp.setPassword(self.upass)
@@ -38,7 +39,7 @@ class Test_General_Information:
 
         self.nav = Navigation_Page(self.driver)
         self.nav.click_navbar()
-        time.sleep(2)
+        time.sleep(4)
 
         #click action for general information
 
@@ -197,10 +198,10 @@ class Test_General_Information:
 
         # Sending the data
 
-        drp_category.select_by_index(4)
+        drp_category.select_by_index(1)
         time.sleep(4)
-        other_cat = self.gi.catego_other_field()
-        other_cat.send_keys("!@#$%^&*()_+*/{}|]""-[:;',.?")
+        # other_cat = self.gi.catego_other_field()
+        # other_cat.send_keys("!@#$%^&*()_+*/{}|]""-[:;',.?")
         name.send_keys("!@#$%^&*()_+*/{}|]""-[:;',.?")
         arabic_name.send_keys("!@#$%^&*()_+*/{}|]""-[:;',.?")
         address_1.send_keys("!@#$%^&*()_+*/{}|]""-[:;',.?")
@@ -234,7 +235,7 @@ class Test_General_Information:
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
-        self.driver.implicitly_wait(8)
+        self.driver.implicitly_wait(20)
         self.lp = LoginPage(self.driver)
         self.lp.setUsername(self.uname)
         self.lp.setPassword(self.upass)
@@ -245,8 +246,11 @@ class Test_General_Information:
 
         self.nav = Navigation_Page(self.driver)
         self.nav.click_navbar()
-        time.sleep(2)
+        left_side_element = self.driver.find_element(By.XPATH,
+                                                     "//div[@class='sideBarRoutesContainer ']")  # Use appropriate locator for your page
 
+        # Scroll the left side element using JavaScript
+        self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollTop + 300;", left_side_element)
         # click action for general information
 
         self.nav.click_service_provider()
@@ -268,10 +272,10 @@ class Test_General_Information:
         email = self.gi.email()
         btn_next = self.gi.btn_nxt()
 
-        drp_category.select_by_index(4)
+        drp_category.select_by_index(1)
         time.sleep(2)
-        other_cat = self.gi.catego_other_field()
-        other_cat.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?a")
+        # other_cat = self.gi.catego_other_field()
+        # other_cat.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?a")
         name.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?a")
         arabic_name.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?a")
         address_1.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?a")
@@ -294,11 +298,8 @@ class Test_General_Information:
             assert False
         time.sleep(10)
 
-
         #test case failed , ( other category accept special characters like " ^_][` " )
         # test on last build - 3/09/2024 - Adarsh Sen Madhu
-
-
 
     def test_with_data_have_spaces(self, setup):
         # login setup
@@ -369,150 +370,150 @@ class Test_General_Information:
         # test case passed
         # tested on last built 3/09/2024 - Adarsh Sen Madhu
 
-    def test_with_validating_maxlen(self, setup,):
+    def test_with_validating_maxlen(self, setup, ):
 
-         # login setup
+        # login setup
 
-         self.driver = setup
-         self.driver.get(self.url)
-         self.driver.maximize_window()
-         self.driver.implicitly_wait(8)
-         self.lp = LoginPage(self.driver)
-         self.lp.setUsername(self.uname)
-         self.lp.setPassword(self.upass)
-         self.lp.clickLogin()
-         time.sleep(2)
+        self.driver = setup
+        self.driver.get(self.url)
+        self.driver.maximize_window()
+        self.driver.implicitly_wait(8)
+        self.lp = LoginPage(self.driver)
+        self.lp.setUsername(self.uname)
+        self.lp.setPassword(self.upass)
+        self.lp.clickLogin()
+        time.sleep(2)
 
-         # click action for nav bar arrow
+        # click action for nav bar arrow
 
-         self.nav = Navigation_Page(self.driver)
-         self.nav.click_navbar()
-         time.sleep(2)
+        self.nav = Navigation_Page(self.driver)
+        self.nav.click_navbar()
+        time.sleep(2)
 
-         # click action for general information
+        # click action for general information
 
-         self.nav.click_service_provider()
-         self.gi = General_Information(self.driver)
-         drp_category = Select(self.gi.drp_category())
-         name = self.gi.name()
-         arabic_name = self.gi.arabic_name()
-         address_1 = self.gi.adress_1()
-         address_2 = self.gi.adress_2()
-         address_3 = self.gi.adress_3()
-         postal_code = self.gi.postal_code()
-         city = self.gi.city()
-         drp_country = Select(self.gi.drp_country())
-         drp_count_of_Incorp = Select(self.gi.drp_country_of_incorporation())
-         drp_country_code = Select(self.gi.drp_country_code())
-         mob_no = self.gi.mobile_number()
-         email = self.gi.email()
-         btn_next = self.gi.btn_nxt()
+        self.nav.click_service_provider()
+        self.gi = General_Information(self.driver)
+        drp_category = Select(self.gi.drp_category())
+        name = self.gi.name()
+        arabic_name = self.gi.arabic_name()
+        address_1 = self.gi.adress_1()
+        address_2 = self.gi.adress_2()
+        address_3 = self.gi.adress_3()
+        postal_code = self.gi.postal_code()
+        city = self.gi.city()
+        drp_country = Select(self.gi.drp_country())
+        drp_count_of_Incorp = Select(self.gi.drp_country_of_incorporation())
+        drp_country_code = Select(self.gi.drp_country_code())
+        mob_no = self.gi.mobile_number()
+        email = self.gi.email()
+        btn_next = self.gi.btn_nxt()
 
-         # for getting maimum length
+        # for getting maimum length
 
-         name_len = int(name.get_attribute('maxlength'))
-         print("Name:",name_len)
-         arabic_name_len = int(arabic_name.get_attribute("maxlength"))
-         print("arabic_name:", arabic_name_len)
-         address_1_len = int(address_1.get_attribute("maxlength"))
-         print("address_1:", address_1_len)
-         address_2_len = int(address_2.get_attribute("maxlength"))
-         print("address_2:", address_2_len)
-         address_3_len = int(address_3.get_attribute("maxlength"))
-         print("address_2:", address_3_len)
-         postal_code_len =int(postal_code.get_attribute("maxlength"))
-         print("postal_code:", postal_code_len)
-         city_len = int(city.get_attribute("maxlength"))
-         print("city:", city_len)
-         mob_no_len = int(mob_no.get_attribute("maxlength"))
-         print("mob_no:", mob_no_len)
-         email_len = int(email.get_attribute("maxlength"))
-         print("email:",  email_len)
+        name_len = int(name.get_attribute('maxlength'))
+        print("Name:", name_len)
+        arabic_name_len = int(arabic_name.get_attribute("maxlength"))
+        print("arabic_name:", arabic_name_len)
+        address_1_len = int(address_1.get_attribute("maxlength"))
+        print("address_1:", address_1_len)
+        address_2_len = int(address_2.get_attribute("maxlength"))
+        print("address_2:", address_2_len)
+        address_3_len = int(address_3.get_attribute("maxlength"))
+        print("address_2:", address_3_len)
+        postal_code_len = int(postal_code.get_attribute("maxlength"))
+        print("postal_code:", postal_code_len)
+        city_len = int(city.get_attribute("maxlength"))
+        print("city:", city_len)
+        mob_no_len = int(mob_no.get_attribute("maxlength"))
+        print("mob_no:", mob_no_len)
+        email_len = int(email.get_attribute("maxlength"))
+        print("email:", email_len)
 
-         # assingning length and value
+        # assingning length and value
 
-         name_val = len(self.gi.name().get_attribute("value"))
-         arabic_name_val = len(self.gi.arabic_name().get_attribute("value"))
-         address_1_val = len(self.gi.adress_1().get_attribute("value"))
-         address_2_val = len(self.gi.adress_2().get_attribute("value"))
-         address_3_val = len(self.gi.adress_3().get_attribute("value"))
-         postal_code_val = len(self.gi.postal_code().get_attribute("value"))
-         city_val = len(self.gi.city().get_attribute("value"))
-         mob_no_val = len(self.gi.mobile_number().get_attribute("value"))
+        name_val = len(self.gi.name().get_attribute("value"))
+        arabic_name_val = len(self.gi.arabic_name().get_attribute("value"))
+        address_1_val = len(self.gi.adress_1().get_attribute("value"))
+        address_2_val = len(self.gi.adress_2().get_attribute("value"))
+        address_3_val = len(self.gi.adress_3().get_attribute("value"))
+        postal_code_val = len(self.gi.postal_code().get_attribute("value"))
+        city_val = len(self.gi.city().get_attribute("value"))
+        mob_no_val = len(self.gi.mobile_number().get_attribute("value"))
 
-         # assigning values
+        # assigning values
 
-         drp_category.select_by_index(2)
-         time.sleep(2)
-         name.send_keys(random_string_generator_max_50() + random_string_generator_max_31())
-         arabic_name.send_keys(random_string_generator_max_50() + random_string_generator_max_31())
-         address_1.send_keys(random_string_generator_max_50() + random_string_generator_max_31())
-         address_2.send_keys(random_string_generator_max_50() + random_string_generator_max_31())
-         address_3.send_keys(random_string_generator_max_50() + random_string_generator_max_31())
-         postal_code.send_keys("24548282 ")
-         city.send_keys(random_string_generator_max_50() + random_string_generator_max_31())
-         drp_country.select_by_index(3)
-         drp_count_of_Incorp.select_by_index(5)
-         drp_country_code.select_by_index(8)
-         mob_no.send_keys(random_string_generator_numbers_18())
-         email.send_keys("njuyg@gm.vom")
-         time.sleep(2)
-         btn_next.click()
-         time.sleep(2)
+        drp_category.select_by_index(2)
+        time.sleep(2)
+        name.send_keys(random_string_generator_max_50() + random_string_generator_max_31())
+        arabic_name.send_keys(random_string_generator_max_50() + random_string_generator_max_31())
+        address_1.send_keys(random_string_generator_max_50() + random_string_generator_max_31())
+        address_2.send_keys(random_string_generator_max_50() + random_string_generator_max_31())
+        address_3.send_keys(random_string_generator_max_50() + random_string_generator_max_31())
+        postal_code.send_keys("24548282 ")
+        city.send_keys(random_string_generator_max_50() + random_string_generator_max_31())
+        drp_country.select_by_index(3)
+        drp_count_of_Incorp.select_by_index(5)
+        drp_country_code.select_by_index(8)
+        mob_no.send_keys(random_string_generator_numbers_18())
+        email.send_keys("njuyg@gm.vom")
+        time.sleep(2)
+        btn_next.click()
+        time.sleep(2)
 
-         # assertion
+        # assertion
 
-         if name_val <= name_len:
-             assert True
-         else:
-             self.driver.save_screenshot(screenShort.screen_short() + "Gi_test_validity_max_length.png")
-             assert False
+        if name_val <= name_len:
+            assert True
+        else:
+            self.driver.save_screenshot(screenShort.screen_short() + "Gi_test_validity_max_length.png")
+            assert False
 
-         if arabic_name_val <= arabic_name_len:
-             assert True
-         else:
-             self.driver.save_screenshot(screenShort.screen_short() + "Gi_test_validity_max_length.png")
-             assert False
+        if arabic_name_val <= arabic_name_len:
+            assert True
+        else:
+            self.driver.save_screenshot(screenShort.screen_short() + "Gi_test_validity_max_length.png")
+            assert False
 
-         if address_1_val <= address_1_len:
-             assert  True
-         else:
-             self.driver.save_screenshot(screenShort.screen_short() + "Gi_test_validity_max_length.png")
-             assert False
-         if address_2_val <= address_2_len:
-            assert  True
-         else:
-             self.driver.save_screenshot(screenShort.screen_short() + "Gi_test_validity_max_length.png")
-             assert False
-         if address_3_val <= address_3_len:
-             assert True
-         else:
-             self.driver.save_screenshot(screenShort.screen_short() + "Gi_test_validity_max_length.png")
+        if address_1_val <= address_1_len:
+            assert True
+        else:
+            self.driver.save_screenshot(screenShort.screen_short() + "Gi_test_validity_max_length.png")
+            assert False
+        if address_2_val <= address_2_len:
+            assert True
+        else:
+            self.driver.save_screenshot(screenShort.screen_short() + "Gi_test_validity_max_length.png")
+            assert False
+        if address_3_val <= address_3_len:
+            assert True
+        else:
+            self.driver.save_screenshot(screenShort.screen_short() + "Gi_test_validity_max_length.png")
 
-         if postal_code_val <= postal_code_len:
-             assert True
-         else:
-             self.driver.save_screenshot(screenShort.screen_short() + "Gi_test_validity_max_length.png")
-             assert False
+        if postal_code_val <= postal_code_len:
+            assert True
+        else:
+            self.driver.save_screenshot(screenShort.screen_short() + "Gi_test_validity_max_length.png")
+            assert False
 
-         if city_val <= city_len:
-             assert True
-         else:
-             self.driver.save_screenshot(screenShort.screen_short() + "Gi_test_validity_max_length.png")
-             assert False
+        if city_val <= city_len:
+            assert True
+        else:
+            self.driver.save_screenshot(screenShort.screen_short() + "Gi_test_validity_max_length.png")
+            assert False
 
-         if mob_no_val <= mob_no_len:
-             assert True
-         else:
-             self.driver.save_screenshot(screenShort.screen_short() + "Gi_test_validity_max_length.png")
-             assert False
+        if mob_no_val <= mob_no_len:
+            assert True
+        else:
+            self.driver.save_screenshot(screenShort.screen_short() + "Gi_test_validity_max_length.png")
+            assert False
 
-             time.sleep(5)
+            time.sleep(5)
 
-           # test case passed
-           # tested on last build - 3/09/2024 - Adarsh Sen Madhu
+        # test case passed
+        # tested on last build - 3/09/2024 - Adarsh Sen Madhu
 
-    def test_validating_cancel(self, setup,):
+    def test_validating_cancel(self, setup, ):
         # login setup
 
         self.driver = setup
@@ -631,7 +632,6 @@ class Test_General_Information:
         self.gi.btn_cancel().click()  # Assuming there's a cancel button method in General_Information
         self.gi.btn_cancelconfirm().click()
 
-
         # Re-assign and check values after cancel
 
         name_af = len(self.gi.name().get_attribute("value"))
@@ -652,8 +652,6 @@ class Test_General_Information:
 
         # test case passed
         # last tested - 03/09/2024 - Adarsh Sen Madhu
-
-
 
     def test_mobile_num_req_remain(self, setup):
 
@@ -803,48 +801,3 @@ class Test_General_Information:
 
         # test case failed, status - open
         # test on last built-3/9/2024- Adarsh Sen Madhu
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

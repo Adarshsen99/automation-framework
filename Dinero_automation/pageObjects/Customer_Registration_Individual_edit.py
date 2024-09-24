@@ -551,8 +551,9 @@ class Add_Beneficiaries_Edit():
     def send_beneficiaries(self):
         return self.driver.find_element(By.NAME,"Search")
 
+
     def click_beneficicaries_1(self):
-        return self.driver.find_element(By.XPATH, "//div[@class='dropdown-search-item']")
+        return self.driver.find_element(By.XPATH, "//p[@class='dropdown-search-item-primary']")
 
     def remove_beneficiary(self):
         return self.driver.find_element(By.XPATH,"//img[@alt='delete']")

@@ -1,21 +1,31 @@
+import os
 import random
 import string
 
-from django.utils.translation.trans_real import npgettext
+import controller
+import pyautogui
+
 from selenium.webdriver.support.ui import WebDriverWait, Select
-from Dinero_automation.pageObjects.Customer_Registration import Persomal_Information, Contact_Information, Id_details, Other_Information,Upload_documents,Final_Preview
+from Dinero_automation.pageObjects.Customer_Registration import Persomal_Information, Contact_Information, Id_details, \
+    Other_Information, Upload_documents, Final_Preview
 from selenium.webdriver.common.keys import Keys
 from pynput.keyboard import Controller, Key
+
+from Dinero_automation.pageObjects.Customer_Registration_Individual_edit import Personal_Information_Edit, \
+    Contact_Information_Edit, Id_details_Edit, Add_Beneficiaries_Edit, Add_Delegates_Edit, Other_Information_Edit, \
+    Upload_documents_Edit, Final_Preview_Edit
 from Dinero_automation.utilities.readProperties import ReadConfig
 from Dinero_automation.pageObjects.LoginPage import LoginPage
 from Dinero_automation.pageObjects.Navbar import Navigation_Page
 import time
 from selenium.common import ElementClickInterceptedException, TimeoutException, NoSuchElementException
 
+
 class TestSendingDocs:
     url = ReadConfig.getApplicationURL()
     uname = ReadConfig.getApplicationUsername()
     upass = ReadConfig.getApplicationPWD()
+
     def generate_random_string(self, length=8):
         return ''.join(random.choices(string.ascii_letters, k=length))
 
@@ -25,9 +35,17 @@ class TestSendingDocs:
     def generate_random_email(self):
         return self.generate_random_string(5) + "@example.com"
 
-    def test_sending_docs(self,setup):
-        for i in range(1):
+    def test_sending_docs(self, setup):
+
+        for i in range(5):
+            first_names = ['Messi', 'Dimaria', 'Bruno', 'Pele', 'Mardona'
+                           ]
+            middle_names = ['Grace', 'Michael', 'Marie', 'Joseph', 'Rose']
+
+            last_names = ['Smith', 'Johnson', 'Williams', 'Brown', 'Jones']
+
             responce = []
+
             # Setup the driver for each iteration
             self.driver = setup
             self.driver.get(self.url)
@@ -54,9 +72,9 @@ class TestSendingDocs:
             self.nav.click_customer_registration()
 
             # Personal Information
-            fname = self.generate_random_string()
-            mname = self.generate_random_string(6)
-            lname = self.generate_random_string(8)
+            fname = random.choice(first_names)  # Random first name from the list
+            mname = random.choice(middle_names)  # Random middle name from the list
+            lname = random.choice(last_names)
             arbname = self.generate_random_string(6)
             shname = self.generate_random_string(6)
             mainame = self.generate_random_string(6)
@@ -75,9 +93,9 @@ class TestSendingDocs:
 
             # Dropdown selections
             Select(self.cur.cobDropdown_required()).select_by_index(2)
-            Select(self.cur.nationality()).select_by_index(2)
+            Select(self.cur.nationality()).select_by_visible_text("Indian")
             Select(self.cur.citizenship()).select_by_index(2)
-            Select(self.cur.countryofresidence()).select_by_index(2)
+            Select(self.cur.countryofresidence()).select_by_visible_text("India")
             Select(self.cur.residentialstatus()).select_by_index(1)
             Select(self.cur.gender()).select_by_index(2)
             Select(self.cur.maritalstatus()).select_by_index(2)
@@ -192,36 +210,30 @@ class TestSendingDocs:
             self.ud.passport()
             self.ud.front()
             time.sleep(5)
-            keyboard = Controller()
-            time.sleep(2)
-            self.driver.implicitly_wait(10)
-            keyboard.type("/home/karunakar/Pictures/Screenshots/Screenshot from 2024-08-19 11-43-05.png")
-            time.sleep(2)
-            keyboard.press(Key.enter)
-            keyboard.release(Key.enter)
-            time.sleep(2)
+            keyword = controller
+            base_dir = "C:\\Users\\adars\\OneDrive\\Pictures\\Screenshots"
+            file_name = "Screenshot 2024-07-22 162441.png"
+
+            # Create the full path
+            full_path = os.path.join(base_dir, file_name)
+
+            # Automate with pyautogui
+            pyautogui.click(x=50, y=50)
+            time.sleep(4)  # Wait for 4 seconds
+
+            # Write the file path
+            pyautogui.write(full_path)
+            time.sleep(2)  # Wait for 2 seconds
+
+            # Press enter (fix typo)
+            pyautogui.press("enter")
+            time.sleep(5)  # Wait for 5 seconds
+
             self.ud.btn_next()
-            time.sleep(2)
-
-            # Final Preview
-            # Scroll to the bottom of the page
-            self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-
-            # Locate the element before using it in WebDriverWait
-            element = self.fp.btn_save()
-            try:
-                WebDriverWait(self.driver, 10).until(lambda d: element.is_displayed() and element.is_enabled())
-                element.click()
-            except ElementClickInterceptedException:
-                # If another element is blocking the button, scroll it into view and retry
-                self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
-                try:
-                    element.click()
-                except ElementClickInterceptedException:
-                    # As a last resort, use JavaScript to force the click
-                    self.driver.execute_script("arguments[0].click();", element)
-
-            time.sleep(2)
+            time.sleep(4)
+            self.driver.execute_script("window.scrollBy(0, 300);")
+            time.sleep(2)  # Add delay to ensure the element is ready to click
+            self.fp.btn_save()
 
             document = self.driver.execute_cdp_cmd(cmd="DOM.getDocument", cmd_args={})
 
@@ -229,7 +241,47 @@ class TestSendingDocs:
             for res in responce:
                 print(res['root']['baseURL'])
 
+            if self.fp.editmode_message() == "You're in edit mode":
+                responce.append(document)
+                self.return_url = document['root']['baseURL']
+                assert True
 
+            #
+            time.sleep(2)
+            self.pi = Personal_Information_Edit(self.driver)
+            self.ci = Contact_Information_Edit(self.driver)
+            self.id = Id_details_Edit(self.driver)
+            self.be = Add_Beneficiaries_Edit(self.driver)
+            self.de = Add_Delegates_Edit(self.driver)
+            self.oi = Other_Information_Edit(self.driver)
+            self.ud = Upload_documents_Edit(self.driver)
+            self.fp = Final_Preview_Edit(self.driver)
+
+            self.pi.btnnext()
+            time.sleep(2)
+            self.ci.btn_next()
+            time.sleep(2)
+            self.id.btn_next()
+            time.sleep(2)
+
+            send_bene = self.be.send_beneficiaries()
+
+            send_bene.send_keys("Ronaldo")
+            time.sleep(2)
+            click_bene = self.be.click_beneficicaries_1()
+            click_bene.click()
+            time.sleep(2)
+            self.be.btn_next().click()
+            time.sleep(2)
+            self.de.btn_next().click()
+            time.sleep(2)
+            self.driver.execute_script("window.scrollBy(0, 300);")
+            self.oi.check_privacy_info().click()
+            self.oi.btn_next().click()
+            time.sleep(2)
+            self.ud.btn_next()
+            self.driver.execute_script("window.scrollBy(0, 300);")
+            time.sleep(2)  # Add delay to ensure the element is ready to click
+            self.fp.btn_save()
 
         self.driver.quit()
-

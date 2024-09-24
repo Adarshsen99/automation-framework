@@ -1,3 +1,3 @@
 def screen_short():
-    screenshort = '/home/karunakar/DineroQa/Dinero_automation/screenshots/'
+    screenshort = 'C:\\Users\\adars\\OneDrive\\Desktop\\Dinero\\DineroQa\\Dinero_automation\\screenshots'
     return screenshort

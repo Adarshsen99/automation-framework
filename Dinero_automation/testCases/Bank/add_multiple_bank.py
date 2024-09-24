@@ -55,7 +55,7 @@ class Test_add_bank:
             self.nav = Navigation_Page(self.driver)
             self.nav.click_navbar()
             # time.sleep(2)
-            self.nav.click_add_bank()
+            self.nav.click_bank()
             time.sleep(2)
 
             self.add_bank = Add_Bank(self.driver)

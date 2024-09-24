@@ -7,7 +7,7 @@ def random_string_generator(size = 7, chars = string.ascii_lowercase + string.di
 def random_string_generator_new(size = 7, chars = string.ascii_lowercase + string.digits):
     return ''.join(random.choice(chars) for x in range(size))
 
-def random_string_generator_numbers(size = 16, chars = string.digits):
+def random_string_generator_numbers(size = 30, chars = string.digits):
     return ''.join(random.choice(chars) for x in range(size))
 
 def random_string_generator_numbers_new(size = 16, chars = string.digits):

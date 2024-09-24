@@ -12,12 +12,12 @@ from Dinero_automation.utilities.randomString import random_string_generator_max
 from Dinero_automation.utilities.readProperties import ReadConfig
 
 
-class Test_Remittance_details:
+class Test_Beneficiary_details:
     url = ReadConfig.getApplicationURL()
     uname = ReadConfig.getApplicationUsername()
     upass = ReadConfig.getApplicationPWD()
 
-    def test_sending_valid_data(self, setup):
+    def test_sending_valid_data_banktransfer(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -67,39 +67,112 @@ class Test_Remittance_details:
         time.sleep(1)
         self.bd.btn_nexte()
         time.sleep(2)
-        self.rd = Remittance_details(self.driver)
 
-        transc_pin = self.rd.transaction_pin()
-        remi_pur = Select(self.rd.drp_remittance_purpose())
-        source_income = Select(self.rd.drp_source_of_income())
-        currecncy = Select(self.rd.drp_currency())
-        service_pro = Select(self.rd.drp_service_provider())
+        ## test passed
 
-        transc_pin.send_keys("76212")
-        remi_pur.select_by_index(2)
-        source_income.select_by_index(2)
-        currecncy.select_by_index(1)
-        service_pro.select_by_index(1)
+    def test_adding_without_data(self, setup):
+        self.driver = setup
+        self.driver.get(self.url)
+        self.driver.maximize_window()
+        self.driver.implicitly_wait(30)
+        self.lp = LoginPage(self.driver)
+        self.lp.setUsername(self.uname)
+        self.lp.setPassword(self.upass)
+        # time.sleep(2)
+        self.lp.clickLogin()
+        # time.sleep(2)
 
-        self.rd.click_cash()
-        self.rd.click_pos()
-        self.rd.click_cheque()
-        self.rd.click_online()
-        self.rd.click_digital_pay()
+        # click action for nav bar arrow
+        self.nav = Navigation_Page(self.driver)
+        self.nav.click_navbar()
+        # time.sleep(2)
 
-        lc = self.rd.lc_type_area()
-        lc.send_keys("1000")
-        rate = self.rd.rate_type_area()
-        rate.send_keys("20")  # Integer value from the list
-        tax = self.rd.tax_typing()
-        tax.send_keys(15)  # Random tax value between 5 and 15
+        # click action for customer details
+        self.nav.click_remitance()
+        self.cd = Customer_Details(self.driver)
+        self.drp_transn_typ = Select(self.cd.drp_transcation_type())
+        self.drp_transn_typ.select_by_index(1)
+        self.custom_name = self.cd.customer_search_bar()
+
+        self.custom_name.send_keys("Messi Marie Brown")
+        time.sleep(2)
+        self.cd.custom_select1()
+        self.cd.verify_btn()
+        time.sleep(2)
+        self.cd.btn_next()
+        time.sleep(2)
+
+        self.dd = Delegate_details(self.driver)
+        transcation_mode = Select(self.dd.drp_transaction_mode())
+        transcation_mode.select_by_index(1)
+
+        self.dd.btn_nexte()
+        time.sleep(2)
+
+        self.bd = Beneficiary_details(self.driver)
+
+        # benefiary_name = self.bd.beneficiary_search_bar()
+        # benefiary_name.send_keys("ronaldo")
+        # self.bd.beneficiary_selectbar()
+        # time.sleep(2)
+        # bank_selct = Select(self.bd.drp_bank())
+        # bank_selct.select_by_index(1)
+        # time.sleep(1)
+        self.bd.btn_nexte()
+        time.sleep(2)
+
+    def test_sending_invalid_data(self, setup):
+        self.driver = setup
+        self.driver.get(self.url)
+        self.driver.maximize_window()
+        self.driver.implicitly_wait(30)
+        self.lp = LoginPage(self.driver)
+        self.lp.setUsername(self.uname)
+        self.lp.setPassword(self.upass)
+        # time.sleep(2)
+        self.lp.clickLogin()
+        # time.sleep(2)
+
+        # click action for nav bar arrow
+        self.nav = Navigation_Page(self.driver)
+        self.nav.click_navbar()
+        # time.sleep(2)
+
+        # click action for customer details
+        self.nav.click_remitance()
+        self.cd = Customer_Details(self.driver)
+        self.drp_transn_typ = Select(self.cd.drp_transcation_type())
+        self.drp_transn_typ.select_by_index(1)
+        self.custom_name = self.cd.customer_search_bar()
+
+        self.custom_name.send_keys("Messi Marie Brown")
+        time.sleep(2)
+        self.cd.custom_select1()
+        self.cd.verify_btn()
+        time.sleep(2)
+        self.cd.btn_next()
+        time.sleep(2)
+
+        self.dd = Delegate_details(self.driver)
+        transcation_mode = Select(self.dd.drp_transaction_mode())
+        transcation_mode.select_by_index(1)
+
+        self.dd.btn_nexte()
+        time.sleep(2)
+
+        self.bd = Beneficiary_details(self.driver)
+
+        benefiary_name = self.bd.beneficiary_search_bar()
+        benefiary_name.send_keys("bdvashdvashdvsahd")
+        # self.bd.beneficiary_selectbar()
         time.sleep(3)
-        self.rd.btn_nxtee()
+        # bank_selct = Select(self.bd.drp_bank())
+        # bank_selct.select_by_index(1)
+        time.sleep(1)
+        self.bd.btn_nexte()
         time.sleep(2)
 
-        # test passed
-
-    def test_without_data(self, setup):
+    def test_validating_maxlength(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -141,6 +214,10 @@ class Test_Remittance_details:
         self.bd = Beneficiary_details(self.driver)
 
         benefiary_name = self.bd.beneficiary_search_bar()
+
+        benefiary_name_len = (benefiary_name.get_attribute("maxlength"))
+        print("benefiary_name_len:", benefiary_name_len)
+
         benefiary_name.send_keys("ronaldo")
         self.bd.beneficiary_selectbar()
         time.sleep(2)
@@ -149,121 +226,267 @@ class Test_Remittance_details:
         time.sleep(1)
         self.bd.btn_nexte()
         time.sleep(2)
-        self.rd = Remittance_details(self.driver)
 
-        transc_pin = self.rd.transaction_pin()
-        remi_pur = Select(self.rd.drp_remittance_purpose())
-        source_income = Select(self.rd.drp_source_of_income())
-        currecncy = Select(self.rd.drp_currency())
-        service_pro = Select(self.rd.drp_service_provider())
+    def test_sending_spl_char(self, setup):
+        self.driver = setup
+        self.driver.get(self.url)
+        self.driver.maximize_window()
+        self.driver.implicitly_wait(30)
+        self.lp = LoginPage(self.driver)
+        self.lp.setUsername(self.uname)
+        self.lp.setPassword(self.upass)
+        # time.sleep(2)
+        self.lp.clickLogin()
+        # time.sleep(2)
 
-        transc_pin.send_keys("76212")
-        remi_pur.select_by_index(2)
-        source_income.select_by_index(2)
-        currecncy.select_by_index(1)
-        service_pro.select_by_index(1)
+        # click action for nav bar arrow
+        self.nav = Navigation_Page(self.driver)
+        self.nav.click_navbar()
+        # time.sleep(2)
 
-        self.rd.click_cash()
-        self.rd.click_pos()
-        self.rd.click_cheque()
-        self.rd.click_online()
-        self.rd.click_digital_pay()
+        # click action for customer details
+        self.nav.click_remitance()
+        self.cd = Customer_Details(self.driver)
+        self.drp_transn_typ = Select(self.cd.drp_transcation_type())
+        self.drp_transn_typ.select_by_index(1)
+        self.custom_name = self.cd.customer_search_bar()
+
+        self.custom_name.send_keys("Messi Marie Brown")
+        time.sleep(2)
+        self.cd.custom_select1()
+        self.cd.verify_btn()
+        time.sleep(2)
+        self.cd.btn_next()
+        time.sleep(2)
+
+        self.dd = Delegate_details(self.driver)
+        transcation_mode = Select(self.dd.drp_transaction_mode())
+        transcation_mode.select_by_index(1)
+
+        self.dd.btn_nexte()
+        time.sleep(2)
+
+        self.bd = Beneficiary_details(self.driver)
+
+        benefiary_name = self.bd.beneficiary_search_bar()
+        benefiary_name.send_keys("!@#$%^&*()_+*/{}|]""-[:;',.?")
+        #
+        time.sleep(5)
+        # bank_selct = Select(self.bd.drp_bank())
+        # bank_selct.select_by_index(1)
+        time.sleep(1)
+        self.bd.btn_nexte()
+        time.sleep(2)
+
+    def test_bank_details_remain_after_coming_next(self, setup):
+        self.driver = setup
+        self.driver.get(self.url)
+        self.driver.maximize_window()
+        self.driver.implicitly_wait(30)
+
+        # Login
+        self.lp = LoginPage(self.driver)
+        self.lp.setUsername(self.uname)
+        self.lp.setPassword(self.upass)
+        self.lp.clickLogin()
+
+        # Navigate to Remittance
+        self.nav = Navigation_Page(self.driver)
+        self.nav.click_navbar()
+        self.nav.click_remitance()
+
+        # Customer Details
+        self.cd = Customer_Details(self.driver)
+        self.drp_transn_typ = Select(self.cd.drp_transcation_type())
+        self.drp_transn_typ.select_by_index(1)
+        self.custom_name = self.cd.customer_search_bar()
+        self.custom_name.send_keys("Messi Marie Brown")
+        time.sleep(2)
+        self.cd.custom_select1()
+        self.cd.verify_btn()
+        self.cd.btn_next()
+
+        # Delegate Details
+        self.dd = Delegate_details(self.driver)
+        transcation_mode = Select(self.dd.drp_transaction_mode())
+        transcation_mode.select_by_index(1)
+        self.dd.btn_nexte()
+
+        # Beneficiary Details
+        self.bd = Beneficiary_details(self.driver)
+        benefiary_name = self.bd.beneficiary_search_bar()
+        benefiary_name.send_keys("ronaldo")
         time.sleep(3)
-
-        # lc = self.rd.lc_type_area()
-        # lc.send_keys("1000")
-        # rate = self.rd.rate_type_area()
-        # rate.send_keys("20")  # Integer value from the list
-        # tax = self.rd.tax_typing()
-        # tax.send_keys(15)  # Random tax value between 5 and 15
-        # time.sleep(3)
-        self.rd.btn_nxtee()
+        self.bd.beneficiary_selectbar_ronaldo()
         time.sleep(2)
 
-        #test failed( it is going next without data)
+        # Select a bank
+        bank_select = Select(self.bd.drp_bank())
+        bank_select.select_by_index(1)
+        bank_name = bank_select.first_selected_option.text
+        print("Bank Name Selected:", bank_name)
 
-    def test_sending_spl_charc(self, setup):
-        self.driver = setup
-        self.driver.get(self.url)
-        self.driver.maximize_window()
-        self.driver.implicitly_wait(30)
-        self.lp = LoginPage(self.driver)
-        self.lp.setUsername(self.uname)
-        self.lp.setPassword(self.upass)
-        # time.sleep(2)
-        self.lp.clickLogin()
-        # time.sleep(2)
-
-        # click action for nav bar arrow
-        self.nav = Navigation_Page(self.driver)
-        self.nav.click_navbar()
-        # time.sleep(2)
-
-        # click action for customer details
-        self.nav.click_remitance()
-        self.cd = Customer_Details(self.driver)
-        self.drp_transn_typ = Select(self.cd.drp_transcation_type())
-        self.drp_transn_typ.select_by_index(1)
-        self.custom_name = self.cd.customer_search_bar()
-
-        self.custom_name.send_keys("Messi Marie Brown")
-        time.sleep(2)
-        self.cd.custom_select1()
-        self.cd.verify_btn()
-        time.sleep(2)
-        self.cd.btn_next()
-        time.sleep(2)
-
-        self.dd = Delegate_details(self.driver)
-        transcation_mode = Select(self.dd.drp_transaction_mode())
-        transcation_mode.select_by_index(1)
-
-        self.dd.btn_nexte()
-        time.sleep(2)
-
-        self.bd = Beneficiary_details(self.driver)
-
-        benefiary_name = self.bd.beneficiary_search_bar()
-        benefiary_name.send_keys("ronaldo")
-        self.bd.beneficiary_selectbar()
-        time.sleep(2)
-        bank_selct = Select(self.bd.drp_bank())
-        bank_selct.select_by_index(1)
-        time.sleep(1)
         self.bd.btn_nexte()
         time.sleep(2)
+
+        # Navigate back
         self.rd = Remittance_details(self.driver)
-
-        transc_pin = self.rd.transaction_pin()
-        remi_pur = Select(self.rd.drp_remittance_purpose())
-        source_income = Select(self.rd.drp_source_of_income())
-        currecncy = Select(self.rd.drp_currency())
-        service_pro = Select(self.rd.drp_service_provider())
-
-        transc_pin.send_keys("!@#$%^&*()_+*/{}|]""-[:;',.?")
-        remi_pur.select_by_index(2)
-        source_income.select_by_index(2)
-        currecncy.select_by_index(1)
-        service_pro.select_by_index(1)
-
-        self.rd.click_cash()
-        self.rd.click_pos()
-        self.rd.click_cheque()
-        self.rd.click_online()
-        self.rd.click_digital_pay()
-
-        lc = self.rd.lc_type_area()
-        lc.send_keys("!@#$%^&*()_+*/{}|]""-[:;',.?")
-        rate = self.rd.rate_type_area()
-        rate.send_keys("!@#$%^&*()_+*/{}|]""-[:;',.?")  # Integer value from the list
-        tax = self.rd.tax_typing()
-        tax.send_keys("!@#$%^&*()_+*/{}|]""-[:;',.?")
-        #self.rd.btn_nxtee()
+        self.rd.btn_bck()
         time.sleep(5)
 
-        # test failed
+        # Check if the bank selection is retained after going back
+        bank_select_after = Select(self.bd.drp_bank())
 
-    def test_sending_spl_char_num(self, setup):
+        try:
+            bank_name_after = bank_select_after.first_selected_option.text
+            print("Bank Name After Back:", bank_name_after)
+
+            # Assert that the bank name after coming back is the same as initially selected
+            assert bank_name == bank_name_after, f"Bank name mismatch! Expected '{bank_name}', but got '{bank_name_after}'"
+
+        except Exception as e:
+            # This will catch any issue if the dropdown is empty or no selection is found
+            print(f"Error: {str(e)}")
+            assert False, "Bank name is not retained after going back!"
+
+        # test failed
+        # bank name not remains
+
+    def test_adding_benenficiaries_with_fast_cash(self, setup):
+        self.driver = setup
+        self.driver.get(self.url)
+        self.driver.maximize_window()
+        self.driver.implicitly_wait(30)
+        self.lp = LoginPage(self.driver)
+        self.lp.setUsername(self.uname)
+        self.lp.setPassword(self.upass)
+        # time.sleep(2)
+        self.lp.clickLogin()
+        # time.sleep(2)
+
+        # click action for nav bar arrow
+        self.nav = Navigation_Page(self.driver)
+        self.nav.click_navbar()
+        # time.sleep(2)
+
+        # click action for customer details
+        self.nav.click_remitance()
+        self.cd = Customer_Details(self.driver)
+        self.drp_transn_typ = Select(self.cd.drp_transcation_type())
+        self.drp_transn_typ.select_by_index(2)
+        self.custom_name = self.cd.customer_search_bar()
+
+        self.custom_name.send_keys("Messi Marie Brown")
+        time.sleep(2)
+        self.cd.custom_select1()
+        self.cd.verify_btn()
+        time.sleep(2)
+        self.cd.btn_next()
+        time.sleep(2)
+
+        self.dd = Delegate_details(self.driver)
+        transcation_mode = Select(self.dd.drp_transaction_mode())
+        transcation_mode.select_by_index(1)
+
+        self.dd.btn_nexte()
+        time.sleep(2)
+
+        self.bd = Beneficiary_details(self.driver)
+
+        benefiary_name = self.bd.beneficiary_search_bar()
+        benefiary_name.send_keys("pisha")
+        self.bd.beneficiary_select_bar_pisharadi()
+        location = Select(self.bd.drp_location())
+        location.select_by_index(2)
+
+        time.sleep(2)
+        bank_selct = Select(self.bd.drp_bank())
+        bank_selct.select_by_index(1)
+        time.sleep(1)
+        self.bd.btn_nexte()
+        time.sleep(2)
+
+    def test_bank_location_erases_after_coming_back(self, setup):
+
+        self.driver = setup
+        self.driver.get(self.url)
+        self.driver.maximize_window()
+        self.driver.implicitly_wait(30)
+        self.lp = LoginPage(self.driver)
+        self.lp.setUsername(self.uname)
+        self.lp.setPassword(self.upass)
+        # time.sleep(2)
+        self.lp.clickLogin()
+        # time.sleep(2)
+
+        # click action for nav bar arrow
+        self.nav = Navigation_Page(self.driver)
+        self.nav.click_navbar()
+        # time.sleep(2)
+
+        # click action for customer details
+        self.nav.click_remitance()
+        self.cd = Customer_Details(self.driver)
+        self.drp_transn_typ = Select(self.cd.drp_transcation_type())
+        self.drp_transn_typ.select_by_index(2)
+        self.custom_name = self.cd.customer_search_bar()
+
+        self.custom_name.send_keys("Messi Marie Brown")
+        time.sleep(2)
+        self.cd.custom_select1()
+        self.cd.verify_btn()
+        time.sleep(2)
+        self.cd.btn_next()
+        time.sleep(2)
+
+        self.dd = Delegate_details(self.driver)
+        transcation_mode = Select(self.dd.drp_transaction_mode())
+        transcation_mode.select_by_index(1)
+
+        self.dd.btn_nexte()
+        time.sleep(2)
+
+        self.bd = Beneficiary_details(self.driver)
+
+        benefiary_name = self.bd.beneficiary_search_bar()
+        benefiary_name.send_keys("pisha")
+        self.bd.beneficiary_select_bar_pisharadi()
+
+        time.sleep(3)
+        location = Select(self.bd.drp_location())
+        location.select_by_index(1)
+        time.sleep(2)
+
+        location_name = location.first_selected_option.text
+        print("location_name:", location_name)
+
+        time.sleep(1)
+        self.bd.btn_nexte()
+        time.sleep(2)
+
+        self.rd = Remittance_details(self.driver)
+
+        self.rd.btn_bck()
+        time.sleep(2)
+
+        location_name_after = Select(self.bd.drp_location())
+
+        try:
+            location_name_after = location_name_after.first_selected_option.text
+            print("location_name_after:", location_name_after)
+
+            assert location_name == location_name_after, f"location name mismatch! Expected '{location_name}', but got '{location_name_after}'"
+
+        except Exception as e:
+            # This will catch any issue if the dropdown is empty or no selection is found
+            print(f"Error: {str(e)}")
+            assert False, "location name is not retained after going back!"
+
+        # test failed
+        # location is not retained after coming back
+
+    def test_beneficiary_details_undefined_on_preview(self, setup):
+
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -306,284 +529,64 @@ class Test_Remittance_details:
 
         benefiary_name = self.bd.beneficiary_search_bar()
         benefiary_name.send_keys("ronaldo")
-        self.bd.beneficiary_selectbar()
+        self.bd.beneficiary_selectbar_ronaldo()
         time.sleep(2)
         bank_selct = Select(self.bd.drp_bank())
         bank_selct.select_by_index(1)
         time.sleep(1)
         self.bd.btn_nexte()
-        time.sleep(2)
+        time.sleep(4)
+
         self.rd = Remittance_details(self.driver)
+        self.rd.click_beneficiary_preview()
+        time.sleep(2)
 
-        transc_pin = self.rd.transaction_pin()
-        remi_pur = Select(self.rd.drp_remittance_purpose())
-        source_income = Select(self.rd.drp_source_of_income())
-        currecncy = Select(self.rd.drp_currency())
-        service_pro = Select(self.rd.drp_service_provider())
+        bank_preview = self.rd.bank_preview()
+        print("bank_preview:", bank_preview)
 
-        transc_pin.send_keys("!@#$%^&*()_+*/{}|]""-[:;',.?sas")
-        remi_pur.select_by_index(2)
-        source_income.select_by_index(2)
-        currecncy.select_by_index(1)
-        service_pro.select_by_index(1)
+        bank_code_preview = self.rd.bank_code_preview()
+        print("bank_code_preview:", bank_code_preview)
 
-        self.rd.click_cash()
-        self.rd.click_pos()
-        self.rd.click_cheque()
-        self.rd.click_online()
-        self.rd.click_digital_pay()
+        branch_code_pre = self.rd.branch_code_preview()
+        print("branch_code_pre:", branch_code_pre)
 
-        lc = self.rd.lc_type_area()
-        lc.send_keys("!@#$%^&*()_+*/{}|]""-[:;',.?sas")
-        rate = self.rd.rate_type_area()
-        rate.send_keys("!@#$%^&*()_+*/{}|]""-[:;',.?assa")  # Integer value from the list
-        tax = self.rd.tax_typing()
-        tax.send_keys("!@#$%^&*()_+*/{}|]""-[:;',.?sass")
-        # self.rd.btn_nxtee()
+        branch_country_pre = self.rd.branch_country_preview()
+        print("branch_country_pre:", branch_country_pre)
+
+        branch_address_pre = self.rd.branch_address_preview()
+        print("branch_address_pre:", branch_address_pre)
+
+        self.rd.btn_bck()
+        time.sleep(3)
+        self.bd.btn_nexte()
         time.sleep(5)
 
-        # test failed
-
-    def test_field_max_length(self, setup):
-        self.driver = setup
-        self.driver.get(self.url)
-        self.driver.maximize_window()
-        self.driver.implicitly_wait(30)
-        self.lp = LoginPage(self.driver)
-        self.lp.setUsername(self.uname)
-        self.lp.setPassword(self.upass)
-        # time.sleep(2)
-        self.lp.clickLogin()
-        # time.sleep(2)
-
-        # click action for nav bar arrow
-        self.nav = Navigation_Page(self.driver)
-        self.nav.click_navbar()
-        # time.sleep(2)
-
-        # click action for customer details
-        self.nav.click_remitance()
-        self.cd = Customer_Details(self.driver)
-        self.drp_transn_typ = Select(self.cd.drp_transcation_type())
-        self.drp_transn_typ.select_by_index(1)
-        self.custom_name = self.cd.customer_search_bar()
-
-        self.custom_name.send_keys("Messi Marie Brown")
-        time.sleep(2)
-        self.cd.custom_select1()
-        self.cd.verify_btn()
-        time.sleep(2)
-        self.cd.btn_next()
-        time.sleep(2)
-
-        self.dd = Delegate_details(self.driver)
-        transcation_mode = Select(self.dd.drp_transaction_mode())
-        transcation_mode.select_by_index(1)
-
-        self.dd.btn_nexte()
-        time.sleep(2)
-
-        self.bd = Beneficiary_details(self.driver)
-
-        benefiary_name = self.bd.beneficiary_search_bar()
-        benefiary_name.send_keys("ronaldo")
-        self.bd.beneficiary_selectbar()
-        time.sleep(2)
-        bank_selct = Select(self.bd.drp_bank())
-        bank_selct.select_by_index(1)
-        time.sleep(1)
-        self.bd.btn_nexte()
-        time.sleep(2)
-        self.rd = Remittance_details(self.driver)
-
-        transc_pin = self.rd.transaction_pin()
-        remi_pur = Select(self.rd.drp_remittance_purpose())
-        source_income = Select(self.rd.drp_source_of_income())
-        currecncy = Select(self.rd.drp_currency())
-        service_pro = Select(self.rd.drp_service_provider())
-
-        transc_pin_len = int(transc_pin.get_attribute("maxlength"))
-        print("transc_pin_len:", transc_pin_len)
-
-        transc_pin.send_keys(random_string_generator_numbers())
-
-        transc_pin_val = len(self.rd.transaction_pin().get_attribute("value"))
-        transc_pin_val_data = self.rd.transaction_pin().get_attribute("value")
-        print("transc_pin_val:", transc_pin_val)
-        print("transc_pin_val_data:", transc_pin_val_data)
-
-        remi_pur.select_by_index(2)
-        source_income.select_by_index(2)
-        currecncy.select_by_index(1)
-        service_pro.select_by_index(1)
-
-        self.rd.click_cash()
-        self.rd.click_pos()
-        self.rd.click_cheque()
-        self.rd.click_online()
-        self.rd.click_digital_pay()
-
-        lc = self.rd.lc_type_area()
-        lc_len = lc.get_attribute("maxlength")
-        print("lc_len:", lc_len)
-
-        lc.send_keys(random_string_generator_numbers())
-
-        lc_val = len(self.rd.lc_type_area().get_attribute("value"))
-        lc_val_data = len(self.rd.lc_type_area().get_attribute("value"))
-        print("lc_val :", lc_val)
-        print(" lc_val_data:", lc_val_data)
-
-        #lc.send_keys("1000")
-
-        rate = self.rd.rate_type_area()
-        rate_len = rate.get_attribute("maxlength")
-        print("rate_len:", rate_len)
-
-        rate.send_keys(random_string_generator_numbers())
-
-        rate_val = len(self.rd.rate_type_area().get_attribute("value"))
-        rate_val_data = len(self.rd.rate_type_area().get_attribute("value"))
-        print("rate_val:", rate_val)
-        print(" rate_val_data:", rate_val_data)
-
-        #rate.send_keys("2)  # Integer value from the list
-
-        tax = self.rd.tax_typing()
-        tax_len = transc_pin.get_attribute("maxlength")
-        print("tax_len:", tax_len)
-
-        tax.send_keys(random_string_generator_numbers())
-
-        tax_val = len(self.rd.transaction_pin().get_attribute("value"))
-        tax_val_data = len(self.rd.transaction_pin().get_attribute("value"))
-        print("tax_val:", tax_val)
-        print("tax_val_data:", tax_val_data)
-
-        #tax.send_keys(15)  # Random tax value between 5 and 15
+        #self.rd.click_beneficiary_preview()
         time.sleep(3)
-        self.rd.btn_nxtee()
-        time.sleep(2)
 
-        #name_val = len(self.gi.name().get_attribute("value"))
+        bank_preview_aft = self.rd.bank_preview()
+        print("bank_preview_aft:", bank_preview_aft)
 
-        if transc_pin_val == transc_pin_val_data:
+        bank_code_preview_aft = self.rd.bank_code_preview()
+        print("bank_code_preview_af:", bank_code_preview_aft)
+
+        branch_code_pre_aft = self.rd.branch_code_preview()
+        print("branch_code_pre_aft:", branch_code_pre_aft)
+
+        branch_country_pre_aft = self.rd.branch_country_preview()
+        print("branch_country_pre_aft:",branch_country_pre_aft)
+
+        branch_address_pre_aft = self.rd.branch_address_preview()
+        print("branch_address_pre_aft:", branch_address_pre_aft)
+
+        if bank_preview_aft == bank_preview and bank_code_preview_aft == bank_code_preview and branch_code_pre_aft == branch_code_pre:
             assert True
         else:
-            assert False
-        if tax_val == tax_val_data:
-            assert True
-        else:
-            assert False
-        if lc_val == lc_val_data:
-            assert True
-        else:
+            self.driver.save_screenshot(screenShort.screen_short() + "bene_pre_undefined.png")
             assert False
 
-    def test_rate_value_change_after_coming_next(self, setup):
-        self.driver = setup
-        self.driver.get(self.url)
-        self.driver.maximize_window()
-        self.driver.implicitly_wait(30)
-        self.lp = LoginPage(self.driver)
-        self.lp.setUsername(self.uname)
-        self.lp.setPassword(self.upass)
-        # time.sleep(2)
-        self.lp.clickLogin()
-        # time.sleep(2)
 
-        # click action for nav bar arrow
-        self.nav = Navigation_Page(self.driver)
-        self.nav.click_navbar()
-        # time.sleep(2)
 
-        # click action for customer details
-        self.nav.click_remitance()
-        self.cd = Customer_Details(self.driver)
-        self.drp_transn_typ = Select(self.cd.drp_transcation_type())
-        self.drp_transn_typ.select_by_index(1)
-        self.custom_name = self.cd.customer_search_bar()
 
-        self.custom_name.send_keys("Messi Marie Brown")
-        time.sleep(2)
-        self.cd.custom_select1()
-        self.cd.verify_btn()
-        time.sleep(2)
-        self.cd.btn_next()
-        time.sleep(2)
-
-        self.dd = Delegate_details(self.driver)
-        transcation_mode = Select(self.dd.drp_transaction_mode())
-        transcation_mode.select_by_index(1)
-
-        self.dd.btn_nexte()
-        time.sleep(2)
-
-        self.bd = Beneficiary_details(self.driver)
-
-        benefiary_name = self.bd.beneficiary_search_bar()
-        benefiary_name.send_keys("ronaldo")
-        self.bd.beneficiary_selectbar()
-        time.sleep(2)
-        bank_selct = Select(self.bd.drp_bank())
-        bank_selct.select_by_index(1)
-        time.sleep(1)
-        self.bd.btn_nexte()
-        time.sleep(2)
-        self.rd = Remittance_details(self.driver)
-
-        transc_pin = self.rd.transaction_pin()
-        remi_pur = Select(self.rd.drp_remittance_purpose())
-        source_income = Select(self.rd.drp_source_of_income())
-        currecncy = Select(self.rd.drp_currency())
-        service_pro = Select(self.rd.drp_service_provider())
-
-        transc_pin.send_keys("76212")
-        remi_pur.select_by_index(2)
-        source_income.select_by_index(2)
-        currecncy.select_by_index(1)
-        service_pro.select_by_index(1)
-
-        self.rd.click_cash()
-        self.rd.click_pos()
-        self.rd.click_cheque()
-        self.rd.click_online()
-        self.rd.click_digital_pay()
-
-        lc = self.rd.lc_type_area()
-        lc.send_keys("1000")
-        rate = self.rd.rate_type_area()
-        rate.send_keys("20")  # Integer value from the list
-        tax = self.rd.tax_typing()
-        tax.send_keys(15)  # Random tax value between 5 and 15
-
-        time.sleep(2)
-        fc = self.rd.fc_type_area()
-        fc_val = fc.get_attribute("value")
-
-        print("fc_val:", fc_val)
-        time.sleep(3)
-        self.rd.btn_nxtee()
-
-        self.tr = Transaction_Review(self.driver)
-        self.tr.btn_backee()
-        time.sleep(2)
-        rate = self.rd.rate_type_area()
-        rate.send_keys("50")
-        time.sleep(2)
-
-        fc = self.rd.fc_type_area()
-        fc_val_aft = fc.get_attribute("value")
-
-        print("fc_va_aftl:", fc_val_aft)
-
-        if fc_val != fc_val_aft:
-            assert True
-        else:
-            assert False
-
-        # test failed
-        # fc is not changing when we come back from next page and change rate
-        
 
 

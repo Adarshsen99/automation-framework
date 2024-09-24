@@ -1,3 +1,5 @@
+import pyautogui
+
 from Dinero_automation.utilities.readProperties import ReadConfig
 from Dinero_automation.pageObjects.LoginPage import LoginPage
 from Dinero_automation.pageObjects.Navbar import Navigation_Page
@@ -359,13 +361,20 @@ class Test_Beneficial_Owners_Details:
         element.click()
 
         keyboard = Controller()
+
+        time.sleep(5)
+
+        base_dir = "C:\\Users\\adars\\OneDrive\\Pictures\\Screenshots"
+        file_name = "Screenshot 2024-07-22 162441.png"
+        full_path = os.path.join(base_dir, file_name)
         time.sleep(2)
-        self.driver.implicitly_wait(10)
-        keyboard.type("/home/karunakar/Pictures/Screenshots/Screenshot from 2024-08-19 11-43-05.png")
+
+        pyautogui.click()
+        time.sleep(4)
+        pyautogui.write(full_path)
         time.sleep(2)
-        keyboard.press(Key.enter)
-        keyboard.release(Key.enter)
-        time.sleep(2)
+        pyautogui.press("enter")
+        time.sleep(4)
         self.ud.btn_next()
         time.sleep(2)
         self.ud.btn_save()
@@ -532,13 +541,20 @@ class Test_Beneficial_Owners_Details:
             element.click()
 
             keyboard = Controller()
+
+            time.sleep(5)
+
+            base_dir = "C:\\Users\\adars\\OneDrive\\Pictures\\Screenshots"
+            file_name = "Screenshot 2024-07-22 162441.png"
+            full_path = os.path.join(base_dir, file_name)
             time.sleep(2)
-            self.driver.implicitly_wait(10)
-            keyboard.type("/home/karunakar/Pictures/Screenshots/Screenshot from 2024-08-19 11-43-05.png")
+
+            pyautogui.click()
+            time.sleep(4)
+            pyautogui.write(full_path)
             time.sleep(2)
-            keyboard.press(Key.enter)
-            keyboard.release(Key.enter)
-            time.sleep(2)
+            pyautogui.press("enter")
+            time.sleep(4)
             self.ud.btn_next()
             time.sleep(2)
             self.ud.btn_save()

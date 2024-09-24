@@ -1440,7 +1440,7 @@ class Final_Preview:
         self.driver = driver
 
     def btn_save(self):
-        return self.driver.find_element(By.XPATH, self.save)
+        return self.driver.find_element(By.XPATH, self.save).click()
 
     def editmode_message(self):
         try:
