@@ -2,15 +2,20 @@ import time
 from Dinero_automation.utilities.readProperties import ReadConfig
 from Dinero_automation.pageObjects.LoginPage import LoginPage
 from Dinero_automation.pageObjects.Navbar import Navigation_Page
-from Dinero_automation.pageObjects.Beneficiary_Corporate import Company_Information,Contact_Information,Bank_Information,Final_Preview
-from Dinero_automation.utilities.randomString import random_string_generator,random_string_generator_new,random_string_generator_max_30,random_string_generator_max_50,random_string_generator_max_28,random_string_generator_max_48,random_string_generator_max_31,random_string_generator_max_51
+from Dinero_automation.pageObjects.Beneficiary_Corporate import Company_Information, Contact_Information, \
+    Bank_Information, Final_Preview
+from Dinero_automation.utilities.randomString import random_string_generator, random_string_generator_new, \
+    random_string_generator_max_30, random_string_generator_max_50, random_string_generator_max_28, \
+    random_string_generator_max_48, random_string_generator_max_31, random_string_generator_max_51
 from selenium.webdriver.support.ui import Select
 from Dinero_automation.utilities import screenShort
+
 
 class Test_Company_Information:
     url = ReadConfig.getApplicationURL()
     uname = ReadConfig.getApplicationUsername()
     upass = ReadConfig.getApplicationPWD()
+
     def test_with_valid_data(self, setup):
         # login setup
         self.driver = setup
@@ -40,12 +45,10 @@ class Test_Company_Information:
         comp_name = self.ci.company_name()
         short_name = self.ci.short_name()
         drp_count_of_incorp = Select(self.ci.drp_country_of_incorporation())
-        drp_relation = Select(self.ci.drp_relation())
 
         comp_name.send_keys(random_string_generator())
         short_name.send_keys(random_string_generator_new())
         drp_count_of_incorp.select_by_index(14)
-        drp_relation.select_by_index(2)
         self.ci.btn_next()
 
         error_msg = self.ci.error_message()
@@ -85,12 +88,11 @@ class Test_Company_Information:
         comp_name = self.ci.company_name()
         short_name = self.ci.short_name()
         drp_count_of_incorp = Select(self.ci.drp_country_of_incorporation())
-        drp_relation = Select(self.ci.drp_relation())
 
         # comp_name.send_keys("Zooker Technology")
         # short_name.send_keys("Zooker")
         # drp_count_of_incorp.select_by_index(14)
-        # drp_relation.select_by_index(2)
+
         self.ci.btn_next()
 
         error_msg = self.ci.error_message()
@@ -99,7 +101,6 @@ class Test_Company_Information:
         else:
             self.driver.save_screenshot(screenShort.screen_short() + "BEN_CO_CI_test_without_data.png")
             assert False
-        self.driver.quit()
 
     def test_with_spchar(self, setup):
         # login setup
@@ -130,12 +131,10 @@ class Test_Company_Information:
         comp_name = self.ci.company_name()
         short_name = self.ci.short_name()
         drp_count_of_incorp = Select(self.ci.drp_country_of_incorporation())
-        drp_relation = Select(self.ci.drp_relation())
 
         comp_name.send_keys("!@#$%^&*()_+*/{}|]""-[:;',.?")
         short_name.send_keys("!@#$%^&*()_+*/{}|]""-[:;',.?")
         drp_count_of_incorp.select_by_index(14)
-        drp_relation.select_by_index(2)
         self.ci.btn_next()
 
         error_msg = self.ci.error_message()
@@ -144,8 +143,6 @@ class Test_Company_Information:
         else:
             self.driver.save_screenshot(screenShort.screen_short() + "BEN_CO_CI_test_with_spchar.png")
             assert False
-        self.driver.quit()
-
 
     def test_with_spchar_nums_char(self, setup):
         # login setup
@@ -221,12 +218,10 @@ class Test_Company_Information:
         comp_name = self.ci.company_name()
         short_name = self.ci.short_name()
         drp_count_of_incorp = Select(self.ci.drp_country_of_incorporation())
-        drp_relation = Select(self.ci.drp_relation())
 
         comp_name.send_keys("Zooker Technology")
         short_name.send_keys("Zooker Tech")
         drp_count_of_incorp.select_by_index(14)
-        drp_relation.select_by_index(2)
         self.ci.btn_next()
 
         error_msg = self.ci.error_message()
@@ -311,20 +306,20 @@ class Test_Company_Information:
         comp_name = self.ci.company_name()
         short_name = self.ci.short_name()
         drp_count_of_incorp = Select(self.ci.drp_country_of_incorporation())
-        drp_relation = Select(self.ci.drp_relation())
+
 
         comp_name.send_keys("zooker technology")
         short_name.send_keys("zooker tech")
         drp_count_of_incorp.select_by_index(14)
-        drp_relation.select_by_index(2)
+
 
         # Getting Values
         compa_val = comp_name.get_attribute('value')
         short_val = short_name.get_attribute('value')
         incorp_val = drp_count_of_incorp.first_selected_option.text
-        relation_val = drp_relation.first_selected_option.text
 
-        print(compa_val, short_val, incorp_val,relation_val)
+
+        print(compa_val, short_val, incorp_val)
 
         self.ci.btn_next()
         self.con_info.click_company_info_pre()
@@ -338,11 +333,7 @@ class Test_Company_Information:
             assert True
         else:
             assert False
-        if incorp_val ==  self.con_info.country_of_incorporation_pre():
-            assert True
-        else:
-            assert False
-        if relation_val == self.con_info.relation_pre():
+        if incorp_val == self.con_info.country_of_incorporation_pre():
             assert True
         else:
             assert False
@@ -378,20 +369,20 @@ class Test_Company_Information:
         comp_name = self.ci.company_name()
         short_name = self.ci.short_name()
         drp_count_of_incorp = Select(self.ci.drp_country_of_incorporation())
-        drp_relation = Select(self.ci.drp_relation())
+
 
         comp_name.send_keys("ZOOKER TECHNOLOGY")
         short_name.send_keys("ZOOKER TECH")
         drp_count_of_incorp.select_by_index(14)
-        drp_relation.select_by_index(2)
+
 
         # Getting Values
         compa_val = comp_name.get_attribute('value')
         short_val = short_name.get_attribute('value')
         incorp_val = drp_count_of_incorp.first_selected_option.text
-        relation_val = drp_relation.first_selected_option.text
 
-        print(compa_val, short_val, incorp_val,relation_val)
+
+        print(compa_val, short_val, incorp_val)
 
         self.ci.btn_next()
         self.con_info.click_company_info_pre()
@@ -405,14 +396,11 @@ class Test_Company_Information:
             assert True
         else:
             assert False
-        if incorp_val ==  self.con_info.country_of_incorporation_pre():
+        if incorp_val == self.con_info.country_of_incorporation_pre():
             assert True
         else:
             assert False
-        if relation_val == self.con_info.relation_pre():
-            assert True
-        else:
-            assert False
+
 
         self.driver.quit()
 
@@ -459,8 +447,6 @@ class Test_Company_Information:
         compa_val = len(comp_name.get_attribute('value'))
         short_val = len(short_name.get_attribute('value'))
         print(compa_val, short_val)
-
-
 
         self.ci.btn_next()
 
@@ -520,8 +506,6 @@ class Test_Company_Information:
         short_val = len(short_name.get_attribute('value'))
         print(compa_val, short_val)
 
-
-
         self.ci.btn_next()
 
         if compa_max > compa_val:
@@ -579,8 +563,6 @@ class Test_Company_Information:
         compa_val = len(comp_name.get_attribute('value'))
         short_val = len(short_name.get_attribute('value'))
         print(compa_val, short_val)
-
-
 
         self.ci.btn_next()
 

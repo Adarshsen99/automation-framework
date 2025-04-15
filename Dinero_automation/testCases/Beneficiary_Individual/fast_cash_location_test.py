@@ -2,16 +2,23 @@ import time
 from Dinero_automation.utilities.readProperties import ReadConfig
 from Dinero_automation.pageObjects.LoginPage import LoginPage
 from Dinero_automation.pageObjects.Navbar import Navigation_Page
-from Dinero_automation.pageObjects.Beneficiary_Individual import Personal_Details,Contact_Information,Fastcash_Location,Final_Preview
-from Dinero_automation.utilities.randomString import generate_random_email_new,random_string_generator,random_string_generator_numbers_new,random_string_generator_max_30,random_string_generator_max_50,random_string_generator_numbers,generate_random_email,random_string_generator_numbers_10,random_string_generator_max_28,random_string_generator_max_48,random_string_generator_max_31,random_string_generator_max_51
+from Dinero_automation.pageObjects.Beneficiary_Individual import Personal_Details, Contact_Information, \
+    Fastcash_Location, Final_Preview
+from Dinero_automation.utilities.randomString import generate_random_email_new, random_string_generator, \
+    random_string_generator_numbers_new, random_string_generator_max_30, random_string_generator_max_50, \
+    random_string_generator_numbers, generate_random_email, random_string_generator_numbers_10, \
+    random_string_generator_max_28, random_string_generator_max_48, random_string_generator_max_31, \
+    random_string_generator_max_51
 from selenium.webdriver.support.ui import Select
 from Dinero_automation.utilities import screenShort
+
 
 class Test_Fastcash_Location:
     url = ReadConfig.getApplicationURL()
     uname = ReadConfig.getApplicationUsername()
     upass = ReadConfig.getApplicationPWD()
-    def test_adding_payout_anywhere(self,setup):
+
+    def test_adding_payout_anywhere(self, setup):
         # login setup
         self.driver = setup
         self.driver.get(self.url)
@@ -43,7 +50,6 @@ class Test_Fastcash_Location:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -55,10 +61,9 @@ class Test_Fastcash_Location:
         sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
-        relation.select_by_index(3)
         id_type.select_by_index(2)
         id_num.send_keys(random_string_generator_numbers_new())
-        trans_type.select_by_index(2)
+        trans_type.select_by_index(1)
 
         self.pi.btn_next().click()
 
@@ -96,7 +101,7 @@ class Test_Fastcash_Location:
         time.sleep(3)
         # self.fi.btn_clear()
 
-    def test_adding_payout_anywhere_witoutdata(self,setup):
+    def test_adding_payout_anywhere_witoutdata(self, setup):
         # login setup
         self.driver = setup
         self.driver.get(self.url)
@@ -128,7 +133,6 @@ class Test_Fastcash_Location:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -140,10 +144,9 @@ class Test_Fastcash_Location:
         sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
-        relation.select_by_index(3)
         id_type.select_by_index(2)
         id_num.send_keys(random_string_generator_numbers_new())
-        trans_type.select_by_index(2)
+        trans_type.select_by_index(1)
 
         self.pi.btn_next().click()
 
@@ -263,8 +266,7 @@ class Test_Fastcash_Location:
 
         before_count = drp_cont.first_selected_option.text
 
-        print("before number:",before_count)
-
+        print("before number:", before_count)
 
         # Buttons for anywhare location
         self.fi.btn_add_location()
@@ -309,7 +311,6 @@ class Test_Fastcash_Location:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -321,10 +322,9 @@ class Test_Fastcash_Location:
         sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
-        relation.select_by_index(3)
         id_type.select_by_index(2)
         id_num.send_keys(random_string_generator_numbers_new())
-        trans_type.select_by_index(2)
+        trans_type.select_by_index(1)
 
         self.pi.btn_next().click()
 
@@ -358,12 +358,11 @@ class Test_Fastcash_Location:
         mo_num.send_keys(random_string_generator_numbers_new())
 
         before_count = mo_num.get_attribute("value")
-        print("before number:",before_count)
+        print("before number:", before_count)
 
         country_before = drp_country_code.first_selected_option.text
 
-        print("country_before",country_before)
-
+        print("country_before", country_before)
 
         # Buttons for anywhare location
         self.fi.btn_add_location()
@@ -383,7 +382,8 @@ class Test_Fastcash_Location:
         if not country_before == country_after:
             assert True
         else:
-            self.driver.save_screenshot(screenShort.screen_short() + "FC_test_adding_payout_anywhere_clearing_mobilenum.png")
+            self.driver.save_screenshot(
+                screenShort.screen_short() + "FC_test_adding_payout_anywhere_clearing_mobilenum.png")
             assert False
         time.sleep(3)
 
@@ -419,7 +419,6 @@ class Test_Fastcash_Location:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -431,10 +430,9 @@ class Test_Fastcash_Location:
         sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
-        relation.select_by_index(3)
         id_type.select_by_index(2)
         id_num.send_keys(random_string_generator_numbers_new())
-        trans_type.select_by_index(2)
+        trans_type.select_by_index(1)
 
         self.pi.btn_next().click()
 
@@ -468,11 +466,10 @@ class Test_Fastcash_Location:
         mo_num.send_keys(random_string_generator_numbers_new())
 
         before_count = mo_num.get_attribute("value")
-        print("before number:",before_count)
+        print("before number:", before_count)
 
         count = drp_cont.first_selected_option.text
         print("count_before_val", count)
-
 
         # Buttons for anywhare location
         self.fi.btn_add_location()
@@ -525,7 +522,6 @@ class Test_Fastcash_Location:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -537,10 +533,9 @@ class Test_Fastcash_Location:
         sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
-        relation.select_by_index(3)
         id_type.select_by_index(2)
         id_num.send_keys(random_string_generator_numbers_new())
-        trans_type.select_by_index(2)
+        trans_type.select_by_index(1)
 
         self.pi.btn_next().click()
 
@@ -588,7 +583,7 @@ class Test_Fastcash_Location:
         addr_3_val = addr_3.get_attribute("value")
         city_val = city.get_attribute("value")
 
-        print(counrty_val, number_val, addr_1_val, addr_2_val,addr_3_val,city_val)
+        print(counrty_val, number_val, addr_1_val, addr_2_val, addr_3_val, city_val)
 
         self.fi.btn_add_location_splocation()
         # self.fi.btn_clear_splocation()
@@ -601,7 +596,8 @@ class Test_Fastcash_Location:
         self.fi.click_fastcash_location()
         time.sleep(2)
 
-        print(self.fi.country_sp_location_pre(),self.fi.mobile_sp_location_pre(),self.fi.address_1_sp_location_pre(),self.fi.address_2_sp_location_pre(),self.fi.address_3_sp_location_pre(),self.fi.city_sp_location_pre())
+        print(self.fi.country_sp_location_pre(), self.fi.mobile_sp_location_pre(), self.fi.address_1_sp_location_pre(),
+              self.fi.address_2_sp_location_pre(), self.fi.address_3_sp_location_pre(), self.fi.city_sp_location_pre())
 
         if counrty_val == self.fi.country_sp_location_pre():
             assert True
@@ -635,7 +631,87 @@ class Test_Fastcash_Location:
         time.sleep(3)
         self.driver.quit()
 
+    def test_deleting_fast_cash_and_check_data_remains(self, setup):
 
+        self.driver = setup
+        self.driver.get(self.url)
+        self.driver.maximize_window()
+        self.driver.implicitly_wait(30)
+        self.lp = LoginPage(self.driver)
+        self.lp.setUsername(self.uname)
+        self.lp.setPassword(self.upass)
+        self.lp.clickLogin()
+        # time.sleep(2)
 
+        # click action for nav bar arrow
+        self.nav = Navigation_Page(self.driver)
+        self.nav.click_navbar()
+        # time.sleep(2)
+
+        # click action for customer registration
+        self.nav.click_benificiary_individual()
+
+        self.pi = Personal_Details(self.driver)
+        self.ci = Contact_Information(self.driver)
+        self.fi = Fastcash_Location(self.driver)
+        self.fp = Final_Preview(self.driver)
+
+        title = Select(self.pi.drp_title())
+        fname = self.pi.fname()
+        mname = self.pi.mname()
+        lname = self.pi.lname()
+        sname = self.pi.short_name()
+        cob = Select(self.pi.drp_cob())
+        nationality = Select(self.pi.drp_nationality())
+        id_type = Select(self.pi.drp_id_type())
+        id_num = self.pi.id_num()
+        trans_type = Select(self.pi.drp_trans_type())
+
+        title.select_by_index(1)
+        fname.send_keys(random_string_generator())
+        mname.send_keys(random_string_generator())
+        lname.send_keys(random_string_generator())
+        sname.send_keys(random_string_generator())
+        cob.select_by_index(9)
+        nationality.select_by_index(12)
+        id_type.select_by_index(2)
+        id_num.send_keys(random_string_generator_numbers_new())
+        trans_type.select_by_index(1)
+
+        self.pi.btn_next().click()
+
+        fh_num = self.ci.flat_house_number()
+        hb_num = self.ci.house_building_name()
+        street = self.ci.street()
+        email = self.ci.email()
+        city = self.ci.city()
+        drp_contry = Select(self.ci.drp_country())
+        drp_phone = Select(self.ci.drp_phone())
+        phone = self.ci.phone()
+
+        fh_num.send_keys(random_string_generator_numbers_new())
+        hb_num.send_keys(random_string_generator_numbers_new())
+        street.send_keys(random_string_generator())
+        email.send_keys(generate_random_email_new())
+        city.send_keys(random_string_generator())
+        drp_contry.select_by_index(2)
+        drp_phone.select_by_index(50)
+        phone.send_keys(random_string_generator_numbers_new())
+
+        self.ci.btn_next()
+
+        self.fi.click_payout_anywhere()
+        drp_cont = Select(self.fi.drp_country())
+        drp_country_code = Select(self.fi.drp_num_country())
+        mo_num = self.fi.mobile_number()
+
+        drp_cont.select_by_index(5)
+        drp_country_code.select_by_index(15)
+        mo_num.send_keys(random_string_generator_numbers_new())
+
+        # Buttons for anywhare location
+        self.fi.btn_add_location()
+        time.sleep(3)
+        self.fi.
 
 

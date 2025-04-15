@@ -66,18 +66,18 @@ class Test_General_Information:
 
         drp_category.select_by_index(2)
         time.sleep(2)
-        name.send_keys("adrstsgs")
-        arabic_name.send_keys("hfsdjgfd")
-        address_1.send_keys("dgjhafdhja")
-        address_2.send_keys("gdhgfhjfg")
-        address_3.send_keys("hkjgfkhgfkh")
-        postal_code.send_keys("346714684")
-        city.send_keys("hgdhkdgfkh")
-        drp_country.select_by_index(3)
-        drp_count_of_Incorp.select_by_index(5)
-        drp_country_code.select_by_index(8)
-        mob_no.send_keys("654546445454")
-        email.send_keys("njuyg@gm.vom")
+        name.send_keys("Reactive Developers")
+        arabic_name.send_keys("Reactive Developers")
+        address_1.send_keys("Pondichery")
+        address_2.send_keys("Pondichery")
+        address_3.send_keys("Pondichery")
+        postal_code.send_keys("34d6714684")
+        city.send_keys("Pondichery")
+        drp_country.select_by_visible_text("India")
+        drp_count_of_Incorp.select_by_visible_text("India")
+        drp_country_code.select_by_index(81)
+        mob_no.send_keys("654546421245454")
+        email.send_keys("njuyg@ssgssm.vssom")
         time.sleep(2)
         btn_next.click()
 
@@ -88,6 +88,9 @@ class Test_General_Information:
             self.driver.save_screenshot(screenShort.screen_short() + "Ser_Pro_Gi_with_valid_data.png")
             assert False
         self.driver.quit()
+
+        # test passed
+        # last tested on built 23/10/2024
 
     def test_without_data(self, setup):
 
@@ -139,8 +142,8 @@ class Test_General_Information:
         address_3.send_keys("")
         postal_code.send_keys("")
         city.send_keys("")
-        drp_country.select_by_index(3)
-        drp_count_of_Incorp.select_by_index(5)
+        # drp_country.select_by_index(3)
+        # drp_count_of_Incorp.select_by_index(5)
         drp_country_code.select_by_index(8)
         mob_no.send_keys("")
         email.send_keys("")
@@ -152,6 +155,8 @@ class Test_General_Information:
         else:
             self.driver.save_screenshot(screenShort.screen_short() + "Ser_Pro_Gi_withot_data.png")
             assert False
+        # test passed
+        # last tested on built 23/10/2024
 
     def test_with_spchar(self, setup):
 
@@ -198,10 +203,10 @@ class Test_General_Information:
 
         # Sending the data
 
-        drp_category.select_by_index(1)
-        time.sleep(4)
-        # other_cat = self.gi.catego_other_field()
-        # other_cat.send_keys("!@#$%^&*()_+*/{}|]""-[:;',.?")
+        drp_category.select_by_visible_text("Others")
+        time.sleep(2)
+        other_cat = self.gi.catego_other_field()
+        other_cat.send_keys("!@#$%^&*()_+*/{}|]""-[:;',.?")
         name.send_keys("!@#$%^&*()_+*/{}|]""-[:;',.?")
         arabic_name.send_keys("!@#$%^&*()_+*/{}|]""-[:;',.?")
         address_1.send_keys("!@#$%^&*()_+*/{}|]""-[:;',.?")
@@ -225,8 +230,8 @@ class Test_General_Information:
 
         time.sleep(10)
 
-        #test case failed , ( other category accept special characters like " ^_][` " )
-        # test on last build - 3/09/2024- Adarsh Sen Madhu
+        #test case passed
+        # test on last build - 23/10/2024- Adarsh Sen Madhu
 
     def test_with_spchar_nums_char(self, setup):
 
@@ -272,22 +277,22 @@ class Test_General_Information:
         email = self.gi.email()
         btn_next = self.gi.btn_nxt()
 
-        drp_category.select_by_index(1)
+        drp_category.select_by_visible_text("Others")
         time.sleep(2)
-        # other_cat = self.gi.catego_other_field()
-        # other_cat.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?a")
+        other_cat = self.gi.catego_other_field()
+        other_cat.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?aev")
         name.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?a")
-        arabic_name.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?a")
-        address_1.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?a")
-        address_2.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?a")
-        address_3.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?a")
-        postal_code.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?a")
-        city.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?a")
+        arabic_name.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?aev")
+        address_1.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?aerv")
+        address_2.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?aewd")
+        address_3.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?aedd")
+        postal_code.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?ads")
+        city.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?avdv")
         drp_country.select_by_index(3)
         drp_count_of_Incorp.select_by_index(5)
         drp_country_code.select_by_index(8)
-        mob_no.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?a")
-        email.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?a")
+        mob_no.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?adew")
+        email.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?avcv")
         btn_next.click()
 
         error_msg = self.gi.error_message()
@@ -298,8 +303,8 @@ class Test_General_Information:
             assert False
         time.sleep(10)
 
-        #test case failed , ( other category accept special characters like " ^_][` " )
-        # test on last build - 3/09/2024 - Adarsh Sen Madhu
+        #test case passed
+        # test on last build - 23/10/2024 - Adarsh Sen Madhu
 
     def test_with_data_have_spaces(self, setup):
         # login setup
@@ -341,8 +346,11 @@ class Test_General_Information:
         email = self.gi.email()
         btn_next = self.gi.btn_nxt()
 
-        drp_category.select_by_index(2)
+        drp_category.select_by_visible_text("Others")
         time.sleep(2)
+        other_cat = self.gi.catego_other_field()
+        other_cat.send_keys("dqw sdvds dsc sd ds dsc")
+
         name.send_keys("asad fgv  xfv")
         arabic_name.send_keys("dfdsg dfgdf dfc dfb ")
         address_1.send_keys("vdv dfvc fvcx ")
@@ -368,7 +376,7 @@ class Test_General_Information:
         time.sleep(5)
 
         # test case passed
-        # tested on last built 3/09/2024 - Adarsh Sen Madhu
+        # tested on last built 23/10/2024 - Adarsh Sen Madhu
 
     def test_with_validating_maxlen(self, setup, ):
 
@@ -511,7 +519,7 @@ class Test_General_Information:
             time.sleep(5)
 
         # test case passed
-        # tested on last build - 3/09/2024 - Adarsh Sen Madhu
+        # tested on last build - 23/10/2024 - Adarsh Sen Madhu
 
     def test_validating_cancel(self, setup, ):
         # login setup
@@ -539,6 +547,10 @@ class Test_General_Information:
         # Assigning and entering values
 
         drp_category = Select(self.gi.drp_category())
+        drp_category.select_by_visible_text("Others")
+        time.sleep(2)
+        other_cat = self.gi.catego_other_field()
+        other_cat.send_keys(random_string_generator_max_50())
         name = self.gi.name()
         arabic_name = self.gi.arabic_name()
         address_1 = self.gi.adress_1()
@@ -554,7 +566,7 @@ class Test_General_Information:
 
         # Set values
 
-        drp_category.select_by_index(2)
+        # drp_category.select_by_index(2)
         time.sleep(2)
         name.send_keys(random_string_generator_max_50() + random_string_generator_max_31())
         arabic_name.send_keys(random_string_generator_max_50() + random_string_generator_max_31())
@@ -651,7 +663,7 @@ class Test_General_Information:
         time.sleep(5)
 
         # test case passed
-        # last tested - 03/09/2024 - Adarsh Sen Madhu
+        # last tested - 23/10/2024 - Adarsh Sen Madhu
 
     def test_mobile_num_req_remain(self, setup):
 
@@ -800,4 +812,95 @@ class Test_General_Information:
         time.sleep(2)
 
         # test case failed, status - open
-        # test on last built-3/9/2024- Adarsh Sen Madhu
+        # test on last built-23/10/2024- Adarsh Sen Madhu
+
+    def test_mobile_num_changes_USA_to_Can(self, setup):
+
+        #### Test cases according to Manual test reports ###
+
+        # test case = Mob code selected USA after going next, will be canada ##
+
+        self.driver = setup
+        self.driver.get(self.url)
+        self.driver.maximize_window()
+        self.driver.implicitly_wait(8)
+        self.lp = LoginPage(self.driver)
+        self.lp.setUsername(self.uname)
+        self.lp.setPassword(self.upass)
+        self.lp.clickLogin()
+        # time.sleep(2)
+
+        # click action for nav bar arrow
+
+        self.nav = Navigation_Page(self.driver)
+        self.nav.click_navbar()
+        time.sleep(2)
+
+        # click action for general information
+
+        self.nav.click_service_provider()
+        time.sleep(2)
+        self.gi = General_Information(self.driver)
+        self.ad = Agreement_Details(self.driver)
+
+        drp_category = Select(self.gi.drp_category())
+        name = self.gi.name()
+        arabic_name = self.gi.arabic_name()
+        address_1 = self.gi.adress_1()
+        address_2 = self.gi.adress_2()
+        address_3 = self.gi.adress_3()
+        postal_code = self.gi.postal_code()
+        city = self.gi.city()
+        drp_country = Select(self.gi.drp_country())
+        drp_count_of_Incorp = Select(self.gi.drp_country_of_incorporation())
+        #drp_country_code = Select(self.gi.drp_country_code())
+        mob_no = self.gi.mobile_number()
+        email = self.gi.email()
+        btn_next = self.gi.btn_nxt()
+
+        # entering fields for general information
+
+        drp_category.select_by_index(2)
+        time.sleep(2)
+        name.send_keys("adrstsgs")
+        arabic_name.send_keys("hfsdjgfd")
+        address_1.send_keys("dgjhafdhja")
+        address_2.send_keys("gdhgfhjfg")
+        address_3.send_keys("hkjgfkhgfkh")
+        postal_code.send_keys("346714684")
+        city.send_keys("hgdhkdgfkh")
+        drp_country.select_by_index(3)
+        drp_count_of_Incorp.select_by_index(5)
+        drp_country_code = Select(self.gi.drp_country_code())
+        drp_country_code.select_by_index(198)
+        mob_no.send_keys("8282825881")
+
+        mob_val = drp_country_code.first_selected_option.text
+        print(mob_val)
+
+        email.send_keys("njuyg@gm.vom")
+        time.sleep(2)
+        btn_next.click()
+        time.sleep(2)
+
+        self.ad.btn_back().click()
+        time.sleep(2)
+        drp_country_code = Select(self.gi.drp_country_code())
+        mob_val_aft = drp_country_code.first_selected_option.text
+        print(mob_val_aft)
+
+        if mob_val == mob_val_aft:
+            assert True
+        else:
+            assert False
+
+
+
+
+
+
+
+
+
+
+

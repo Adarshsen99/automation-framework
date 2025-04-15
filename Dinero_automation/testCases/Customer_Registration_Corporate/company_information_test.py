@@ -1,18 +1,27 @@
+import time
+
 from Dinero_automation.utilities.readProperties import ReadConfig
 from Dinero_automation.pageObjects.LoginPage import LoginPage
 from Dinero_automation.pageObjects.Navbar import Navigation_Page
 
-from Dinero_automation.pageObjects.Customer_Registration_Corporate import Company_Information,Registration_Details
-from Dinero_automation.utilities.randomString import random_string_generator_numbers_22,random_string_generator_numbers_10,random_string_generator_numbers_20,random_string_generator_max_52,random_string_generator_max_32,random_string_generator_max_22,generate_random_email_lessthen_45,generate_random_email_lessthen_52,random_string_generator_numbers_max_10,random_string_generator_max_18,random_string_generator_max_30,random_string_generator_max_50,random_string_generator_max_28,random_string_generator_max_20,random_string_generator_numbers,generate_random_email
+from Dinero_automation.pageObjects.Customer_Registration_Corporate import Company_Information, Registration_Details
+from Dinero_automation.utilities.randomString import random_string_generator_numbers_22, \
+    random_string_generator_numbers_10, random_string_generator_numbers_20, random_string_generator_max_52, \
+    random_string_generator_max_32, random_string_generator_max_22, generate_random_email_lessthen_45, \
+    generate_random_email_lessthen_52, random_string_generator_numbers_max_10, random_string_generator_max_18, \
+    random_string_generator_max_30, random_string_generator_max_50, random_string_generator_max_28, \
+    random_string_generator_max_20, random_string_generator_numbers, generate_random_email
 from selenium.webdriver.support.ui import Select
 from Dinero_automation.utilities import screenShort
+
 
 class Test_Company_Information:
     url = ReadConfig.getApplicationURL()
     uname = ReadConfig.getApplicationUsername()
     upass = ReadConfig.getApplicationPWD()
 
-    def test_sending_valid_data(self,setup):
+    def test_sending_valid_data(self, setup):
+
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -45,7 +54,7 @@ class Test_Company_Information:
         numb = self.comp_info.mobile_num()
         mail = self.comp_info.email()
 
-#       assign the data
+        #       assign the data
         c_name = "Zen Tech"
         a_name = "Shaik"
         b_num = "1223"
@@ -53,8 +62,8 @@ class Test_Company_Information:
         stre = "nellore"
         po = "524309"
         dist = "Kerala"
-        num = "7641524344"
-        mai = "finnest@tech.com"
+        num = "764152434224"
+        mai = "finnest@t22ech.com"
 
         comp_name.send_keys(c_name)
         ara_name.send_keys(a_name)
@@ -77,7 +86,11 @@ class Test_Company_Information:
             assert False
         self.driver.quit()
 
-    def test_sending_without_data(self,setup):
+        # Test Passed
+        ## last tested on built 24/10/2024
+
+    def test_sending_without_data(self, setup):
+
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -110,7 +123,7 @@ class Test_Company_Information:
         numb = self.comp_info.mobile_num()
         mail = self.comp_info.email()
 
-#       assign the data
+        #       assign the data
         c_name = ""
         a_name = ""
         b_num = ""
@@ -128,12 +141,13 @@ class Test_Company_Information:
         stree.send_keys(stre)
         post.send_keys(po)
         distc.send_keys(dist)
-        drp_country.select_by_index(1)
-        drp_mob.select_by_index(2)
+        #drp_country.select_by_index(1)
+        #drp_mob.select_by_index(2)
         numb.send_keys(num)
         mail.send_keys(mai)
 
         self.comp_info.btn_next()
+        time.sleep(5)
 
         if self.comp_info.errorMessage() == "Required":
             assert True
@@ -141,8 +155,8 @@ class Test_Company_Information:
             self.driver.save_screenshot(screenShort.screen_short() + "CRC_test_sending_without_data.png")
             assert False
         self.driver.quit()
-
-
+        ## test passed
+        ## last tested on built 24/10/2024
 
     def test_sending_spchar_data(self, setup):
         self.driver = setup
@@ -299,15 +313,23 @@ class Test_Company_Information:
         self.rg_detail = Registration_Details(self.driver)
 
         # Define fixed data for fields
-        company_names = ["Company A", "Company B", "Company C", "Company D", "Company E", "Company F", "Company G", "Company H", "Company I", "Company J"]
-        arabic_names = ["اسم الشركة A", "اسم الشركة B", "اسم الشركة C", "اسم الشركة D", "اسم الشركة E", "اسم الشركة F", "اسم الشركة G", "اسم الشركة H", "اسم الشركة I", "اسم الشركة J"]
+        company_names = ["Company A", "Company B", "Company C", "Company D", "Company E", "Company F", "Company G",
+                         "Company H", "Company I", "Company J"]
+        arabic_names = ["اسم الشركة A", "اسم الشركة B", "اسم الشركة C", "اسم الشركة D", "اسم الشركة E", "اسم الشركة F",
+                        "اسم الشركة G", "اسم الشركة H", "اسم الشركة I", "اسم الشركة J"]
         building_numbers = ["101", "102", "103", "104", "105", "106", "107", "108", "109", "110"]
-        building_names = ["Building 1", "Building 2", "Building 3", "Building 4", "Building 5", "Building 6", "Building 7", "Building 8", "Building 9", "Building 10"]
-        streets = ["Street A", "Street B", "Street C", "Street D", "Street E", "Street F", "Street G", "Street H", "Street I", "Street J"]
+        building_names = ["Building 1", "Building 2", "Building 3", "Building 4", "Building 5", "Building 6",
+                          "Building 7", "Building 8", "Building 9", "Building 10"]
+        streets = ["Street A", "Street B", "Street C", "Street D", "Street E", "Street F", "Street G", "Street H",
+                   "Street I", "Street J"]
         post_codes = ["10001", "10002", "10003", "10004", "10005", "10006", "10007", "10008", "10009", "10010"]
-        districts = ["District A", "District B", "District C", "District D", "District E", "District F", "District G", "District H", "District I", "District J"]
-        mobile_numbers = ["0500000001", "0500000002", "0500000003", "0500000004", "0500000005", "0500000006", "0500000007", "0500000008", "0500000009", "0500000010"]
-        emails = ["test1@example.com", "test2@example.com", "test3@example.com", "test4@example.com", "test5@example.com", "test6@example.com", "test7@example.com", "test8@example.com", "test9@example.com", "test10@example.com"]
+        districts = ["District A", "District B", "District C", "District D", "District E", "District F", "District G",
+                     "District H", "District I", "District J"]
+        mobile_numbers = ["0500000001", "0500000002", "0500000003", "0500000004", "0500000005", "0500000006",
+                          "0500000007", "0500000008", "0500000009", "0500000010"]
+        emails = ["test1@example.com", "test2@example.com", "test3@example.com", "test4@example.com",
+                  "test5@example.com", "test6@example.com", "test7@example.com", "test8@example.com",
+                  "test9@example.com", "test10@example.com"]
 
         for i in range(10):  # Loop for bulk data generation
             # Get the fixed data
@@ -385,7 +407,7 @@ class Test_Company_Information:
 
         self.driver.quit()
 
-    def test_validating_preview(self,setup):
+    def test_validating_preview(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -419,7 +441,7 @@ class Test_Company_Information:
         numb = self.comp_info.mobile_num()
         mail = self.comp_info.email()
 
-#       assign the data
+        #       assign the data
         c_name = "zen Tech"
         a_name = "shaik"
         b_num = "1223"
@@ -427,8 +449,8 @@ class Test_Company_Information:
         stre = "nellore"
         po = "524309"
         dist = "Kerala"
-        num = "7641524344"
-        mai = "finnest@tech.com"
+        num = "764152434411"
+        mai = "finnest@tec22h.com"
 
         comp_name.send_keys(c_name)
         ara_name.send_keys(a_name)
@@ -446,7 +468,7 @@ class Test_Company_Information:
         # a = ara_name.get_attribute('value')
         # b_nu = build_num.get_attribute('value')
         b_na = build_name.get_attribute('value')
-        print("buildingname what i sent:",b_na)
+        print("buildingname what i sent:", b_na)
         # st = stree.get_attribute('value')
         # # po = post.get_attribute('value')
         # di = distc.get_attribute('value')
@@ -454,22 +476,18 @@ class Test_Company_Information:
         print(drp_country.first_selected_option.text)
         co = drp_country.first_selected_option.text
 
-
         self.comp_info.btn_next()
         self.regi_details.comp_info_pre()
 
         print(self.regi_details.company_pre())
         print(self.regi_details.arabic_pre())
         print(self.regi_details.building_num_pre())
-        print("buildingname what i get:",self.regi_details.building_name_pre())
-        print("street:",self.regi_details.street_pre())
+        print("buildingname what i get:", self.regi_details.building_name_pre())
+        print("street:", self.regi_details.street_pre())
         print(self.regi_details.postal_code_pre())
         print(self.regi_details.city_district_pre())
         print(self.regi_details.country_pre())
-        print("mail",self.regi_details.email_pre())
-
-
-
+        print("mail", self.regi_details.email_pre())
 
         if c_name == self.regi_details.company_pre():
             assert True
@@ -527,7 +545,7 @@ class Test_Company_Information:
 
         self.driver.quit()
 
-    def test_validating_maxlen(self,setup):
+    def test_validating_maxlen(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -578,11 +596,11 @@ class Test_Company_Information:
         max_50 = random_string_generator_max_50()
         print("maxlenght_50:", max_50)
         max_num_20 = random_string_generator_numbers_20()
-        print("maxlennumber20",max_num_20)
+        print("maxlennumber20", max_num_20)
         max_mail_50 = generate_random_email()
-        print("maxmail:",max_mail_50)
+        print("maxmail:", max_mail_50)
 
-#       assign the data
+        #       assign the data
         c_name = max_50
         a_name = max_50
         b_num = max_50
@@ -615,9 +633,7 @@ class Test_Company_Information:
         ma = len(mail.get_attribute('value'))
         num = len(numb.get_attribute('value'))
 
-
         self.comp_info.btn_next()
-
 
         if c == comp_int:
             assert True
@@ -717,7 +733,7 @@ class Test_Company_Information:
         post_int = int(post.get_attribute('maxlength'))
         distc_int = int(distc.get_attribute('maxlength'))
         numb_int = int(numb.get_attribute('maxlength'))
-        print(numb_int,"numb_int")
+        print(numb_int, "numb_int")
         mail_int = int(mail.get_attribute('maxlength'))
 
         # max_20 = random_string_generator_max_20()
@@ -763,7 +779,7 @@ class Test_Company_Information:
         di = len(distc.get_attribute('value'))
         ma = len(mail.get_attribute('value'))
         num = len(numb.get_attribute('value'))
-        print(num,"numbers")
+        print(num, "numbers")
 
         self.comp_info.btn_next()
 
@@ -788,7 +804,8 @@ class Test_Company_Information:
         if b_na < build_name_int:
             assert True
         else:
-            self.driver.save_screenshot(screenShort.screen_short() + "CRC_test_validating_maxlen_lessthen_buildname.png")
+            self.driver.save_screenshot(
+                screenShort.screen_short() + "CRC_test_validating_maxlen_lessthen_buildname.png")
             assert False
 
         if st < street_int:
@@ -858,7 +875,7 @@ class Test_Company_Information:
         mail = self.comp_info.email()
 
         comp_int = int(comp_name.get_attribute('maxlength'))
-        print(comp_int,"comp_int")
+        print(comp_int, "comp_int")
         arab_int = int(ara_name.get_attribute('maxlength'))
         build_num_int = int(build_num.get_attribute('maxlength'))
         build_name_int = int(build_name.get_attribute('maxlength'))
@@ -866,7 +883,7 @@ class Test_Company_Information:
         post_int = int(post.get_attribute('maxlength'))
         distc_int = int(distc.get_attribute('maxlength'))
         numb_int = int(numb.get_attribute('maxlength'))
-        print(numb_int,"numb_int")
+        print(numb_int, "numb_int")
         mail_int = int(mail.get_attribute('maxlength'))
 
         # max_20 = random_string_generator_max_20()
@@ -904,7 +921,7 @@ class Test_Company_Information:
         mail.send_keys(mai)
 
         c = len(comp_name.get_attribute('value'))
-        print("c",c)
+        print("c", c)
         a = len(ara_name.get_attribute('value'))
         b_nu = len(build_num.get_attribute('value'))
         b_na = len(build_name.get_attribute('value'))
@@ -913,7 +930,7 @@ class Test_Company_Information:
         di = len(distc.get_attribute('value'))
         ma = len(mail.get_attribute('value'))
         num = len(numb.get_attribute('value'))
-        print(num,"numbers")
+        print(num, "numbers")
 
         self.comp_info.btn_next()
 
@@ -932,19 +949,22 @@ class Test_Company_Information:
         if b_nu == build_num_int:
             assert True
         else:
-            self.driver.save_screenshot(screenShort.screen_short() + "CRC_test_validating_maxlen_greaterthen_buildnum.png")
+            self.driver.save_screenshot(
+                screenShort.screen_short() + "CRC_test_validating_maxlen_greaterthen_buildnum.png")
             assert False
 
         if b_na == build_name_int:
             assert True
         else:
-            self.driver.save_screenshot(screenShort.screen_short() + "CRC_test_validating_maxlen_greaterthen_buildname.png")
+            self.driver.save_screenshot(
+                screenShort.screen_short() + "CRC_test_validating_maxlen_greaterthen_buildname.png")
             assert False
 
         if st == street_int:
             assert True
         else:
-            self.driver.save_screenshot(screenShort.screen_short() + "CRC_test_validating_maxlen_greaterthen_street.png")
+            self.driver.save_screenshot(
+                screenShort.screen_short() + "CRC_test_validating_maxlen_greaterthen_street.png")
             assert False
 
         if post_val == post_int:
@@ -1040,7 +1060,8 @@ class Test_Company_Information:
         num_val = numb.get_attribute('value')
         country_val = drp_country.first_selected_option.text
         mob_val = drp_mob.first_selected_option.text
-        print(company_val,arabic_val,b_nu_val,b_na_val,steet_val,post_val,dist_val,mail_val,num_val,country_val,mob_val)
+        print(company_val, arabic_val, b_nu_val, b_na_val, steet_val, post_val, dist_val, mail_val, num_val,
+              country_val, mob_val)
 
         self.comp_info.btn_cancel()
         self.comp_info.btn_cancel_confirm()
@@ -1067,7 +1088,8 @@ class Test_Company_Information:
         num_val_after = numb.get_attribute('value')
         country_val_after = drp_country.first_selected_option.text
         mob_val_after = drp_mob.first_selected_option.text
-        print(company_val_after,arabic_val_after,b_nu_val_after,b_na_val_after,steet_val_after,post_val_after,dist_val_after,mail_val_after,num_val_after,country_val_after,mob_val_after)
+        print(company_val_after, arabic_val_after, b_nu_val_after, b_na_val_after, steet_val_after, post_val_after,
+              dist_val_after, mail_val_after, num_val_after, country_val_after, mob_val_after)
 
         if company_val != company_val_after and arabic_val != arabic_val_after and b_nu_val != b_nu_val_after and b_na_val != b_na_val_after and steet_val != steet_val_after and post_val != post_val_after and dist_val != dist_val_after and mail_val != mail_val_after and num_val != num_val_after and country_val != country_val_after and mob_val != mob_val_after:
             assert True
@@ -1076,7 +1098,7 @@ class Test_Company_Information:
             assert False
         self.driver.quit()
 
-    def test_addingdata_without_clear(self,setup):
+    def test_addingdata_without_clear(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -1170,25 +1192,25 @@ class Test_Company_Information:
         mail.send_keys(mai)
 
         comp_val = comp_name.get_attribute('value')
-        print("comp_val",comp_val)
+        print("comp_val", comp_val)
         arb_val = ara_name.get_attribute('value')
-        print("arb_val",arb_val)
+        print("arb_val", arb_val)
         buil_num_val = build_num.get_attribute('value')
-        print("buil_num_val",buil_num_val)
+        print("buil_num_val", buil_num_val)
         build_name_val = build_name.get_attribute('value')
         print("build_name_val", build_name_val)
         stree_val = stree.get_attribute('value')
-        print("stree_val",stree_val)
+        print("stree_val", stree_val)
         post_val = post.get_attribute('value')
-        print("post_val",post_val)
+        print("post_val", post_val)
         dist_val = distc.get_attribute('value')
-        print("dist_val",dist_val)
+        print("dist_val", dist_val)
         mail_val = mail.get_attribute('value')
-        print("mail_val",mail_val)
+        print("mail_val", mail_val)
         country_val = drp_country.first_selected_option.text
-        print("country_val",country_val)
+        print("country_val", country_val)
         mobil = drp_mob.first_selected_option.text
-        print("mobil",mobil)
+        print("mobil", mobil)
 
         self.comp_info.btn_next()
         self.regi_details.comp_info_pre()
@@ -1259,7 +1281,7 @@ class Test_Company_Information:
 
         self.driver.quit()
 
-    def test_get_size(self,setup):
+    def test_get_size(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()

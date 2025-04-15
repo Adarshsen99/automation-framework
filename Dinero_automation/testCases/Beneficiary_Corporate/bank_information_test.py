@@ -2,15 +2,22 @@ import time
 from Dinero_automation.utilities.readProperties import ReadConfig
 from Dinero_automation.pageObjects.LoginPage import LoginPage
 from Dinero_automation.pageObjects.Navbar import Navigation_Page
-from Dinero_automation.pageObjects.Beneficiary_Corporate import Company_Information,Contact_Information,Bank_Information,Final_Preview
-from Dinero_automation.utilities.randomString import random_string_generator,random_string_generator_numbers,random_string_generator_new,generate_random_email_new,random_string_generator_numbers_new,random_string_generator_max_30,random_string_generator_max_50,generate_random_email,random_string_generator_max_28,random_string_generator_max_48,random_string_generator_max_31,random_string_generator_max_51
+from Dinero_automation.pageObjects.Beneficiary_Corporate import Company_Information, Contact_Information, \
+    Bank_Information, Final_Preview
+from Dinero_automation.utilities.randomString import random_string_generator, random_string_generator_numbers, \
+    random_string_generator_new, generate_random_email_new, random_string_generator_numbers_new, \
+    random_string_generator_max_30, random_string_generator_max_50, generate_random_email, \
+    random_string_generator_max_28, random_string_generator_max_48, random_string_generator_max_31, \
+    random_string_generator_max_51
 from selenium.webdriver.support.ui import Select
 from Dinero_automation.utilities import screenShort
+
 
 class Test_Company_Information:
     url = ReadConfig.getApplicationURL()
     uname = ReadConfig.getApplicationUsername()
     upass = ReadConfig.getApplicationPWD()
+
     def test_with_add_bank(self, setup):
         # login setup
         self.driver = setup
@@ -41,12 +48,11 @@ class Test_Company_Information:
         comp_name = self.ci.company_name()
         short_name = self.ci.short_name()
         drp_count_of_incorp = Select(self.ci.drp_country_of_incorporation())
-        drp_relation = Select(self.ci.drp_relation())
 
         comp_name.send_keys(random_string_generator())
         short_name.send_keys(random_string_generator_new())
         drp_count_of_incorp.select_by_index(14)
-        drp_relation.select_by_index(2)
+
         self.ci.btn_next()
 
         build_num = self.con_info.building_number()
@@ -77,10 +83,10 @@ class Test_Company_Information:
         acc_type = Select(self.bi.drp_account_type())
         currency = Select(self.bi.drp_currency())
 
-        bank_name.send_keys("icici")
+        bank_name.send_keys("canara")
         click_bank = self.bi.click_bank_name()
         click_bank.click()
-        branch_name.send_keys("icic")
+        branch_name.send_keys("kochi")
         click_branch = self.bi.click_branch_name()
         click_branch.click()
         acc_no = random_string_generator_numbers_new()
@@ -187,7 +193,8 @@ class Test_Company_Information:
         if error_msg == "Account numbers do not match":
             assert True
         else:
-            self.driver.save_screenshot(screenShort.screen_short() + "BEN_CO_BANKINFO_test_with_add_bank_diff_ac_num.png")
+            self.driver.save_screenshot(
+                screenShort.screen_short() + "BEN_CO_BANKINFO_test_with_add_bank_diff_ac_num.png")
             assert False
 
         self.driver.quit()
@@ -277,7 +284,8 @@ class Test_Company_Information:
         if not error_msg == "Account numbers do not match":
             assert True
         else:
-            self.driver.save_screenshot(screenShort.screen_short() + "BEN_CO_BANKINFO_test_with_add_bank_diff_ac_num.png")
+            self.driver.save_screenshot(
+                screenShort.screen_short() + "BEN_CO_BANKINFO_test_with_add_bank_diff_ac_num.png")
             assert False
 
         self.driver.quit()
@@ -459,7 +467,8 @@ class Test_Company_Information:
         if error_msg == "Account numbers do not match":
             assert True
         else:
-            self.driver.save_screenshot(screenShort.screen_short() + "BEN_CO_BANKINFO_test_with_add_bank_with_only_account_num.png")
+            self.driver.save_screenshot(
+                screenShort.screen_short() + "BEN_CO_BANKINFO_test_with_add_bank_with_only_account_num.png")
             assert False
 
         self.driver.quit()
@@ -549,7 +558,8 @@ class Test_Company_Information:
         if error_msg == "Account numbers do not match":
             assert True
         else:
-            self.driver.save_screenshot(screenShort.screen_short() + "BEN_CO_BANKINFO_test_with_add_bank_with_only_account_number.png")
+            self.driver.save_screenshot(
+                screenShort.screen_short() + "BEN_CO_BANKINFO_test_with_add_bank_with_only_account_number.png")
             assert False
 
         self.driver.quit()
@@ -620,7 +630,8 @@ class Test_Company_Information:
         if not self.fp.btn_save().is_enabled() == True:
             assert True
         else:
-            self.driver.save_screenshot(screenShort.screen_short() + "BEN_CO_BANKINFO_test_without_adding_bank_click_next.png")
+            self.driver.save_screenshot(
+                screenShort.screen_short() + "BEN_CO_BANKINFO_test_without_adding_bank_click_next.png")
             assert False
 
         self.driver.quit()
@@ -794,7 +805,6 @@ class Test_Company_Information:
         acc_type_af = acc_type.first_selected_option.text
         currency_af = currency.first_selected_option.text
 
-
         print(acc_type_af, currency_af)
 
         time.sleep(2)
@@ -802,13 +812,15 @@ class Test_Company_Information:
         if acc_type_val == acc_type_af:
             assert True
         else:
-            self.driver.save_screenshot(screenShort.screen_short() + "BEN_CO_BANKINFO_test_adding_bank_next_back_clear_acc_type.png")
+            self.driver.save_screenshot(
+                screenShort.screen_short() + "BEN_CO_BANKINFO_test_adding_bank_next_back_clear_acc_type.png")
             assert False
 
         if currency_val == currency_af:
             assert True
         else:
-            self.driver.save_screenshot(screenShort.screen_short() + "BEN_CO_BANKINFO_test_adding_bank_next_back_clear_currency.png")
+            self.driver.save_screenshot(
+                screenShort.screen_short() + "BEN_CO_BANKINFO_test_adding_bank_next_back_clear_currency.png")
             assert False
 
         self.driver.quit()
@@ -897,7 +909,8 @@ class Test_Company_Information:
         if error_msg == "Required fields must be filled.":
             assert True
         else:
-            self.driver.save_screenshot(screenShort.screen_short() + "BEN_CO_BANKINFO_test_adding_bank_without_bank_branch.png")
+            self.driver.save_screenshot(
+                screenShort.screen_short() + "BEN_CO_BANKINFO_test_adding_bank_without_bank_branch.png")
             assert False
 
         self.driver.quit()
@@ -1000,7 +1013,8 @@ class Test_Company_Information:
         if error_msg == "Bank already exists in the list.":
             assert True
         else:
-            self.driver.save_screenshot(screenShort.screen_short() + "BEN_CO_BANKINFO_test_adding_bank_with_same_bank_branch.png")
+            self.driver.save_screenshot(
+                screenShort.screen_short() + "BEN_CO_BANKINFO_test_adding_bank_with_same_bank_branch.png")
             assert False
 
         self.driver.quit()
@@ -1104,7 +1118,8 @@ class Test_Company_Information:
         if not error_msg == "Bank already exists in the list.":
             assert True
         else:
-            self.driver.save_screenshot(screenShort.screen_short() + "BEN_CO_BANKINFO_test_adding_bank_with_same_account_diff_bank_branch.png")
+            self.driver.save_screenshot(
+                screenShort.screen_short() + "BEN_CO_BANKINFO_test_adding_bank_with_same_account_diff_bank_branch.png")
             assert False
 
         self.driver.quit()
@@ -1211,7 +1226,8 @@ class Test_Company_Information:
             assert True
 
         else:
-            self.driver.save_screenshot(screenShort.screen_short() + "BEN_CO_BANKINFO_test_adding_multilple_bank_account.png")
+            self.driver.save_screenshot(
+                screenShort.screen_short() + "BEN_CO_BANKINFO_test_adding_multilple_bank_account.png")
             assert False
 
         self.driver.quit()
@@ -2265,7 +2281,8 @@ class Test_Company_Information:
         if error_msg == "Required fields must be filled.":
             assert True
         else:
-            self.driver.save_screenshot(screenShort.screen_short() + "BEN_CO_BANKINFO_test_with_add_bank_without_drps.png")
+            self.driver.save_screenshot(
+                screenShort.screen_short() + "BEN_CO_BANKINFO_test_with_add_bank_without_drps.png")
             assert False
 
         self.driver.quit()

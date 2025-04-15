@@ -2,17 +2,26 @@ from Dinero_automation.utilities.readProperties import ReadConfig
 from Dinero_automation.pageObjects.LoginPage import LoginPage
 from Dinero_automation.pageObjects.Navbar import Navigation_Page
 import time
-from Dinero_automation.pageObjects.Customer_Registration_Corporate import Company_Information,Registration_Details,Beneficial_Owners_Details
-from Dinero_automation.utilities.randomString import random_string_generator_numbers_18,random_string_generator_numbers_22,random_string_generator_numbers_10,random_string_generator_numbers_20,random_string_generator_max_52,random_string_generator_max_32,random_string_generator_max_22,generate_random_email_lessthen_45,generate_random_email_lessthen_52,random_string_generator_numbers_max_10,random_string_generator_max_18,random_string_generator_max_30,random_string_generator_max_50,random_string_generator_max_28,random_string_generator_max_48,random_string_generator_max_31,random_string_generator_max_51,random_string_generator_max_20,random_string_generator_numbers,generate_random_email
+from Dinero_automation.pageObjects.Customer_Registration_Corporate import Company_Information, Registration_Details, \
+    Beneficial_Owners_Details
+from Dinero_automation.utilities.randomString import random_string_generator_numbers_18, \
+    random_string_generator_numbers_22, random_string_generator_numbers_10, random_string_generator_numbers_20, \
+    random_string_generator_max_52, random_string_generator_max_32, random_string_generator_max_22, \
+    generate_random_email_lessthen_45, generate_random_email_lessthen_52, random_string_generator_numbers_max_10, \
+    random_string_generator_max_18, random_string_generator_max_30, random_string_generator_max_50, \
+    random_string_generator_max_28, random_string_generator_max_48, random_string_generator_max_31, \
+    random_string_generator_max_51, random_string_generator_max_20, random_string_generator_numbers, \
+    generate_random_email
 from selenium.webdriver.support.ui import Select
 from Dinero_automation.utilities import screenShort
+
 
 class Test_Registration_Details:
     url = ReadConfig.getApplicationURL()
     uname = ReadConfig.getApplicationUsername()
     upass = ReadConfig.getApplicationPWD()
 
-    def test_sending_valid_data(self,setup):
+    def test_sending_valid_data(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -46,8 +55,7 @@ class Test_Registration_Details:
         numb = self.comp_info.mobile_num()
         mail = self.comp_info.email()
 
-
-#       assign the data
+        #       assign the data
         c_name = "Zen Tech"
         a_name = "Shaik"
         b_num = "1223"
@@ -232,9 +240,9 @@ class Test_Registration_Details:
         else:
             self.driver.save_screenshot(screenShort.screen_short() + "RG_test_sending_without_data.png")
             assert True
-        self.driver.quit()
+        #self.driver.quit()
 
-    def test_special_char_data(self,setup):
+    def test_special_char_data(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -268,7 +276,7 @@ class Test_Registration_Details:
         numb = self.comp_info.mobile_num()
         mail = self.comp_info.email()
 
-#       assign the data
+        #       assign the data
         c_name = "Zen Tech"
         a_name = "Shaik"
         b_num = "1223"
@@ -430,21 +438,21 @@ class Test_Registration_Details:
         ent_type.select_by_index(1)
         oper.select_by_index(2)
         tr_servi_sect.select_by_index(2)
-        capital.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?a")
-        reg_pur.send_keys("2!@#$%^&*()_+*/{}|]""-[:;',.?b")
-        est_an_income.send_keys("3!@#$%^&*()_+*/{}|]""-[:;',.?c")
-        auth_per.send_keys("4!@#$%^&*()_+*/{}|]""-[:;',.?d")
+        capital.send_keys("108765652!@#$%^&*()_+*/{}|]""-[:;',.?aewewdzcv")
+        reg_pur.send_keys("108765652!@#$%^&*()_+*/{}|]""-[:;',.?aewewdzcv")
+        est_an_income.send_keys("108765652!@#$%^&*()_+*/{}|]""-[:;',.?aewewdzcv")
+        auth_per.send_keys("108765652!@#$%^&*()_+*/{}|]""-[:;',.?aewewdzcv")
         designat.select_by_index(2)
         nation.select_by_index(1)
         id_type.select_by_index(2)
-        id_no.send_keys("5!@#$%^&*()_+*/{}|]""-[:;',.?e")
-        id_exp.send_keys("6!@#$%^&*()_+*/{}|]""-[:;',.?f")
-        cr_no.send_keys("7!@#$%^&*()_+*/{}|]""-[:;',.?g")
-        comp_card_no.send_keys("8!@#$%^&*()_+*/{}|]""-[:;',.?h")
-        cr_iss_dat.send_keys("9!@#$%^&*()_+*/{}|]""-[:;',.?i")
-        cr_exp_dat.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?j")
-        cc_iss_date.send_keys("2!@#$%^&*()_+*/{}|]""-[:;',.?h")
-        cc_exp_dat.send_keys("3!@#$%^&*()_+*/{}|]""-[:;',.?i")
+        id_no.send_keys("108765652!@#$%^&*()_+*/{}|]""-[:;',.?aewewdzcv")
+        id_exp.send_keys("108765652!@#$%^&*()_+*/{}|]""-[:;',.?aewewdzcv")
+        cr_no.send_keys("108765652!@#$%^&*()_+*/{}|]""-[:;',.?aewewdzcv")
+        comp_card_no.send_keys("108765652!@#$%^&*()_+*/{}|]""-[:;',.?aewewdzcv")
+        cr_iss_dat.send_keys("108765652!@#$%^&*()_+*/{}|]""-[:;',.?aewewdzcv")
+        cr_exp_dat.send_keys("108765652!@#$%^&*()_+*/{}|]""-[:;',.?aewewdzcv")
+        cc_iss_date.send_keys("108765652!@#$%^&*()_+*/{}|]""-[:;',.?aewewdzcv")
+        cc_exp_dat.send_keys("108765652!@#$%^&*()_+*/{}|]""-[:;',.?aewewdzcv")
 
         self.rg.btn_next()
 
@@ -453,7 +461,7 @@ class Test_Registration_Details:
         else:
             self.driver.save_screenshot(screenShort.screen_short() + "RG_test_special_char_with_num_data.png")
             assert True
-        self.driver.quit()
+        #self.driver.quit()
 
     def test_only_num_data(self, setup):
         self.driver = setup
@@ -564,7 +572,7 @@ class Test_Registration_Details:
             self.driver.save_screenshot(screenShort.screen_short() + "RG_test_only_num_data.png")
             assert True
 
-        self.driver.quit()
+        #self.driver.quit()
 
     def test_sending_only_char_data(self, setup):
         self.driver = setup
@@ -678,7 +686,7 @@ class Test_Registration_Details:
             assert True
         self.driver.quit()
 
-    def test_sending_bulk_data(self,setup):
+    def test_sending_bulk_data(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -863,7 +871,7 @@ class Test_Registration_Details:
 
         self.driver.quit()
 
-    def test_preview(self,setup):
+    def test_preview(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -966,90 +974,95 @@ class Test_Registration_Details:
         cc_exp_dat.send_keys("20032026")
 
         coun_of_incorp_val = coun_of_incorp.first_selected_option.text
-        print("coun_of_incorp_val",coun_of_incorp_val)
+        print("coun_of_incorp_val", coun_of_incorp_val)
         lice_natu_val = lice_natu.first_selected_option.text
-        print("lice_natu_val",lice_natu_val)
+        print("lice_natu_val", lice_natu_val)
         ent_type_val = ent_type.first_selected_option.text
-        print("ent_type_val",ent_type_val)
+        print("ent_type_val", ent_type_val)
         oper_val = oper.first_selected_option.text
-        print("oper_val",oper_val)
+        print("oper_val", oper_val)
         tr_servi_sect_val = tr_servi_sect.first_selected_option.text
-        print("tr_servi_sect_val",tr_servi_sect_val)
+        print("tr_servi_sect_val", tr_servi_sect_val)
         capital_val = capital.get_attribute('value')
-        print("capital_val",capital_val)
+        print("capital_val", capital_val)
         reg_pur_val = reg_pur.get_attribute('value')
-        print("reg_pur_val",reg_pur_val)
+        print("reg_pur_val", reg_pur_val)
         est_an_income_val = est_an_income.get_attribute('value')
-        print("est_an_income_val",est_an_income_val)
+        print("est_an_income_val", est_an_income_val)
         auth_per_val = auth_per.get_attribute('value')
-        print("auth_per_val",auth_per_val)
+        print("auth_per_val", auth_per_val)
         designat_val = designat.first_selected_option.text
-        print("designat_val",designat_val)
+        print("designat_val", designat_val)
         nation_val = nation.first_selected_option.text
-        print("nation_val",nation_val)
+        print("nation_val", nation_val)
         id_type_val = id_type.first_selected_option.text
-        print("id_type_val what i sent",id_type_val)
+        print("id_type_val what i sent", id_type_val)
         id_no_val = id_no.get_attribute('value')
-        print("id_no_val",id_no_val)
+        print("id_no_val", id_no_val)
         id_exp_val = id_exp.get_attribute('value')
-        print("id_exp_val",id_exp_val)
+        print("id_exp_val", id_exp_val)
         cr_no_val = cr_no.get_attribute('value')
-        print("cr_no_val",cr_no_val)
+        print("cr_no_val", cr_no_val)
         comp_card_no_val = comp_card_no.get_attribute('value')
-        print("comp_card_no_val",comp_card_no_val)
+        print("comp_card_no_val", comp_card_no_val)
         cr_iss_dat_val = cr_iss_dat.get_attribute('value')
-        print("cr_iss_dat_val",cr_iss_dat_val)
+        print("cr_iss_dat_val", cr_iss_dat_val)
         cr_exp_dat_val = cr_exp_dat.get_attribute('value')
-        print("cr_exp_dat_val",cr_exp_dat_val)
+        print("cr_exp_dat_val", cr_exp_dat_val)
         cc_iss_date_val = cc_iss_date.get_attribute('value')
-        print("cc_iss_date_val",cc_iss_date_val)
+        print("cc_iss_date_val", cc_iss_date_val)
         cc_exp_dat_val = cc_exp_dat.get_attribute('value')
-        print("cc_exp_dat_val",cc_exp_dat_val)
+        print("cc_exp_dat_val", cc_exp_dat_val)
 
         self.rg.btn_next()
         self.bod.registration_preview()
 
         cop_pre = self.bod.cont_of_incorp_pre()
-        print("cop_pre",cop_pre)
+        print("cop_pre", cop_pre)
         lic_pre = self.bod.license_nature_pre()
-        print("lic_pre",lic_pre)
+        print("lic_pre", lic_pre)
         entity_pre = self.bod.entity_type_pre()
-        print("entity_pre",entity_pre)
+        print("entity_pre", entity_pre)
         oprta_pre = self.bod.operation_field_pre()
-        print("oprta_pre",oprta_pre)
+        print("oprta_pre", oprta_pre)
         trader_pre = self.bod.trade_service_sector_pre()
-        print("trader_pre",trader_pre)
+        print("trader_pre", trader_pre)
         capital_pre = self.bod.capital_pre()
-        print("capital_pre",capital_pre)
+        print("capital_pre", capital_pre)
         reg_pur_pre = self.bod.regisration_purpose_pre()
-        print("reg_pur_pre",reg_pur_pre)
+        print("reg_pur_pre", reg_pur_pre)
         est_anu_pre = self.bod.estimated_annaul_incode_pre()
-        print("est_anu_pre",est_anu_pre)
+        print("est_anu_pre", est_anu_pre)
         auth_per_pre = self.bod.authorized_person_pre()
-        print("auth_per_pre",auth_per_pre)
+        print("auth_per_pre", auth_per_pre)
         desig_pre = self.bod.drp_designation_id_pre()
-        print("desig_pre",desig_pre)
-        nati_pre = self.bod.nationality_pre()
-        print("nati_pre",nati_pre)
-        id_type_pre = self.bod.id_type_pre()
-        print("id_type_pre",id_type_pre)
-        id_no_pre = self.bod.id_no_pre()
-        print("id_no_pre",id_no_pre)
-        id_exp_pre = self.bod.id_expiry_pre()
-        print("id_exp_pre",id_exp_pre)
-        comp_card_pre = self.bod.comp_card_no_pre()
-        print("comp_card_pre",comp_card_pre)
-        cr_iss_date_pre = self.bod.cr_iss_date_pre()
-        print("cr_iss_date_pre",cr_iss_date_pre)
-        cr_exp_date_pre = self.bod.cr_exp_date_pre()
-        print("cr_exp_date_pre",cr_exp_date_pre)
-        cc_iss_date_pre = self.bod.cc_iss_date_pre()
-        print("cc_iss_date_pre",cc_iss_date_pre)
-        cc_exp_date_pre = self.bod.cc_exp_date_pre()
-        print("cc_exp_date_pre",cc_exp_date_pre)
-        cr_no_pre = self.bod.cr_no_pre()
-        print("cr_no_pre",cr_no_pre)
+        print("desig_pre", desig_pre)
 
+        nati_pre = self.bod.nationality_pre()
+        print(type(nati_pre))
+        nati_pre_element = self.bod.nationality_pre()
+
+        # Extract the text or value from the element (depending on your need)
+        nati_pre = nati_pre_element.text
+        print("nati_pre", nati_pre)
+        id_type_pre = self.bod.id_type_pre()
+        print("id_type_pre", id_type_pre)
+        id_no_pre = self.bod.id_no_pre()
+        print("id_no_pre", id_no_pre)
+        id_exp_pre = self.bod.id_expiry_pre()
+        print("id_exp_pre", id_exp_pre)
+        comp_card_pre = self.bod.comp_card_no_pre()
+        print("comp_card_pre", comp_card_pre)
+        cr_iss_date_pre = self.bod.cr_iss_date_pre()
+        print("cr_iss_date_pre", cr_iss_date_pre)
+        cr_exp_date_pre = self.bod.cr_exp_date_pre()
+        print("cr_exp_date_pre", cr_exp_date_pre)
+        cc_iss_date_pre = self.bod.cc_iss_date_pre()
+        print("cc_iss_date_pre", cc_iss_date_pre)
+        cc_exp_date_pre = self.bod.cc_exp_date_pre()
+        print("cc_exp_date_pre", cc_exp_date_pre)
+        cr_no_pre = self.bod.cr_no_pre()
+        print("cr_no_pre", cr_no_pre)
 
         if coun_of_incorp_val == cop_pre:
             assert True
@@ -1131,7 +1144,6 @@ class Test_Registration_Details:
         else:
             assert False
 
-
         # if cr_iss_dat_val == cr_iss_date_pre:
         #     assert True
         # else:
@@ -1151,9 +1163,9 @@ class Test_Registration_Details:
         #     assert True
         # else:
         #     assert False
-        self.driver.quit()
+        #self.driver.quit()
 
-    def test_validating_maxlen(self,setup):
+    def test_validating_maxlen(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -1222,13 +1234,13 @@ class Test_Registration_Details:
         cr_no_len = int(self.rg.cr_no().get_attribute('maxlength'))
         comp_card_no_len = int(self.rg.comp_card_no().get_attribute('maxlength'))
 
-        print("capital",capital_len)
-        print("reg_pur",reg_pur_len)
-        print("est_an_income",est_an_income_len)
-        print("auth_per",auth_per_len)
-        print("id_no",id_no_len)
-        print("cr_no",cr_no_len)
-        print("comp_card_no",comp_card_no_len)
+        print("capital", capital_len)
+        print("reg_pur", reg_pur_len)
+        print("est_an_income", est_an_income_len)
+        print("auth_per", auth_per_len)
+        print("id_no", id_no_len)
+        print("cr_no", cr_no_len)
+        print("comp_card_no", comp_card_no_len)
 
         coun_of_incorp = Select(self.rg.drp_country_of_incorp())
         lice_natu = Select(self.rg.drp_licence_nature())
@@ -1265,8 +1277,8 @@ class Test_Registration_Details:
         id_type.select_by_index(2)
         id_no.send_keys(random_string_generator_max_30())
         id_exp.send_keys("20032004")
-        cr_no.send_keys(random_string_generator_numbers_20()+random_string_generator_numbers_10())
-        comp_card_no.send_keys(random_string_generator_numbers_20()+random_string_generator_numbers_10())
+        cr_no.send_keys(random_string_generator_numbers_20() + random_string_generator_numbers_10())
+        comp_card_no.send_keys(random_string_generator_numbers_20() + random_string_generator_numbers_10())
         cr_iss_dat.send_keys("20032004")
         cr_exp_dat.send_keys("20032014")
         cc_iss_date.send_keys("20032006")
@@ -1274,11 +1286,11 @@ class Test_Registration_Details:
 
         capital_val = len(self.rg.capital().get_attribute('value'))
         reg_pur_val = len(self.rg.regisration_purpose().get_attribute('value'))
-        est_an_income_val= len(self.rg.estimated_annaul_incode().get_attribute('value'))
+        est_an_income_val = len(self.rg.estimated_annaul_incode().get_attribute('value'))
         auth_per_val = len(self.rg.authorized_person().get_attribute('value'))
         id_no_val = len(self.rg.id_no().get_attribute('value'))
         cr_no_val = len(self.rg.cr_no().get_attribute('value'))
-        print("cr_no_val",cr_no_val)
+        print("cr_no_val", cr_no_val)
         comp_card_no_val = len(self.rg.comp_card_no().get_attribute('value'))
 
         if capital_val == capital_len:
@@ -1324,7 +1336,7 @@ class Test_Registration_Details:
             assert False
         self.driver.quit()
 
-    def test_validating_maxlen_less(self,setup):
+    def test_validating_maxlen_less(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -1393,13 +1405,13 @@ class Test_Registration_Details:
         cr_no_len = int(self.rg.cr_no().get_attribute('maxlength'))
         comp_card_no_len = int(self.rg.comp_card_no().get_attribute('maxlength'))
 
-        print("capital",capital_len)
-        print("reg_pur",reg_pur_len)
-        print("est_an_income",est_an_income_len)
-        print("auth_per",auth_per_len)
-        print("id_no",id_no_len)
-        print("cr_no",cr_no_len)
-        print("comp_card_no",comp_card_no_len)
+        print("capital", capital_len)
+        print("reg_pur", reg_pur_len)
+        print("est_an_income", est_an_income_len)
+        print("auth_per", auth_per_len)
+        print("id_no", id_no_len)
+        print("cr_no", cr_no_len)
+        print("comp_card_no", comp_card_no_len)
 
         coun_of_incorp = Select(self.rg.drp_country_of_incorp())
         lice_natu = Select(self.rg.drp_licence_nature())
@@ -1436,8 +1448,8 @@ class Test_Registration_Details:
         id_type.select_by_index(2)
         id_no.send_keys(random_string_generator_max_28())
         id_exp.send_keys("20032004")
-        cr_no.send_keys(random_string_generator_numbers_18()+random_string_generator_numbers_10())
-        comp_card_no.send_keys(random_string_generator_numbers_18()+random_string_generator_numbers_10())
+        cr_no.send_keys(random_string_generator_numbers_18() + random_string_generator_numbers_10())
+        comp_card_no.send_keys(random_string_generator_numbers_18() + random_string_generator_numbers_10())
         cr_iss_dat.send_keys("20032004")
         cr_exp_dat.send_keys("20032014")
         cc_iss_date.send_keys("20032006")
@@ -1445,11 +1457,11 @@ class Test_Registration_Details:
 
         capital_val = len(self.rg.capital().get_attribute('value'))
         reg_pur_val = len(self.rg.regisration_purpose().get_attribute('value'))
-        est_an_income_val= len(self.rg.estimated_annaul_incode().get_attribute('value'))
+        est_an_income_val = len(self.rg.estimated_annaul_incode().get_attribute('value'))
         auth_per_val = len(self.rg.authorized_person().get_attribute('value'))
         id_no_val = len(self.rg.id_no().get_attribute('value'))
         cr_no_val = len(self.rg.cr_no().get_attribute('value'))
-        print("cr_no_val",cr_no_val)
+        print("cr_no_val", cr_no_val)
         comp_card_no_val = len(self.rg.comp_card_no().get_attribute('value'))
 
         if capital_val < capital_len:
@@ -1495,7 +1507,7 @@ class Test_Registration_Details:
             assert False
         self.driver.quit()
 
-    def test_validating_cancel(self,setup):
+    def test_validating_cancel(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -1791,8 +1803,7 @@ class Test_Registration_Details:
 
         self.driver.quit()
 
-
-    def test_modifying_data_clear(self,setup):
+    def test_modifying_data_clear(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -1996,46 +2007,49 @@ class Test_Registration_Details:
         self.bod.registration_preview()
 
         cop_pre = self.bod.cont_of_incorp_pre()
-        print("cop_pre",cop_pre)
+        print("cop_pre", cop_pre)
         lic_pre = self.bod.license_nature_pre()
-        print("lic_pre",lic_pre)
+        print("lic_pre", lic_pre)
         entity_pre = self.bod.entity_type_pre()
-        print("entity_pre",entity_pre)
+        print("entity_pre", entity_pre)
         oprta_pre = self.bod.operation_field_pre()
-        print("oprta_pre",oprta_pre)
+        print("oprta_pre", oprta_pre)
         trader_pre = self.bod.trade_service_sector_pre()
-        print("trader_pre",trader_pre)
+        print("trader_pre", trader_pre)
         capital_pre = self.bod.capital_pre()
-        print("capital_pre",capital_pre)
+        print("capital_pre", capital_pre)
         reg_pur_pre = self.bod.regisration_purpose_pre()
-        print("reg_pur_pre",reg_pur_pre)
+        print("reg_pur_pre", reg_pur_pre)
         est_anu_pre = self.bod.estimated_annaul_incode_pre()
-        print("est_anu_pre",est_anu_pre)
+        print("est_anu_pre", est_anu_pre)
         auth_per_pre = self.bod.authorized_person_pre()
-        print("auth_per_pre",auth_per_pre)
+        print("auth_per_pre", auth_per_pre)
         desig_pre = self.bod.drp_designation_id_pre()
-        print("desig_pre",desig_pre)
-        nati_pre = self.bod.nationality_pre()
-        print("nati_pre",nati_pre)
-        id_type_pre = self.bod.id_type_pre()
-        print("id_type_pre",id_type_pre)
-        id_no_pre = self.bod.id_no_pre()
-        print("id_no_pre",id_no_pre)
-        id_exp_pre = self.bod.id_expiry_pre()
-        print("id_exp_pre",id_exp_pre)
-        comp_card_pre = self.bod.comp_card_no_pre()
-        print("comp_card_pre",comp_card_pre)
-        cr_iss_date_pre = self.bod.cr_iss_date_pre()
-        print("cr_iss_date_pre",cr_iss_date_pre)
-        cr_exp_date_pre = self.bod.cr_exp_date_pre()
-        print("cr_exp_date_pre",cr_exp_date_pre)
-        cc_iss_date_pre = self.bod.cc_iss_date_pre()
-        print("cc_iss_date_pre",cc_iss_date_pre)
-        cc_exp_date_pre = self.bod.cc_exp_date_pre()
-        print("cc_exp_date_pre",cc_exp_date_pre)
-        cr_no_pre = self.bod.cr_no_pre()
-        print("cr_no_pre",cr_no_pre)
+        print("desig_pre", desig_pre)
+        nati_pre_element = self.bod.nationality_pre()
 
+        # Extract the text or value from the element (depending on your need)
+        nati_pre = nati_pre_element.text
+
+        print("nati_pre", nati_pre)
+        id_type_pre = self.bod.id_type_pre()
+        print("id_type_pre", id_type_pre)
+        id_no_pre = self.bod.id_no_pre()
+        print("id_no_pre", id_no_pre)
+        id_exp_pre = self.bod.id_expiry_pre()
+        print("id_exp_pre", id_exp_pre)
+        comp_card_pre = self.bod.comp_card_no_pre()
+        print("comp_card_pre", comp_card_pre)
+        cr_iss_date_pre = self.bod.cr_iss_date_pre()
+        print("cr_iss_date_pre", cr_iss_date_pre)
+        cr_exp_date_pre = self.bod.cr_exp_date_pre()
+        print("cr_exp_date_pre", cr_exp_date_pre)
+        cc_iss_date_pre = self.bod.cc_iss_date_pre()
+        print("cc_iss_date_pre", cc_iss_date_pre)
+        cc_exp_date_pre = self.bod.cc_exp_date_pre()
+        print("cc_exp_date_pre", cc_exp_date_pre)
+        cr_no_pre = self.bod.cr_no_pre()
+        print("cr_no_pre", cr_no_pre)
 
         if coun_of_incorp_val == cop_pre:
             assert True
@@ -2117,7 +2131,6 @@ class Test_Registration_Details:
         else:
             assert False
 
-
         # if cr_iss_dat_val == cr_iss_date_pre:
         #     assert True
         # else:
@@ -2139,22 +2152,114 @@ class Test_Registration_Details:
         #     assert False
         self.driver.quit()
 
+    def test_data_having_spaces(self, setup):
 
+        self.driver = setup
+        self.driver.get(self.url)
+        self.driver.maximize_window()
+        self.driver.implicitly_wait(30)
+        self.lp = LoginPage(self.driver)
+        self.lp.setUsername(self.uname)
+        self.lp.setPassword(self.upass)
+        self.lp.clickLogin()
 
+        # click action for nav bar arrow
+        self.nav = Navigation_Page(self.driver)
+        self.nav.click_navbar()
 
+        # click action for customer registration
+        self.nav.click_customer_registration_corporate()
 
+        # Assinging submodules
+        self.comp_info = Company_Information(self.driver)
+        self.rg = Registration_Details(self.driver)
 
+        # Assinging Elements
+        comp_name = self.comp_info.company_name()
+        ara_name = self.comp_info.arabic_name()
+        build_num = self.comp_info.building_number()
+        build_name = self.comp_info.building_name()
+        stree = self.comp_info.street()
+        post = self.comp_info.postal_code()
+        distc = self.comp_info.city_district()
+        drp_country = Select(self.comp_info.country())
+        drp_mob = Select(self.comp_info.drp_mobile())
+        numb = self.comp_info.mobile_num()
+        mail = self.comp_info.email()
 
+        #       assign the data
+        c_name = "Zen Tech"
+        a_name = "Sh aik"
+        b_num = "12   23"
+        b_name = "mon la sh"
+        stre = "nel lo  re"
+        po = "52  4  0 9"
+        dist = "Ke r a  la"
+        num = "7641 52 43 44"
+        mai = " finnest@ te ch.com"
 
+        comp_name.send_keys(c_name)
+        ara_name.send_keys(a_name)
+        build_num.send_keys(b_num)
+        build_name.send_keys(b_name)
+        stree.send_keys(stre)
+        post.send_keys(po)
+        distc.send_keys(dist)
+        drp_country.select_by_index(4)
+        drp_mob.select_by_index(2)
+        numb.send_keys(num)
+        mail.send_keys(mai)
 
+        self.comp_info.btn_next()
+        #       Assigning elements for registration details
+        coun_of_incorp = Select(self.rg.drp_country_of_incorp())
+        lice_natu = Select(self.rg.drp_licence_nature())
+        ent_type = Select(self.rg.drp_entity_type())
+        oper = Select(self.rg.drp_operation())
+        tr_servi_sect = Select(self.rg.drp_trade_service_sector())
+        capital = self.rg.capital()
+        reg_pur = self.rg.regisration_purpose()
+        est_an_income = self.rg.estimated_annaul_incode()
+        auth_per = self.rg.authorized_person()
+        designat = Select(self.rg.drp_designation())
+        nation = Select(self.rg.drp_nationality())
+        id_type = Select(self.rg.drp_id_type())
+        id_no = self.rg.id_no()
+        id_exp = self.rg.dpick_id_exp()
+        cr_no = self.rg.cr_no()
+        comp_card_no = self.rg.comp_card_no()
+        cr_iss_dat = self.rg.dpick_cr_issue_date()
+        cr_exp_dat = self.rg.dpick_cr_exp_date()
+        cc_iss_date = self.rg.dpick_cc_issue_date()
+        cc_exp_dat = self.rg.dpick_cc_expaire_date()
 
+        coun_of_incorp.select_by_index(2)
+        lice_natu.select_by_index(2)
+        ent_type.select_by_index(1)
+        oper.select_by_index(2)
+        tr_servi_sect.select_by_index(2)
+        capital.send_keys("20 0  00 ")
+        reg_pur.send_keys("Test i  g")
+        est_an_income.send_keys("3 0 0 00")
+        auth_per.send_keys("C E   O")
+        designat.select_by_index(2)
+        nation.select_by_index(1)
+        id_type.select_by_index(2)
+        id_no.send_keys("2321  2  32")
+        id_exp.send_keys("2003  2  00  4")
+        cr_no.send_keys("597  8  456  12")
+        comp_card_no.send_keys("2  112   154  45")
+        cr_iss_dat.send_keys("200 320  04")
+        cr_exp_dat.send_keys("20032014")
+        cc_iss_date.send_keys("200 320  06")
+        cc_exp_dat.send_keys("200 32  026")
 
+        self.rg.btn_next()
+        time.sleep(5)
 
-
-
-
-
-
-
-
-
+        if self.comp_info.errorMessage() != "Required":
+            assert True
+        else:
+            self.driver.save_screenshot(screenShort.screen_short() + "RG_test_sending_valid_data.png")
+            assert False
+        self.driver.quit()

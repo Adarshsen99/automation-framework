@@ -1,19 +1,23 @@
+import pyautogui
+
 from Dinero_automation.utilities.readProperties import ReadConfig
 from Dinero_automation.pageObjects.LoginPage import LoginPage
 from Dinero_automation.pageObjects.Navbar import Navigation_Page
 import time
 import os
-from Dinero_automation.pageObjects.Customer_Registration_Corporate import Company_Information,Registration_Details,Beneficial_Owners_Details,Upload_Documents
+from Dinero_automation.pageObjects.Customer_Registration_Corporate import Company_Information, Registration_Details, \
+    Beneficial_Owners_Details, Upload_Documents
 from selenium.webdriver.support.ui import Select
 from Dinero_automation.utilities import screenShort
 from pynput.keyboard import Controller, Key
+
 
 class Test_Beneficial_Owners_Details:
     url = ReadConfig.getApplicationURL()
     uname = ReadConfig.getApplicationUsername()
     upass = ReadConfig.getApplicationPWD()
 
-    def test_add_documents(self,setup):
+    def test_add_documents(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -122,7 +126,7 @@ class Test_Beneficial_Owners_Details:
         tit = Select(self.bod.title())
         f_name = self.bod.first_name()
         m_name = self.bod.middle_name()
-        l_name =self.bod.last_name()
+        l_name = self.bod.last_name()
         dob = self.bod.dob()
         pob = self.bod.place_of_birth()
         gend = Select(self.bod.gender())
@@ -165,19 +169,24 @@ class Test_Beneficial_Owners_Details:
         element = self.ud.send_front()
         element.click()
 
-        # keyword = Controller()
-        # keyword.type("/home/karunakar/Pictures/Screenshots/Screenshot from 2024-08-09 17-56-26.png")
-        # keyword.press(Key.enter)
-        # keyword.release(Key.enter)
-        element.send_keys("/home/karunakar/Pictures/Screenshots/Screenshot from 2024-08-09 17-56-26.png")
+        # os.chdir(os.path.dirname(os.path.abspath("C:\\Users\\adars\\PycharmProjects\\pythonProject5\\customer_reg_ ind\\sample.py")))
+        base_dir = "C:\\Users\\adars\\OneDrive\\Pictures\\Screenshots"
+        file_name = "Screenshot 2024-07-22 162441.png"
+        full_path = os.path.join(base_dir, file_name)
+        time.sleep(2)
 
+        # screenshot_path = os.path.abspath("C:\\Users\\adars\\OneDrive\\Pictures\\Screenshots\\Screenshot 2024-07-22 162441.png")
+        pyautogui.click(50, 50)
+        time.sleep(4)
+        pyautogui.write(full_path)
+        time.sleep(2)
+        pyautogui.press("enter")
+
+        time.sleep(5)
         time.sleep(10)
         self.ud.btn_next()
         time.sleep(4)
         self.ud.btn_save()
         time.sleep(4)
 
-
         self.driver.quit()
-
-

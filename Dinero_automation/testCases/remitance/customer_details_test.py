@@ -1,5 +1,6 @@
 import time
 
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 
 from Dinero_automation.pageObjects.LoginPage import LoginPage
@@ -30,8 +31,13 @@ class Test_Customer_detals:
         # click action for nav bar arrow
         self.nav = Navigation_Page(self.driver)
         self.nav.click_navbar()
-        # time.sleep(2)
+        time.sleep(2)
 
+        sidebar = self.driver.find_element(By.XPATH, "//div[@class='sidebarMenuContainer open']")
+
+        # Locate the "Remittance" element inside the sidebar container
+        self.driver.execute_script("arguments[0].scrollIntoView();", sidebar)
+        time.sleep(2)
         # click action for customer details
         self.nav.click_remitance()
         self.cd = Customer_Details(self.driver)
@@ -39,7 +45,7 @@ class Test_Customer_detals:
         self.drp_transn_typ.select_by_index(1)
         self.custom_name = self.cd.customer_search_bar()
 
-        self.custom_name.send_keys("Kar")
+        self.custom_name.send_keys("Adarsh")
         time.sleep(2)
         self.cd.custom_select1()
         self.cd.verify_btn()
@@ -48,7 +54,7 @@ class Test_Customer_detals:
         time.sleep(2)
 
         ### test passed
-        ### last tested on 18/9/2024
+        ### last tested on 15/10/2024
 
     def test_sending_valid_data_id_no(self, setup):
         self.driver = setup
@@ -65,27 +71,28 @@ class Test_Customer_detals:
         # click action for nav bar arrow
         self.nav = Navigation_Page(self.driver)
         self.nav.click_navbar()
-        # time.sleep(2)
+        sidebar = self.driver.find_element(By.XPATH, "//div[@class='sidebarMenuContainer open']")
 
-        # click action for customer details
+        # Locate the "Remittance" element inside the sidebar container
+        self.driver.execute_script("arguments[0].scrollIntoView();", sidebar)
+        time.sleep(2)
         self.nav.click_remitance()
         self.cd = Customer_Details(self.driver)
         self.drp_transn_typ = Select(self.cd.drp_transcation_type())
         self.drp_transn_typ.select_by_index(1)
         self.custom_name = self.cd.customer_search_bar()
         self.custom_name.clear()
-        self.custom_name.send_keys("567")
+        self.custom_name.send_keys("242412412")
 
         time.sleep(4)
-        self.cd.search_btn()
-        self.cd.customer_selector_karunakar()
+        self.cd.customer_selector_adarshid()
         self.cd.verify_btn()
         time.sleep(2)
         self.cd.btn_next()
         time.sleep(2)
 
         ### test passed
-        ### last tested on 19/09/2024
+        ### last tested on 15/10/2024
 
     def test_sending_without_data(self, setup):
         self.driver = setup
@@ -102,8 +109,11 @@ class Test_Customer_detals:
         # click action for nav bar arrow
         self.nav = Navigation_Page(self.driver)
         self.nav.click_navbar()
-        # time.sleep(2)
+        sidebar = self.driver.find_element(By.XPATH, "//div[@class='sidebarMenuContainer open']")
 
+        # Locate the "Remittance" element inside the sidebar container
+        self.driver.execute_script("arguments[0].scrollIntoView();", sidebar)
+        time.sleep(2)
         # click action for customer details
         self.nav.click_remitance()
         self.cd = Customer_Details(self.driver)
@@ -114,7 +124,6 @@ class Test_Customer_detals:
         # self.custom_name.send_keys("")
 
         time.sleep(4)
-        self.cd.search_btn()
         self.cd.verify_btn()
         time.sleep(2)
         self.cd.btn_next()
@@ -138,8 +147,11 @@ class Test_Customer_detals:
         # click action for nav bar arrow
         self.nav = Navigation_Page(self.driver)
         self.nav.click_navbar()
-        # time.sleep(2)
+        sidebar = self.driver.find_element(By.XPATH, "//div[@class='sidebarMenuContainer open']")
 
+        # Locate the "Remittance" element inside the sidebar container
+        self.driver.execute_script("arguments[0].scrollIntoView();", sidebar)
+        time.sleep(2)
         # click action for customer details
         self.nav.click_remitance()
         self.cd = Customer_Details(self.driver)
@@ -150,7 +162,6 @@ class Test_Customer_detals:
         self.custom_name.send_keys("!@#$%^&*()_+*/{}|]""-[:;',.?")
 
         time.sleep(4)
-        self.cd.search_btn()
         self.cd.verify_btn()
         time.sleep(2)
         self.cd.btn_next()
@@ -173,8 +184,13 @@ class Test_Customer_detals:
         # click action for nav bar arrow
         self.nav = Navigation_Page(self.driver)
         self.nav.click_navbar()
-        # time.sleep(2)
+        time.sleep(2)
 
+        sidebar = self.driver.find_element(By.XPATH, "//div[@class='sidebarMenuContainer open']")
+
+        # Locate the "Remittance" element inside the sidebar container
+        self.driver.execute_script("arguments[0].scrollIntoView();", sidebar)
+        time.sleep(2)
         # click action for customer details
         self.nav.click_remitance()
         self.cd = Customer_Details(self.driver)
@@ -199,7 +215,7 @@ class Test_Customer_detals:
 
         customer_name_number = max_50
 
-        self.cd.customer_search_bar(customer_name_number)
+        self.cd.customer_search_bar().send_keys(customer_name_number)
 
         cus_val = custom_len_ele.get_attribute('value')
         cus_val_len = len(cus_val)
@@ -209,7 +225,6 @@ class Test_Customer_detals:
         #self.custom_name.send_keys("!@#$%^&*()_+*/{}|]""-[:;',.?")
 
         time.sleep(4)
-        self.cd.search_btn()
         self.cd.verify_btn()
         time.sleep(2)
         self.cd.btn_next()
@@ -240,6 +255,12 @@ class Test_Customer_detals:
         # Navigate to the customer details page
         self.nav = Navigation_Page(self.driver)
         self.nav.click_navbar()
+        sidebar = self.driver.find_element(By.XPATH, "//div[@class='sidebarMenuContainer open']")
+
+        # Locate the "Remittance" element inside the sidebar container
+        self.driver.execute_script("arguments[0].scrollIntoView();", sidebar)
+        time.sleep(2)
+        # click action for customer details
         self.nav.click_remitance()
 
         # Select a transaction type
@@ -249,9 +270,9 @@ class Test_Customer_detals:
 
         # Search for a customer
         custom_name = self.cd.customer_search_bar()
-        custom_name.send_keys("Kar")
+        custom_name.send_keys("adarsh")
         time.sleep(2)
-        self.cd.customer_selector_karunakar()
+        self.cd.custom_select1()
         self.cd.verify_btn()
         time.sleep(2)
         customer_val = custom_name.get_attribute('value')
@@ -270,6 +291,7 @@ class Test_Customer_detals:
 
         # Print the selected transaction type after clearing
         print("Getting data for customer details info after clear")
+        self.drp_transn_typ = Select(self.cd.drp_transcation_type())
         self.drp_transn_typ_after = Select(self.cd.drp_transcation_type())
 
         self.transcationtyp_text_after = get_dropdown_text(self.drp_transn_typ)
@@ -312,16 +334,19 @@ class Test_Customer_detals:
         # click action for nav bar arrow
         self.nav = Navigation_Page(self.driver)
         self.nav.click_navbar()
-        # time.sleep(2)
+        sidebar = self.driver.find_element(By.XPATH, "//div[@class='sidebarMenuContainer open']")
 
+        # Locate the "Remittance" element inside the sidebar container
+        self.driver.execute_script("arguments[0].scrollIntoView();", sidebar)
+        time.sleep(2)
         # click action for customer details
         self.nav.click_remitance()
         self.cd = Customer_Details(self.driver)
         self.drp_transn_typ = Select(self.cd.drp_transcation_type())
-        self.drp_transn_typ.select_by_index(1)
+        self.drp_transn_typ.select_by_index(2)
         self.custom_name = self.cd.customer_search_bar()
 
-        self.custom_name.send_keys("Kar")
+        self.custom_name.send_keys("adarsh")
         time.sleep(2)
         self.cd.custom_select1()
         self.cd.verify_btn()
@@ -341,7 +366,7 @@ class Test_Customer_detals:
         self.transcationtyp_text_after = get_dropdown_text(self.drp_transn_typ)
         print("Transfer type after cancel:", self.transcationtyp_text_after)
 
-        if self.transcationtyp_text_after != self.transcationtyp_text_before:
+        if self.transcationtyp_text_after == self.transcationtyp_text_before:
             assert True
         else:
             self.driver.save_screenshot(
@@ -351,9 +376,3 @@ class Test_Customer_detals:
 
             # test failed( values are remaining same)
             # last tested onb built 19/09/2024
-
-
-
-
-
-

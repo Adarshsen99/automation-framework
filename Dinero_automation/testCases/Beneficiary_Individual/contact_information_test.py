@@ -2,15 +2,21 @@ import time
 from Dinero_automation.utilities.readProperties import ReadConfig
 from Dinero_automation.pageObjects.LoginPage import LoginPage
 from Dinero_automation.pageObjects.Navbar import Navigation_Page
-from Dinero_automation.pageObjects.Beneficiary_Individual import Personal_Details,Contact_Information,Bank_Information
-from Dinero_automation.utilities.randomString import generate_random_email_new,random_string_generator_numbers_new,random_string_generator,random_string_generator_max_30,random_string_generator_max_50,random_string_generator_numbers,generate_random_email,random_string_generator_numbers_10,random_string_generator_max_28,random_string_generator_max_48,random_string_generator_max_31,random_string_generator_max_51
+from Dinero_automation.pageObjects.Beneficiary_Individual import Personal_Details, Contact_Information, Bank_Information
+from Dinero_automation.utilities.randomString import generate_random_email_new, random_string_generator_numbers_new, \
+    random_string_generator, random_string_generator_max_30, random_string_generator_max_50, \
+    random_string_generator_numbers, generate_random_email, random_string_generator_numbers_10, \
+    random_string_generator_max_28, random_string_generator_max_48, random_string_generator_max_31, \
+    random_string_generator_max_51
 from selenium.webdriver.support.ui import Select
 from Dinero_automation.utilities import screenShort
+
 
 class Test_Contact_Information:
     url = ReadConfig.getApplicationURL()
     uname = ReadConfig.getApplicationUsername()
     upass = ReadConfig.getApplicationPWD()
+
     def test_with_valid_data(self, setup):
         # login setup
         self.driver = setup
@@ -41,7 +47,6 @@ class Test_Contact_Information:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -53,7 +58,6 @@ class Test_Contact_Information:
         sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
-        relation.select_by_index(3)
         id_type.select_by_index(2)
         id_num.send_keys(random_string_generator_numbers_new())
         trans_type.select_by_index(3)
@@ -122,7 +126,6 @@ class Test_Contact_Information:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -134,7 +137,6 @@ class Test_Contact_Information:
         sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
-        relation.select_by_index(3)
         id_type.select_by_index(2)
         id_num.send_keys(random_string_generator_numbers_new())
         trans_type.select_by_index(3)
@@ -202,7 +204,6 @@ class Test_Contact_Information:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -214,7 +215,6 @@ class Test_Contact_Information:
         sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
-        relation.select_by_index(3)
         id_type.select_by_index(2)
         id_num.send_keys(random_string_generator_numbers_new())
         trans_type.select_by_index(3)
@@ -250,7 +250,7 @@ class Test_Contact_Information:
         #     self.driver.save_screenshot(screenShort.screen_short() + "CI_test_sending_numbers.png")
         #     assert False
 
-        self.driver.quit()
+        # self.driver.quit()
 
     def test_sending_spchar_num_char(self, setup):
         # login setup
@@ -282,7 +282,6 @@ class Test_Contact_Information:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -294,7 +293,6 @@ class Test_Contact_Information:
         sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
-        relation.select_by_index(3)
         id_type.select_by_index(2)
         id_num.send_keys(random_string_generator_numbers_new())
         trans_type.select_by_index(3)
@@ -330,7 +328,6 @@ class Test_Contact_Information:
         #     assert False
         self.driver.quit()
 
-
     def test_validating_clear(self, setup):
         # login setup
         self.driver = setup
@@ -361,7 +358,6 @@ class Test_Contact_Information:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -373,7 +369,6 @@ class Test_Contact_Information:
         sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
-        relation.select_by_index(3)
         id_type.select_by_index(2)
         id_num.send_keys(random_string_generator_numbers_new())
         trans_type.select_by_index(3)
@@ -441,7 +436,6 @@ class Test_Contact_Information:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -453,7 +447,6 @@ class Test_Contact_Information:
         sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
-        relation.select_by_index(3)
         id_type.select_by_index(2)
         id_num.send_keys(random_string_generator_numbers_new())
         trans_type.select_by_index(3)
@@ -487,7 +480,7 @@ class Test_Contact_Information:
         drp_phone_val = drp_phone.first_selected_option.text
         phone_val = phone.get_attribute('value')
 
-        print(fh_num_val,hb_num_val,street_val,email_val,city_val,drp_contry_val,drp_phone_val,phone_val)
+        print(fh_num_val, hb_num_val, street_val, email_val, city_val, drp_contry_val, drp_phone_val, phone_val)
 
         self.ci.btn_next()
         time.sleep(2)
@@ -574,7 +567,6 @@ class Test_Contact_Information:
             assert True
         else:
             assert False
-        self.driver.quit()
 
     def test_sending_data_have_spaces(self, setup):
         # login setup
@@ -606,7 +598,6 @@ class Test_Contact_Information:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -618,7 +609,6 @@ class Test_Contact_Information:
         sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
-        relation.select_by_index(3)
         id_type.select_by_index(2)
         id_num.send_keys(random_string_generator_numbers_new())
         trans_type.select_by_index(3)
@@ -655,8 +645,6 @@ class Test_Contact_Information:
             self.driver.save_screenshot(screenShort.screen_short() + "CI_test_sending_data_have_spaces.png")
             assert True
 
-        self.driver.quit()
-
     def test_with_char_data(self, setup):
         # login setup
         self.driver = setup
@@ -687,7 +675,6 @@ class Test_Contact_Information:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -699,7 +686,6 @@ class Test_Contact_Information:
         sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
-        relation.select_by_index(3)
         id_type.select_by_index(2)
         id_num.send_keys(random_string_generator_numbers_new())
         trans_type.select_by_index(3)
@@ -768,7 +754,6 @@ class Test_Contact_Information:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -780,7 +765,6 @@ class Test_Contact_Information:
         sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
-        relation.select_by_index(3)
         id_type.select_by_index(2)
         id_num.send_keys(random_string_generator_numbers_new())
         trans_type.select_by_index(3)
@@ -848,7 +832,6 @@ class Test_Contact_Information:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -860,7 +843,6 @@ class Test_Contact_Information:
         sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
-        relation.select_by_index(3)
         id_type.select_by_index(2)
         id_num.send_keys(random_string_generator_numbers_new())
         trans_type.select_by_index(3)
@@ -897,8 +879,6 @@ class Test_Contact_Information:
             self.driver.save_screenshot(screenShort.screen_short() + "CI_test_validating_only_nonreqfields.png")
             assert False
 
-        self.driver.quit()
-
     def test_validating_pre(self, setup):
         # login setup
         self.driver = setup
@@ -930,7 +910,6 @@ class Test_Contact_Information:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -942,7 +921,6 @@ class Test_Contact_Information:
         sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
-        relation.select_by_index(3)
         id_type.select_by_index(2)
         id_num.send_keys(random_string_generator_numbers_new())
         trans_type.select_by_index(3)
@@ -974,7 +952,8 @@ class Test_Contact_Information:
         city_val = city.get_attribute('value')
         drp_contry_val = drp_contry.first_selected_option.text
 
-        print(f"fh_num_val: {fh_num_val}, hb_num_val: {hb_num_val}, street_val: {street_val}, email_val: {email_val}, city_val: {city_val}, drp_contry_val: {drp_contry_val}")
+        print(
+            f"fh_num_val: {fh_num_val}, hb_num_val: {hb_num_val}, street_val: {street_val}, email_val: {email_val}, city_val: {city_val}, drp_contry_val: {drp_contry_val}")
 
         self.ci.btn_next()
         time.sleep(2)
@@ -982,11 +961,11 @@ class Test_Contact_Information:
         self.bi.click_contact_infirmation_pre()
 
         print(self.bi.fl_hn_num_pre(),
-            self.bi.ho_bu_name_pre(),
-            self.bi.street_pre(),
-            self.bi.cty_pre(),
-            self.bi.country_pre(),
-            self.bi.emai_pre())
+              self.bi.ho_bu_name_pre(),
+              self.bi.street_pre(),
+              self.bi.cty_pre(),
+              self.bi.country_pre(),
+              self.bi.emai_pre())
         time.sleep(2)
 
         if fh_num_val == self.bi.fl_hn_num_pre():
@@ -1087,7 +1066,7 @@ class Test_Contact_Information:
         city.send_keys(random_string_generator_max_30())
         drp_contry.select_by_index(2)
         drp_phone.select_by_index(50)
-        phone.send_keys(random_string_generator_numbers_10()+random_string_generator_numbers_10())
+        phone.send_keys(random_string_generator_numbers_10() + random_string_generator_numbers_10())
 
         fh_num_max = int(fh_num.get_attribute('maxlength'))
         hb_num_max = int(hb_num.get_attribute('maxlength'))
@@ -1096,7 +1075,8 @@ class Test_Contact_Information:
         city_max = int(city.get_attribute('maxlength'))
         phone_max = int(phone.get_attribute('maxlength'))
 
-        print(f"fh_num_max: {fh_num_max}, hb_num_max: {hb_num_max}, street_max: {street_max}, email_max: {email_max}, city_max: {city_max}, phone_max: {phone_max}")
+        print(
+            f"fh_num_max: {fh_num_max}, hb_num_max: {hb_num_max}, street_max: {street_max}, email_max: {email_max}, city_max: {city_max}, phone_max: {phone_max}")
 
         fh_num_val = len(fh_num.get_attribute('value'))
         hb_num_val = len(hb_num.get_attribute('value'))
@@ -1105,7 +1085,8 @@ class Test_Contact_Information:
         city_val = len(city.get_attribute('value'))
         phone_val = len(phone.get_attribute('maxlength'))
 
-        print(f"fh_num_val: {fh_num_val}, hb_num_val: {hb_num_val}, street_val: {street_val}, email_val: {email_val}, city_val: {city_val}, phone_val:{phone_val}")
+        print(
+            f"fh_num_val: {fh_num_val}, hb_num_val: {hb_num_val}, street_val: {street_val}, email_val: {email_val}, city_val: {city_val}, phone_val:{phone_val}")
 
         if fh_num_val == fh_num_max:
             assert True
@@ -1216,7 +1197,8 @@ class Test_Contact_Information:
         city_max = int(city.get_attribute('maxlength'))
         phone_max = int(phone.get_attribute('maxlength'))
 
-        print(f"fh_num_max: {fh_num_max}, hb_num_max: {hb_num_max}, street_max: {street_max}, email_max: {email_max}, city_max: {city_max}, phone_max: {phone_max}")
+        print(
+            f"fh_num_max: {fh_num_max}, hb_num_max: {hb_num_max}, street_max: {street_max}, email_max: {email_max}, city_max: {city_max}, phone_max: {phone_max}")
 
         fh_num_val = len(fh_num.get_attribute('value'))
         hb_num_val = len(hb_num.get_attribute('value'))
@@ -1225,7 +1207,8 @@ class Test_Contact_Information:
         city_val = len(city.get_attribute('value'))
         phone_val = len(phone.get_attribute('maxlength'))
 
-        print(f"fh_num_val: {fh_num_val}, hb_num_val: {hb_num_val}, street_val: {street_val}, email_val: {email_val}, city_val: {city_val}, phone_val:{phone_val}")
+        print(
+            f"fh_num_val: {fh_num_val}, hb_num_val: {hb_num_val}, street_val: {street_val}, email_val: {email_val}, city_val: {city_val}, phone_val:{phone_val}")
 
         if fh_num_val < fh_num_max:
             assert True
@@ -1320,11 +1303,11 @@ class Test_Contact_Information:
         drp_phone = Select(self.ci.drp_phone())
         phone = self.ci.phone()
 
-        fh_num.send_keys(random_string_generator_max_48()+random_string_generator_max_48())
-        hb_num.send_keys(random_string_generator_max_48()+random_string_generator_max_48())
-        street.send_keys(random_string_generator_max_48()+random_string_generator_max_48())
-        email.send_keys(generate_random_email()+generate_random_email())
-        city.send_keys(random_string_generator_max_28()+random_string_generator_max_28())
+        fh_num.send_keys(random_string_generator_max_48() + random_string_generator_max_48())
+        hb_num.send_keys(random_string_generator_max_48() + random_string_generator_max_48())
+        street.send_keys(random_string_generator_max_48() + random_string_generator_max_48())
+        email.send_keys(generate_random_email() + generate_random_email())
+        city.send_keys(random_string_generator_max_28() + random_string_generator_max_28())
         drp_contry.select_by_index(2)
         drp_phone.select_by_index(50)
         phone.send_keys(random_string_generator_numbers())
@@ -1336,7 +1319,8 @@ class Test_Contact_Information:
         city_max = int(city.get_attribute('maxlength'))
         phone_max = int(phone.get_attribute('maxlength'))
 
-        print(f"fh_num_max: {fh_num_max}, hb_num_max: {hb_num_max}, street_max: {street_max}, email_max: {email_max}, city_max: {city_max}, phone_max: {phone_max}")
+        print(
+            f"fh_num_max: {fh_num_max}, hb_num_max: {hb_num_max}, street_max: {street_max}, email_max: {email_max}, city_max: {city_max}, phone_max: {phone_max}")
 
         fh_num_val = len(fh_num.get_attribute('value'))
         hb_num_val = len(hb_num.get_attribute('value'))
@@ -1345,7 +1329,8 @@ class Test_Contact_Information:
         city_val = len(city.get_attribute('value'))
         phone_val = len(phone.get_attribute('maxlength'))
 
-        print(f"fh_num_val: {fh_num_val}, hb_num_val: {hb_num_val}, street_val: {street_val}, email_val: {email_val}, city_val: {city_val}, phone_val:{phone_val}")
+        print(
+            f"fh_num_val: {fh_num_val}, hb_num_val: {hb_num_val}, street_val: {street_val}, email_val: {email_val}, city_val: {city_val}, phone_val:{phone_val}")
 
         if fh_num_val == fh_num_max:
             assert True
@@ -1412,7 +1397,6 @@ class Test_Contact_Information:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -1424,7 +1408,6 @@ class Test_Contact_Information:
         sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
-        relation.select_by_index(3)
         id_type.select_by_index(2)
         id_num.send_keys(random_string_generator_numbers_new())
         trans_type.select_by_index(3)
@@ -1472,3 +1455,5 @@ class Test_Contact_Information:
             assert False
 
         self.driver.quit()
+
+

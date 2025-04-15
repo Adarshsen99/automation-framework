@@ -92,19 +92,19 @@ class Bank_Information:
         self.driver = driver
 
     def click_index_bank(self):
-        self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div[2]/div[2]/div/div[1]/div[2]/form/div/div[1]/div[1]/div/div[1]/span[1]").click()
+        self.driver.find_element(By.XPATH,"/html/body/div/div[2]/div/div[2]/div[2]/div/div[1]/div[2]/form/div/div[1]/div[1]/div[1]/div/div/div/input").click()
 
     def send_bank_name(self):
-        return self.driver.find_element(By.NAME,"Bank Name")
+        return self.driver.find_element(By.XPATH,"/html/body/div/div[2]/div/div[2]/div[2]/div/div[1]/div[2]/form/div/div[1]/div[1]/div[1]/div/div/div/input")
 
     def click_bank_name(self):
-        return self.driver.find_element(By.XPATH, "/html/body/div/div[2]/div/div[2]/div[2]/div/div[1]/div[2]/form/div/div[1]/div[1]/div[1]/div[2]/div/div/p")
+        return self.driver.find_element(By.XPATH, "/html/body/div/div[2]/div/div[2]/div[2]/div/div[1]/div[2]/form/div/div[1]/div[1]/div[1]/div/div/div[2]/div")
 
     def click_bank_name_second(self):
         return self.driver.find_element(By.XPATH, "/html/body/div[1]/div[2]/div/div[2]/div[2]/div/div[1]/div[2]/form/div/div[1]/div[2]/div[1]/div[2]/div/div[1]/p")
 
     def send_branch_name(self):
-        return self.driver.find_element(By.NAME,"Branch Name")
+        return self.driver.find_element(By.XPATH,"/html[1]/body[1]/div[1]/div[2]/div[1]/div[2]/div[2]/div[1]/div[1]/div[2]/form[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[1]")
 
     def click_branch_name(self):
         return self.driver.find_element(By.XPATH,"/html/body/div/div[2]/div/div[2]/div[2]/div/div[1]/div[2]/form/div/div[1]/div[1]/div[2]/div[2]/div/div/p")
@@ -113,10 +113,10 @@ class Bank_Information:
         return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div[2]/div[2]/div/div[1]/div[2]/form/div/div[1]/div[2]/div[2]/div[2]/div/div/p")
 
     def account_number(self):
-        return self.driver.find_element(By.ID,"Account Number")
+        return self.driver.find_element(By.XPATH, "/html[1]/body[1]/div[1]/div[2]/div[1]/div[2]/div[2]/div[1]/div[1]/div[2]/form[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/input[1]")
 
     def confirm_account_numb(self):
-        return self.driver.find_element(By.ID,"Confirm Account Number")
+        return self.driver.find_element(By.XPATH,"/html[1]/body[1]/div[1]/div[2]/div[1]/div[2]/div[2]/div[1]/div[1]/div[2]/form[1]/div[1]/div[1]/div[2]/div[2]/div[2]/div[1]/div[1]/input[1]")
 
     def drp_account_type(self):
         return self.driver.find_element(By.ID, "Account Type")

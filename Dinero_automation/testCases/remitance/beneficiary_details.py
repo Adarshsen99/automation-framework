@@ -1,6 +1,7 @@
 import time
 
 from selenium.common import NoSuchElementException
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 
 from Dinero_automation.pageObjects.LoginPage import LoginPage
@@ -17,7 +18,7 @@ class Test_Beneficiary_details:
     uname = ReadConfig.getApplicationUsername()
     upass = ReadConfig.getApplicationPWD()
 
-    def test_sending_valid_data_banktransfer(self, setup):
+    def test_sending_valid_data_fast(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -32,8 +33,11 @@ class Test_Beneficiary_details:
         # click action for nav bar arrow
         self.nav = Navigation_Page(self.driver)
         self.nav.click_navbar()
-        # time.sleep(2)
+        sidebar = self.driver.find_element(By.XPATH, "//div[@class='sidebarMenuContainer open']")
 
+        # Locate the "Remittance" element inside the sidebar container
+        self.driver.execute_script("arguments[0].scrollIntoView();", sidebar)
+        time.sleep(2)
         # click action for customer details
         self.nav.click_remitance()
         self.cd = Customer_Details(self.driver)
@@ -41,7 +45,7 @@ class Test_Beneficiary_details:
         self.drp_transn_typ.select_by_index(1)
         self.custom_name = self.cd.customer_search_bar()
 
-        self.custom_name.send_keys("Messi Marie Brown")
+        self.custom_name.send_keys("Adarsh")
         time.sleep(2)
         self.cd.custom_select1()
         self.cd.verify_btn()
@@ -51,7 +55,11 @@ class Test_Beneficiary_details:
 
         self.dd = Delegate_details(self.driver)
         transcation_mode = Select(self.dd.drp_transaction_mode())
-        transcation_mode.select_by_index(1)
+        transcation_mode.select_by_index(2)
+
+        delegate_name = self.dd.delegate_searchbar()
+        delegate_name.send_keys("akash p")
+        self.dd.delegate_select_bar()
 
         self.dd.btn_nexte()
         time.sleep(2)
@@ -59,12 +67,12 @@ class Test_Beneficiary_details:
         self.bd = Beneficiary_details(self.driver)
 
         benefiary_name = self.bd.beneficiary_search_bar()
-        benefiary_name.send_keys("ronaldo")
-        self.bd.beneficiary_selectbar()
+        benefiary_name.send_keys("Mangalath")
+        self.bd. beneficiary_selectbar_man()
         time.sleep(2)
-        bank_selct = Select(self.bd.drp_bank())
-        bank_selct.select_by_index(1)
-        time.sleep(1)
+        loc_selec = Select(self.bd.drp_location())
+        loc_selec.select_by_index(1)
+        time.sleep(2)
         self.bd.btn_nexte()
         time.sleep(2)
 
@@ -85,8 +93,11 @@ class Test_Beneficiary_details:
         # click action for nav bar arrow
         self.nav = Navigation_Page(self.driver)
         self.nav.click_navbar()
-        # time.sleep(2)
+        sidebar = self.driver.find_element(By.XPATH, "//div[@class='sidebarMenuContainer open']")
 
+        # Locate the "Remittance" element inside the sidebar container
+        self.driver.execute_script("arguments[0].scrollIntoView();", sidebar)
+        time.sleep(2)
         # click action for customer details
         self.nav.click_remitance()
         self.cd = Customer_Details(self.driver)
@@ -94,7 +105,7 @@ class Test_Beneficiary_details:
         self.drp_transn_typ.select_by_index(1)
         self.custom_name = self.cd.customer_search_bar()
 
-        self.custom_name.send_keys("Messi Marie Brown")
+        self.custom_name.send_keys("Adarsh")
         time.sleep(2)
         self.cd.custom_select1()
         self.cd.verify_btn()
@@ -104,7 +115,11 @@ class Test_Beneficiary_details:
 
         self.dd = Delegate_details(self.driver)
         transcation_mode = Select(self.dd.drp_transaction_mode())
-        transcation_mode.select_by_index(1)
+        transcation_mode.select_by_index(2)
+
+        delegate_name = self.dd.delegate_searchbar()
+        delegate_name.send_keys("akash p")
+        self.dd.delegate_select_bar()
 
         self.dd.btn_nexte()
         time.sleep(2)
@@ -136,8 +151,11 @@ class Test_Beneficiary_details:
         # click action for nav bar arrow
         self.nav = Navigation_Page(self.driver)
         self.nav.click_navbar()
-        # time.sleep(2)
+        sidebar = self.driver.find_element(By.XPATH, "//div[@class='sidebarMenuContainer open']")
 
+        # Locate the "Remittance" element inside the sidebar container
+        self.driver.execute_script("arguments[0].scrollIntoView();", sidebar)
+        time.sleep(2)
         # click action for customer details
         self.nav.click_remitance()
         self.cd = Customer_Details(self.driver)
@@ -145,7 +163,7 @@ class Test_Beneficiary_details:
         self.drp_transn_typ.select_by_index(1)
         self.custom_name = self.cd.customer_search_bar()
 
-        self.custom_name.send_keys("Messi Marie Brown")
+        self.custom_name.send_keys("Adarsh")
         time.sleep(2)
         self.cd.custom_select1()
         self.cd.verify_btn()
@@ -155,7 +173,11 @@ class Test_Beneficiary_details:
 
         self.dd = Delegate_details(self.driver)
         transcation_mode = Select(self.dd.drp_transaction_mode())
-        transcation_mode.select_by_index(1)
+        transcation_mode.select_by_index(2)
+
+        delegate_name = self.dd.delegate_searchbar()
+        delegate_name.send_keys("akash p")
+        self.dd.delegate_select_bar()
 
         self.dd.btn_nexte()
         time.sleep(2)

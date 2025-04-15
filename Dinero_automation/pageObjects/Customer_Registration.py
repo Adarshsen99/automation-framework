@@ -1,6 +1,7 @@
 import time
 
-from selenium.common import StaleElementReferenceException, TimeoutException, ElementClickInterceptedException,NoSuchElementException
+from selenium.common import StaleElementReferenceException, TimeoutException, ElementClickInterceptedException, \
+    NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -13,7 +14,7 @@ class Persomal_Information():
     picker_doe_notreq_id = "//input[@name='Date of Expiry']"
 
     # Personal Information
-    drp_title_req_id = "Title"
+    drp_title_req_id = "/html/body/div/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div[2]/div[1]/div/div/select"
     field_first_name_req_id = "First Name"
     field_middle_name_notreq_id = "Middle Name"
     field_last_name_req_id = "Last Name"
@@ -30,7 +31,6 @@ class Persomal_Information():
     drp_marital_status_req_id = "Marital Status"
     drp_profession_req_id = "Profession"
 
-
     # buttons
     btn_verify_xpath = "(//button[@type='button'])[1]"
     btn_cancel_xpath = "//*[@id='root']/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/form/div[2]/button"
@@ -39,8 +39,7 @@ class Persomal_Information():
 
     message = "//span[@class='error-message']"
 
-
-    def __init__(self,driver):
+    def __init__(self, driver):
         self.driver = driver
 
     def editmode_message(self):
@@ -48,218 +47,222 @@ class Persomal_Information():
             return self.driver.find_element(By.XPATH, "//*[@id='root']/div[1]/div/div/div").text
         except:
             None
-
+    def click_new(self):
+        return self.driver.find_element(By.XPATH, "//button[normalize-space()='Create New']").click()
     # For Id Verifications
     def customerStatusDropdown_not_required(self):
-        return self.driver.find_element(By.ID,self.drp_customer_status_notreq_id)
+        return self.driver.find_element(By.ID, self.drp_customer_status_notreq_id)
 
-    def idNoField_not_required(self,id):
-        self.driver.find_element(By.ID,self.field_idno_notreq_id).send_keys(id)
+    def idNoField_not_required(self, id):
+        self.driver.find_element(By.ID, self.field_idno_notreq_id).send_keys(id)
 
-    def dateofexpiry_not_required(self,dobs):
-        self.driver.find_element(By.XPATH,self.picker_doe_notreq_id).send_keys(dobs)
+    def dateofexpiry_not_required(self, dobs):
+        self.driver.find_element(By.XPATH, self.picker_doe_notreq_id).send_keys(dobs)
 
     def btnverify(self):
-        self.driver.find_element(By.XPATH,self.btn_verify_xpath).click()
+        self.driver.find_element(By.XPATH, self.btn_verify_xpath).click()
 
     # For Personal Information Validations
 
     def titleDropdown_required(self):
-        return self.driver.find_element(By.ID,self.drp_title_req_id)
+        return self.driver.find_element(By.XPATH, self.drp_title_req_id)
 
     def firstNameField_required(self, first_name):
-        first = self.driver.find_element(By.ID,self.field_first_name_req_id)
+        first = self.driver.find_element(By.ID, self.field_first_name_req_id)
         first.send_keys(first_name)
 
     def firstNameField_required_size(self):
-        return self.driver.find_element(By.ID,self.field_first_name_req_id)
+        return self.driver.find_element(By.ID, self.field_first_name_req_id)
 
     def firstNameField_required_value(self):
-        first = self.driver.find_element(By.ID,self.field_first_name_req_id)
+        first = self.driver.find_element(By.ID, self.field_first_name_req_id)
         field_value = first.get_attribute('value')
         # Calculate and print the length of the value
         length_of_value = len(field_value)
         return length_of_value
 
     def firstNameField_required_value_getting(self):
-        first = self.driver.find_element(By.ID,self.field_first_name_req_id)
+        first = self.driver.find_element(By.ID, self.field_first_name_req_id)
         field_value = first.get_attribute('value')
         return field_value
 
-
     def first_clear(self):
-        clear = self.driver.find_element(By.ID,self.field_first_name_req_id)
+        clear = self.driver.find_element(By.ID, self.field_first_name_req_id)
         clear.clear()
 
-    def middleNameField_not_required(self,middlename):
-        self.driver.find_element(By.ID,self.field_middle_name_notreq_id).send_keys(middlename)
+    def middleNameField_not_required(self, middlename):
+        self.driver.find_element(By.ID, self.field_middle_name_notreq_id).send_keys(middlename)
 
     def middleNameField_not_required_size(self):
-        return self.driver.find_element(By.ID,self.field_middle_name_notreq_id)
+        return self.driver.find_element(By.ID, self.field_middle_name_notreq_id)
 
     def middle_clear(self):
         middle = self.driver.find_element(By.ID, self.field_middle_name_notreq_id)
         middle.clear()
 
     def middleNameField_not_required_value(self):
-        first = self.driver.find_element(By.ID,self.field_middle_name_notreq_id)
+        first = self.driver.find_element(By.ID, self.field_middle_name_notreq_id)
         field_value = first.get_attribute('value')
         # Calculate and print the length of the value
         length_of_value = len(field_value)
         return length_of_value
 
     def middleNameField_not_required_value_getting(self):
-        first = self.driver.find_element(By.ID,self.field_middle_name_notreq_id)
+        first = self.driver.find_element(By.ID, self.field_middle_name_notreq_id)
         field_value = first.get_attribute('value')
         return field_value
 
-    def lastNameField_required(self,lastname):
-        self.driver.find_element(By.ID,self.field_last_name_req_id).send_keys(lastname)
+    def lastNameField_required(self, lastname):
+        self.driver.find_element(By.ID, self.field_last_name_req_id).send_keys(lastname)
 
     def lastNameField_required_size(self):
-        return self.driver.find_element(By.ID,self.field_last_name_req_id)
+        return self.driver.find_element(By.ID, self.field_last_name_req_id)
 
     def last_clear(self):
         last = self.driver.find_element(By.ID, self.field_last_name_req_id)
         last.clear()
 
     def lastNameField_required_value(self):
-        first = self.driver.find_element(By.ID,self.field_last_name_req_id)
+        first = self.driver.find_element(By.ID, self.field_last_name_req_id)
         field_value = first.get_attribute('value')
         # Calculate and print the length of the value
         length_of_value = len(field_value)
         return length_of_value
 
     def lastNameField_required_value_getting(self):
-        first = self.driver.find_element(By.ID,self.field_last_name_req_id)
+        first = self.driver.find_element(By.ID, self.field_last_name_req_id)
         field_value = first.get_attribute('value')
         return field_value
 
-    def arabicNameFiels_required(self,arabic):
-        self.driver.find_element(By.ID,self.field_arabic_name_req_id).send_keys(arabic)
+    def arabicNameFiels_required(self, arabic):
+        self.driver.find_element(By.ID, self.field_arabic_name_req_id).send_keys(arabic)
 
-    def arabicNameFiels_required_size(self,):
-        return self.driver.find_element(By.ID,self.field_arabic_name_req_id)
+    def arabicNameFiels_required_size(self, ):
+        return self.driver.find_element(By.ID, self.field_arabic_name_req_id)
 
     def arabic_clear(self):
         arabic = self.driver.find_element(By.ID, self.field_arabic_name_req_id)
         arabic.clear()
 
     def arabicNameFiels_required_value(self):
-        first = self.driver.find_element(By.ID,self.field_arabic_name_req_id)
+        first = self.driver.find_element(By.ID, self.field_arabic_name_req_id)
         field_value = first.get_attribute('value')
         # Calculate and print the length of the value
         length_of_value = len(field_value)
         return length_of_value
 
     def arabicNameFiels_required_value_getting(self):
-        first = self.driver.find_element(By.ID,self.field_arabic_name_req_id)
+        first = self.driver.find_element(By.ID, self.field_arabic_name_req_id)
         field_value = first.get_attribute('value')
         return field_value
 
-    def shortNameField_not_required(self,shortname):
-        self.driver.find_element(By.ID,self.field_short_name_notreq_id).send_keys(shortname)
+    def shortNameField_not_required(self, shortname):
+        self.driver.find_element(By.ID, self.field_short_name_notreq_id).send_keys(shortname)
 
-    def shortNameField_not_required_size(self,):
-        return self.driver.find_element(By.ID,self.field_short_name_notreq_id)
+    def shortNameField_not_required_size(self, ):
+        return self.driver.find_element(By.ID, self.field_short_name_notreq_id)
 
     def short_clear(self):
         short = self.driver.find_element(By.ID, self.field_short_name_notreq_id)
         short.clear()
 
     def shortNameField_not_required_value(self):
-        first = self.driver.find_element(By.ID,self.field_short_name_notreq_id)
+        first = self.driver.find_element(By.ID, self.field_short_name_notreq_id)
         field_value = first.get_attribute('value')
         # Calculate and print the length of the value
         length_of_value = len(field_value)
         return length_of_value
 
     def shortNameField_not_required_value_getting(self):
-        first = self.driver.find_element(By.ID,self.field_short_name_notreq_id)
+        first = self.driver.find_element(By.ID, self.field_short_name_notreq_id)
         field_value = first.get_attribute('value')
         return field_value
 
-    def maidenNameFiels_not_required(self,maiden):
-        self.driver.find_element(By.ID,self.field_maiden_name_notreq_id).send_keys(maiden)
+    def maidenNameFiels_not_required(self, maiden):
+        self.driver.find_element(By.ID, self.field_maiden_name_notreq_id).send_keys(maiden)
 
     def maidenNameFiels_not_required_size(self):
-        return self.driver.find_element(By.ID,self.field_maiden_name_notreq_id)
+        return self.driver.find_element(By.ID, self.field_maiden_name_notreq_id)
 
     def maiden_clear(self):
         maiden = self.driver.find_element(By.ID, self.field_maiden_name_notreq_id)
         maiden.clear()
 
     def maidenNameFiels_not_required_value(self):
-        first = self.driver.find_element(By.ID,self.field_maiden_name_notreq_id)
+        first = self.driver.find_element(By.ID, self.field_maiden_name_notreq_id)
         field_value = first.get_attribute('value')
         # Calculate and print the length of the value
         length_of_value = len(field_value)
         return length_of_value
 
     def maidenNameFiels_not_required_value_getting(self):
-        first = self.driver.find_element(By.ID,self.field_maiden_name_notreq_id)
+        first = self.driver.find_element(By.ID, self.field_maiden_name_notreq_id)
         field_value = first.get_attribute('value')
         return field_value
 
-    def dobpicker_required(self,dob):
-        self.driver.find_element(By.XPATH,self.picker_dob_req_xpath).send_keys(dob)
+    def dobpicker_required(self, dob):
+        self.driver.find_element(By.XPATH, self.picker_dob_req_xpath).send_keys(dob)
 
     def click_dob(self):
-        return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div[6]/div[1]/div/div[3]/img")
+        return self.driver.find_element(By.XPATH,
+                                        "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div[6]/div[1]/div/div[3]/img")
 
     def dob_previous_button(self):
-        return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div[6]/div[1]/div/div[4]/div/div[1]/button[2]")
+        return self.driver.find_element(By.XPATH,
+                                        "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div[6]/div[1]/div/div[4]/div/div[1]/button[2]")
 
     def dob_next_button(self):
-        return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div[6]/div[1]/div/div[4]/div/div[1]/button[4]")
+        return self.driver.find_element(By.XPATH,
+                                        "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div[6]/div[1]/div/div[4]/div/div[1]/button[4]")
 
     def select_date(self):
-        return self.driver.find_element(By.XPATH,"/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div[6]/div[1]/div/div[4]/div/div[2]/div/div/div/div[2]/button[26]/abbr")
+        return self.driver.find_element(By.XPATH,
+                                        "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div[6]/div[1]/div/div[4]/div/div[2]/div/div/div/div[2]/button[26]/abbr")
 
     def dobpicker_required_size(self):
-        return self.driver.find_element(By.XPATH,self.picker_dob_req_xpath)
+        return self.driver.find_element(By.XPATH, self.picker_dob_req_xpath)
 
     def cobDropdown_required(self):
-        return self.driver.find_element(By.ID,self.drp_country_of_birth_req_id)
+        return self.driver.find_element(By.ID, self.drp_country_of_birth_req_id)
 
     def nationality(self):
-        return self.driver.find_element(By.ID,self.drp_nationality_req_id)
+        return self.driver.find_element(By.ID, self.drp_nationality_req_id)
 
     def citizenship(self):
-        return self.driver.find_element(By.ID,self.drp_citizenship_by_req_id)
+        return self.driver.find_element(By.ID, self.drp_citizenship_by_req_id)
 
     def countryofresidence(self):
-        return self.driver.find_element(By.ID,self.drp_country_of_residence_req_id)
+        return self.driver.find_element(By.ID, self.drp_country_of_residence_req_id)
 
     def residentialstatus(self):
-        return self.driver.find_element(By.ID,self.drp_residential_status_req_id)
+        return self.driver.find_element(By.ID, self.drp_residential_status_req_id)
 
     def gender(self):
-        return self.driver.find_element(By.ID,self.drp_gender_req_id)
+        return self.driver.find_element(By.ID, self.drp_gender_req_id)
 
     def maritalstatus(self):
-        return self.driver.find_element(By.ID,self.drp_marital_status_req_id)
+        return self.driver.find_element(By.ID, self.drp_marital_status_req_id)
 
     def profession(self):
-        return self.driver.find_element(By.ID,self.drp_profession_req_id)
+        return self.driver.find_element(By.ID, self.drp_profession_req_id)
 
     def btncancel(self):
-        self.driver.find_element(By.XPATH,self.btn_cancel_xpath).click()
+        self.driver.find_element(By.XPATH, self.btn_cancel_xpath).click()
 
     def btn_canel_confirm(self):
-        self.driver.find_element(By.XPATH,self.btn_cancel_confirm_xpath).click()
+        self.driver.find_element(By.XPATH, self.btn_cancel_confirm_xpath).click()
 
     def btnnext(self):
-        self.driver.find_element(By.XPATH,self.btn_next_xpath).click()
+        self.driver.find_element(By.XPATH, self.btn_next_xpath).click()
 
     def errorMessage(self):
         try:
-            return self.driver.find_element(By.XPATH,self.message).text
+            return self.driver.find_element(By.XPATH, self.message).text
         except:
             None
 
-class Contact_Information():
 
+class Contact_Information():
     field_flat_housenumber_id = 'Flat/House Number'
     field_house_build_num_id = "House/Building Name"
     field_street_id = "Street"
@@ -284,8 +287,6 @@ class Contact_Information():
     non_dat_pic_nonres_visa_expair_dat_name = "Non Resident Visa Expiry Date"
     remarks_id = "Remarks"
 
-
-
     # buttons
     btn_cancel_xpath = "//button[normalize-space()='Cancel']"
     btn_cancel_confirm_xpath = "//button[normalize-space()='Yes']"
@@ -294,7 +295,6 @@ class Contact_Information():
     btn_next_xpath = "//button[normalize-space()='Next']"
 
     # error mesaages
-
 
     # preview for personal information
     drp_preview_xpath = "//span[normalize-space()='Personal Information']"
@@ -315,17 +315,17 @@ class Contact_Information():
     pre_marsta_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div/div[2]/div[15]/span[2]"
     pre_prof_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div/div[2]/div[16]/span[2]"
 
-    def __init__(self,driver):
+    def __init__(self, driver):
         self.driver = driver
 
     # 1
-    def field_fh_num_required(self,flat):
+    def field_fh_num_required(self, flat):
         self.driver.find_element(By.ID, self.field_flat_housenumber_id).send_keys(flat)
 
     def field_fh_num_required_val(self):
         return self.driver.find_element(By.ID, self.field_flat_housenumber_id)
 
-    def non_field_fh_num_required(self,flat):
+    def non_field_fh_num_required(self, flat):
         self.driver.find_element(By.ID, self.non_field_flat_housenumber_id).send_keys(flat)
 
     def non_field_fh_num_required_val(self):
@@ -336,13 +336,13 @@ class Contact_Information():
         clr.clear()
 
     # 2
-    def field_hb_name_required(self,house):
+    def field_hb_name_required(self, house):
         self.driver.find_element(By.ID, self.field_house_build_num_id).send_keys(house)
 
     def field_hb_name_required_val(self):
         return self.driver.find_element(By.ID, self.field_house_build_num_id)
 
-    def non_field_hb_name_required(self,house):
+    def non_field_hb_name_required(self, house):
         self.driver.find_element(By.ID, self.non_field_house_build_num_id).send_keys(house)
 
     def non_field_hb_name_required_val(self):
@@ -354,13 +354,13 @@ class Contact_Information():
 
     # 3
 
-    def field_street_required(self,street):
+    def field_street_required(self, street):
         self.driver.find_element(By.ID, self.field_street_id).send_keys(street)
 
     def field_street_required_val(self):
         return self.driver.find_element(By.ID, self.field_street_id)
 
-    def non_field_street_required(self,street):
+    def non_field_street_required(self, street):
         self.driver.find_element(By.ID, self.non_field_street_id).send_keys(street)
 
     def non_field_street_required_val(self):
@@ -372,13 +372,13 @@ class Contact_Information():
 
     # 4
 
-    def field_city_dist_required(self,city_dist):
+    def field_city_dist_required(self, city_dist):
         self.driver.find_element(By.ID, self.field_city_dist_id).send_keys(city_dist)
 
     def field_city_dist_required_val(self):
         return self.driver.find_element(By.ID, self.field_city_dist_id)
 
-    def non_field_city_dist_required(self,city_dist):
+    def non_field_city_dist_required(self, city_dist):
         self.driver.find_element(By.ID, self.non_field_city_dist_id).send_keys(city_dist)
 
     def non_field_city_dist_required_value(self):
@@ -390,13 +390,13 @@ class Contact_Information():
 
     # 5
 
-    def field_emin_dist(self,emin_dist):
+    def field_emin_dist(self, emin_dist):
         self.driver.find_element(By.ID, self.field_emirate_state_id).send_keys(emin_dist)
 
     def field_emin_dist_val(self):
         return self.driver.find_element(By.ID, self.field_emirate_state_id)
 
-    def non_field_emin_dist(self,emin_dist):
+    def non_field_emin_dist(self, emin_dist):
         self.driver.find_element(By.ID, self.non_field_emirate_state_id).send_keys(emin_dist)
 
     def non_field_emin_dist_val(self):
@@ -409,29 +409,29 @@ class Contact_Information():
     # 6
 
     def drp_country_required(self):
-        return self.driver.find_element(By.ID,self.drp_country_id)
+        return self.driver.find_element(By.ID, self.drp_country_id)
 
     def non_drp_country_required(self):
-        return self.driver.find_element(By.ID,self.non_drp_country_id)
+        return self.driver.find_element(By.ID, self.non_drp_country_id)
 
     # 7
 
     def drp_mobile_required(self):
         return self.driver.find_element(By.XPATH, self.drp_mobile_xpath)
 
-    def field_mobile_required(self,mobile):
-        self.driver.find_element(By.NAME,self.field_mobile_id).send_keys(mobile)
+    def field_mobile_required(self, mobile):
+        self.driver.find_element(By.NAME, self.field_mobile_id).send_keys(mobile)
 
     def field_mobile_required_val(self):
-        return self.driver.find_element(By.NAME,self.field_mobile_id)
+        return self.driver.find_element(By.NAME, self.field_mobile_id)
 
     def field_mobile_required_clear(self):
-        clr = self.driver.find_element(By.ID,self.field_mobile_id)
+        clr = self.driver.find_element(By.ID, self.field_mobile_id)
         clr.clear()
 
     # 8
 
-    def field_email_required(self,email):
+    def field_email_required(self, email):
         self.driver.find_element(By.ID, self.field_email).send_keys(email)
 
     def field_email_required_val(self):
@@ -445,51 +445,50 @@ class Contact_Information():
     def non_residen_visa_type_drp(self):
         return self.driver.find_element(By.ID, self.non_drp_visa_type_id)
 
-    def non_residen_visa_number(self,vnum):
+    def non_residen_visa_number(self, vnum):
         self.driver.find_element(By.ID, self.non_resi_visa_num_id).send_keys(vnum)
 
     def non_residen_visa_number_val(self):
         return self.driver.find_element(By.ID, self.non_resi_visa_num_id)
 
-    def non_residen_visa_issu_date(self,vidat):
+    def non_residen_visa_issu_date(self, vidat):
         self.driver.find_element(By.NAME, self.non_dat_pic_nonres_visa_issu_dat_name).send_keys(vidat)
 
     def non_residen_visa_issu_date_val(self):
         return self.driver.find_element(By.NAME, self.non_dat_pic_nonres_visa_issu_dat_name)
 
-    def non_residen_visa_expair_date(self,venum):
+    def non_residen_visa_expair_date(self, venum):
         self.driver.find_element(By.NAME, self.non_dat_pic_nonres_visa_expair_dat_name).send_keys(venum)
 
     def non_residen_visa_expair_date_val(self):
         return self.driver.find_element(By.NAME, self.non_dat_pic_nonres_visa_expair_dat_name)
 
-    def remarks(self,remarks):
-        self.driver.find_element(By.ID,self.remarks_id).send_keys(remarks)
+    def remarks(self, remarks):
+        self.driver.find_element(By.ID, self.remarks_id).send_keys(remarks)
 
     def remarks_val(self):
-        return self.driver.find_element(By.ID,self.remarks_id)
+        return self.driver.find_element(By.ID, self.remarks_id)
 
     # buttons
 
     def btn_cancel(self):
-        self.driver.find_element(By.XPATH,self.btn_cancel_xpath).click()
+        self.driver.find_element(By.XPATH, self.btn_cancel_xpath).click()
 
     def btn_cancel_cfirm(self):
-        self.driver.find_element(By.XPATH,self.btn_cancel_confirm_xpath).click()
+        self.driver.find_element(By.XPATH, self.btn_cancel_confirm_xpath).click()
 
     def btn_cancel_no(self):
         self.driver.find_element(By.XPATH, self.btn_cancel_no_xpath).click()
 
     def btn_back(self):
-        self.driver.find_element(By.XPATH,self.btn_back_xpath).click()
+        self.driver.find_element(By.XPATH, self.btn_back_xpath).click()
 
     def btn_next(self):
-        self.driver.find_element(By.XPATH,self.btn_next_xpath).click()
+        self.driver.find_element(By.XPATH, self.btn_next_xpath).click()
 
-
-   # preview
+    # preview
     def click_preview(self):
-        self.driver.find_element(By.XPATH,self.drp_preview_xpath).click()
+        self.driver.find_element(By.XPATH, self.drp_preview_xpath).click()
 
     def title(self):
         element = self.driver.find_element(By.XPATH, self.pre_title_xpath)
@@ -498,9 +497,11 @@ class Contact_Information():
     def firstname(self):
         element = self.driver.find_element(By.XPATH, self.pre_firstname_xpath)
         return element.get_attribute('title')
+
     def middlename(self):
         element = self.driver.find_element(By.XPATH, self.pre_middlename_xpath)
         return element.get_attribute('title')
+
     def lastname(self):
         element = self.driver.find_element(By.XPATH, self.pre_lastname_xpath)
         return element.get_attribute('title')
@@ -553,6 +554,7 @@ class Contact_Information():
         element = self.driver.find_element(By.XPATH, self.pre_prof_xpath)
         return element.get_attribute('title')
 
+
 class Id_details():
     click = "//*[@id='root']/div[2]/div/div/div[2]/div[2]/div/div[1]/div[1]/div/div[3]/div[1]"
 
@@ -566,7 +568,7 @@ class Id_details():
     da_pick_pass_issue_date_name = "Passport Issue Date"
     da_pick_pass_exp_date_xpath = "//input[@name='Passport Expiry Date']"
 
-#   Dual natinality
+    #   Dual natinality
     toggle_btn_dual_nation_id = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[6]/div/div/input"
 
     drp_nation_id = "Nationality 2"
@@ -575,7 +577,7 @@ class Id_details():
     da_pick_pass_iss_date_name = "Passport 2 Issue Date"
     da_pick_pass_exp_date_name = "Passport 2 Expiry Date"
 
-#     Preview
+    #     Preview
     pre_ci_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div/span"
 
     pre_fh_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[1]/span[2]"
@@ -600,7 +602,7 @@ class Id_details():
     pre_v_exdat_non_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[20]/span[2]"
     pre_remar_non_xpath = "/html/body/div[1]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/div[2]/div/div[2]/div[2]/div[21]/span[2]"
 
-#   Buttons
+    #   Buttons
 
     btn_cancel_xpath = "(//button[normalize-space()='Cancel'])[1]"
     btn_cancel_no = "//button[normalize-space()='No']"
@@ -613,37 +615,37 @@ class Id_details():
         self.driver = driver
 
     def visible_id(self):
-        element = self.driver.find_element(By.XPATH,self.btn_next_xpath)
+        element = self.driver.find_element(By.XPATH, self.btn_next_xpath)
         dis = element.is_displayed()
         return dis
 
     # ID Details
     def id_type_field_req(self):
-        return self.driver.find_element(By.ID,self.drp_id_type_id)
+        return self.driver.find_element(By.ID, self.drp_id_type_id)
 
     def place_of_id_issue_field_req(self):
-        return self.driver.find_element(By.ID,self.field_place_of_id_issue_id)
+        return self.driver.find_element(By.ID, self.field_place_of_id_issue_id)
 
     def id_number_field_req(self):
-        return self.driver.find_element(By.ID,self.field_id_nmuber_id)
+        return self.driver.find_element(By.ID, self.field_id_nmuber_id)
 
     def id_issue_date_dpick_req(self):
-        return self.driver.find_element(By.NAME,self.da_pick_id_issue_date_name)
+        return self.driver.find_element(By.NAME, self.da_pick_id_issue_date_name)
 
     def id_expaire_date_dpick_req(self):
-        return self.driver.find_element(By.NAME,self.da_pick_id_expaire_date_name)
+        return self.driver.find_element(By.NAME, self.da_pick_id_expaire_date_name)
 
     def place_of_passport_isse_drp_req(self):
-        return self.driver.find_element(By.ID,self.drp_place_of_passport_issue_id)
+        return self.driver.find_element(By.ID, self.drp_place_of_passport_issue_id)
 
     def passport_numb_field_req(self):
         return self.driver.find_element(By.ID, self.field_passport_number_id)
 
     def passport_issue_date_dpick_req(self):
-        return self.driver.find_element(By.NAME,self.da_pick_pass_issue_date_name)
+        return self.driver.find_element(By.NAME, self.da_pick_pass_issue_date_name)
 
     def passport_expi_date_dpick_req(self):
-        return self.driver.find_element(By.XPATH,self.da_pick_pass_exp_date_xpath)
+        return self.driver.find_element(By.XPATH, self.da_pick_pass_exp_date_xpath)
 
     # Dual nationality toggle
 
@@ -654,22 +656,21 @@ class Id_details():
         return self.driver.find_element(By.ID, self.drp_nation_id)
 
     def place_of_pass_issue_drp_req_dual(self):
-        return self.driver.find_element(By.ID,self.drp_pla_of_passport_iss_id)
+        return self.driver.find_element(By.ID, self.drp_pla_of_passport_iss_id)
 
     def passport_num_req_dual(self):
         return self.driver.find_element(By.ID, self.field_pass_num)
 
     def passport_issue_date_dpick_req_dual(self):
-        return self.driver.find_element(By.NAME,self.da_pick_pass_iss_date_name)
+        return self.driver.find_element(By.NAME, self.da_pick_pass_iss_date_name)
 
     def passport_expai_date_dpick_req_dual(self):
-        return self.driver.find_element(By.NAME,self.da_pick_pass_exp_date_name)
+        return self.driver.find_element(By.NAME, self.da_pick_pass_exp_date_name)
 
     # Buttons
 
     def btn_next(self):
         self.driver.find_element(By.XPATH, self.btn_next_xpath).click()
-
 
     def btn_back_id(self):
         attempts = 0
@@ -691,11 +692,10 @@ class Id_details():
     def btn_cancel_conf(self):
         self.driver.find_element(By.XPATH, self.btn_cancel_yes).click()
 
-
-# Preview
+    # Preview
 
     def drp_ci_pre(self):
-        self.driver.find_element(By.XPATH,self.pre_ci_xpath).click()
+        self.driver.find_element(By.XPATH, self.pre_ci_xpath).click()
 
     def fh_pre(self):
         element = self.driver.find_element(By.XPATH, self.pre_fh_xpath)
@@ -704,21 +704,27 @@ class Id_details():
     def hb_pre(self):
         element = self.driver.find_element(By.XPATH, self.pre_hb_xpath)
         return element.get_attribute('title')
+
     def stre_pre(self):
         element = self.driver.find_element(By.XPATH, self.pre_stre_xpath)
         return element.get_attribute('title')
+
     def cidi_pre(self):
         element = self.driver.find_element(By.XPATH, self.pre_cidi_xpath)
         return element.get_attribute('title')
+
     def emist_pre(self):
         element = self.driver.find_element(By.XPATH, self.pre_emist_xpath)
         return element.get_attribute('title')
+
     def con_pre(self):
         element = self.driver.find_element(By.XPATH, self.pre_con_xpath)
         return element.get_attribute('title')
+
     def mob_pre(self):
         element = self.driver.find_element(By.XPATH, self.pre_mob_xpath)
         return element.get_attribute('title')
+
     def email_pre(self):
         element = self.driver.find_element(By.XPATH, self.pre_email_xpath)
         return element.get_attribute('title')
@@ -769,6 +775,7 @@ class Id_details():
         element = self.driver.find_element(By.XPATH, self.pre_remar_non_xpath)
         return element.get_attribute('title')
 
+
 class Other_Information():
     btn_next_xpath = "//button[normalize-space()='Next']"
 
@@ -799,7 +806,7 @@ class Other_Information():
     employer_id = "Employer"
     employer_description_id = "Employer Description"
     source_of_income_id = "Source Of Income"
-    salary_range_id = "Salary Range"
+    salary_range = "//select[@name='Salary Range']"
     annual_income_id = "Annual Income"
     drp_purpose_id = "Purpose"
     loyalty_card_no_id = "Loyalty Card Number"
@@ -874,7 +881,6 @@ class Other_Information():
     cancel_btn_xpath = "//button[normalize-space()='Cancel']"
     cancel_confirm_btn_xpath = "//button[normalize-space()='Yes']"
 
-
     def __init__(self, driver):
         self.driver = driver
 
@@ -894,7 +900,7 @@ class Other_Information():
         return self.driver.find_element(By.ID, self.source_of_income_id)
 
     def drp_salary_range(self):
-        return self.driver.find_element(By.ID, self.salary_range_id)
+        return self.driver.find_element(By.XPATH, self.salary_range)
 
     def annual_income(self):
         return self.driver.find_element(By.ID, self.annual_income_id)
@@ -986,7 +992,7 @@ class Other_Information():
         return self.driver.find_element(By.NAME, self.checkbox_equity_name)
 
     def drp_relationship_type(self):
-        return self.driver.find_element(By.ID,self.drp_relation_type)
+        return self.driver.find_element(By.ID, self.drp_relation_type)
 
     def search_customer(self):
         return self.driver.find_element(By.ID, self.search_customer_id)
@@ -1013,7 +1019,7 @@ class Other_Information():
         return self.driver.find_element(By.ID, self.line_of_bussiness_id)
 
     def click_boc(self):
-        return self.driver.find_element(By.XPATH,self.boc_click)
+        return self.driver.find_element(By.XPATH, self.boc_click)
 
     def btn_clear(self):
         return self.driver.find_element(By.XPATH, self.clear_btn_xpath)
@@ -1037,7 +1043,7 @@ class Other_Information():
         return self.driver.find_element(By.ID, self.x_user_id)
 
     def insta(self):
-        return self.driver.find_element(By.ID,self.insta_user_id)
+        return self.driver.find_element(By.ID, self.insta_user_id)
 
     def linkedin(self):
         return self.driver.find_element(By.ID, self.linked_user_id)
@@ -1141,13 +1147,13 @@ class Other_Information():
         self.driver.find_element(By.XPATH, self.btn_back_xpath).click()
 
     def btn_cancel(self):
-        return self.driver.find_element(By.XPATH,self.cancel_btn_xpath)
+        return self.driver.find_element(By.XPATH, self.cancel_btn_xpath)
 
     def btn_cancel_confirm(self):
         return self.driver.find_element(By.XPATH, self.cancel_confirm_btn_xpath)
 
-class Upload_documents():
 
+class Upload_documents():
     passport_xpath = "//li[normalize-space()='Passport']"
     id_xpath = "//li[normalize-space()='ID']"
     visa_xpath = "//li[normalize-space()='Visa']"
@@ -1155,7 +1161,6 @@ class Upload_documents():
     front_xpath = "//li[normalize-space()='Front']"
     rear_xpath = "//li[normalize-space()='Rear']"
     full_xpath = "//li[normalize-space()='Full']"
-
 
     btn_back_xpath = "//button[normalize-space()='Back']"
 
@@ -1253,10 +1258,8 @@ class Upload_documents():
     def full(self):
         self.driver.find_element(By.XPATH, self.full_xpath).click()
 
-
-
     def btn_back(self):
-        self.driver.find_element(By.XPATH,self.btn_back_xpath).click()
+        self.driver.find_element(By.XPATH, self.btn_back_xpath).click()
 
     def click_other_info_pre(self):
         self.driver.find_element(By.XPATH, self.other_info).click()
@@ -1432,8 +1435,8 @@ class Upload_documents():
     def privacy_aggrement_pre(self):
         return self.driver.find_element(By.XPATH, self.privacy_aggrement).text
 
-class Final_Preview:
 
+class Final_Preview:
     save = "//button[normalize-space()='Save']"
 
     def __init__(self, driver):
@@ -1447,4 +1450,3 @@ class Final_Preview:
             return self.driver.find_element(By.XPATH, "//*[@id='root']/div[1]/div/div/div").text
         except:
             None
-

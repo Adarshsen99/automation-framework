@@ -15,11 +15,12 @@ class Customer_Details:
     def search_btn(self):
         return self.driver.find_element(By.XPATH, "//button[normalize-space()='Search']").click()
 
-    def customer_selector_karunakar(self):
-        return self.driver.find_element(By.XPATH, "//p[normalize-space()='Karunakar middle last']").click()
+    def customer_selector_adarshid(self):
+        return self.driver.find_element(By.XPATH, "//span[@class='searchIndiCorpName']").click()
 
-    def custom_select1(self):
-        return self.driver.find_element(By.XPATH, "//p[@class='dropdown-search-item-primary']").click()
+    def custom_selectcorp(self):
+        return self.driver.find_element(By.XPATH,
+                                        "//span[@class='searchIndiCorpName']").click()
 
     def cancel_btm(self):
         return self.driver.find_element(By.XPATH, "//button[normalize-space()='Cancel']").click()
@@ -30,8 +31,8 @@ class Customer_Details:
     def verify_btn(self):
         return self.driver.find_element(By.XPATH, "//button[normalize-space()='Verify']").click()
 
-    def btn_next(self):
-        return self.driver.find_element(By.XPATH, "//button[normalize-space()='Next']").click()
+    def btn_verifyandnext(self):
+        return self.driver.find_element(By.XPATH, "/html[1]/body[1]/div[1]/div[2]/form[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[2]/div[1]/div[2]/div[2]/button[1]")
 
 
 class Delegate_details:
@@ -46,7 +47,7 @@ class Delegate_details:
         return self.driver.find_element(By.ID, "floatingSearch")
 
     def delegate_select_bar(self):
-        return self.driver.find_element(By.XPATH, "//div[@class='dropdown-search-item']").click()
+        return self.driver.find_element(By.XPATH, "//div[@class='searchItem mb-1']").click()
 
     def delegate_btn_search(self):
         return self.driver.find_element(By.XPATH, "//button[normalize-space()='Search']")
@@ -87,8 +88,8 @@ class Beneficiary_details:
     def beneficiary_search_bar(self):
         return self.driver.find_element(By.ID, "floatingSearch")
 
-    def beneficiary_selectbar_ronaldo(self):
-        return self.driver.find_element(By.XPATH, "//p[@class='dropdown-search-item-primary']").click()
+    def beneficiary_selectbar_man(self):
+        return self.driver.find_element(By.XPATH, "//div[@class='searchItem mb-1']").click()
 
     def beneficiary_select_bar_pisharadi(self):
         return self.driver.find_element(By.XPATH, "//p[@class='dropdown-search-item-primary']").click()
@@ -151,6 +152,9 @@ class Remittance_details:
 
     def click_digital_pay(self):
         return self.driver.find_element(By.XPATH, "//input[@name='Digital Pay']").click()
+
+    def drp_pos_typ(self):
+        return self.driver.find_element(By.XPATH, "//select[@name='pymnt_chcs_pos_tp']")
 
     def fc_type_area(self):
         return self.driver.find_element(By.XPATH, "//input[@id='remiFC']")
@@ -246,17 +250,20 @@ class Payment_details:
     def cash_ampunt(self):
         return self.driver.find_element(By.ID, "Cash Input")
 
-    def cash1000(self):
-        return self.driver.find_element(By.ID, "Quantity 0")
+    def cash500(self):
+        return self.driver.find_element(By.XPATH, "/html/body/div/div[2]/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[1]/form/div[2]/form/div/div/div[3]/div[1]/div/input")
 
     def cash100(self):
         return self.driver.find_element(By.XPATH, "//input[@id='Quantity 1']")
 
-    def cash10(self):
+    def cash50(self):
         return self.driver.find_element(By.XPATH, "//input[@id='Quantity 2']")
 
+    def cash20(self):
+        return self.driver.find_element(By.XPATH, "/html/body/div/div[2]/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[1]/form/div[2]/form/div/div/div[6]/div[1]/div/input")
+
     def cash1(self):
-        return self.driver.find_element(By.XPATH, "//input[@id='Quantity 3']")
+        return self.driver.find_element(By.XPATH, "//input[@id='Quantity 4']")
 
     def submit(self):
         return self.driver.find_element(By.XPATH, "//button[normalize-space()='Submit']").click()
@@ -294,8 +301,11 @@ class Payment_details:
     def generate_qr_code(self):
         return self.driver.find_element(By.XPATH, "//button[@title='Generate QR']").click()
 
-    def save_remittance(self):
-        return self.driver.find_element(By.XPATH, "//button[normalize-space()='Save Remittance']").click()
+    def verifyand_proceed(self):
+        return self.driver.find_element(By.XPATH, "//button[normalize-space()='Verify & Proceed']").click()
+
+    def save_no_rules(self):
+        return self.driver.find_element(By.XPATH, "//button[normalize-space()='Save']").click()
 
     def btne_cancl(self):
         return self.driver.find_element(By.XPATH, "//button[normalize-space()='Cancel']")

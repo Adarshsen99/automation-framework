@@ -8,10 +8,11 @@ from Dinero_automation.pageObjects.LoginPage import LoginPage
 from Dinero_automation.pageObjects.Navbar import Navigation_Page
 from Dinero_automation.pageObjects.service_provider import General_Information, Agreement_Details, Upload_document
 from Dinero_automation.utilities.randomString import random_string_generator_max_30, random_string_generator_max_50, \
-     random_string_generator_max_28, random_string_generator_max_48, random_string_generator_max_31, \
-     random_string_generator_max_51, random_string_generator_numbers_18
+    random_string_generator_max_28, random_string_generator_max_48, random_string_generator_max_31, \
+    random_string_generator_max_51, random_string_generator_numbers_18
 from selenium.webdriver.support.ui import Select
 from Dinero_automation.utilities import screenShort
+
 
 class Test_agreement_details:
     url = ReadConfig.getApplicationURL()
@@ -71,8 +72,8 @@ class Test_agreement_details:
         drp_country.select_by_index(3)
         drp_count_of_Incorp.select_by_index(5)
         drp_country_code.select_by_index(8)
-        mob_no.send_keys("654546445454")
-        email.send_keys("njuyg@gm.vom")
+        mob_no.send_keys("6545464452454")
+        email.send_keys("njuyg@gm.vossm")
         btn_next.click()
         time.sleep(2)
 
@@ -113,13 +114,13 @@ class Test_agreement_details:
         btn_new.click()
         time.sleep(2)
         drp_fund_curr = Select(self.ad.drp_fund_curency())
-        drp_fund_curr.select_by_index(2)
+        drp_fund_curr.select_by_index(132)
         rate = self.ad.rate()
-        rate.send_keys("3234")
+        rate.send_keys("3.64")
         settlement_rate = self.ad.settlement_rate()
-        settlement_rate.send_keys("2311")
+        settlement_rate.send_keys("3.64")
         pay_settle_rate = self.ad.pay_settelement_rate()
-        pay_settle_rate.send_keys("1222")
+        pay_settle_rate.send_keys("3.64")
         balance_trigg = self.ad.balance_trigger()
         balance_trigg.send_keys("557485524")
         btn_add = self.ad.btn_add()
@@ -130,8 +131,7 @@ class Test_agreement_details:
         time.sleep(2)
 
         # test passed
-        # last tested on built - 3/9/2024- Adarsh Sen Madhu
-
+        # last tested on built - 23/10/2024- Adarsh Sen Madhu
 
     def test_without_data(self, setup):
 
@@ -158,7 +158,6 @@ class Test_agreement_details:
         # time.sleep(2)
         self.gi = General_Information(self.driver)
         self.ad = Agreement_Details(self.driver)
-
 
         drp_category = Select(self.gi.drp_category())
         name = self.gi.name()
@@ -243,13 +242,13 @@ class Test_agreement_details:
         time.sleep(5)
         error_msg = self.gi.error_message()
         if error_msg == "Required":
-         assert True
+            assert True
         else:
             self.driver.save_screenshot(screenShort.screen_short() + "Ser_Pro_ad_without_valid_data.png")
             assert False
 
-         # test case passed
-        # last tested - 3/09/2024
+        # test case passed
+        # last tested - 23/10/2024
 
     def test_with_special_char_data(self, setup):
 
@@ -369,9 +368,8 @@ class Test_agreement_details:
 
         time.sleep(5)
 
-        # test case failed ( fund currency fields accepting +, - values and saving )
-        # last tested on built 03/09/2024
-
+        # test case passed
+        # last tested on built 23/10/2024
 
     def test_with_sending_numbers(self, setup):
 
@@ -489,7 +487,7 @@ class Test_agreement_details:
         time.sleep(10)
 
         # test case passed
-        # last tested on built 03/09/2024 - Adarsh Sen Madhu
+        # last tested on built 23/10/2024 - Adarsh Sen Madhu
 
     def test_with_only_char(self, setup):
 
@@ -605,8 +603,9 @@ class Test_agreement_details:
         else:
             self.driver.save_screenshot(screenShort.screen_short() + "Ser_Pro_ad_with_chaaractr.png")
             assert False
-        #  test case passed ( but fund currency values accepting the letter e ; )
-        # last tested on built 3/9/2024 - Adarsh Sen Madhu
+        #  test case passed
+        # last tested on built 23/10/2024 - Adarsh Sen Madhu
+
     #
     def test_with_bulk_data(self, setup):
 
@@ -660,14 +659,12 @@ class Test_agreement_details:
 
         # Bulk data
         registration_numbers = [12545545, 4154161545, 6451516516, ]
-        trade_licenses = [64646464, 485659, 454545454,]
+        trade_licenses = [64646464, 485659, 454545454, ]
         license_numbers = [59444, 44524465, 4542597797, ]
         licensing_authorities = ['dfdsfgfsg', 'dsdgdsgds', 'dsgsdgdfsg']
         authorized_persons = ['dggdgfgre', 'dsgdsgdgs', 'dsgdgdsgdg']
 
-
         for i in range(3):
-
             # Fill Agreement Details
             self.ad.dpick_agreement_start_details().send_keys("12051999")
             self.ad.dpick_agreement_end_details().send_keys("12052022")
@@ -727,10 +724,8 @@ class Test_agreement_details:
         else:
             self.driver.save_screenshot(f"Ser_Pro_ad_with_bulkdata_success_{i}.png")
             assert False
-          # test case passed
-          # last tested on built 03/09/2024 - Adarsh Sen Madhu
-
-
+        # test case passed
+        # last tested on built 23/10/2024 - Adarsh Sen Madhu
 
     def test_with_spaces(self, setup):
 
@@ -772,7 +767,7 @@ class Test_agreement_details:
         email = self.gi.email()
         btn_next = self.gi.btn_nxt()
 
-         # assigning values
+        # assigning values
 
         drp_category.select_by_index(2)
         time.sleep(2)
@@ -808,7 +803,7 @@ class Test_agreement_details:
         drp_country_birth = Select(self.ad.drp_country_of_birh())
         drp_nation = Select(self.ad.drp_nationality())
 
-         # assigning values
+        # assigning values
 
         dpick_agreement_star_date.send_keys("12081999")
         dpick_agreement_end_date.send_keys("12012066")
@@ -844,7 +839,7 @@ class Test_agreement_details:
         time.sleep(10)
 
         # test case failed ( liscense authority is not accepting spaces)
-        # tesst on last built 3/09/2024 - Adarsh Sen Madhu
+        # tesst on last built 23/10/2024 - Adarsh Sen Madhu
 
     def test_with_maximum_length(self, setup):
 
@@ -931,7 +926,6 @@ class Test_agreement_details:
 
         # assigning values
 
-
         dpick_agreement_star_date.send_keys("12081999")
         dpick_agreement_end_date.send_keys("12012066")
         registration_number.send_keys(random_string_generator_numbers_18() + random_string_generator_numbers_18())
@@ -939,7 +933,7 @@ class Test_agreement_details:
         trade_lic_num.send_keys(random_string_generator_numbers_18())
         trade_lic_expiry.send_keys("12082026")
         license_number.send_keys(random_string_generator_numbers_18())
-        license_authority.send_keys(random_string_generator_max_50()+ random_string_generator_max_28())
+        license_authority.send_keys(random_string_generator_max_50() + random_string_generator_max_28())
         auth_pers_name.send_keys(random_string_generator_max_50() + random_string_generator_max_31())
         drp_gender.select_by_index(2)
         dpick_dob.send_keys("12-08-1978")
@@ -969,7 +963,7 @@ class Test_agreement_details:
         auth_pers_val = len(self.ad.authoritzed_person_name().get_attribute("value"))
 
         print("reg_num_val:", reg_num_val)
-        print("trade_lic_num_val:",trade_lic_num_val)
+        print("trade_lic_num_val:", trade_lic_num_val)
         print("lisence_num_val:", lisence_num_val)
         print("lisc_auth_val:", lisc_auth_val)
         print("auth_pers_val:", auth_pers_val)
@@ -978,11 +972,10 @@ class Test_agreement_details:
         btn_next.click()
 
         if reg_num_val <= registration_number_len:
-           assert True
+            assert True
         else:
-           self.driver.save_screenshot(screenShort.screen_short() + "ad_test_max_length.png")
-           assert False
-
+            self.driver.save_screenshot(screenShort.screen_short() + "ad_test_max_length.png")
+            assert False
 
         if trade_lic_num_val <= trade_lic_num_len:
             assert True
@@ -1011,257 +1004,253 @@ class Test_agreement_details:
         time.sleep(10)
 
         # test case passed
-        # last tested on built 03/09/2024
+        # last tested on built 23/10/2024
 
     def test_validating_cancel(self, setup):
 
-            self.driver = setup
-            self.driver.get(self.url)
-            self.driver.maximize_window()
-            self.driver.implicitly_wait(8)
-            self.lp = LoginPage(self.driver)
-            self.lp.setUsername(self.uname)
-            self.lp.setPassword(self.upass)
-            self.lp.clickLogin()
+        self.driver = setup
+        self.driver.get(self.url)
+        self.driver.maximize_window()
+        self.driver.implicitly_wait(8)
+        self.lp = LoginPage(self.driver)
+        self.lp.setUsername(self.uname)
+        self.lp.setPassword(self.upass)
+        self.lp.clickLogin()
 
-            # click action for nav bar arrow
-            self.nav = Navigation_Page(self.driver)
-            self.nav.click_navbar()
+        # click action for nav bar arrow
+        self.nav = Navigation_Page(self.driver)
+        self.nav.click_navbar()
 
-            # click action for general information
+        # click action for general information
 
-            self.nav.click_service_provider()
+        self.nav.click_service_provider()
 
-            # time.sleep(2)
-            self.gi = General_Information(self.driver)
-            self.ad = Agreement_Details(self.driver)
+        # time.sleep(2)
+        self.gi = General_Information(self.driver)
+        self.ad = Agreement_Details(self.driver)
 
-            drp_category = Select(self.gi.drp_category())
-            ##bank_name = self.gi.bank_name()
-            name = self.gi.name()
-            arabic_name = self.gi.arabic_name()
-            address_1 = self.gi.adress_1()
-            address_2 = self.gi.adress_2()
-            address_3 = self.gi.adress_3()
-            postal_code = self.gi.postal_code()
-            city = self.gi.city()
-            drp_count_of_Incorp = Select(self.gi.drp_country_of_incorporation())
-            drp_country_code = Select(self.gi.drp_country_code())
-            mob_no = self.gi.mobile_number()
-            email = self.gi.email()
-            btn_next = self.gi.btn_nxt()
+        drp_category = Select(self.gi.drp_category())
+        ##bank_name = self.gi.bank_name()
+        name = self.gi.name()
+        arabic_name = self.gi.arabic_name()
+        address_1 = self.gi.adress_1()
+        address_2 = self.gi.adress_2()
+        address_3 = self.gi.adress_3()
+        postal_code = self.gi.postal_code()
+        city = self.gi.city()
+        drp_count_of_Incorp = Select(self.gi.drp_country_of_incorporation())
+        drp_country_code = Select(self.gi.drp_country_code())
+        mob_no = self.gi.mobile_number()
+        email = self.gi.email()
+        btn_next = self.gi.btn_nxt()
 
-            drp_category.select_by_index(2)
-            # bank_name.send_keys("fed")
-            time.sleep(2)
-            # click_bank = self.gi.click_bank_name()
-            # click_bank.click()
-            name.send_keys("adrstsgs")
-            arabic_name.send_keys("hfsdjgfd")
-            address_1.send_keys("dgjhafdhja")
-            address_2.send_keys("gdhgfhjfg")
-            address_3.send_keys("hkjgfkhgfkh")
-            postal_code.send_keys("346714684")
-            city.send_keys("hgdhkdgfkh")
-            drp_country = Select(self.gi.drp_country())
-            drp_country.select_by_index(3)
-            drp_count_of_Incorp.select_by_index(5)
-            drp_country_code.select_by_index(8)
-            mob_no.send_keys("654546445454")
-            email.send_keys("njuyg@gm.vom")
-            btn_next.click()
-            time.sleep(2)
+        drp_category.select_by_index(2)
+        # bank_name.send_keys("fed")
+        time.sleep(2)
+        # click_bank = self.gi.click_bank_name()
+        # click_bank.click()
+        name.send_keys("adrstsgs")
+        arabic_name.send_keys("hfsdjgfd")
+        address_1.send_keys("dgjhafdhja")
+        address_2.send_keys("gdhgfhjfg")
+        address_3.send_keys("hkjgfkhgfkh")
+        postal_code.send_keys("346714684")
+        city.send_keys("hgdhkdgfkh")
+        drp_country = Select(self.gi.drp_country())
+        drp_country.select_by_index(3)
+        drp_count_of_Incorp.select_by_index(5)
+        drp_country_code.select_by_index(8)
+        mob_no.send_keys("654546445454")
+        email.send_keys("njuyg@gm.vom")
+        btn_next.click()
+        time.sleep(2)
 
-            # click action for agreement details
-            dpick_agreement_star_date = self.ad.dpick_agreement_start_details()
-            dpick_agreement_end_date = self.ad.dpick_agreement_end_details()
-            registration_number = self.ad.registration_number()
-            dpick_reg_exp_date = self.ad.dpick_registration_exp_date()
-            trade_lic_num = self.ad.trade_license_number()
-            license_number = self.ad.license_number()
-            trade_lic_expiry = self.ad.dpick_trade_exp_date()
-            license_authority = self.ad.licensing_authority()
-            auth_pers_name = self.ad.authoritzed_person_name()
-            drp_gender = Select(self.ad.drp_gender())
-            dpick_dob = self.ad.dpick_date_of_birth()
-            drp_country_birth = Select(self.ad.drp_country_of_birh())
-            drp_nation = Select(self.ad.drp_nationality())
+        # click action for agreement details
+        dpick_agreement_star_date = self.ad.dpick_agreement_start_details()
+        dpick_agreement_end_date = self.ad.dpick_agreement_end_details()
+        registration_number = self.ad.registration_number()
+        dpick_reg_exp_date = self.ad.dpick_registration_exp_date()
+        trade_lic_num = self.ad.trade_license_number()
+        license_number = self.ad.license_number()
+        trade_lic_expiry = self.ad.dpick_trade_exp_date()
+        license_authority = self.ad.licensing_authority()
+        auth_pers_name = self.ad.authoritzed_person_name()
+        drp_gender = Select(self.ad.drp_gender())
+        dpick_dob = self.ad.dpick_date_of_birth()
+        drp_country_birth = Select(self.ad.drp_country_of_birh())
+        drp_nation = Select(self.ad.drp_nationality())
 
-            dpick_agreement_star_date.send_keys("12081999")
-            dpick_agreement_end_date.send_keys("12012066")
-            registration_number.send_keys(random_string_generator_numbers_18() + random_string_generator_numbers_18())
-            dpick_reg_exp_date.send_keys("12112055")
-            trade_lic_num.send_keys(random_string_generator_numbers_18())
-            trade_lic_expiry.send_keys("12082026")
-            license_number.send_keys(random_string_generator_numbers_18())
-            license_authority.send_keys(random_string_generator_max_50() + random_string_generator_max_28())
-            auth_pers_name.send_keys(random_string_generator_max_50() + random_string_generator_max_31())
-            drp_gender.select_by_index(2)
-            dpick_dob.send_keys("12-08-1978")
-            drp_country_birth.select_by_index(15)
-            drp_nation.select_by_index(55)
-            btn_new = self.ad.fund_btn_new()
-            btn_new.click()
-            time.sleep(2)
-            drp_fund_curr = Select(self.ad.drp_fund_curency())
-            drp_fund_curr.select_by_index(2)
-            rate = self.ad.rate()
-            rate.send_keys("3234")
-            settlement_rate = self.ad.settlement_rate()
-            settlement_rate.send_keys("2311")
-            pay_settle_rate = self.ad.pay_settelement_rate()
-            pay_settle_rate.send_keys("1222")
-            balance_trigg = self.ad.balance_trigger()
-            balance_trigg.send_keys(random_string_generator_numbers_18())
+        dpick_agreement_star_date.send_keys("12081999")
+        dpick_agreement_end_date.send_keys("12012066")
+        registration_number.send_keys(random_string_generator_numbers_18() + random_string_generator_numbers_18())
+        dpick_reg_exp_date.send_keys("12112055")
+        trade_lic_num.send_keys(random_string_generator_numbers_18())
+        trade_lic_expiry.send_keys("12082026")
+        license_number.send_keys(random_string_generator_numbers_18())
+        license_authority.send_keys(random_string_generator_max_50() + random_string_generator_max_28())
+        auth_pers_name.send_keys(random_string_generator_max_50() + random_string_generator_max_31())
+        drp_gender.select_by_index(2)
+        dpick_dob.send_keys("12-08-1978")
+        drp_country_birth.select_by_index(15)
+        drp_nation.select_by_index(55)
+        btn_new = self.ad.fund_btn_new()
+        btn_new.click()
+        time.sleep(2)
+        drp_fund_curr = Select(self.ad.drp_fund_curency())
+        drp_fund_curr.select_by_index(2)
+        rate = self.ad.rate()
+        rate.send_keys("3234")
+        settlement_rate = self.ad.settlement_rate()
+        settlement_rate.send_keys("2311")
+        pay_settle_rate = self.ad.pay_settelement_rate()
+        pay_settle_rate.send_keys("1222")
+        balance_trigg = self.ad.balance_trigger()
+        balance_trigg.send_keys(random_string_generator_numbers_18())
 
-            rate_val = rate.get_attribute('value')
-            settlement_rate = self.ad.settlement_rate()
-            settlement_rate_val = settlement_rate.get_attribute("value")
-            drp_fund_curr = Select(self.ad.drp_fund_curency())
-            drp_fund_curr_val = drp_fund_curr.first_selected_option.text
-            pay_settle_rate = self.ad.pay_settelement_rate()
-            pay_settle_rate_val = pay_settle_rate.get_attribute('value')
-            balance_trigg_val = balance_trigg.get_attribute('value')
+        rate_val = rate.get_attribute('value')
+        settlement_rate = self.ad.settlement_rate()
+        settlement_rate_val = settlement_rate.get_attribute("value")
+        drp_fund_curr = Select(self.ad.drp_fund_curency())
+        drp_fund_curr_val = drp_fund_curr.first_selected_option.text
+        pay_settle_rate = self.ad.pay_settelement_rate()
+        pay_settle_rate_val = pay_settle_rate.get_attribute('value')
+        balance_trigg_val = balance_trigg.get_attribute('value')
 
-            btn_add = self.ad.btn_add()
-            btn_add.click()
-            time.sleep(2)
+        btn_add = self.ad.btn_add()
+        btn_add.click()
+        time.sleep(2)
 
+        dpick_agreement_star_date_val = dpick_agreement_star_date.get_attribute('value')
+        dpick_agreement_end_date_val = dpick_agreement_end_date.get_attribute('value')
+        registration_number_val = registration_number.get_attribute('value')
+        dpick_reg_exp_date_val = dpick_reg_exp_date.get_attribute('value')
+        trade_lic_num_val = trade_lic_num.get_attribute('value')
+        trade_lic_expiry_val = trade_lic_expiry.get_attribute('value')
+        license_number_val = license_number.get_attribute('value')
+        license_authority_val = license_authority.get_attribute('value')
+        auth_pers_name_val = auth_pers_name.get_attribute('value')
+        drp_gender_val = drp_gender.first_selected_option.text
+        dpick_dob_val = dpick_dob.get_attribute('value')
+        drp_country_birth_val = drp_country_birth.first_selected_option.text
+        drp_nation_val = drp_nation.first_selected_option.text
 
-            dpick_agreement_star_date_val = dpick_agreement_star_date.get_attribute('value')
-            dpick_agreement_end_date_val = dpick_agreement_end_date.get_attribute('value')
-            registration_number_val = registration_number.get_attribute('value')
-            dpick_reg_exp_date_val = dpick_reg_exp_date.get_attribute('value')
-            trade_lic_num_val = trade_lic_num.get_attribute('value')
-            trade_lic_expiry_val = trade_lic_expiry.get_attribute('value')
-            license_number_val = license_number.get_attribute('value')
-            license_authority_val = license_authority.get_attribute('value')
-            auth_pers_name_val = auth_pers_name.get_attribute('value')
-            drp_gender_val = drp_gender.first_selected_option.text
-            dpick_dob_val = dpick_dob.get_attribute('value')
-            drp_country_birth_val = drp_country_birth.first_selected_option.text
-            drp_nation_val = drp_nation.first_selected_option.text
+        print(
+            "values before cancel"
 
+            f"dpick_agreement_star_date_val: {dpick_agreement_star_date_val}  "
+            f"dpick_agreement_end_date_val: {dpick_agreement_end_date_val}"
+            f"registration_number_val: {registration_number_val}"
+            f"dpick_reg_exp_date_val: {dpick_reg_exp_date_val}"
+            f"trade_lic_num_val: {trade_lic_num_val}"
+            f"trade_lic_expiry_val: {trade_lic_expiry_val}"
+            f"license_number_val: {license_number_val}"
+            f"license_authority_val: {license_authority_val}"
+            f"auth_pers_name_val: {auth_pers_name_val}"
+            f"drp_gender_val:{drp_gender_val}"
+            f"dpick_dob_val:{dpick_dob_val}"
+            f"drp_country_birth_val:{drp_country_birth_val}"
+            f"drp_nation_val:{drp_nation_val}"
+            f"rate_val:{rate_val}"
+            f"settlement_rate_val:{settlement_rate_val}"
+            f"drp_fund_curr_val:{drp_fund_curr_val}"
+            f"pay_settle_rate_val:{pay_settle_rate_val}"
+            f"balance_trigg_val:{balance_trigg_val}"
 
-            print(
-                "values before cancel"
-                
-                f"dpick_agreement_star_date_val: {dpick_agreement_star_date_val}  "
-                f"dpick_agreement_end_date_val: {dpick_agreement_end_date_val}"
-                f"registration_number_val: {registration_number_val}"
-                f"dpick_reg_exp_date_val: {dpick_reg_exp_date_val}"
-                f"trade_lic_num_val: {trade_lic_num_val}"
-                f"trade_lic_expiry_val: {trade_lic_expiry_val}"
-                f"license_number_val: {license_number_val}"
-                f"license_authority_val: {license_authority_val }"
-                f"auth_pers_name_val: {auth_pers_name_val}"
-                f"drp_gender_val:{drp_gender_val}"
-                f"dpick_dob_val:{dpick_dob_val}"
-                f"drp_country_birth_val:{drp_country_birth_val}"
-                f"drp_nation_val:{drp_nation_val}"
-                f"rate_val:{rate_val}"
-                f"settlement_rate_val:{settlement_rate_val}"
-                f"drp_fund_curr_val:{drp_fund_curr_val}"
-                f"pay_settle_rate_val:{pay_settle_rate_val}"
-                f"balance_trigg_val:{balance_trigg_val}"
+        )
+        self.ad.btn_cancel().click()
+        time.sleep(2)
+        self.ad.btn_cancl_confm().click()
 
-                )
-            self.ad.btn_cancel().click()
-            time.sleep(2)
-            self.ad.btn_cancl_confm().click()
+        drp_category = Select(self.gi.drp_category())
+        name = self.gi.name()
+        arabic_name = self.gi.arabic_name()
+        address_1 = self.gi.adress_1()
+        address_2 = self.gi.adress_2()
+        address_3 = self.gi.adress_3()
+        postal_code = self.gi.postal_code()
+        city = self.gi.city()
+        drp_count_of_Incorp = Select(self.gi.drp_country_of_incorporation())
+        drp_country_code = Select(self.gi.drp_country_code())
+        mob_no = self.gi.mobile_number()
+        email = self.gi.email()
+        btn_next = self.gi.btn_nxt()
 
+        drp_category.select_by_index(2)
+        time.sleep(2)
+        name.send_keys("adrstsgs")
+        arabic_name.send_keys("hfsdjgfd")
+        address_1.send_keys("dgjhafdhja")
+        address_2.send_keys("gdhgfhjfg")
+        address_3.send_keys("hkjgfkhgfkh")
+        postal_code.send_keys("346714684")
+        city.send_keys("hgdhkdgfkh")
+        drp_country = Select(self.gi.drp_country())
+        drp_country.select_by_index(3)
+        drp_count_of_Incorp.select_by_index(5)
+        drp_country_code.select_by_index(8)
+        mob_no.send_keys("654546445454")
+        email.send_keys("njuyg@gm.vom")
+        btn_next.click()
+        time.sleep(2)
 
-            drp_category = Select(self.gi.drp_category())
-            name = self.gi.name()
-            arabic_name = self.gi.arabic_name()
-            address_1 = self.gi.adress_1()
-            address_2 = self.gi.adress_2()
-            address_3 = self.gi.adress_3()
-            postal_code = self.gi.postal_code()
-            city = self.gi.city()
-            drp_count_of_Incorp = Select(self.gi.drp_country_of_incorporation())
-            drp_country_code = Select(self.gi.drp_country_code())
-            mob_no = self.gi.mobile_number()
-            email = self.gi.email()
-            btn_next = self.gi.btn_nxt()
+        dpick_agreement_star_date = self.ad.dpick_agreement_start_details()
+        dpick_agreement_end_date = self.ad.dpick_agreement_end_details()
+        registration_number = self.ad.registration_number()
+        dpick_reg_exp_date = self.ad.dpick_registration_exp_date()
+        trade_lic_num = self.ad.trade_license_number()
+        license_number = self.ad.license_number()
+        trade_lic_expiry = self.ad.dpick_trade_exp_date()
+        license_authority = self.ad.licensing_authority()
+        auth_pers_name = self.ad.authoritzed_person_name()
+        drp_gender = Select(self.ad.drp_gender())
+        dpick_dob = self.ad.dpick_date_of_birth()
+        drp_country_birth = Select(self.ad.drp_country_of_birh())
+        drp_nation = Select(self.ad.drp_nationality())
 
-            drp_category.select_by_index(2)
-            time.sleep(2)
-            name.send_keys("adrstsgs")
-            arabic_name.send_keys("hfsdjgfd")
-            address_1.send_keys("dgjhafdhja")
-            address_2.send_keys("gdhgfhjfg")
-            address_3.send_keys("hkjgfkhgfkh")
-            postal_code.send_keys("346714684")
-            city.send_keys("hgdhkdgfkh")
-            drp_country = Select(self.gi.drp_country())
-            drp_country.select_by_index(3)
-            drp_count_of_Incorp.select_by_index(5)
-            drp_country_code.select_by_index(8)
-            mob_no.send_keys("654546445454")
-            email.send_keys("njuyg@gm.vom")
-            btn_next.click()
-            time.sleep(2)
+        dpick_agreement_star_date_af = dpick_agreement_star_date.get_attribute('value')
+        dpick_agreement_end_date_af = dpick_agreement_end_date.get_attribute('value')
+        registration_number_af = registration_number.get_attribute('value')
+        dpick_reg_exp_date_af = dpick_reg_exp_date.get_attribute('value')
+        trade_lic_num_af = trade_lic_num.get_attribute('value')
+        trade_lic_expiry_af = trade_lic_expiry.get_attribute('value')
+        license_number_af = license_number.get_attribute('value')
+        license_authority_af = license_authority.get_attribute('value')
+        auth_pers_name_af = auth_pers_name.get_attribute('value')
+        drp_gender_af = drp_gender.first_selected_option.text
+        dpick_dob_af = dpick_dob.get_attribute('value')
+        drp_country_birth_af = drp_country_birth.first_selected_option.text
+        drp_nation_af = drp_nation.first_selected_option.text
 
-            dpick_agreement_star_date = self.ad.dpick_agreement_start_details()
-            dpick_agreement_end_date = self.ad.dpick_agreement_end_details()
-            registration_number = self.ad.registration_number()
-            dpick_reg_exp_date = self.ad.dpick_registration_exp_date()
-            trade_lic_num = self.ad.trade_license_number()
-            license_number = self.ad.license_number()
-            trade_lic_expiry = self.ad.dpick_trade_exp_date()
-            license_authority = self.ad.licensing_authority()
-            auth_pers_name = self.ad.authoritzed_person_name()
-            drp_gender = Select(self.ad.drp_gender())
-            dpick_dob = self.ad.dpick_date_of_birth()
-            drp_country_birth = Select(self.ad.drp_country_of_birh())
-            drp_nation = Select(self.ad.drp_nationality())
+        print(
+            "values after cancel"
 
-            dpick_agreement_star_date_af = dpick_agreement_star_date.get_attribute('value')
-            dpick_agreement_end_date_af = dpick_agreement_end_date.get_attribute('value')
-            registration_number_af = registration_number.get_attribute('value')
-            dpick_reg_exp_date_af = dpick_reg_exp_date.get_attribute('value')
-            trade_lic_num_af = trade_lic_num.get_attribute('value')
-            trade_lic_expiry_af = trade_lic_expiry.get_attribute('value')
-            license_number_af = license_number.get_attribute('value')
-            license_authority_af = license_authority.get_attribute('value')
-            auth_pers_name_af = auth_pers_name.get_attribute('value')
-            drp_gender_af = drp_gender.first_selected_option.text
-            dpick_dob_af = dpick_dob.get_attribute('value')
-            drp_country_birth_af = drp_country_birth.first_selected_option.text
-            drp_nation_af = drp_nation.first_selected_option.text
+            f"dpick_agreement_star_date_af: {dpick_agreement_star_date_af}  "
+            f"dpick_agreement_end_date_af: {dpick_agreement_end_date_af}"
+            f"registration_number_af: {registration_number_af}"
+            f"dpick_reg_exp_date_af: {dpick_reg_exp_date_af}"
+            f"trade_lic_num_af: {trade_lic_num_af}"
+            f"trade_lic_expiry_af: {trade_lic_expiry_af}"
+            f"license_number_af: {license_number_af}"
+            f"license_authority_af: {license_authority_af}"
+            f"auth_pers_name_af: {auth_pers_name_af}"
+            f"drp_gender_af:{drp_gender_af}"
+            f"dpick_dob_af:{dpick_dob_af}"
+            f"drp_country_birth_af:{drp_country_birth_af}"
+            f"drp_nation_af:{drp_nation_af}"
 
+        )
 
-            print(
-                "values after cancel"
+        if registration_number_val != registration_number_af:
+            assert True
+        if trade_lic_num_val != trade_lic_num_af:
+            assert True
+        if auth_pers_name_val != auth_pers_name:
+            assert True
 
-                f"dpick_agreement_star_date_af: {dpick_agreement_star_date_af}  "
-                f"dpick_agreement_end_date_af: {dpick_agreement_end_date_af}"
-                f"registration_number_af: {registration_number_af}"
-                f"dpick_reg_exp_date_af: {dpick_reg_exp_date_af}"
-                f"trade_lic_num_af: {trade_lic_num_af}"
-                f"trade_lic_expiry_af: {trade_lic_expiry_af}"
-                f"license_number_af: {license_number_af}"
-                f"license_authority_af: {license_authority_af}"
-                f"auth_pers_name_af: {auth_pers_name_af}"
-                f"drp_gender_af:{drp_gender_af}"
-                f"dpick_dob_af:{dpick_dob_af}"
-                f"drp_country_birth_af:{drp_country_birth_af}"
-                f"drp_nation_af:{drp_nation_af}"
+        self.driver.quit()
 
-            )
-
-            if registration_number_val != registration_number_af:
-                assert True
-            if trade_lic_num_val != trade_lic_num_af:
-                assert True
-            if auth_pers_name_val != auth_pers_name:
-                assert True
-
-            self.driver.quit()
-
-            # test passed
-            # last tested of built 03/09/2024
+        # test passed
+        # last tested of built 23/10/2024
 
     def test_balance_alert_val_remn(self, setup):
 
@@ -1269,8 +1258,6 @@ class Test_agreement_details:
 
         # (Fund currency>>When new currency is trying to be added,
         # balance alert trigger shows value as that of the currency added first, if the previous one has updated)
-
-
 
         self.driver = setup
         self.driver.get(self.url)
@@ -1383,11 +1370,9 @@ class Test_agreement_details:
         btn_update.click()
         time.sleep(3)
 
-
-
         print(
             "Values after update:\n"
-            
+
             f"values after update: balance_trigg_val_afterup: {balance_trigg_val_afterup}"
         )
 
@@ -1412,16 +1397,14 @@ class Test_agreement_details:
 
         time.sleep(5)
 
-        ### test case passed ( values are not showing )
-        ### tested on last built 03/09/2024 - Adarsh Sen Madhu
-
+        ### test case passed ( values are not showing  )
+        ### tested on last built 23/10/2024 - Adarsh Sen Madhu
 
     def test_validating_req_field_date(self, setup):
 
         ### Testing based on manual reports###
 
         # Most of the fields including calender widgets shows required even after entering values
-
 
         self.driver = setup
         self.driver.get(self.url)
@@ -1534,8 +1517,8 @@ class Test_agreement_details:
         time.sleep(3)
         btn_nxt.click()
 
-        ### test passed
-        ### last tested on built 03/09/2024 - Adarsh Sen Madhu
+        ### test passed(if we are manually entring values wont shows, but shows if we enter through calender widget)
+        ### last tested on built 23/10/2024 - Adarsh Sen Madhu
 
     def test_double_calndr_widget(self, setup):
 
@@ -1628,46 +1611,17 @@ class Test_agreement_details:
 
         # Locating the input field - date of agreement
 
-
         dpick_agreement_star_date = self.ad.dpick_agreement_start_details()
         dpick_agreement_star_date.send_keys("12081999")
 
         # Press backspace 5 times
         for _ in range(1):
-         dpick_agreement_star_date.send_keys(Keys.SPACE)
+            dpick_agreement_star_date.send_keys(Keys.SPACE)
 
-         time.sleep(5)
+            time.sleep(5)
 
-         print(
-             "Refer to the test case documentation here: https://docs.google.com/spreadsheets/d/1KCGKeeg6HNDSpMQggRA00OUgte7jRhg7XqUQPkMqc10/edit?usp=sharing")
+            print(
+                "Refer to the test case documentation here: https://docs.google.com/spreadsheets/d/1KCGKeeg6HNDSpMQggRA00OUgte7jRhg7XqUQPkMqc10/edit?usp=sharing")
 
-         # test failed (2 widgets are coming)
-         # last tested on built 03/09/2024
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            # test failed (2 widgets are coming)
+            # last tested on built 23/10/2024

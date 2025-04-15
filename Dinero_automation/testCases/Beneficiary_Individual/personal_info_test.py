@@ -2,15 +2,19 @@ import time
 from Dinero_automation.utilities.readProperties import ReadConfig
 from Dinero_automation.pageObjects.LoginPage import LoginPage
 from Dinero_automation.pageObjects.Navbar import Navigation_Page
-from Dinero_automation.pageObjects.Beneficiary_Individual import Personal_Details,Contact_Information,Bank_Information
-from Dinero_automation.utilities.randomString import random_string_generator_max_30,random_string_generator,random_string_generator_numbers_new,random_string_generator_max_50,random_string_generator_max_28,random_string_generator_max_48,random_string_generator_max_31,random_string_generator_max_51
+from Dinero_automation.pageObjects.Beneficiary_Individual import Personal_Details, Contact_Information, Bank_Information
+from Dinero_automation.utilities.randomString import random_string_generator_max_30, random_string_generator, \
+    random_string_generator_numbers_new, random_string_generator_max_50, random_string_generator_max_28, \
+    random_string_generator_max_48, random_string_generator_max_31, random_string_generator_max_51
 from selenium.webdriver.support.ui import Select
 from Dinero_automation.utilities import screenShort
+
 
 class Test_Personal_Information:
     url = ReadConfig.getApplicationURL()
     uname = ReadConfig.getApplicationUsername()
     upass = ReadConfig.getApplicationPWD()
+
     def test_with_valid_data(self, setup):
         # login setup
         self.driver = setup
@@ -40,7 +44,6 @@ class Test_Personal_Information:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -52,7 +55,6 @@ class Test_Personal_Information:
         sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
-        relation.select_by_index(3)
         id_type.select_by_index(2)
         id_num.send_keys(random_string_generator_numbers_new())
         trans_type.select_by_index(3)
@@ -68,7 +70,7 @@ class Test_Personal_Information:
             self.driver.save_screenshot(screenShort.screen_short() + "BI_test_with_valid_data.png")
             assert True
 
-        self.driver.quit()
+
 
     def test_without_data(self, setup):
         # login setup
@@ -99,7 +101,6 @@ class Test_Personal_Information:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -111,7 +112,6 @@ class Test_Personal_Information:
         sname.send_keys("")
         cob.select_by_visible_text("")
         nationality.select_by_visible_text("")
-        relation.select_by_visible_text("")
         id_type.select_by_visible_text("")
         id_num.send_keys("")
         trans_type.select_by_visible_text("")
@@ -127,7 +127,7 @@ class Test_Personal_Information:
             self.driver.save_screenshot(screenShort.screen_short() + "BI_test_without_data.png")
             assert False
 
-        self.driver.quit()
+        # self.driver.quit()
 
     def test_with_spchar_data(self, setup):
         # login setup
@@ -158,7 +158,6 @@ class Test_Personal_Information:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -170,7 +169,6 @@ class Test_Personal_Information:
         sname.send_keys("!@#$%^&*()_+*/{}|]""-[:;',.?")
         cob.select_by_index(9)
         nationality.select_by_index(12)
-        relation.select_by_index(3)
         id_type.select_by_index(2)
         id_num.send_keys("!@#$%^&*()_+*/{}|]""-[:;',.?")
         trans_type.select_by_index(3)
@@ -185,7 +183,7 @@ class Test_Personal_Information:
             self.driver.save_screenshot(screenShort.screen_short() + "BI_test_with_spchar_data.png")
             assert False
 
-        self.driver.quit()
+        # self.driver.quit()
 
     def test_with_numbers_data(self, setup):
         # login setup
@@ -216,7 +214,6 @@ class Test_Personal_Information:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -228,7 +225,6 @@ class Test_Personal_Information:
         sname.send_keys("123456789")
         cob.select_by_index(9)
         nationality.select_by_index(12)
-        relation.select_by_index(3)
         id_type.select_by_index(2)
         id_num.send_keys("123456789")
         trans_type.select_by_index(3)
@@ -243,8 +239,6 @@ class Test_Personal_Information:
         else:
             self.driver.save_screenshot(screenShort.screen_short() + "BI_test_with_numbers_data.png")
             assert False
-
-        self.driver.quit()
 
     def test_with_sp_char_num_data(self, setup):
         # login setup
@@ -275,7 +269,6 @@ class Test_Personal_Information:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -287,7 +280,6 @@ class Test_Personal_Information:
         sname.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?a")
         cob.select_by_index(9)
         nationality.select_by_index(12)
-        relation.select_by_index(3)
         id_type.select_by_index(2)
         id_num.send_keys("1!@#$%^&*()_+*/{}|]""-[:;',.?a")
         trans_type.select_by_index(3)
@@ -304,7 +296,7 @@ class Test_Personal_Information:
 
         self.driver.quit()
 
-    def test_with_validating_cancel(self,setup):
+    def test_with_validating_cancel(self, setup):
         # login setup
         self.driver = setup
         self.driver.get(self.url)
@@ -334,7 +326,6 @@ class Test_Personal_Information:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -348,7 +339,6 @@ class Test_Personal_Information:
         sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
-        relation.select_by_index(3)
         id_type.select_by_index(2)
         id_num.send_keys(random_string_generator_numbers_new())
         trans_type.select_by_index(3)
@@ -360,23 +350,21 @@ class Test_Personal_Information:
         sname_val = sname.get_attribute('value')
         cob_val = cob.first_selected_option.text
         nationality_val = nationality.first_selected_option.text
-        relation_val = relation.first_selected_option.text
         id_type_val = id_type.first_selected_option.text
         id_num_val = id_num.get_attribute('value')
         trans_type_val = trans_type.first_selected_option.text
 
         print(
-            "title_val:",title_val,
-            "fname_val:",fname_val,
-            "mname_val:",mname_val,
-            "lname_val:",lname_val,
-            "sname_val:",sname_val,
-            "cob_val:",cob_val,
-            "nationality_val:",nationality_val,
-            "relation_val:",relation_val,
-            "id_type_val:",id_type_val,
-            "id_num_val:",id_num_val,
-            "trans_type_val:",trans_type_val
+            "title_val:", title_val,
+            "fname_val:", fname_val,
+            "mname_val:", mname_val,
+            "lname_val:", lname_val,
+            "sname_val:", sname_val,
+            "cob_val:", cob_val,
+            "nationality_val:", nationality_val,
+            "id_type_val:", id_type_val,
+            "id_num_val:", id_num_val,
+            "trans_type_val:", trans_type_val
 
         )
 
@@ -406,7 +394,7 @@ class Test_Personal_Information:
         cob_val_af = cob.first_selected_option.text
         nationality_val_af = nationality.first_selected_option.text
         relation_val_af = relation.first_selected_option.text
-        id_type_val_af= id_type.first_selected_option.text
+        id_type_val_af = id_type.first_selected_option.text
         id_num_val_af = id_num.get_attribute('value')
         trans_type_val_af = trans_type.first_selected_option.text
 
@@ -462,10 +450,6 @@ class Test_Personal_Information:
         else:
             assert False
 
-        if relation_val != relation_val_af:
-            assert True
-        else:
-            assert False
 
         if id_type_val != id_type_val_af:
             assert True
@@ -479,7 +463,7 @@ class Test_Personal_Information:
 
         self.driver.quit()
 
-    def test_with_sending_data_have_spaces(self,setup):
+    def test_with_sending_data_have_spaces(self, setup):
         # login setup
         self.driver = setup
         self.driver.get(self.url)
@@ -508,7 +492,6 @@ class Test_Personal_Information:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -520,7 +503,6 @@ class Test_Personal_Information:
         sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
-        relation.select_by_index(3)
         id_type.select_by_index(2)
         id_num.send_keys(random_string_generator_numbers_new())
         trans_type.select_by_index(3)
@@ -538,8 +520,7 @@ class Test_Personal_Information:
 
         self.driver.quit()
 
-
-    def test_with_sending_data_only_required_fields(self,setup):
+    def test_with_sending_data_only_required_fields(self, setup):
         # login setup
         self.driver = setup
         self.driver.get(self.url)
@@ -568,7 +549,6 @@ class Test_Personal_Information:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -580,9 +560,8 @@ class Test_Personal_Information:
         sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
-        relation.select_by_index(3)
-        id_type.select_by_index(2)
-        id_num.send_keys(random_string_generator_numbers_new())
+        # id_type.select_by_index(2)
+        # id_num.send_keys(random_string_generator_numbers_new())
         trans_type.select_by_index(3)
 
         self.pi.btn_next().click()
@@ -598,7 +577,7 @@ class Test_Personal_Information:
 
         self.driver.quit()
 
-    def test_with_sending_data_only_nonrequired_fields(self,setup):
+    def test_with_sending_data_only_nonrequired_fields(self, setup):
         # login setup
         self.driver = setup
         self.driver.get(self.url)
@@ -627,7 +606,6 @@ class Test_Personal_Information:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -639,7 +617,6 @@ class Test_Personal_Information:
         sname.send_keys("")
         cob.select_by_index(2)
         nationality.select_by_visible_text("")
-        relation.select_by_visible_text("")
         id_type.select_by_index(2)
         id_num.send_keys(random_string_generator_numbers_new())
         trans_type.select_by_visible_text("")
@@ -652,7 +629,8 @@ class Test_Personal_Information:
         if error_msg == "Required":
             assert True
         else:
-            self.driver.save_screenshot(screenShort.screen_short() + "BI_test_with_sending_data_only_nonrequired_fields.png")
+            self.driver.save_screenshot(
+                screenShort.screen_short() + "BI_test_with_sending_data_only_nonrequired_fields.png")
             assert False
 
         self.driver.quit()
@@ -687,7 +665,6 @@ class Test_Personal_Information:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -699,7 +676,6 @@ class Test_Personal_Information:
         sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
-        relation.select_by_index(3)
         id_type.select_by_index(2)
         id_num.send_keys(random_string_generator_numbers_new())
         trans_type.select_by_index(3)
@@ -711,29 +687,28 @@ class Test_Personal_Information:
         sname_val = sname.get_attribute("value")
         cob_val = cob.first_selected_option.text
         nationality_val = nationality.first_selected_option.text
-        relation_val = relation.first_selected_option.text
+
         id_type_val = id_type.first_selected_option.text
         id_num_val = id_num.get_attribute("value")
         trans_type_val = trans_type.first_selected_option.text
 
         print(
-            f"title_val: {title_val}, fname_val: {fname_val}, mname_val: {mname_val}, lname_val: {lname_val}, sname_val: {sname_val}, cob_val: {cob_val}, nationality_val: {nationality_val}, relation_val: {relation_val}, id_type_val: {id_type_val}, id_num_val: {id_num_val}, trans_type_val: {trans_type_val}")
+            f"title_val: {title_val}, fname_val: {fname_val}, mname_val: {mname_val}, lname_val: {lname_val}, sname_val: {sname_val}, cob_val: {cob_val}, nationality_val: {nationality_val},  id_type_val: {id_type_val}, id_num_val: {id_num_val}, trans_type_val: {trans_type_val}")
 
         self.pi.btn_next().click()
 
         self.ci.click_personal_info_preview()
 
-        print( self.ci.title_pre(),
-            self.ci.first_name_pre(),
-            self.ci.middle_name_pre(),
-            self.ci.last_name_pre(),
-            self.ci.short_name_pre(),
-            self.ci.country_of_birth_pre(),
-            self.ci.nationality_pre(),
-            self.ci.relationship_pre(),
-            self.ci.id_type_pre(),
-            self.ci.id_number_pre(),
-            self.ci.transaction_type_pre())
+        print(self.ci.title_pre(),
+              self.ci.first_name_pre(),
+              self.ci.middle_name_pre(),
+              self.ci.last_name_pre(),
+              self.ci.short_name_pre(),
+              self.ci.country_of_birth_pre(),
+              self.ci.nationality_pre(),
+              self.ci.id_type_pre(),
+              self.ci.id_number_pre(),
+              self.ci.transaction_type_pre())
 
         time.sleep(2)
 
@@ -772,10 +747,6 @@ class Test_Personal_Information:
         else:
             assert False
 
-        if relation_val == self.ci.relationship_pre():
-            assert True
-        else:
-            assert False
 
         if id_type_val == self.ci.id_type_pre():
             assert True
@@ -823,7 +794,6 @@ class Test_Personal_Information:
         sname = self.pi.short_name()
         cob = Select(self.pi.drp_cob())
         nationality = Select(self.pi.drp_nationality())
-        relation = Select(self.pi.drp_relation())
         id_type = Select(self.pi.drp_id_type())
         id_num = self.pi.id_num()
         trans_type = Select(self.pi.drp_trans_type())
@@ -835,7 +805,6 @@ class Test_Personal_Information:
         sname.send_keys(random_string_generator())
         cob.select_by_index(9)
         nationality.select_by_index(12)
-        relation.select_by_index(3)
         id_type.select_by_index(2)
         id_num.send_keys(random_string_generator_numbers_new())
         trans_type.select_by_index(3)
@@ -847,13 +816,12 @@ class Test_Personal_Information:
         sname_val = sname.get_attribute("value")
         cob_val = cob.first_selected_option.text
         nationality_val = nationality.first_selected_option.text
-        relation_val = relation.first_selected_option.text
         id_type_val = id_type.first_selected_option.text
         id_num_val = id_num.get_attribute("value")
         trans_type_val = trans_type.first_selected_option.text
 
         print(
-            f"title_val: {title_val}, fname_val: {fname_val}, mname_val: {mname_val}, lname_val: {lname_val}, sname_val: {sname_val}, cob_val: {cob_val}, nationality_val: {nationality_val}, relation_val: {relation_val}, id_type_val: {id_type_val}, id_num_val: {id_num_val}, trans_type_val: {trans_type_val}")
+            f"title_val: {title_val}, fname_val: {fname_val}, mname_val: {mname_val}, lname_val: {lname_val}, sname_val: {sname_val}, cob_val: {cob_val}, nationality_val: {nationality_val}, id_type_val: {id_type_val}, id_num_val: {id_num_val}, trans_type_val: {trans_type_val}")
 
         self.pi.btn_next().click()
 
@@ -866,7 +834,6 @@ class Test_Personal_Information:
               self.ci.short_name_pre(),
               self.ci.country_of_birth_pre(),
               self.ci.nationality_pre(),
-              self.ci.relationship_pre(),
               self.ci.id_type_pre(),
               self.ci.id_number_pre(),
               self.ci.transaction_type_pre())
@@ -908,10 +875,6 @@ class Test_Personal_Information:
         else:
             assert False
 
-        if relation_val == self.ci.relationship_pre():
-            assert True
-        else:
-            assert False
 
         if id_type_val == self.ci.id_type_pre():
             assert True
@@ -980,11 +943,11 @@ class Test_Personal_Information:
         fname_len = int(fname.get_attribute("maxlength"))
         mname_len = int(mname.get_attribute("maxlength"))
         lname_len = int(lname.get_attribute("maxlength"))
-        sname_len  = int(sname.get_attribute("maxlength"))
-        id_num_len  = int(id_num.get_attribute("maxlength"))
+        sname_len = int(sname.get_attribute("maxlength"))
+        id_num_len = int(id_num.get_attribute("maxlength"))
 
         print(
-            f"fname_val: {fname_len}, mname_val: {mname_len }, lname_val: {lname_len }, sname_val: {sname_len }, id_num_val: {id_num_len }")
+            f"fname_val: {fname_len}, mname_val: {mname_len}, lname_val: {lname_len}, sname_val: {sname_len}, id_num_val: {id_num_len}")
 
         fname_val = len(fname.get_attribute("value"))
         mname_val = len(mname.get_attribute("value"))
@@ -1057,25 +1020,25 @@ class Test_Personal_Information:
         trans_type = Select(self.pi.drp_trans_type())
 
         title.select_by_index(1)
-        fname.send_keys(random_string_generator_max_30()+random_string_generator_max_30())
-        mname.send_keys(random_string_generator_max_30()+random_string_generator_max_30())
-        lname.send_keys(random_string_generator_max_30()+random_string_generator_max_30())
-        sname.send_keys(random_string_generator_max_30()+random_string_generator_max_30())
+        fname.send_keys(random_string_generator_max_30() + random_string_generator_max_30())
+        mname.send_keys(random_string_generator_max_30() + random_string_generator_max_30())
+        lname.send_keys(random_string_generator_max_30() + random_string_generator_max_30())
+        sname.send_keys(random_string_generator_max_30() + random_string_generator_max_30())
         cob.select_by_index(9)
         nationality.select_by_index(12)
         relation.select_by_index(3)
         id_type.select_by_visible_text("")
-        id_num.send_keys(random_string_generator_max_30()+random_string_generator_max_30())
+        id_num.send_keys(random_string_generator_max_30() + random_string_generator_max_30())
         trans_type.select_by_index(3)
 
         fname_len = int(fname.get_attribute("maxlength"))
         mname_len = int(mname.get_attribute("maxlength"))
         lname_len = int(lname.get_attribute("maxlength"))
-        sname_len  = int(sname.get_attribute("maxlength"))
-        id_num_len  = int(id_num.get_attribute("maxlength"))
+        sname_len = int(sname.get_attribute("maxlength"))
+        id_num_len = int(id_num.get_attribute("maxlength"))
 
         print(
-            f"fname_val: {fname_len}, mname_val: {mname_len }, lname_val: {lname_len }, sname_val: {sname_len }, id_num_val: {id_num_len }")
+            f"fname_val: {fname_len}, mname_val: {mname_len}, lname_val: {lname_len}, sname_val: {sname_len}, id_num_val: {id_num_len}")
 
         fname_val = len(fname.get_attribute("value"))
         mname_val = len(mname.get_attribute("value"))
@@ -1162,11 +1125,11 @@ class Test_Personal_Information:
         fname_len = int(fname.get_attribute("maxlength"))
         mname_len = int(mname.get_attribute("maxlength"))
         lname_len = int(lname.get_attribute("maxlength"))
-        sname_len  = int(sname.get_attribute("maxlength"))
-        id_num_len  = int(id_num.get_attribute("maxlength"))
+        sname_len = int(sname.get_attribute("maxlength"))
+        id_num_len = int(id_num.get_attribute("maxlength"))
 
         print(
-            f"fname_val: {fname_len}, mname_val: {mname_len }, lname_val: {lname_len }, sname_val: {sname_len }, id_num_val: {id_num_len }")
+            f"fname_val: {fname_len}, mname_val: {mname_len}, lname_val: {lname_len}, sname_val: {sname_len}, id_num_val: {id_num_len}")
 
         fname_val = len(fname.get_attribute("value"))
         mname_val = len(mname.get_attribute("value"))
@@ -1202,4 +1165,5 @@ class Test_Personal_Information:
             assert False
 
         self.pi.btn_next().click()
+
 

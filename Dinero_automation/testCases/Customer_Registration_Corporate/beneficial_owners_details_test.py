@@ -1,20 +1,36 @@
+import os
+
+import pyautogui
+
 from Dinero_automation.utilities.readProperties import ReadConfig
 from Dinero_automation.pageObjects.LoginPage import LoginPage
 from Dinero_automation.pageObjects.Navbar import Navigation_Page
 from faker import Faker
 from selenium.webdriver.support import expected_conditions as EC
 import time
-from Dinero_automation.pageObjects.Customer_Registration_Corporate import Company_Information,Registration_Details,Beneficial_Owners_Details
-from Dinero_automation.utilities.randomString import random_string_generator_numbers_18,random_string_generator_numbers_22,random_string_generator_numbers_10,random_string_generator_numbers_20,random_string_generator_max_52,random_string_generator_max_32,random_string_generator_max_22,generate_random_email_lessthen_45,generate_random_email_lessthen_52,random_string_generator_numbers_max_10,random_string_generator_max_18,random_string_generator_max_30,random_string_generator_max_50,random_string_generator_max_28,random_string_generator_max_48,random_string_generator_max_31,random_string_generator_max_51,random_string_generator_max_20,random_string_generator_numbers,generate_random_email
+from Dinero_automation.pageObjects.Customer_Registration_Corporate import Company_Information, Registration_Details, \
+    Beneficial_Owners_Details, Upload_Documents
+from Dinero_automation.utilities.randomString import random_string_generator_numbers_18, \
+    random_string_generator_numbers_22, random_string_generator_numbers_10, random_string_generator_numbers_20, \
+    random_string_generator_max_52, random_string_generator_max_32, random_string_generator_max_22, \
+    generate_random_email_lessthen_45, generate_random_email_lessthen_52, random_string_generator_numbers_max_10, \
+    random_string_generator_max_18, random_string_generator_max_30, random_string_generator_max_50, \
+    random_string_generator_max_28, random_string_generator_max_48, random_string_generator_max_31, \
+    random_string_generator_max_51, random_string_generator_max_20, random_string_generator_numbers, \
+    generate_random_email
 from selenium.webdriver.support.ui import Select
 from Dinero_automation.utilities import screenShort
+
+
+#
 
 class Test_Beneficial_Owners_Details:
     url = ReadConfig.getApplicationURL()
     uname = ReadConfig.getApplicationUsername()
     upass = ReadConfig.getApplicationPWD()
 
-    def test_add_beneficial_owners(self,setup):
+    def test_add_beneficial_owners(self, setup):
+
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -115,15 +131,16 @@ class Test_Beneficial_Owners_Details:
         cr_exp_dat.send_keys("20032014")
         cc_iss_date.send_keys("20032006")
         cc_exp_dat.send_keys("20032026")
+        # self.
 
         self.rg.btn_next()
-
+        time.sleep(4)
         # Assigning BOD
 
         tit = Select(self.bod.title())
         f_name = self.bod.first_name()
         m_name = self.bod.middle_name()
-        l_name =self.bod.last_name()
+        l_name = self.bod.last_name()
         dob = self.bod.dob()
         pob = self.bod.place_of_birth()
         gend = Select(self.bod.gender())
@@ -155,8 +172,11 @@ class Test_Beneficial_Owners_Details:
         id_no.send_keys("2145221")
         pla_of_iss.select_by_index(2)
         id_exp.send_keys("06072008")
+        time.sleep(3)
 
         self.bod.btn_add_details()
+        time.sleep(3)
+        self.bod.btn_next()
 
         if self.comp_info.errorMessage() == "Required":
             assert False
@@ -166,7 +186,7 @@ class Test_Beneficial_Owners_Details:
 
         self.driver.quit()
 
-    def test_add_beneficial_owners_and_check_values(self,setup):
+    def test_add_beneficial_owners_and_check_values(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -275,7 +295,7 @@ class Test_Beneficial_Owners_Details:
         tit = Select(self.bod.title())
         f_name = self.bod.first_name()
         m_name = self.bod.middle_name()
-        l_name =self.bod.last_name()
+        l_name = self.bod.last_name()
         dob = self.bod.dob()
         pob = self.bod.place_of_birth()
         gend = Select(self.bod.gender())
@@ -390,18 +410,20 @@ class Test_Beneficial_Owners_Details:
 
         )
 
-        if (ti_val == ti_val_af and f_name_val == f_name_val_af and m_name_val == m_name_val_af and l_name_val == l_name_val_af and
-            dob_val == dob_val_af and pob_val == pob_val_af and gend_val == gend_val_af and fh_no_val == fh_no_val and hb_name_val == hb_name_val and
-            street_val == street_val_af and ci_val == ci_val_af and count_val == count_val_af and nation_val == nation_val_af and id_type_val == id_type_val and id_no_val == id_no_val and pla_of_iss_val == pla_of_iss_val_af and id_exp_val == id_exp_val_af):
+        if (
+                ti_val == ti_val_af and f_name_val == f_name_val_af and m_name_val == m_name_val_af and l_name_val == l_name_val_af and
+                dob_val == dob_val_af and pob_val == pob_val_af and gend_val == gend_val_af and fh_no_val == fh_no_val and hb_name_val == hb_name_val and
+                street_val == street_val_af and ci_val == ci_val_af and count_val == count_val_af and nation_val == nation_val_af and id_type_val == id_type_val and id_no_val == id_no_val and pla_of_iss_val == pla_of_iss_val_af and id_exp_val == id_exp_val_af):
 
             assert True
         else:
-            self.driver.save_screenshot(screenShort.screen_short() + "BOD_test_add_beneficial_owners_and_check_values.png")
+            self.driver.save_screenshot(
+                screenShort.screen_short() + "BOD_test_add_beneficial_owners_and_check_values.png")
             assert False
 
-        self.driver.quit()
+        #self.driver.quit()
 
-    def test_add_multiple_beneficial_owners(self,setup):
+    def test_add_multiple_beneficial_owners(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -580,7 +602,7 @@ class Test_Beneficial_Owners_Details:
                 "city": "Mumbai",
                 "country_index": 4,
                 "nationality_index": 5,
-                "id_type_index":2,
+                "id_type_index": 2,
                 "id_no": "11223344",
                 "place_of_id_issu_index": 4,
                 "id_expiry": "24072030"
@@ -747,9 +769,9 @@ class Test_Beneficial_Owners_Details:
             self.driver.save_screenshot(screenShort.screen_short() + "BOD_test_add_multiple_beneficial_owners.png")
             assert True
 
-        self.driver.quit()
+        #self.driver.quit()
 
-    def test_add_beneficial_owners_and_check_clear(self,setup):
+    def test_add_beneficial_owners_and_check_clear(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -858,7 +880,7 @@ class Test_Beneficial_Owners_Details:
         tit = Select(self.bod.title())
         f_name = self.bod.first_name()
         m_name = self.bod.middle_name()
-        l_name =self.bod.last_name()
+        l_name = self.bod.last_name()
         dob = self.bod.dob()
         pob = self.bod.place_of_birth()
         gend = Select(self.bod.gender())
@@ -981,19 +1003,20 @@ class Test_Beneficial_Owners_Details:
 
         time.sleep(5)
 
-
-        if (ti_val != ti_val_af and f_name_val != f_name_val_af and m_name_val != m_name_val_af and l_name_val != l_name_val_af and
-            dob_val != dob_val_af and pob_val != pob_val_af and gend_val != gend_val_af and fh_no_val != fh_no_val and hb_name_val != hb_name_val and
-            street_val != street_val_af and ci_val != ci_val_af and count_val != count_val_af and nation_val != nation_val_af and id_type_val != id_type_val and id_no_val != id_no_val and pla_of_iss_val != pla_of_iss_val_af and id_exp_val != id_exp_val_af):
+        if (
+                ti_val != ti_val_af and f_name_val != f_name_val_af and m_name_val != m_name_val_af and l_name_val != l_name_val_af and
+                dob_val != dob_val_af and pob_val != pob_val_af and gend_val != gend_val_af and fh_no_val != fh_no_val and hb_name_val != hb_name_val and
+                street_val != street_val_af and ci_val != ci_val_af and count_val != count_val_af and nation_val != nation_val_af and id_type_val != id_type_val and id_no_val != id_no_val and pla_of_iss_val != pla_of_iss_val_af and id_exp_val != id_exp_val_af):
 
             assert True
         else:
-            self.driver.save_screenshot(screenShort.screen_short() + "BOD_test_add_beneficial_owners_and_check_clear.png")
+            self.driver.save_screenshot(
+                screenShort.screen_short() + "BOD_test_add_beneficial_owners_and_check_clear.png")
             assert False
 
         self.driver.quit()
 
-    def test_add_beneficial_owners_update(self,setup):
+    def test_add_beneficial_owners_update(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -1102,7 +1125,7 @@ class Test_Beneficial_Owners_Details:
         tit = Select(self.bod.title())
         f_name = self.bod.first_name()
         m_name = self.bod.middle_name()
-        l_name =self.bod.last_name()
+        l_name = self.bod.last_name()
         dob = self.bod.dob()
         pob = self.bod.place_of_birth()
         gend = Select(self.bod.gender())
@@ -1139,7 +1162,7 @@ class Test_Beneficial_Owners_Details:
         self.bod.btn_add_details()
         self.bod.click_update_bod()
         time.sleep(5)
-
+        tit = Select(self.bod.title())
         ti_val = tit.first_selected_option.text
         f_name_val = f_name.get_attribute('value')
         m_name_val = m_name.get_attribute('value')
@@ -1379,7 +1402,7 @@ class Test_Beneficial_Owners_Details:
 
         self.driver.quit()
 
-    def test_add_beneficial_owners_update_clear(self,setup):
+    def test_add_beneficial_owners_update_clear(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -1488,7 +1511,7 @@ class Test_Beneficial_Owners_Details:
         tit = Select(self.bod.title())
         f_name = self.bod.first_name()
         m_name = self.bod.middle_name()
-        l_name =self.bod.last_name()
+        l_name = self.bod.last_name()
         dob = self.bod.dob()
         pob = self.bod.place_of_birth()
         gend = Select(self.bod.gender())
@@ -1584,7 +1607,6 @@ class Test_Beneficial_Owners_Details:
         id_no = self.bod.id_no()
         pla_of_iss = Select(self.bod.place_of_id_issu())
         id_exp = self.bod.id_expiry()
-
 
         tit.select_by_index(1)
         f_name.clear()
@@ -1777,7 +1799,7 @@ class Test_Beneficial_Owners_Details:
 
         self.driver.quit()
 
-    def test_add_beneficial_owners_onlymand_fields(self,setup):
+    def test_add_beneficial_owners_onlymand_fields(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -1886,7 +1908,7 @@ class Test_Beneficial_Owners_Details:
         tit = Select(self.bod.title())
         f_name = self.bod.first_name()
         # m_name = self.bod.middle_name()
-        l_name =self.bod.last_name()
+        l_name = self.bod.last_name()
         dob = self.bod.dob()
         pob = self.bod.place_of_birth()
         gend = Select(self.bod.gender())
@@ -1916,18 +1938,19 @@ class Test_Beneficial_Owners_Details:
         id_type.select_by_index(2)
         id_no.send_keys("2145221")
 
-
         self.bod.btn_add_details()
 
         if self.comp_info.errorMessage() == "Required":
             assert False
         else:
-            self.driver.save_screenshot(screenShort.screen_short() + "BOD_test_add_beneficial_owners_onlymand_fields.png")
+            self.driver.save_screenshot(
+                screenShort.screen_short() + "BOD_test_add_beneficial_owners_onlymand_fields.png")
             assert True
 
         self.driver.quit()
 
-    def test_add_beneficial_owners_nonmand_fields(self,setup):
+    def test_add_beneficial_owners_nonmand_fields(self, setup):
+
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -2043,16 +2066,17 @@ class Test_Beneficial_Owners_Details:
 
         self.bod.btn_add_details()
 
-        if self.comp_info.errorMessage() == "Required":
+        if not self.comp_info.errorMessage() == "Required":
             assert True
         else:
             self.driver.execute_script("document.body.scrollHeight")
-            self.driver.save_screenshot(screenShort.screen_short() + "BOD_test_add_beneficial_owners_nonmand_fields.png")
+            self.driver.save_screenshot(
+                screenShort.screen_short() + "BOD_test_add_beneficial_owners_nonmand_fields.png")
             assert False
 
         self.driver.quit()
 
-    def test_add_beneficial_owners(self,setup):
+    def test_add_beneficial_owners(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -2170,7 +2194,7 @@ class Test_Beneficial_Owners_Details:
 
         self.driver.quit()
 
-    def test_add_beneficial_owners_with_spaces(self,setup):
+    def test_add_beneficial_owners_with_spaces(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -2279,7 +2303,7 @@ class Test_Beneficial_Owners_Details:
         tit = Select(self.bod.title())
         f_name = self.bod.first_name()
         m_name = self.bod.middle_name()
-        l_name =self.bod.last_name()
+        l_name = self.bod.last_name()
         dob = self.bod.dob()
         pob = self.bod.place_of_birth()
         gend = Select(self.bod.gender())
@@ -2396,7 +2420,8 @@ class Test_Beneficial_Owners_Details:
         if ti_val == ti_val_af:
             assert True
         else:
-            self.driver.save_screenshot(screenShort.screen_short() + "BOD_test_add_beneficial_owners_with_spaces_val.png")
+            self.driver.save_screenshot(
+                screenShort.screen_short() + "BOD_test_add_beneficial_owners_with_spaces_val.png")
             assert False
 
         if f_name_val == f_name_val_af:
@@ -2465,7 +2490,8 @@ class Test_Beneficial_Owners_Details:
         if ci_val == ci_val_af:
             assert True
         else:
-            self.driver.save_screenshot(screenShort.screen_short() + "BOD_test_add_beneficial_owners_with_spaces_val.png")
+            self.driver.save_screenshot(
+                screenShort.screen_short() + "BOD_test_add_beneficial_owners_with_spaces_val.png")
             assert False
 
         if count_val == count_val_af:
@@ -2512,7 +2538,7 @@ class Test_Beneficial_Owners_Details:
 
         self.driver.quit()
 
-    def test_add_beneficial_owners_with_specialchar_num_char(self,setup):
+    def test_add_beneficial_owners_with_specialchar_num_char(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -2621,7 +2647,7 @@ class Test_Beneficial_Owners_Details:
         tit = Select(self.bod.title())
         f_name = self.bod.first_name()
         m_name = self.bod.middle_name()
-        l_name =self.bod.last_name()
+        l_name = self.bod.last_name()
         dob = self.bod.dob()
         pob = self.bod.place_of_birth()
         gend = Select(self.bod.gender())
@@ -2662,12 +2688,13 @@ class Test_Beneficial_Owners_Details:
         else:
             # self.driver.execute_script("window.scrollBy(0, -500);")
             # time.sleep(1)
-            self.driver.save_screenshot(screenShort.screen_short() + "BOD_test_add_beneficial_owners_with_specialchar_num_char.png")
+            self.driver.save_screenshot(
+                screenShort.screen_short() + "BOD_test_add_beneficial_owners_with_specialchar_num_char.png")
             assert False
 
         self.driver.quit()
 
-    def test_add_beneficial_owners_with_numbers(self,setup):
+    def test_add_beneficial_owners_with_numbers(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -2776,7 +2803,7 @@ class Test_Beneficial_Owners_Details:
         tit = Select(self.bod.title())
         f_name = self.bod.first_name()
         m_name = self.bod.middle_name()
-        l_name =self.bod.last_name()
+        l_name = self.bod.last_name()
         dob = self.bod.dob()
         pob = self.bod.place_of_birth()
         gend = Select(self.bod.gender())
@@ -2822,7 +2849,7 @@ class Test_Beneficial_Owners_Details:
 
         self.driver.quit()
 
-    def test_add_beneficial_owners_with_char(self,setup):
+    def test_add_beneficial_owners_with_char(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -2931,7 +2958,7 @@ class Test_Beneficial_Owners_Details:
         tit = Select(self.bod.title())
         f_name = self.bod.first_name()
         m_name = self.bod.middle_name()
-        l_name =self.bod.last_name()
+        l_name = self.bod.last_name()
         dob = self.bod.dob()
         pob = self.bod.place_of_birth()
         gend = Select(self.bod.gender())
@@ -2976,7 +3003,7 @@ class Test_Beneficial_Owners_Details:
             assert False
         self.driver.quit()
 
-    def test_add_beneficial_owners_with_maxlen(self,setup):
+    def test_add_beneficial_owners_with_maxlen(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -3137,7 +3164,7 @@ class Test_Beneficial_Owners_Details:
         count.select_by_index(3)
         nation.select_by_index(4)
         id_type.select_by_index(2)
-        id_no.send_keys(random_string_generator_numbers_20()+random_string_generator_numbers_10())
+        id_no.send_keys(random_string_generator_numbers_20() + random_string_generator_numbers_10())
         pla_of_iss.select_by_index(2)
         id_exp.send_keys("06072008")
 
@@ -3217,7 +3244,7 @@ class Test_Beneficial_Owners_Details:
 
         self.driver.quit()
 
-    def test_add_beneficial_owners_with_maxlen_lessthen(self,setup):
+    def test_add_beneficial_owners_with_maxlen_lessthen(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -3378,7 +3405,7 @@ class Test_Beneficial_Owners_Details:
         count.select_by_index(3)
         nation.select_by_index(4)
         id_type.select_by_index(2)
-        id_no.send_keys(random_string_generator_numbers_18()+random_string_generator_numbers_10())
+        id_no.send_keys(random_string_generator_numbers_18() + random_string_generator_numbers_10())
         pla_of_iss.select_by_index(2)
         id_exp.send_keys("06072008")
 
@@ -3454,7 +3481,7 @@ class Test_Beneficial_Owners_Details:
 
         self.driver.quit()
 
-    def test_add_beneficial_owners_with_maxlen_graterthen(self,setup):
+    def test_add_beneficial_owners_with_maxlen_graterthen(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -3615,7 +3642,7 @@ class Test_Beneficial_Owners_Details:
         count.select_by_index(3)
         nation.select_by_index(4)
         id_type.select_by_index(2)
-        id_no.send_keys(random_string_generator_numbers_20()+random_string_generator_numbers_10())
+        id_no.send_keys(random_string_generator_numbers_20() + random_string_generator_numbers_10())
         pla_of_iss.select_by_index(2)
         id_exp.send_keys("06072008")
 
@@ -3691,7 +3718,7 @@ class Test_Beneficial_Owners_Details:
 
         self.driver.quit()
 
-    def test_add_beneficial_owners_spaces(self,setup):
+    def test_add_beneficial_owners_spaces(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -3800,7 +3827,7 @@ class Test_Beneficial_Owners_Details:
         tit = Select(self.bod.title())
         f_name = self.bod.first_name()
         m_name = self.bod.middle_name()
-        l_name =self.bod.last_name()
+        l_name = self.bod.last_name()
         dob = self.bod.dob()
         pob = self.bod.place_of_birth()
         gend = Select(self.bod.gender())
@@ -3843,6 +3870,689 @@ class Test_Beneficial_Owners_Details:
             assert False
 
         self.driver.quit()
+
+    def test_without_ID_expiry_BOD(self, setup):
+
+        self.driver = setup
+        self.driver.get(self.url)
+        self.driver.maximize_window()
+        self.driver.implicitly_wait(30)
+        self.lp = LoginPage(self.driver)
+        self.lp.setUsername(self.uname)
+        self.lp.setPassword(self.upass)
+        self.lp.clickLogin()
+
+        # click action for nav bar arrow
+        self.nav = Navigation_Page(self.driver)
+        self.nav.click_navbar()
+
+        # click action for customer registration
+        self.nav.click_customer_registration_corporate()
+
+        # Assinging submodules
+        self.comp_info = Company_Information(self.driver)
+        self.rg = Registration_Details(self.driver)
+        self.bod = Beneficial_Owners_Details(self.driver)
+
+        # Assinging Elements
+        comp_name = self.comp_info.company_name()
+        ara_name = self.comp_info.arabic_name()
+        build_num = self.comp_info.building_number()
+        build_name = self.comp_info.building_name()
+        stree = self.comp_info.street()
+        post = self.comp_info.postal_code()
+        distc = self.comp_info.city_district()
+        drp_country = Select(self.comp_info.country())
+        drp_mob = Select(self.comp_info.drp_mobile())
+        numb = self.comp_info.mobile_num()
+        mail = self.comp_info.email()
+
+        #       assign the data
+        c_name = "kumaran"
+        a_name = "Shaik"
+        b_num = "1223"
+        b_name = "kumaran"
+        stre = "nellore"
+        po = "5243232309"
+        dist = "Kerala"
+        num = "76464564544"
+        mai = "finnereest@tdasfch.com"
+
+        comp_name.send_keys(c_name)
+        ara_name.send_keys(a_name)
+        build_num.send_keys(b_num)
+        build_name.send_keys(b_name)
+        stree.send_keys(stre)
+        post.send_keys(po)
+        distc.send_keys(dist)
+        drp_country.select_by_index(4)
+        drp_mob.select_by_index(2)
+        numb.send_keys(num)
+        mail.send_keys(mai)
+
+        self.comp_info.btn_next()
+        #       Assigning elements for registration details
+        coun_of_incorp = Select(self.rg.drp_country_of_incorp())
+        lice_natu = Select(self.rg.drp_licence_nature())
+        ent_type = Select(self.rg.drp_entity_type())
+        oper = Select(self.rg.drp_operation())
+        tr_servi_sect = Select(self.rg.drp_trade_service_sector())
+        capital = self.rg.capital()
+        reg_pur = self.rg.regisration_purpose()
+        est_an_income = self.rg.estimated_annaul_incode()
+        auth_per = self.rg.authorized_person()
+        designat = Select(self.rg.drp_designation())
+        nation = Select(self.rg.drp_nationality())
+        id_type = Select(self.rg.drp_id_type())
+        id_no = self.rg.id_no()
+        id_exp = self.rg.dpick_id_exp()
+        cr_no = self.rg.cr_no()
+        comp_card_no = self.rg.comp_card_no()
+        cr_iss_dat = self.rg.dpick_cr_issue_date()
+        cr_exp_dat = self.rg.dpick_cr_exp_date()
+        cc_iss_date = self.rg.dpick_cc_issue_date()
+        cc_exp_dat = self.rg.dpick_cc_expaire_date()
+
+        coun_of_incorp.select_by_index(2)
+        lice_natu.select_by_index(2)
+        ent_type.select_by_index(1)
+        oper.select_by_index(2)
+        tr_servi_sect.select_by_index(2)
+        capital.send_keys("20034400")
+        reg_pur.send_keys("Test324324ing")
+        est_an_income.send_keys("3343244320000")
+        auth_per.send_keys("CadDaEO")
+        designat.select_by_index(2)
+        nation.select_by_index(1)
+        id_type.select_by_index(2)
+        id_no.send_keys("2321adaDWWW2222232")
+        id_exp.send_keys("20032004")
+        cr_no.send_keys("5978422225612")
+        comp_card_no.send_keys("22211215445")
+        cr_iss_dat.send_keys("20032004")
+        cr_exp_dat.send_keys("20032014")
+        cc_iss_date.send_keys("20032006")
+        cc_exp_dat.send_keys("20032026")
+
+        self.rg.btn_next()
+
+        tit = Select(self.bod.title())
+        f_name = self.bod.first_name()
+        m_name = self.bod.middle_name()
+        l_name = self.bod.last_name()
+        dob = self.bod.dob()
+        pob = self.bod.place_of_birth()
+        gend = Select(self.bod.gender())
+        fh_no = self.bod.flat_house_number()
+        hb_name = self.bod.house_building_name()
+        street = self.bod.street()
+        ci = self.bod.city()
+        count = Select(self.bod.country())
+        nation = Select(self.bod.nationality())
+        id_type = Select(self.bod.id_type())
+        id_no = self.bod.id_no()
+        pla_of_iss = Select(self.bod.place_of_id_issu())
+        #id_exp = self.bod.id_expiry()
+
+        tit.select_by_index(2)
+        f_name.send_keys("Tester")
+        m_name.send_keys("QA")
+        l_name.send_keys("Automation")
+        dob.send_keys("20022000")
+        pob.send_keys("Kerala")
+        gend.select_by_index(1)
+        fh_no.send_keys("12457888")
+        hb_name.send_keys("65445665")
+        street.send_keys("kochi")
+        ci.send_keys("Nellore")
+        count.select_by_index(3)
+        nation.select_by_index(4)
+        id_type.select_by_index(2)
+        id_no.send_keys("2145221")
+        pla_of_iss.select_by_index(2)
+        #id_exp.send_keys("06072008")
+        time.sleep(3)
+
+        self.bod.btn_add_details()
+        time.sleep(3)
+
+        # time.sleep(2)
+        self.bod.btn_next()
+        self.ud = Upload_Documents(self.driver)
+
+        self.ud.click_passport()
+        # time.sleep(2)
+
+        element = self.ud.send_front()
+        element.click()
+
+        # os.chdir(os.path.dirname(os.path.abspath("C:\\Users\\adars\\PycharmProjects\\pythonProject5\\customer_reg_ ind\\sample.py")))
+        base_dir = "C:\\Users\\adars\\OneDrive\\Pictures\\Screenshots"
+        file_name = "Screenshot 2024-07-22 162441.png"
+        full_path = os.path.join(base_dir, file_name)
+        time.sleep(2)
+
+        # screenshot_path = os.path.abspath("C:\\Users\\adars\\OneDrive\\Pictures\\Screenshots\\Screenshot 2024-07-22 162441.png")
+        pyautogui.click(50, 50)
+        time.sleep(4)
+        pyautogui.write(full_path)
+        time.sleep(2)
+        pyautogui.press("enter")
+
+        time.sleep(5)
+        time.sleep(10)
+        self.ud.btn_next()
+        time.sleep(4)
+        self.ud.btn_save()
+        time.sleep(4)
+
+    def test_with_adding_invalid_id_expiry_and_save(self, setup):
+
+        self.driver = setup
+        self.driver.get(self.url)
+        self.driver.maximize_window()
+        self.driver.implicitly_wait(30)
+        self.lp = LoginPage(self.driver)
+        self.lp.setUsername(self.uname)
+        self.lp.setPassword(self.upass)
+        self.lp.clickLogin()
+
+        # click action for nav bar arrow
+        self.nav = Navigation_Page(self.driver)
+        self.nav.click_navbar()
+
+        # click action for customer registration
+        self.nav.click_customer_registration_corporate()
+
+        # Assinging submodules
+        self.comp_info = Company_Information(self.driver)
+        self.rg = Registration_Details(self.driver)
+        self.bod = Beneficial_Owners_Details(self.driver)
+
+        # Assinging Elements
+        comp_name = self.comp_info.company_name()
+        ara_name = self.comp_info.arabic_name()
+        build_num = self.comp_info.building_number()
+        build_name = self.comp_info.building_name()
+        stree = self.comp_info.street()
+        post = self.comp_info.postal_code()
+        distc = self.comp_info.city_district()
+        drp_country = Select(self.comp_info.country())
+        drp_mob = Select(self.comp_info.drp_mobile())
+        numb = self.comp_info.mobile_num()
+        mail = self.comp_info.email()
+
+        #       assign the data
+        c_name = "kumaran"
+        a_name = "Shaik"
+        b_num = "1223"
+        b_name = "kumaran"
+        stre = "nellore"
+        po = "5243232309"
+        dist = "Kerala"
+        num = "76464564544"
+        mai = "finnereest@tdasfch.com"
+
+        comp_name.send_keys(c_name)
+        ara_name.send_keys(a_name)
+        build_num.send_keys(b_num)
+        build_name.send_keys(b_name)
+        stree.send_keys(stre)
+        post.send_keys(po)
+        distc.send_keys(dist)
+        drp_country.select_by_index(4)
+        drp_mob.select_by_index(2)
+        numb.send_keys(num)
+        mail.send_keys(mai)
+
+        self.comp_info.btn_next()
+        #       Assigning elements for registration details
+        coun_of_incorp = Select(self.rg.drp_country_of_incorp())
+        lice_natu = Select(self.rg.drp_licence_nature())
+        ent_type = Select(self.rg.drp_entity_type())
+        oper = Select(self.rg.drp_operation())
+        tr_servi_sect = Select(self.rg.drp_trade_service_sector())
+        capital = self.rg.capital()
+        reg_pur = self.rg.regisration_purpose()
+        est_an_income = self.rg.estimated_annaul_incode()
+        auth_per = self.rg.authorized_person()
+        designat = Select(self.rg.drp_designation())
+        nation = Select(self.rg.drp_nationality())
+        id_type = Select(self.rg.drp_id_type())
+        id_no = self.rg.id_no()
+        id_exp = self.rg.dpick_id_exp()
+        cr_no = self.rg.cr_no()
+        comp_card_no = self.rg.comp_card_no()
+        cr_iss_dat = self.rg.dpick_cr_issue_date()
+        cr_exp_dat = self.rg.dpick_cr_exp_date()
+        cc_iss_date = self.rg.dpick_cc_issue_date()
+        cc_exp_dat = self.rg.dpick_cc_expaire_date()
+
+        coun_of_incorp.select_by_index(2)
+        lice_natu.select_by_index(2)
+        ent_type.select_by_index(1)
+        oper.select_by_index(2)
+        tr_servi_sect.select_by_index(2)
+        capital.send_keys("20034400")
+        reg_pur.send_keys("Test324324ing")
+        est_an_income.send_keys("3343244320000")
+        auth_per.send_keys("CadDaEO")
+        designat.select_by_index(2)
+        nation.select_by_index(1)
+        id_type.select_by_index(2)
+        id_no.send_keys("2321adaDWWW2222232")
+        id_exp.send_keys("20032004")
+        cr_no.send_keys("5978422225612")
+        comp_card_no.send_keys("22211215445")
+        cr_iss_dat.send_keys("20032004")
+        cr_exp_dat.send_keys("20032014")
+        cc_iss_date.send_keys("20032006")
+        cc_exp_dat.send_keys("20032026")
+
+        self.rg.btn_next()
+
+        tit = Select(self.bod.title())
+        f_name = self.bod.first_name()
+        m_name = self.bod.middle_name()
+        l_name = self.bod.last_name()
+        dob = self.bod.dob()
+        pob = self.bod.place_of_birth()
+        gend = Select(self.bod.gender())
+        fh_no = self.bod.flat_house_number()
+        hb_name = self.bod.house_building_name()
+        street = self.bod.street()
+        ci = self.bod.city()
+        count = Select(self.bod.country())
+        nation = Select(self.bod.nationality())
+        id_type = Select(self.bod.id_type())
+        id_no = self.bod.id_no()
+        pla_of_iss = Select(self.bod.place_of_id_issu())
+        id_exp = self.bod.id_expiry()
+
+        tit.select_by_index(2)
+        f_name.send_keys("Tester")
+        m_name.send_keys("QA")
+        l_name.send_keys("Automation")
+        dob.send_keys("20022000")
+        pob.send_keys("Kerala")
+        gend.select_by_index(1)
+        fh_no.send_keys("12457888")
+        hb_name.send_keys("65445665")
+        street.send_keys("kochi")
+        ci.send_keys("Nellore")
+        count.select_by_index(3)
+        nation.select_by_index(4)
+        id_type.select_by_index(2)
+        id_no.send_keys("2145221")
+        pla_of_iss.select_by_index(2)
+        id_exp.send_keys("00000001")
+        time.sleep(3)
+
+        self.bod.btn_add_details()
+        time.sleep(3)
+
+        # time.sleep(2)
+        self.bod.btn_next()
+        self.ud = Upload_Documents(self.driver)
+
+        self.ud.click_passport()
+        # time.sleep(2)
+
+        element = self.ud.send_front()
+        element.click()
+
+        # os.chdir(os.path.dirname(os.path.abspath("C:\\Users\\adars\\PycharmProjects\\pythonProject5\\customer_reg_ ind\\sample.py")))
+        base_dir = "C:\\Users\\adars\\OneDrive\\Pictures\\Screenshots"
+        file_name = "Screenshot 2024-07-22 162441.png"
+        full_path = os.path.join(base_dir, file_name)
+        time.sleep(2)
+
+        # screenshot_path = os.path.abspath("C:\\Users\\adars\\OneDrive\\Pictures\\Screenshots\\Screenshot 2024-07-22 162441.png")
+        pyautogui.click(50, 50)
+        time.sleep(4)
+        pyautogui.write(full_path)
+        time.sleep(2)
+        pyautogui.press("enter")
+
+        time.sleep(3)
+        self.ud.btn_next()
+        time.sleep(4)
+        self.ud.btn_save()
+        time.sleep(4)
+        self.ud.btn_next()
+
+        ## id expiry cam be added any values before 2124, so we can add 00-00-0001
+
+    def test_updating_BOD_corp_query_BUG(self, setup):
+
+        self.driver = setup
+        self.driver.get(self.url)
+        self.driver.maximize_window()
+        self.driver.implicitly_wait(30)
+        self.lp = LoginPage(self.driver)
+        self.lp.setUsername(self.uname)
+        self.lp.setPassword(self.upass)
+        self.lp.clickLogin()
+
+        # click action for nav bar arrow
+        self.nav = Navigation_Page(self.driver)
+        self.nav.click_navbar()
+
+        # click action for customer registration
+        self.nav.click_customer_registration_corporate()
+
+        # Assinging submodules
+        self.comp_info = Company_Information(self.driver)
+        self.rg = Registration_Details(self.driver)
+        self.bod = Beneficial_Owners_Details(self.driver)
+
+        # Assinging Elements
+        comp_name = self.comp_info.company_name()
+        ara_name = self.comp_info.arabic_name()
+        build_num = self.comp_info.building_number()
+        build_name = self.comp_info.building_name()
+        stree = self.comp_info.street()
+        post = self.comp_info.postal_code()
+        distc = self.comp_info.city_district()
+        drp_country = Select(self.comp_info.country())
+        drp_mob = Select(self.comp_info.drp_mobile())
+        numb = self.comp_info.mobile_num()
+        mail = self.comp_info.email()
+
+        #       assign the data
+        c_name = "kumasasaran"
+        a_name = "Shsasaik"
+        b_num = "sa23"
+        b_name = "kumasasran"
+        stre = "nellasaore"
+        po = "52232309"
+        dist = "Kerala"
+        num = "76442424544"
+        mai = "fidADaddt@tdasfch.com"
+
+        comp_name.send_keys(c_name)
+        ara_name.send_keys(a_name)
+        build_num.send_keys(b_num)
+        build_name.send_keys(b_name)
+        stree.send_keys(stre)
+        post.send_keys(po)
+        distc.send_keys(dist)
+        drp_country.select_by_index(4)
+        drp_mob.select_by_index(2)
+        numb.send_keys(num)
+        mail.send_keys(mai)
+
+        self.comp_info.btn_next()
+        #       Assigning elements for registration details
+        coun_of_incorp = Select(self.rg.drp_country_of_incorp())
+        lice_natu = Select(self.rg.drp_licence_nature())
+        ent_type = Select(self.rg.drp_entity_type())
+        oper = Select(self.rg.drp_operation())
+        tr_servi_sect = Select(self.rg.drp_trade_service_sector())
+        capital = self.rg.capital()
+        reg_pur = self.rg.regisration_purpose()
+        est_an_income = self.rg.estimated_annaul_incode()
+        auth_per = self.rg.authorized_person()
+        designat = Select(self.rg.drp_designation())
+        nation = Select(self.rg.drp_nationality())
+        id_type = Select(self.rg.drp_id_type())
+        id_no = self.rg.id_no()
+        id_exp = self.rg.dpick_id_exp()
+        cr_no = self.rg.cr_no()
+        comp_card_no = self.rg.comp_card_no()
+        cr_iss_dat = self.rg.dpick_cr_issue_date()
+        cr_exp_dat = self.rg.dpick_cr_exp_date()
+        cc_iss_date = self.rg.dpick_cc_issue_date()
+        cc_exp_dat = self.rg.dpick_cc_expaire_date()
+
+        coun_of_incorp.select_by_index(2)
+        lice_natu.select_by_index(2)
+        ent_type.select_by_index(1)
+        oper.select_by_index(2)
+        tr_servi_sect.select_by_index(2)
+        capital.send_keys("2003as4400")
+        reg_pur.send_keys("ssa34132414124ing")
+        est_an_income.send_keys("4320000")
+        auth_per.send_keys("CadDaEasdO")
+        designat.select_by_index(2)
+        nation.select_by_index(1)
+        id_type.select_by_index(2)
+        id_no.send_keys("2321a312232")
+        id_exp.send_keys("20032004")
+        cr_no.send_keys("22225612")
+        comp_card_no.send_keys("2222145")
+        cr_iss_dat.send_keys("20032004")
+        cr_exp_dat.send_keys("20032014")
+        cc_iss_date.send_keys("20032006")
+        cc_exp_dat.send_keys("20032026")
+
+        self.rg.btn_next()
+
+        tit = Select(self.bod.title())
+        f_name = self.bod.first_name()
+        m_name = self.bod.middle_name()
+        l_name = self.bod.last_name()
+        dob = self.bod.dob()
+        pob = self.bod.place_of_birth()
+        gend = Select(self.bod.gender())
+        fh_no = self.bod.flat_house_number()
+        hb_name = self.bod.house_building_name()
+        street = self.bod.street()
+        ci = self.bod.city()
+        count = Select(self.bod.country())
+        nation = Select(self.bod.nationality())
+        id_type = Select(self.bod.id_type())
+        id_no = self.bod.id_no()
+        pla_of_iss = Select(self.bod.place_of_id_issu())
+        id_exp = self.bod.id_expiry()
+
+        tit.select_by_index(2)
+        f_name.send_keys("Teste22ssr")
+        m_name.send_keys("QAss")
+        l_name.send_keys("Autossmation")
+        dob.send_keys("20022000")
+        pob.send_keys("Kerala")
+        gend.select_by_index(1)
+        fh_no.send_keys("1245s7888")
+        hb_name.send_keys("65445665")
+        street.send_keys("kochi")
+        ci.send_keys("Nellore")
+        count.select_by_index(3)
+        nation.select_by_index(4)
+        id_type.select_by_index(2)
+        id_no.send_keys("2145211121")
+        pla_of_iss.select_by_index(2)
+        id_exp.send_keys("00000001")
+        time.sleep(3)
+
+        self.bod.btn_add_details()
+        time.sleep(2)
+        time.sleep(2)
+        update_bod = self.bod.click_update_bod()
+        time.sleep(5)
+        self.bod.btn_update()
+
+        time.sleep(3)
+
+        # time.sleep(2)
+        self.bod.btn_next()
+        self.ud = Upload_Documents(self.driver)
+
+        self.ud.click_passport()
+        # time.sleep(2)
+
+        element = self.ud.send_front()
+        element.click()
+
+        # os.chdir(os.path.dirname(os.path.abspath("C:\\Users\\adars\\PycharmProjects\\pythonProject5\\customer_reg_ ind\\sample.py")))
+        base_dir = "C:\\Users\\adars\\OneDrive\\Pictures\\Screenshots"
+        file_name = "Screenshot 2024-07-22 162441.png"
+        full_path = os.path.join(base_dir, file_name)
+        time.sleep(2)
+
+        # screenshot_path = os.path.abspath("C:\\Users\\adars\\OneDrive\\Pictures\\Screenshots\\Screenshot 2024-07-22 162441.png")
+        pyautogui.click(50, 50)
+        time.sleep(4)
+        pyautogui.write(full_path)
+        time.sleep(2)
+        pyautogui.press("enter")
+
+        time.sleep(3)
+        self.ud.btn_next()
+        time.sleep(4)
+        self.ud.btn_save()
+        time.sleep(4)
+        self.ud.btn_next()
+
+    def test_deleting_an_added_BOD_by_clicking_on_it(self, setup):
+
+        self.driver = setup
+        self.driver.get(self.url)
+        self.driver.maximize_window()
+        self.driver.implicitly_wait(30)
+        self.lp = LoginPage(self.driver)
+        self.lp.setUsername(self.uname)
+        self.lp.setPassword(self.upass)
+        self.lp.clickLogin()
+
+        # click action for nav bar arrow
+        self.nav = Navigation_Page(self.driver)
+        self.nav.click_navbar()
+
+        # click action for customer registration
+        self.nav.click_customer_registration_corporate()
+
+        # Assinging submodules
+        self.comp_info = Company_Information(self.driver)
+        self.rg = Registration_Details(self.driver)
+        self.bod = Beneficial_Owners_Details(self.driver)
+
+        # Assinging Elements
+        comp_name = self.comp_info.company_name()
+        ara_name = self.comp_info.arabic_name()
+        build_num = self.comp_info.building_number()
+        build_name = self.comp_info.building_name()
+        stree = self.comp_info.street()
+        post = self.comp_info.postal_code()
+        distc = self.comp_info.city_district()
+        drp_country = Select(self.comp_info.country())
+        drp_mob = Select(self.comp_info.drp_mobile())
+        numb = self.comp_info.mobile_num()
+        mail = self.comp_info.email()
+
+        #       assign the data
+        c_name = "kumasasaran"
+        a_name = "Shsasaik"
+        b_num = "sa23"
+        b_name = "kumasasran"
+        stre = "nellasaore"
+        po = "52232309"
+        dist = "Kerala"
+        num = "76442424544"
+        mai = "fidADaddt@tdasfch.com"
+
+        comp_name.send_keys(c_name)
+        ara_name.send_keys(a_name)
+        build_num.send_keys(b_num)
+        build_name.send_keys(b_name)
+        stree.send_keys(stre)
+        post.send_keys(po)
+        distc.send_keys(dist)
+        drp_country.select_by_index(4)
+        drp_mob.select_by_index(2)
+        numb.send_keys(num)
+        mail.send_keys(mai)
+
+        self.comp_info.btn_next()
+        #       Assigning elements for registration details
+        coun_of_incorp = Select(self.rg.drp_country_of_incorp())
+        lice_natu = Select(self.rg.drp_licence_nature())
+        ent_type = Select(self.rg.drp_entity_type())
+        oper = Select(self.rg.drp_operation())
+        tr_servi_sect = Select(self.rg.drp_trade_service_sector())
+        capital = self.rg.capital()
+        reg_pur = self.rg.regisration_purpose()
+        est_an_income = self.rg.estimated_annaul_incode()
+        auth_per = self.rg.authorized_person()
+        designat = Select(self.rg.drp_designation())
+        nation = Select(self.rg.drp_nationality())
+        id_type = Select(self.rg.drp_id_type())
+        id_no = self.rg.id_no()
+        id_exp = self.rg.dpick_id_exp()
+        cr_no = self.rg.cr_no()
+        comp_card_no = self.rg.comp_card_no()
+        cr_iss_dat = self.rg.dpick_cr_issue_date()
+        cr_exp_dat = self.rg.dpick_cr_exp_date()
+        cc_iss_date = self.rg.dpick_cc_issue_date()
+        cc_exp_dat = self.rg.dpick_cc_expaire_date()
+
+        coun_of_incorp.select_by_index(2)
+        lice_natu.select_by_index(2)
+        ent_type.select_by_index(1)
+        oper.select_by_index(2)
+        tr_servi_sect.select_by_index(2)
+        capital.send_keys("2003as4400")
+        reg_pur.send_keys("ssa34132414124ing")
+        est_an_income.send_keys("4320000")
+        auth_per.send_keys("CadDaEasdO")
+        designat.select_by_index(2)
+        nation.select_by_index(1)
+        id_type.select_by_index(2)
+        id_no.send_keys("2321a312232")
+        id_exp.send_keys("20032004")
+        cr_no.send_keys("22225612")
+        comp_card_no.send_keys("2222145")
+        cr_iss_dat.send_keys("20032004")
+        cr_exp_dat.send_keys("20032014")
+        cc_iss_date.send_keys("20032006")
+        cc_exp_dat.send_keys("20032026")
+
+        self.rg.btn_next()
+
+        tit = Select(self.bod.title())
+        f_name = self.bod.first_name()
+        m_name = self.bod.middle_name()
+        l_name = self.bod.last_name()
+        dob = self.bod.dob()
+        pob = self.bod.place_of_birth()
+        gend = Select(self.bod.gender())
+        fh_no = self.bod.flat_house_number()
+        hb_name = self.bod.house_building_name()
+        street = self.bod.street()
+        ci = self.bod.city()
+        count = Select(self.bod.country())
+        nation = Select(self.bod.nationality())
+        id_type = Select(self.bod.id_type())
+        id_no = self.bod.id_no()
+        pla_of_iss = Select(self.bod.place_of_id_issu())
+        id_exp = self.bod.id_expiry()
+
+        tit.select_by_index(2)
+        f_name.send_keys("Teste22ssr")
+        m_name.send_keys("QAss")
+        l_name.send_keys("Autossmation")
+        dob.send_keys("20022000")
+        pob.send_keys("Kerala")
+        gend.select_by_index(1)
+        fh_no.send_keys("1245s7888")
+        hb_name.send_keys("65445665")
+        street.send_keys("kochi")
+        ci.send_keys("Nellore")
+        count.select_by_index(3)
+        nation.select_by_index(4)
+        id_type.select_by_index(2)
+        id_no.send_keys("2145211121")
+        pla_of_iss.select_by_index(2)
+        id_exp.send_keys("00000001")
+        time.sleep(3)
+
+        self.bod.btn_add_details()
+        time.sleep(2)
+        time.sleep(2)
+        self.bod.click_update_bod()
+        time.sleep(2)
+        self.bod.delete_bod()
+        time.sleep(2)
 
 
 

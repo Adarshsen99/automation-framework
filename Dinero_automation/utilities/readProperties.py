@@ -8,14 +8,15 @@ config.read(path)
 class ReadConfig:
     @staticmethod
     def getApplicationURL():
-        url=config.get('commonData', 'url')
+        url = config.get('commonData', 'url')
         return url
+
     @staticmethod
     def getApplicationUsername():
-        email = config.get('commonData','username')
+        email = config.get('commonData', 'username')
         return email
 
     @staticmethod
     def getApplicationPWD():
         pwd = config.get('commonData', 'password')
-        return pwd
+        return pwd 

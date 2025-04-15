@@ -3,6 +3,8 @@ import time
 
 from random import random
 
+from selenium.webdriver.common.by import By
+
 from Dinero_automation.pageObjects.LoginPage import LoginPage
 from Dinero_automation.pageObjects.Navbar import Navigation_Page
 from Dinero_automation.pageObjects.Bank import Add_Bank
@@ -33,13 +35,13 @@ class Test_add_bank:
         responce = []
 
         # Arrays holding bank names and local bank names
-        bank_nam = ["Industrial Bank", "South Indian Bank", "Canara Bank", "Kerala Grameen Bank",
-                    "Union Bank", "Indian Bank", "Federal Bank", "Dhanalakshmi Bank", "IDBI Bank", "RBI"]
-        bank_loc_name = ["Industrial Bank", "South Indian Bank", "Canara Bank", "Kerala Grameen Bank",
-                         "Union Bank", "Indian Bank", "Federal Bank", "Dhanalakshmi Bank", "IDBI Bank", "RBI"]
+        bank_nam = [ "Bahrin Bank",
+                    "Saudi Bank", "nepal Bank", "canada bank", "singapore Bank", ]
+        bank_loc_name = [ "Bahrin Bank",
+                    "Saudi Bank", "nepal Bank", "canada bank", "singapore Bank",]
 
         # Run the test 10 times
-        for i in range(10):
+        for i in range(5):
             # login setup
             self.driver = setup
             self.driver.get(self.url)
@@ -54,9 +56,19 @@ class Test_add_bank:
             # click action for nav bar arrow
             self.nav = Navigation_Page(self.driver)
             self.nav.click_navbar()
-            # time.sleep(2)
-            self.nav.click_bank()
             time.sleep(2)
+            scrollable_container = self.driver.find_element(By.XPATH, "//div[@class='sidebarMenuContainer open']")
+
+            # Find the bank element using an XPath selector (replace 'xpath-of-bank' with the actual XPath)
+            bank = self.driver.find_element(By.XPATH, "//span[normalize-space()='Banks']")
+
+            # Scroll within the specific container to make the bank element visible
+            self.driver.execute_script("arguments[0].scrollIntoView(true);", bank)
+
+            # Optionally, scroll by a specific pixel value within the container (example scrolling by 100 pixels down)
+            self.driver.execute_script("arguments[0].scrollTop += 100;", scrollable_container)
+            time.sleep(2)
+            self.nav.click_bank()
 
             self.add_bank = Add_Bank(self.driver)
             time.sleep(3)

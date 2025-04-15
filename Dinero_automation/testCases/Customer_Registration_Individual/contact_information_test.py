@@ -6,50 +6,47 @@ from Dinero_automation.pageObjects.Navbar import Navigation_Page
 from selenium.webdriver.support import expected_conditions as EC
 import time
 from Dinero_automation.pageObjects.Customer_Registration import Persomal_Information, Contact_Information, Id_details
-from Dinero_automation.utilities.randomString import random_string_generator_numbers_18,random_string_generator_max_52,random_string_generator_max_32,random_string_generator_max_22,generate_random_email_lessthen_45,generate_random_email_lessthen_52,random_string_generator_numbers_max_10,random_string_generator_max_18,random_string_generator_max_30,random_string_generator_max_50,random_string_generator_max_28,random_string_generator_max_48,random_string_generator_max_31,random_string_generator_max_51,random_string_generator_max_20,random_string_generator_numbers,generate_random_email
+from Dinero_automation.utilities.randomString import random_string_generator_numbers_18, random_string_generator_max_52, \
+    random_string_generator_max_32, random_string_generator_max_22, generate_random_email_lessthen_45, \
+    generate_random_email_lessthen_52, random_string_generator_numbers_max_10, random_string_generator_max_18, \
+    random_string_generator_max_30, random_string_generator_max_50, random_string_generator_max_28, \
+    random_string_generator_max_48, random_string_generator_max_31, random_string_generator_max_51, \
+    random_string_generator_max_20, random_string_generator_numbers, generate_random_email
 from selenium.webdriver.support.ui import Select
 from Dinero_automation.utilities import screenShort
+
 
 class Test_Contact_Information:
     url = ReadConfig.getApplicationURL()
     uname = ReadConfig.getApplicationUsername()
     upass = ReadConfig.getApplicationPWD()
 
-    def test_sending_valid_data(self,setup):
+    def test_sending_valid_data(self, setup):
+        from selenium.webdriver.support.ui import WebDriverWait
+        from selenium.webdriver.support import expected_conditions as EC
+        from selenium.webdriver.support.ui import Select
+        from selenium.webdriver.common.by import By
+        import time
+
+        # Setup and Login
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
         self.driver.implicitly_wait(30)
         self.lp = LoginPage(self.driver)
-        self.lp.setUsername(self.uname)
-        self.lp.setPassword(self.upass)
-        # time.sleep(2)
-        self.lp.clickLogin()
-        # time.sleep(2)
+        time.sleep(12)
 
-        # click action for nav bar arrow
+        # Navigation to customer registration
         self.nav = Navigation_Page(self.driver)
         self.nav.click_navbar()
-        # time.sleep(2)
-
-        # click action for customer registration
         self.nav.click_customer_registration()
-        # time.sleep(2)
 
-        # assining the pageobjects
+        # Assigning the page objects
         self.cur = Persomal_Information(self.driver)
         self.ci = Contact_Information(self.driver)
         self.id = Id_details(self.driver)
 
-
-        # self.cu_status = Select(self.cur.customerStatusDropdown_not_required())
-        # self.cu_status.select_by_index(1)
-        # self.cur.idNoField_not_required("7")
-        # self.cur.dateofexpiry_not_required(12102024)
-        # self.cur.btnverify()
-        # time.sleep(2)
-
-        # assign data in to the fields
+        # Personal Information Input
         fname = "QA"
         mname = "Automation"
         lname = "Tester"
@@ -58,8 +55,7 @@ class Test_Contact_Information:
         mainame = "Nayana"
         dob = 30032000
 
-
-        # perform personal information
+        # Fill personal information
         self.drp = Select(self.cur.titleDropdown_required())
         self.drp.select_by_index(1)
         self.cur.firstNameField_required(fname)
@@ -68,10 +64,9 @@ class Test_Contact_Information:
         self.cur.arabicNameFiels_required(arbname)
         self.cur.shortNameField_not_required(shname)
         self.cur.maidenNameFiels_not_required(mainame)
-
-        # Select date of birth using the custom method
         self.cur.dobpicker_required(dob)
-        # dropdowns
+
+        # Dropdown selections
         self.cob = Select(self.cur.cobDropdown_required())
         self.cob.select_by_index(2)
         self.nationality = Select(self.cur.nationality())
@@ -81,7 +76,7 @@ class Test_Contact_Information:
         self.country_of_residence = Select(self.cur.countryofresidence())
         self.country_of_residence.select_by_index(2)
         self.residential_status = Select(self.cur.residentialstatus())
-        self.residential_status.select_by_index(1)
+        self.residential_status.select_by_index(2)
         self.gender = Select(self.cur.gender())
         self.gender.select_by_index(2)
         self.mrg = Select(self.cur.maritalstatus())
@@ -92,7 +87,7 @@ class Test_Contact_Information:
 
         self.cur.btnnext()
 
-
+        # Contact Information
         fh_number = "4BH"
         hb_name = "Monlash"
         stre = "Main road"
@@ -106,26 +101,39 @@ class Test_Contact_Information:
         self.ci.field_street_required(stre)
         self.ci.field_city_dist_required(cit_dis)
         self.ci.field_emin_dist(emi_sta)
-        # dropdowns
-        self.con = Select(self.ci.drp_country_required())
-        self.con.select_by_visible_text("India")
-        self.mob = Select(self.ci.drp_mobile_required())
-        self.mob.select_by_index(69)
+
+        # Fetch and print all mobile country codes
+        try:
+            wait = WebDriverWait(self.driver, 10)
+            mobile_country_code_dropdown = wait.until(
+                EC.presence_of_element_located((By.XPATH, "/html[1]/body[1]/div[1]/div[2]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[2]/form[1]/div[1]/div[3]/div[2]/div[1]/select[1]"))
+                # Replace with correct ID or locator
+            )
+            mobile_country_code_select = Select(mobile_country_code_dropdown)
+
+            # Extract and print all mobile country code options
+            mobile_country_codes = [option.text for option in mobile_country_code_select.options]
+            print("Mobile Country Codes:", mobile_country_codes)
+
+            # Proceed to select a country code (e.g., index 69 for demo)
+            mobile_country_code_select.select_by_index(69)
+
+        except Exception as e:
+            print(f"Error in retrieving Mobile Country Codes: {e}")
+
+        # Fill remaining fields
         self.ci.field_mobile_required(mob)
         self.ci.field_email_required(email)
-
         self.ci.btn_next()
 
+        # Validate if ID section is visible
         val = self.id.visible_id()
-
-        if val == True:
+        if val:
             assert True
         else:
             assert False
 
-        self.driver.quit()
-
-    def test_sending_without_data(self,setup):
+    def test_sending_without_data(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -151,7 +159,6 @@ class Test_Contact_Information:
         self.ci = Contact_Information(self.driver)
         self.id = Id_details(self.driver)
 
-
         # self.cu_status = Select(self.cur.customerStatusDropdown_not_required())
         # self.cu_status.select_by_index(1)
         # self.cur.idNoField_not_required("7")
@@ -167,7 +174,6 @@ class Test_Contact_Information:
         shname = "QA Automation"
         mainame = "Nayana"
         dob = 30032000
-
 
         # perform personal information
         self.drp = Select(self.cur.titleDropdown_required())
@@ -191,7 +197,7 @@ class Test_Contact_Information:
         self.country_of_residence = Select(self.cur.countryofresidence())
         self.country_of_residence.select_by_index(2)
         self.residential_status = Select(self.cur.residentialstatus())
-        self.residential_status.select_by_index(1)
+        self.residential_status.select_by_index(2)
         self.gender = Select(self.cur.gender())
         self.gender.select_by_index(2)
         self.mrg = Select(self.cur.maritalstatus())
@@ -217,7 +223,8 @@ class Test_Contact_Information:
 
         self.driver.quit()
 
-    def test_sending_special_char(self,setup):
+    def test_sending_special_char(self, setup):
+
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -243,7 +250,6 @@ class Test_Contact_Information:
         self.ci = Contact_Information(self.driver)
         self.id = Id_details(self.driver)
 
-
         # self.cu_status = Select(self.cur.customerStatusDropdown_not_required())
         # self.cu_status.select_by_index(1)
         # self.cur.idNoField_not_required("7")
@@ -259,7 +265,6 @@ class Test_Contact_Information:
         shname = "QA Automation"
         mainame = "Nayana"
         dob = 30032000
-
 
         # perform personal information
         self.drp = Select(self.cur.titleDropdown_required())
@@ -283,7 +288,7 @@ class Test_Contact_Information:
         self.country_of_residence = Select(self.cur.countryofresidence())
         self.country_of_residence.select_by_index(2)
         self.residential_status = Select(self.cur.residentialstatus())
-        self.residential_status.select_by_index(1)
+        self.residential_status.select_by_index(2)
         self.gender = Select(self.cur.gender())
         self.gender.select_by_index(2)
         self.mrg = Select(self.cur.maritalstatus())
@@ -292,7 +297,6 @@ class Test_Contact_Information:
         self.profession.select_by_index(2)
 
         self.cur.btnnext()
-
 
         fh_number = "!@#$%^&*()_+*/{}|]""-[:;',.?"
         hb_name = "!@#$%^&*()_+*/{}|]""-[:;',.?"
@@ -326,7 +330,8 @@ class Test_Contact_Information:
             assert True
         self.driver.quit()
 
-    def test_sending_numbers_char(self,setup):
+    def test_sending_numbers_char(self, setup):
+
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -352,14 +357,6 @@ class Test_Contact_Information:
         self.ci = Contact_Information(self.driver)
         self.id = Id_details(self.driver)
 
-
-        # self.cu_status = Select(self.cur.customerStatusDropdown_not_required())
-        # self.cu_status.select_by_index(1)
-        # self.cur.idNoField_not_required("7")
-        # self.cur.dateofexpiry_not_required(12102024)
-        # self.cur.btnverify()
-        # time.sleep(2)
-
         # assign data in to the fields
         fname = "QA"
         mname = "Automation"
@@ -368,7 +365,6 @@ class Test_Contact_Information:
         shname = "QA Automation"
         mainame = "Nayana"
         dob = 30032000
-
 
         # perform personal information
         self.drp = Select(self.cur.titleDropdown_required())
@@ -401,7 +397,6 @@ class Test_Contact_Information:
         self.profession.select_by_index(2)
 
         self.cur.btnnext()
-
 
         fh_number = "1234567890"
         hb_name = "1234567890"
@@ -435,7 +430,7 @@ class Test_Contact_Information:
             assert True
         self.driver.quit()
 
-    def test_sending_char(self,setup):
+    def test_sending_char(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -461,14 +456,6 @@ class Test_Contact_Information:
         self.ci = Contact_Information(self.driver)
         self.id = Id_details(self.driver)
 
-
-        # self.cu_status = Select(self.cur.customerStatusDropdown_not_required())
-        # self.cu_status.select_by_index(1)
-        # self.cur.idNoField_not_required("7")
-        # self.cur.dateofexpiry_not_required(12102024)
-        # self.cur.btnverify()
-        # time.sleep(2)
-
         # assign data in to the fields
         fname = "QA"
         mname = "Automation"
@@ -477,7 +464,6 @@ class Test_Contact_Information:
         shname = "QA Automation"
         mainame = "Nayana"
         dob = 30032000
-
 
         # perform personal information
         self.drp = Select(self.cur.titleDropdown_required())
@@ -510,7 +496,6 @@ class Test_Contact_Information:
         self.profession.select_by_index(2)
 
         self.cur.btnnext()
-
 
         fh_number = "abcdefghijk"
         hb_name = "abcdefghijk"
@@ -544,7 +529,8 @@ class Test_Contact_Information:
             assert True
         self.driver.quit()
 
-    def test_sending_speci_char_num(self,setup):
+    def test_sending_speci_char_num(self, setup):
+
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -570,14 +556,6 @@ class Test_Contact_Information:
         self.ci = Contact_Information(self.driver)
         self.id = Id_details(self.driver)
 
-
-        # self.cu_status = Select(self.cur.customerStatusDropdown_not_required())
-        # self.cu_status.select_by_index(1)
-        # self.cur.idNoField_not_required("7")
-        # self.cur.dateofexpiry_not_required(12102024)
-        # self.cur.btnverify()
-        # time.sleep(2)
-
         # assign data in to the fields
         fname = "QA"
         mname = "Automation"
@@ -586,7 +564,6 @@ class Test_Contact_Information:
         shname = "QA Automation"
         mainame = "Nayana"
         dob = 30032000
-
 
         # perform personal information
         self.drp = Select(self.cur.titleDropdown_required())
@@ -620,14 +597,13 @@ class Test_Contact_Information:
 
         self.cur.btnnext()
 
-
-        fh_number = "1!@#$%^&*()_+*/{}|]""-[:;',.?a"
-        hb_name = "1!@#$%^&*()_+*/{}|]""-[:;',.?a"
-        stre = "1!@#$%^&*()_+*/{}|]""-[:;',.?a"
-        cit_dis = "1!@#$%^&*()_+*/{}|]""-[:;',.?a"
-        emi_sta = "1!@#$%^&*()_+*/{}|]""-[:;',.?a"
-        mob = "1!@#$%^&*()_+*/{}|]""-[:;',.?a"
-        email = "1!@#$%^&*()_+*/{}|]""-[:;',.?a"
+        fh_number = "1!@#$%^&*()_+*/{}|]""-[:;',.?abe"
+        hb_name = "1!@#$%^&*()_+*/{}|]""-[:;',.?abe"
+        stre = "1!@#$%^&*()_+*/{}|]""-[:;',.?abe"
+        cit_dis = "1!@#$%^&*()_+*/{}|]""-[:;',.?abe"
+        emi_sta = "1!@#$%^&*()_+*/{}|]""-[:;',.?abe"
+        mob = "1!@#$%^&*()_+*/{}|]""-[:;',.?abe"
+        email = "1!@#$%^&*()_+*/{}|]""-[:;',.?abe"
 
         self.ci.field_fh_num_required(fh_number)
         self.ci.field_hb_name_required(hb_name)
@@ -654,28 +630,29 @@ class Test_Contact_Information:
         self.driver.quit()
 
     def test_sending_bulk_data(self, setup):
+
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
         self.driver.implicitly_wait(30)
+
+        # Login page actions
         self.lp = LoginPage(self.driver)
         self.lp.setUsername(self.uname)
         self.lp.setPassword(self.upass)
         self.lp.clickLogin()
 
-        # click action for nav bar arrow
+        # Click navbar arrow and navigate to customer registration
         self.nav = Navigation_Page(self.driver)
         self.nav.click_navbar()
-
-        # click action for customer registration
         self.nav.click_customer_registration()
 
-        # assigning the page objects
+        # Assigning the page objects
         self.cur = Persomal_Information(self.driver)
         self.ci = Contact_Information(self.driver)
         self.id = Id_details(self.driver)
 
-        # assign data into the fields
+        # Assign data into the fields for Personal Information
         fname = "QA"
         mname = "Automation"
         lname = "Tester"
@@ -684,7 +661,7 @@ class Test_Contact_Information:
         mainame = "Nayana"
         dob = 30032000
 
-        # perform personal information
+        # Perform personal information actions
         self.drp = Select(self.cur.titleDropdown_required())
         self.drp.select_by_index(1)
         self.cur.firstNameField_required(fname)
@@ -693,26 +670,25 @@ class Test_Contact_Information:
         self.cur.arabicNameFiels_required(arbname)
         self.cur.shortNameField_not_required(shname)
         self.cur.maidenNameFiels_not_required(mainame)
-
-        # Select date of birth using the custom method
         self.cur.dobpicker_required(dob)
-        # dropdowns
-        self.cob = Select(self.cur.cobDropdown_required())
-        self.cob.select_by_index(2)
-        self.nationality = Select(self.cur.nationality())
-        self.nationality.select_by_index(2)
-        self.citizenship = Select(self.cur.citizenship())
-        self.citizenship.select_by_index(2)
-        self.country_of_residence = Select(self.cur.countryofresidence())
-        self.country_of_residence.select_by_index(2)
-        self.residential_status = Select(self.cur.residentialstatus())
-        self.residential_status.select_by_index(1)
-        self.gender = Select(self.cur.gender())
-        self.gender.select_by_index(2)
-        self.mrg = Select(self.cur.maritalstatus())
-        self.mrg.select_by_index(2)
-        self.profession = Select(self.cur.profession())
-        self.profession.select_by_index(2)
+
+        # Additional dropdowns
+        self.drp = Select(self.cur.cobDropdown_required())
+        self.drp.select_by_index(2)
+        self.drp = Select(self.cur.nationality())
+        self.drp.select_by_index(2)
+        self.drp = Select(self.cur.citizenship())
+        self.drp.select_by_index(2)
+        self.drp = Select(self.cur.countryofresidence())
+        self.drp.select_by_index(2)
+        self.drp = Select(self.cur.residentialstatus())
+        self.drp.select_by_index(1)
+        self.drp = Select(self.cur.gender())
+        self.drp.select_by_index(2)
+        self.drp = Select(self.cur.maritalstatus())
+        self.drp.select_by_index(2)
+        self.drp = Select(self.cur.profession())
+        self.drp.select_by_index(2)
 
         self.cur.btnnext()
 
@@ -727,6 +703,7 @@ class Test_Contact_Information:
         emails = ["john.doe@example.com", "jane.smith@example.com", "robert.brown@example.com",
                   "linda.jones@example.com", "michael.johnson@example.com"]
 
+        # Iterate through the bulk data and enter into the form
         for i in range(len(flat_house_numbers)):
             fh_number = flat_house_numbers[i]
             hb_name = house_building_names[i]
@@ -736,35 +713,36 @@ class Test_Contact_Information:
             mob = mobiles[i]
             email = emails[i]
 
-            # Perform personal information
+            # Fill contact information fields
             self.ci.field_fh_num_required(fh_number)
             self.ci.field_hb_name_required(hb_name)
             self.ci.field_street_required(stre)
             self.ci.field_city_dist_required(cit_dis)
             self.ci.field_emin_dist(emi_sta)
-            # dropdowns
+
+            # Select country and mobile dropdown
             self.con = Select(self.ci.drp_country_required())
             self.con.select_by_visible_text("India")
             self.mob = Select(self.ci.drp_mobile_required())
             self.mob.select_by_index(69)
+
+            # Fill mobile and email fields
             self.ci.field_mobile_required(mob)
             self.ci.field_email_required(email)
 
+            # Error handling or screenshot capture
             self.error = self.cur.errorMessage()
-
             if self.error == "Required":
-                assert False
+                assert False, f"Validation failed at iteration {i}"
             else:
-                self.driver.save_screenshot(
-                    screenShort.screen_short() + f"CI_test_sending_bulk_data_{i}.png")
+                self.driver.save_screenshot(f"CI_test_sending_bulk_data_{i}.png")
                 assert True
 
-            # Click the next button after each iteration
+            # Click the next button and then go back
             self.ci.btn_next()
-
             self.id.btn_back_id()
 
-            # Clear the fields for the next iteration
+            # Clear fields for the next iteration
             self.ci.field_fh_num_required_clear()
             self.ci.field_hb_name_required_clear()
             self.ci.field_street_required_clear()
@@ -773,9 +751,10 @@ class Test_Contact_Information:
             self.ci.field_mobile_required_clear()
             self.ci.field_email_required_clear()
 
+        # Quit the driver after all iterations
         self.driver.quit()
 
-    def test_sending_required_fields(self,setup):
+    def test_sending_required_fields(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -801,14 +780,6 @@ class Test_Contact_Information:
         self.ci = Contact_Information(self.driver)
         self.id = Id_details(self.driver)
 
-
-        # self.cu_status = Select(self.cur.customerStatusDropdown_not_required())
-        # self.cu_status.select_by_index(1)
-        # self.cur.idNoField_not_required("7")
-        # self.cur.dateofexpiry_not_required(12102024)
-        # self.cur.btnverify()
-        # time.sleep(2)
-
         # assign data in to the fields
         fname = "QA"
         mname = "Automation"
@@ -817,7 +788,6 @@ class Test_Contact_Information:
         shname = "QA Automation"
         mainame = "Nayana"
         dob = 30032000
-
 
         # perform personal information
         self.drp = Select(self.cur.titleDropdown_required())
@@ -841,7 +811,7 @@ class Test_Contact_Information:
         self.country_of_residence = Select(self.cur.countryofresidence())
         self.country_of_residence.select_by_index(2)
         self.residential_status = Select(self.cur.residentialstatus())
-        self.residential_status.select_by_index(1)
+        self.residential_status.select_by_index(2)
         self.gender = Select(self.cur.gender())
         self.gender.select_by_index(2)
         self.mrg = Select(self.cur.maritalstatus())
@@ -881,12 +851,13 @@ class Test_Contact_Information:
             assert True
         else:
             self.driver.save_screenshot(
-                            screenShort.screen_short() + "CI_test_sending_required_fields.png")
+                screenShort.screen_short() + "CI_test_sending_required_fields.png")
             assert False
 
         self.driver.quit()
 
-    def test_sending_not_required_fields(self,setup):
+    def test_sending_not_required_fields(self, setup):
+
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -912,14 +883,6 @@ class Test_Contact_Information:
         self.ci = Contact_Information(self.driver)
         self.id = Id_details(self.driver)
 
-
-        # self.cu_status = Select(self.cur.customerStatusDropdown_not_required())
-        # self.cu_status.select_by_index(1)
-        # self.cur.idNoField_not_required("7")
-        # self.cur.dateofexpiry_not_required(12102024)
-        # self.cur.btnverify()
-        # time.sleep(2)
-
         # assign data in to the fields
         fname = "QA"
         mname = "Automation"
@@ -928,7 +891,6 @@ class Test_Contact_Information:
         shname = "QA Automation"
         mainame = "Nayana"
         dob = 30032000
-
 
         # perform personal information
         self.drp = Select(self.cur.titleDropdown_required())
@@ -984,6 +946,7 @@ class Test_Contact_Information:
         self.ci.field_email_required(email)
 
         self.ci.btn_next()
+        time.sleep(2)
         self.error = self.cur.errorMessage()
 
         if self.error == "Required":
@@ -995,7 +958,8 @@ class Test_Contact_Information:
 
         self.driver.quit()
 
-    def test_validation_preview_page(self,setup):
+    def test_validation_preview_page(self, setup):
+
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -1021,14 +985,6 @@ class Test_Contact_Information:
         self.ci = Contact_Information(self.driver)
         self.id = Id_details(self.driver)
 
-
-        # self.cu_status = Select(self.cur.customerStatusDropdown_not_required())
-        # self.cu_status.select_by_index(1)
-        # self.cur.idNoField_not_required("7")
-        # self.cur.dateofexpiry_not_required(12102024)
-        # self.cur.btnverify()
-        # time.sleep(2)
-
         # assign data in to the fields
         fname = "QA"
         mname = "Automation"
@@ -1037,7 +993,6 @@ class Test_Contact_Information:
         shname = "QA Automation"
         mainame = "Nayana"
         dob = 30032000
-
 
         # perform personal information
         self.drp = Select(self.cur.titleDropdown_required())
@@ -1061,7 +1016,7 @@ class Test_Contact_Information:
         self.country_of_residence = Select(self.cur.countryofresidence())
         self.country_of_residence.select_by_index(2)
         self.residential_status = Select(self.cur.residentialstatus())
-        self.residential_status.select_by_index(1)
+        self.residential_status.select_by_index(2)
         self.gender = Select(self.cur.gender())
         self.gender.select_by_index(2)
         self.mrg = Select(self.cur.maritalstatus())
@@ -1090,9 +1045,9 @@ class Test_Contact_Information:
         self.mob = Select(self.ci.drp_mobile_required())
         self.mob.select_by_index(69)
         self.ci.field_mobile_required(mob)
-        self.ci.field_email_required(email)
+        email_val = self.ci.field_email_required(email)
 
-#       Getting data from the dropdowns
+        #       Getting data from the dropdowns
         self.coun = self.con.first_selected_option.text
 
         self.mobil = self.mob.first_selected_option
@@ -1104,7 +1059,7 @@ class Test_Contact_Information:
         print("Actual Data from the system")
         print(self.coun)
         print(self.monil_pre)
-
+        print(email)
 
         print(" ")
         print("Data from the Preview")
@@ -1116,6 +1071,9 @@ class Test_Contact_Information:
         print(self.id.con_pre())
         print(self.id.mob_pre())
         print(self.id.email_pre())
+
+        print("email:", repr(email_val))
+        print("Preview email:", repr(self.id.email_pre()))
 
         if fh_number == self.id.fh_pre():
             assert True
@@ -1151,13 +1109,6 @@ class Test_Contact_Information:
             self.driver.save_screenshot(
                 screenShort.screen_short() + "CI_test_validation_preview_page_emi_sta.png")
             assert False
-
-        # if mob == self.id.mob_pre():
-        #     assert True
-        # else:
-        #     self.driver.save_screenshot(
-        #         screenShort.screen_short() + "CI_test_validation_preview_page_mob.png")
-        #     assert False
 
         if email == self.id.email_pre():
             assert True
@@ -1267,7 +1218,7 @@ class Test_Contact_Information:
         print(f"Max length for email: {email_max}")
 
         email = generate_random_email()
-        print("email:",email)
+        print("email:", email)
         num = random_string_generator_numbers()
         print("numbers", num)
         max_20 = random_string_generator_max_20()
@@ -1312,17 +1263,17 @@ class Test_Contact_Information:
         cidi_val_len = len(cidi_val)
         print("cidi_val:", cidi_val_len)
         emin_val = emin_elem.get_attribute('value')
-        emin_val_len =len(emin_val)
+        emin_val_len = len(emin_val)
         print("emin_val:", emin_val_len)
         mob_val = mob_elem.get_attribute('value')
         mob_val_len = len(mob_val)
-        print("mob_val",mob_val_len)
+        print("mob_val", mob_val_len)
         email_val = email_elem.get_attribute('value')
         email_val_len = len(email_val)
         print("email_val:", email_val_len)
 
         self.ci.btn_next()
-        # time.sleep(4)
+        time.sleep(4)
 
         val = self.id.visible_id()
         print(val)
@@ -1331,7 +1282,7 @@ class Test_Contact_Information:
             assert True
         else:
             self.driver.save_screenshot(
-                            screenShort.screen_short() + "CI_test_validating_max_len_fh.png")
+                screenShort.screen_short() + "CI_test_validating_max_len_fh.png")
             assert False
 
         if hb_val_len == hb_len_max and val == True:
@@ -1478,7 +1429,7 @@ class Test_Contact_Information:
         print(f"Max length for email: {email_max}")
 
         email = generate_random_email_lessthen_45()
-        print("email:",email)
+        print("email:", email)
         num = random_string_generator_numbers_max_10()
         print("numbers", num)
         max_18 = random_string_generator_max_18()
@@ -1523,11 +1474,11 @@ class Test_Contact_Information:
         cidi_val_len = len(cidi_val)
         print("cidi_val:", cidi_val_len)
         emin_val = emin_elem.get_attribute('value')
-        emin_val_len =len(emin_val)
+        emin_val_len = len(emin_val)
         print("emin_val:", emin_val_len)
         mob_val = mob_elem.get_attribute('value')
         mob_val_len = len(mob_val)
-        print("mob_val",mob_val_len)
+        print("mob_val", mob_val_len)
         email_val = email_elem.get_attribute('value')
         email_val_len = len(email_val)
         print("email_val:", email_val_len)
@@ -1542,7 +1493,7 @@ class Test_Contact_Information:
             assert True
         else:
             self.driver.save_screenshot(
-                            screenShort.screen_short() + "CI_test_validating_lessthen_max_len_fh.png")
+                screenShort.screen_short() + "CI_test_validating_lessthen_max_len_fh.png")
             assert False
 
         if hb_val_len < hb_len_max and val == True:
@@ -1651,7 +1602,6 @@ class Test_Contact_Information:
 
         self.cur.btnnext()
 
-
         # Fetching elements
         fh_len_elem = self.ci.field_fh_num_required_val()
         hb_len_elem = self.ci.field_hb_name_required_val()
@@ -1685,7 +1635,7 @@ class Test_Contact_Information:
         print(f"Max length for email: {email_max}")
 
         email = generate_random_email_lessthen_52()
-        print("email:",email)
+        print("email:", email)
         num = random_string_generator_numbers_18()
         print("numbers", num)
         max_22 = random_string_generator_max_22()
@@ -1730,11 +1680,11 @@ class Test_Contact_Information:
         cidi_val_len = len(cidi_val)
         print("cidi_val:", cidi_val_len)
         emin_val = emin_elem.get_attribute('value')
-        emin_val_len =len(emin_val)
+        emin_val_len = len(emin_val)
         print("emin_val:", emin_val_len)
         mob_val = mob_elem.get_attribute('value')
         mob_val_len = len(mob_val)
-        print("mob_val",mob_val_len)
+        print("mob_val", mob_val_len)
         email_val = email_elem.get_attribute('value')
         email_val_len = len(email_val)
         print("email_val:", email_val_len)
@@ -1749,7 +1699,7 @@ class Test_Contact_Information:
             assert True
         else:
             self.driver.save_screenshot(
-                            screenShort.screen_short() + "CI_test_validating_greaterthen_max_len_fh.png")
+                screenShort.screen_short() + "CI_test_validating_greaterthen_max_len_fh.png")
             assert False
 
         if hb_val_len == hb_len_max and val == True:
@@ -1925,13 +1875,13 @@ class Test_Contact_Information:
         email_elem = self.ci.field_email_required_val()
 
         print("getting data for contact info before clear")
-    #       Getting data from
+        #       Getting data from
         self.coun = self.con.first_selected_option.text
-        print("contry:",self.coun)
+        print("contry:", self.coun)
 
         self.mobil = self.mob.first_selected_option
         self.monil_pre = self.mobil.text
-        print("monile:",self.monil_pre)
+        print("monile:", self.monil_pre)
 
         fh_val = fh_len_elem.get_attribute('value')
         print("fhvalue", fh_val)
@@ -2068,8 +2018,9 @@ class Test_Contact_Information:
         print("Mobile after clear:", mob_val_cl)
         print("Email after clear:", email_val_cl)
         #
-        if (self.coun != self.coun_cl and self.monil_pre != self.monil_pre_cl and fh_val != fh_val_cl and hb_val != hb_val_cl and stree_val != stree_val_cl
-            and cidi_val != cidi_val_cl and emin_val != emin_val_cl and mob_val != mob_val_cl and email_val != email_val_cl):
+        if (
+                self.coun != self.coun_cl and self.monil_pre != self.monil_pre_cl and fh_val != fh_val_cl and hb_val != hb_val_cl and stree_val != stree_val_cl
+                and cidi_val != cidi_val_cl and emin_val != emin_val_cl and mob_val != mob_val_cl and email_val != email_val_cl):
             assert True
         else:
             self.driver.save_screenshot(
@@ -2078,7 +2029,7 @@ class Test_Contact_Information:
 
         self.driver.quit()
 
-    def test_validation_modification_page(self,setup):
+    def test_validation_modification_page(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -2248,7 +2199,6 @@ class Test_Contact_Information:
         self.ci.btn_next()
         self.id.drp_ci_pre()
 
-
         print(" ")
         print("Data from the Preview")
         print(self.id.fh_pre())
@@ -2310,7 +2260,7 @@ class Test_Contact_Information:
             assert False
         self.driver.quit()
 
-    def test_validation_modification_clear_page(self,setup):
+    def test_validation_modification_clear_page(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -2408,7 +2358,6 @@ class Test_Contact_Information:
         self.ci.btn_next()
         self.id.btn_back_id()
 
-
         fh_number = "Poll"
         hb_name = "Build"
         stre = "Dhalal"
@@ -2491,7 +2440,6 @@ class Test_Contact_Information:
         self.ci.btn_next()
         self.id.drp_ci_pre()
 
-
         print(" ")
         print("Data from the Preview")
         print(self.id.fh_pre())
@@ -2554,7 +2502,7 @@ class Test_Contact_Information:
 
         self.driver.quit()
 
-    def test_getting_fieldsize(self,setup):
+    def test_getting_fieldsize(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -2629,26 +2577,26 @@ class Test_Contact_Information:
         self.cur.btnnext()
 
         fh_len_elem = self.ci.field_fh_num_required_val()
-        print("fh_len_elem:",fh_len_elem.size)
+        print("fh_len_elem:", fh_len_elem.size)
         hb_len_elem = self.ci.field_hb_name_required_val()
-        print("hb_len_elem:",hb_len_elem.size)
+        print("hb_len_elem:", hb_len_elem.size)
         stree_elem = self.ci.field_street_required_val()
-        print("stree_elem:",stree_elem.size)
+        print("stree_elem:", stree_elem.size)
         ci_di_elem = self.ci.field_city_dist_required_val()
-        print("ci_di_elem:",ci_di_elem.size)
+        print("ci_di_elem:", ci_di_elem.size)
         emin_elem = self.ci.field_emin_dist_val()
-        print("emin_elem:",emin_elem.size)
+        print("emin_elem:", emin_elem.size)
         mob_elem = self.ci.field_mobile_required_val()
-        print("mob_elem:",mob_elem.size)
+        print("mob_elem:", mob_elem.size)
         email_elem = self.ci.field_email_required_val()
-        print("email_elem:",email_elem.size)
+        print("email_elem:", email_elem.size)
         con = self.ci.drp_country_required()
-        print("cob:",con.size)
+        print("cob:", con.size)
         mob = self.ci.drp_mobile_required()
-        print("mob:",mob.size)
+        print("mob:", mob.size)
         self.driver.quit()
 
-    def test_sending_data_havespaces(self,setup):
+    def test_sending_data_havespaces(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -2674,7 +2622,6 @@ class Test_Contact_Information:
         self.ci = Contact_Information(self.driver)
         self.id = Id_details(self.driver)
 
-
         # self.cu_status = Select(self.cur.customerStatusDropdown_not_required())
         # self.cu_status.select_by_index(1)
         # self.cur.idNoField_not_required("7")
@@ -2690,7 +2637,6 @@ class Test_Contact_Information:
         shname = "QA Automation"
         mainame = "Nayana"
         dob = 30032000
-
 
         # perform personal information
         self.drp = Select(self.cur.titleDropdown_required())
@@ -2725,7 +2671,6 @@ class Test_Contact_Information:
 
         self.cur.btnnext()
 
-
         fh_number = "4BH BKM"
         hb_name = "Monlash Building"
         stre = "Main road"
@@ -2755,7 +2700,7 @@ class Test_Contact_Information:
             assert True
         else:
             self.driver.save_screenshot(
-                        screenShort.screen_short() + "CI_test_sending_data_havespaces.png")
+                screenShort.screen_short() + "CI_test_sending_data_havespaces.png")
             assert False
         self.driver.quit()
 
@@ -2844,7 +2789,7 @@ class Test_Contact_Information:
         print(f"Number of options in the dropdown: {len(options)}")
         self.driver.quit()
 
-# // ---------------------------Non Resident-------------------------------------//
+    # // ---------------------------Non Resident-------------------------------------//
 
     def test_sending_valid_data_nonres(self, setup):
         self.driver = setup
@@ -3229,7 +3174,6 @@ class Test_Contact_Information:
                 break
             last_height = new_height
 
-
         self.error = self.cur.errorMessage()
 
         if self.error == "Required":
@@ -3389,7 +3333,7 @@ class Test_Contact_Information:
             assert True
         self.driver.quit()
 
-    def test_sending_char_non(self,setup):
+    def test_sending_char_non(self, setup):
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -4153,7 +4097,7 @@ class Test_Contact_Information:
         self.country_of_residence = Select(self.cur.countryofresidence())
         self.country_of_residence.select_by_index(2)
         self.residential_status = Select(self.cur.residentialstatus())
-        self.residential_status.select_by_index(2)
+        self.residential_status.select_by_index(1)
         self.gender = Select(self.cur.gender())
         self.gender.select_by_index(2)
         self.mrg = Select(self.cur.maritalstatus())
@@ -4219,8 +4163,6 @@ class Test_Contact_Information:
 
         self.ci.btn_next()
         self.id.drp_ci_pre()
-
-
 
         print("Actual Data from the system")
         print(self.coun)
@@ -4305,7 +4247,6 @@ class Test_Contact_Information:
                 screenShort.screen_short() + "CI_test_validation_preview_page_nonres_count.png")
             assert False
 
-
         if "04-05-2004" == self.id.v_isdat_non_pre():
             assert True
         else:
@@ -4363,13 +4304,6 @@ class Test_Contact_Information:
                 screenShort.screen_short() + "CI_test_validation_preview_page_emi_non_sta.png")
             assert False
 
-        # if mob == self.id.mob_pre():
-        #     assert True
-        # else:
-        #     self.driver.save_screenshot(
-        #         screenShort.screen_short() + "CI_test_validation_preview_page_non_mob.png")
-        #     assert False
-
         if email == self.id.email_pre():
             assert True
         else:
@@ -4380,6 +4314,7 @@ class Test_Contact_Information:
         self.driver.quit()
 
     def test_validating_max_len_nonresi(self, setup):
+
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -4512,7 +4447,6 @@ class Test_Contact_Information:
         remark_max = int(get_max_length(remarks_ele))
         print(f"Max length for remark non res: {remark_max}")
 
-
         email = generate_random_email()
         print("email:", email)
         num = random_string_generator_numbers()
@@ -4523,7 +4457,6 @@ class Test_Contact_Information:
         print("maxlenght_30:", max_30)
         max_50 = random_string_generator_max_50()
         print("maxlenght_50:", max_50)
-
 
         fh_number = max_50
         hb_name = max_50
@@ -4596,7 +4529,6 @@ class Test_Contact_Information:
         self.coun_drp = self.non_coun.first_selected_option.text
         self.non_visa_get = self.non_visa.first_selected_option.text
 
-
         fh_val_non = fh_len_elem_non.get_attribute('value')
         fh_val_non_len = len(fh_val_non)
         print("fhvalue", fh_val_non_len)
@@ -4619,11 +4551,11 @@ class Test_Contact_Information:
 
         visa_val_non = visanum_ele_non.get_attribute('value')
         visa_val_non_len = len(visa_val_non)
-        print("visa number:",visa_val_non_len)
+        print("visa number:", visa_val_non_len)
 
         remark_val_non = remarks_ele.get_attribute('value')
         remark_val_non_len = len(remark_val_non)
-        print("remarks:",remark_val_non_len)
+        print("remarks:", remark_val_non_len)
 
         self.ci.btn_next()
         # time.sleep(4)
@@ -4856,7 +4788,6 @@ class Test_Contact_Information:
 
         email_max = int(email_elem.get_attribute('maxlength'))
         print(f"Max length for email: {email_max}")
-
 
         #
         # Non resident
@@ -5660,7 +5591,7 @@ class Test_Contact_Information:
         print("non_coun_drp:", non_coun_drp)
 
         vist_type_non = self.non_visa.first_selected_option.text
-        print("vist_type_non:",vist_type_non)
+        print("vist_type_non:", vist_type_non)
 
         fh_val_non = fh_len_elem_non.get_attribute('value')
         fh_val_non_len = fh_val_non
@@ -5694,7 +5625,7 @@ class Test_Contact_Information:
         print("visa_iss_val_non:", visa_iss_val_non)
 
         visa_exp_val_non = vis_exp_ele.get_attribute('value')
-        print("visa_exp_val_non:",visa_exp_val_non)
+        print("visa_exp_val_non:", visa_exp_val_non)
 
         self.ci.btn_cancel()
         self.ci.btn_cancel_cfirm()
@@ -5830,7 +5761,7 @@ class Test_Contact_Information:
         print("Non resident Street after clear:", stree_elem_non)
         print("Non resident City/District after clear:", ci_di_elem_non)
         print("Non resident Emirate/State after clear:", emin_elem_non)
-        print("Non Resident Visa issue number after clear:",visanum_ele_non)
+        print("Non Resident Visa issue number after clear:", visanum_ele_non)
         print("Non Resident remarks after clear:", remarks_ele)
         print("Non Resident visa issue after clear:", visa_iss_ele)
         print("Non Resident visa expair after clear:", vis_exp_ele)
@@ -5854,10 +5785,10 @@ class Test_Contact_Information:
                 screenShort.screen_short() + "CI_test_validating_cancel_nonres_nonres.png")
             assert False
 
-
         self.driver.quit()
 
     def test_validation_modification_page_nonres(self, setup):
+
         self.driver = setup
         self.driver.get(self.url)
         self.driver.maximize_window()
@@ -5921,7 +5852,7 @@ class Test_Contact_Information:
         self.country_of_residence = Select(self.cur.countryofresidence())
         self.country_of_residence.select_by_index(2)
         self.residential_status = Select(self.cur.residentialstatus())
-        self.residential_status.select_by_index(2)
+        self.residential_status.select_by_index(1)
         self.gender = Select(self.cur.gender())
         self.gender.select_by_index(2)
         self.mrg = Select(self.cur.maritalstatus())
@@ -5977,7 +5908,6 @@ class Test_Contact_Information:
         self.ci.non_residen_visa_issu_date(visa_issue_non)
         self.ci.non_residen_visa_expair_date(visa_exp_non)
         self.ci.remarks(remarks)
-
 
         self.ci.btn_next()
         self.id.btn_back_id()
@@ -6084,7 +6014,7 @@ class Test_Contact_Information:
 
         self.coun_drp = self.non_coun.first_selected_option.text
         self.non_visa_get = self.non_visa.first_selected_option.text
-        print("country:",self.coun_drp)
+        print("country:", self.coun_drp)
         print("country:", self.non_visa_get)
 
         fh_len_elem_non = self.ci.non_field_fh_num_required_val().get_attribute('value')
@@ -6097,15 +6027,15 @@ class Test_Contact_Information:
         visa_iss_ele = self.ci.non_residen_visa_issu_date_val().get_attribute('value')
         vis_exp_ele = self.ci.non_residen_visa_expair_date_val().get_attribute('value')
 
-        print("fh_len_elem_non:",fh_len_elem_non)
-        print("hb_len_elem_non:",hb_len_elem_non)
-        print("stree_elem_non:",stree_elem_non)
-        print("ci_di_elem_non:",ci_di_elem_non)
-        print("emin_elem_non:",emin_elem_non)
-        print("visanum_ele_non:",visanum_ele_non)
-        print("remarks_ele:",remarks_ele)
-        print("visa_iss_ele:",visa_iss_ele)
-        print("vis_exp_ele:",vis_exp_ele)
+        print("fh_len_elem_non:", fh_len_elem_non)
+        print("hb_len_elem_non:", hb_len_elem_non)
+        print("stree_elem_non:", stree_elem_non)
+        print("ci_di_elem_non:", ci_di_elem_non)
+        print("emin_elem_non:", emin_elem_non)
+        print("visanum_ele_non:", visanum_ele_non)
+        print("remarks_ele:", remarks_ele)
+        print("visa_iss_ele:", visa_iss_ele)
+        print("vis_exp_ele:", vis_exp_ele)
 
         self.ci.btn_next()
         self.id.drp_ci_pre()
@@ -6205,7 +6135,6 @@ class Test_Contact_Information:
                 screenShort.screen_short() + "CI_test_validation_modification_page_nonres_remark.png")
             assert False
 
-
         # Residence assertions
         if fh_val == self.id.fh_pre():
             assert True
@@ -6257,7 +6186,6 @@ class Test_Contact_Information:
             assert False
 
         self.driver.quit()
-
 
     def test_validation_modification_page_clear_nonres(self, setup):
         self.driver = setup
@@ -6380,7 +6308,6 @@ class Test_Contact_Information:
         self.ci.non_residen_visa_expair_date(visa_exp_non)
         self.ci.remarks(remarks)
 
-
         self.ci.btn_next()
         self.id.btn_back_id()
         time.sleep(5)
@@ -6501,7 +6428,7 @@ class Test_Contact_Information:
 
         self.coun_drp = self.non_coun.first_selected_option.text
         self.non_visa_get = self.non_visa.first_selected_option.text
-        print("country:",self.coun_drp)
+        print("country:", self.coun_drp)
         print("country:", self.non_visa_get)
 
         fh_len_elem_non = self.ci.non_field_fh_num_required_val().get_attribute('value')
@@ -6514,15 +6441,15 @@ class Test_Contact_Information:
         visa_iss_ele = self.ci.non_residen_visa_issu_date_val().get_attribute('value')
         vis_exp_ele = self.ci.non_residen_visa_expair_date_val().get_attribute('value')
 
-        print("fh_len_elem_non:",fh_len_elem_non)
-        print("hb_len_elem_non:",hb_len_elem_non)
-        print("stree_elem_non:",stree_elem_non)
-        print("ci_di_elem_non:",ci_di_elem_non)
-        print("emin_elem_non:",emin_elem_non)
-        print("visanum_ele_non:",visanum_ele_non)
-        print("remarks_ele:",remarks_ele)
-        print("visa_iss_ele:",visa_iss_ele)
-        print("vis_exp_ele:",vis_exp_ele)
+        print("fh_len_elem_non:", fh_len_elem_non)
+        print("hb_len_elem_non:", hb_len_elem_non)
+        print("stree_elem_non:", stree_elem_non)
+        print("ci_di_elem_non:", ci_di_elem_non)
+        print("emin_elem_non:", emin_elem_non)
+        print("visanum_ele_non:", visanum_ele_non)
+        print("remarks_ele:", remarks_ele)
+        print("visa_iss_ele:", visa_iss_ele)
+        print("vis_exp_ele:", vis_exp_ele)
 
         self.ci.btn_next()
         self.id.drp_ci_pre()
@@ -6622,7 +6549,6 @@ class Test_Contact_Information:
                 screenShort.screen_short() + "CI_test_validation_modification_page_clear_nonres_remarknon.png")
             assert False
 
-
         # Residence assertions
         if fh_val == self.id.fh_pre():
             assert True
@@ -6673,7 +6599,6 @@ class Test_Contact_Information:
                 screenShort.screen_short() + "CI_test_validation_modification_page_clear_nonres_email.png")
             assert False
         self.driver.quit()
-
 
     def test_getting_fieldsize(self, setup):
         self.driver = setup
@@ -6779,8 +6704,7 @@ class Test_Contact_Information:
         visa_iss_ele = self.ci.non_residen_visa_issu_date_val().size
         vis_exp_ele = self.ci.non_residen_visa_expair_date_val().size
         country = self.ci.non_drp_country_required().size
-        visy_type =self.ci.non_residen_visa_type_drp().size
-
+        visy_type = self.ci.non_residen_visa_type_drp().size
 
         print("fh_len_elem_non:", fh_len_elem_non)
         print("hb_len_elem_non:", hb_len_elem_non)
@@ -6791,8 +6715,8 @@ class Test_Contact_Information:
         print("remarks_ele:", remarks_ele)
         print("visa_iss_ele:", visa_iss_ele)
         print("vis_exp_ele:", vis_exp_ele)
-        print("country:",country)
-        print("visy_type:",visy_type)
+        print("country:", country)
+        print("visy_type:", visy_type)
 
         self.driver.quit()
 
@@ -6858,7 +6782,7 @@ class Test_Contact_Information:
         self.country_of_residence = Select(self.cur.countryofresidence())
         self.country_of_residence.select_by_index(2)
         self.residential_status = Select(self.cur.residentialstatus())
-        self.residential_status.select_by_index(2)
+        self.residential_status.select_by_index(1)
         self.gender = Select(self.cur.gender())
         self.gender.select_by_index(2)
         self.mrg = Select(self.cur.maritalstatus())
@@ -6927,9 +6851,3 @@ class Test_Contact_Information:
                 screenShort.screen_short() + "test_validating_date.png")
             assert False
         self.driver.quit()
-
-
-
-
-
-

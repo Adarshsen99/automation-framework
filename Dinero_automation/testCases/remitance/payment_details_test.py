@@ -1,6 +1,7 @@
 import time
 
 from selenium.common import NoSuchElementException
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 
 from Dinero_automation.pageObjects.LoginPage import LoginPage
@@ -32,8 +33,11 @@ class Test_Payment_Details:
         # click action for nav bar arrow
         self.nav = Navigation_Page(self.driver)
         self.nav.click_navbar()
-        # time.sleep(2)
+        sidebar = self.driver.find_element(By.XPATH, "//div[@class='sidebarMenuContainer open']")
 
+        # Locate the "Remittance" element inside the sidebar container
+        self.driver.execute_script("arguments[0].scrollIntoView();", sidebar)
+        time.sleep(2)
         # click action for customer details
         self.nav.click_remitance()
         self.cd = Customer_Details(self.driver)
@@ -41,7 +45,7 @@ class Test_Payment_Details:
         self.drp_transn_typ.select_by_index(1)
         self.custom_name = self.cd.customer_search_bar()
 
-        self.custom_name.send_keys("Messi Marie Brown")
+        self.custom_name.send_keys("adarsh")
         time.sleep(2)
         self.cd.custom_select1()
         self.cd.verify_btn()
@@ -59,11 +63,11 @@ class Test_Payment_Details:
         self.bd = Beneficiary_details(self.driver)
 
         benefiary_name = self.bd.beneficiary_search_bar()
-        benefiary_name.send_keys("ronaldo")
-        self.bd.beneficiary_selectbar()
+        benefiary_name.send_keys("mangalath")
+        self.bd.beneficiary_selectbar_man()
         time.sleep(2)
-        bank_selct = Select(self.bd.drp_bank())
-        bank_selct.select_by_index(1)
+        loc_selct = Select(self.bd.drp_location())
+        loc_selct.select_by_index(1)
         time.sleep(1)
         self.bd.btn_nexte()
         time.sleep(2)
@@ -72,13 +76,14 @@ class Test_Payment_Details:
         transc_pin = self.rd.transaction_pin()
         remi_pur = Select(self.rd.drp_remittance_purpose())
         source_income = Select(self.rd.drp_source_of_income())
-        currecncy = Select(self.rd.drp_currency())
-        service_pro = Select(self.rd.drp_service_provider())
 
         transc_pin.send_keys("76212")
         remi_pur.select_by_index(2)
         source_income.select_by_index(2)
-        currecncy.select_by_index(1)
+        currecncy = Select(self.rd.drp_currency())
+
+        currecncy.select_by_index(2)
+        service_pro = Select(self.rd.drp_service_provider())
         service_pro.select_by_index(1)
 
         self.rd.click_cash()
@@ -88,9 +93,9 @@ class Test_Payment_Details:
         self.rd.click_digital_pay()
 
         lc = self.rd.lc_type_area()
-        lc.send_keys("100000")
+        lc.send_keys("10000")
         rate = self.rd.rate_type_area()
-        rate.send_keys("10")  # Integer value from the list
+        rate.send_keys("2.6")  # Integer value from the list
         tax = self.rd.tax_typing()
         tax.send_keys("2")  # Random tax value between 5 and 15
         time.sleep(3)
@@ -110,33 +115,31 @@ class Test_Payment_Details:
         self.driver.execute_script("arguments[0].scrollIntoView(true);", cash_element)
         time.sleep(2)  # Allow time for scrolling to finish
         cash_element.click()
+        time.sleep(2)
 
         # Set values for thousand, hundred, and ten notes
-        self.pd.cash1000().send_keys("20")
-        self.pd.cash100().send_keys("2")
-
-        # Use cash10 values from the list
-
-        self.pd.cash10().send_keys("4")
-        self.pd.cash1().send_keys("3")
+        self.pd.cash500().send_keys("4")
+        time.sleep(2)
+        self.pd.cash20().send_keys("2")
+        #self.pd.cash1().send_keys("2")
 
         time.sleep(2)
 
         self.pd.submit()
-        self.pd.pos_amount().send_keys("20243")
+        self.pd.pos_amount().send_keys("2040")
         pos_bank = Select(self.pd.drp_pos_bank())
         pos_bank.select_by_index(1)
         self.pd.pos_code().send_keys("2002")
         time.sleep(2)
 
-        self.pd.cheque_amount().send_keys("20243")
+        self.pd.cheque_amount().send_keys("2040")
         self.pd.cheque_number().send_keys("4548348")
         self.pd.cheque_bank().send_keys("ICICI")
         self.pd.cheque_date().send_keys("12092024")
         time.sleep(2)
 
-        self.pd.online_amount().send_keys("20243")
-        self.pd.digital_pay().send_keys("20243")
+        self.pd.online_amount().send_keys("2040")
+        self.pd.digital_pay().send_keys("2040")
         self.pd.generate_qr_code()
 
         self.pd.save_remittance()
@@ -977,8 +980,6 @@ class Test_Payment_Details:
         # Get the text of the error message
         error_message_text = error_message_element.text.strip()
 
-
-
         # Now you can assert the error message
         if "Failed to record remittance." in error_message_text:
             print("Error message detected: 'Failed to record remittance.'")
@@ -991,7 +992,6 @@ class Test_Payment_Details:
             # Retry saving the remittance
             self.pd.save_remittance()
             time.sleep(5)
-
 
         ## test failed
         ## if pos code is less than 10 it will only save remittance

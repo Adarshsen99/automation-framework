@@ -38,10 +38,10 @@ class Test_add_bank:
         responce = []
 
         # Arrays holding bank names and corresponding branch names
-        bank_nam = ["Industrial Bank", "South Indian Bank", "Canara Bank", "Kerala Grameen Bank", "Union Bank"]
+        bank_nam = ["South Indian Bank", "Canara Bank", "Kerala Grameen Bank", "Union Bank"]
         bank_loc_name = ["Industrial Bank", "South Indian Bank", "Canara Bank", "Kerala Grameen Bank", "Union Bank"]
 
-        branch_nam = ["Kothamangalam", "Thottakkattukara", "Aluva", "Perumbavoor", "Muvattupuzha"]
+        branch_nam = ["Thottakkattukara", "Aluva", "Perumbavoor", "Muvattupuzha"]
         branch_loc_nam = ["Kothamangalam", "Thottakkattukara", "Aluva", "Perumbavoor", "Muvattupuzha"]
 
         # XPaths of the banks to be selected in a loop
@@ -53,25 +53,26 @@ class Test_add_bank:
             "/html/body/div/div[2]/div/div[2]/div[2]/div/div[1]/div[2]/div[5]"  # Fifth bank
         ]
 
-        # Loop through each bank and branch
-        for i in range(5):
-            # login setup
-            self.driver = setup
-            self.driver.get(self.url)
-            self.driver.maximize_window()
-            self.driver.implicitly_wait(20)
-            self.lp = LoginPage(self.driver)
-            self.lp.setUsername(self.uname)
-            self.lp.setPassword(self.upass)
-            self.lp.clickLogin()
-            # time.sleep(2)
+        # login setup
+        self.driver = setup
+        self.driver.get(self.url)
+        self.driver.maximize_window()
+        self.driver.implicitly_wait(20)
+        self.lp = LoginPage(self.driver)
+        self.lp.setUsername(self.uname)
+        self.lp.setPassword(self.upass)
+        self.lp.clickLogin()
+        # time.sleep(2)
 
-            # click action for nav bar arrow
-            self.nav = Navigation_Page(self.driver)
-            self.nav.click_navbar()
-            # time.sleep(2)
-            self.nav.click_add_bank()
-            time.sleep(2)
+        # click action for nav bar arrow
+        self.nav = Navigation_Page(self.driver)
+        self.nav.click_navbar()
+
+        time.sleep(2)
+        self.nav.click_bank()
+        time.sleep(2)
+
+        for i in range(5):
 
             self.add_bank = Add_Bank(self.driver)
             time.sleep(3)
@@ -93,7 +94,6 @@ class Test_add_bank:
             time.sleep(2)
 
             self.add_branch = Add_branch(self.driver)
-
 
             # Dynamically select the bank for the branch based on index
 
@@ -120,3 +120,4 @@ class Test_add_bank:
             # Output response for debugging
             for res in responce:
                 print(res['root']['baseURL'])
+                
